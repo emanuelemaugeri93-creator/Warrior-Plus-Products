@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDP Page Crafter Pro — Niche Interior Library (OTO1)</title>
+<style>
+  :root{
+    --bg:#0a0e17;
+    --panel:#111827;
+    --panel2:#1c2434;
+    --accent:#00d4aa;
+    --accent2:#3b82f6;
+    --text:#f8fafc;
+    --text-secondary:#e2e8f0;
+    --muted:#94a3b8;
+    --border:#2a3a4f;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --premium:#22d3ee;
+    --card-text:#f8fafc;
+    --card-title:#f8fafc;
+    --card-desc:#cbd5e1;
+    --shadow:0 8px 24px rgba(0,0,0,0.4);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:radial-gradient(circle at 15% 0%, #1a2333 0%, #0a0e17 55%);
+    color:var(--text);
+    min-height:100vh;
+    padding:32px 16px 60px;
+  }
+  .wrap{max-width:1400px;margin:0 auto;}
+  header{text-align:center;margin-bottom:30px;}
+  .pricing-info{
+    display:inline-block;
+    background:rgba(34,211,238,.08);
+    border:1px solid var(--premium);
+    border-radius:999px;
+    padding:8px 20px;
+    margin-bottom:16px;
+    font-size:13px;
+    color:var(--premium);
+    font-weight:600;
+    letter-spacing:.04em;
+  }
+  h1{font-size:clamp(24px,4vw,36px);margin:0 0 10px;line-height:1.2;color:var(--text);font-weight:800;}
+  h1 span{color:var(--accent);}
+  header p{color:var(--muted);max-width:700px;margin:0 auto;font-size:14px;line-height:1.6;}
+
+  .layout-container{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media(min-width:900px){
+    .layout-container{
+      grid-template-columns:300px 1fr;
+      align-items:start;
+    }
+  }
+
+  .sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  @media(min-width:900px){
+    .sidebar{
+      position:sticky;
+      top:16px;
+      max-height:calc(100vh - 32px);
+      overflow-y:auto;
+    }
+  }
+
+  .sidebar-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:var(--shadow);
+  }
+  .sidebar-card h3{
+    margin:0 0 10px;
+    font-size:14px;
+    color:var(--card-title);
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .sidebar-card h3 .num{
+    width:22px;
+    height:22px;
+    border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    font-size:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+  }
+
+  .compact-select{
+    width:100%;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px 12px;
+    color:var(--text);
+    font-size:13px;
+    font-family:inherit;
+    cursor:pointer;
+    transition:.2s ease;
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    padding-right:32px;
+  }
+  .compact-select:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(0,212,170,.15);
+  }
+  .compact-select option{
+    background:var(--panel2);
+    color:var(--text);
+  }
+
+  .custom-niche-toggle{
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px 12px;
+    color:var(--text);
+    font-size:13px;
+    font-family:inherit;
+    cursor:pointer;
+    width:100%;
+    text-align:left;
+    transition:.2s ease;
+    font-weight:600;
+  }
+  .custom-niche-toggle:hover{
+    border-color:var(--accent);
+  }
+  .custom-niche-form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+  .custom-niche-form input,
+  .custom-niche-form textarea{
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 10px;
+    color:var(--text);
+    font-size:12px;
+    font-family:inherit;
+    transition:.15s ease;
+    width:100%;
+  }
+  .custom-niche-form input:focus,
+  .custom-niche-form textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(0,212,170,.15);
+  }
+  .custom-niche-form input::placeholder,
+  .custom-niche-form textarea::placeholder{
+    color:var(--muted);
+  }
+  .custom-niche-form textarea{
+    min-height:70px;
+    resize:vertical;
+  }
+  .custom-niche-form label{
+    font-size:11px;
+    font-weight:600;
+    color:var(--card-desc);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .custom-niche-form .add-btn{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    border:none;
+    font-weight:700;
+    font-size:12px;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+  .custom-niche-form .add-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 4px 12px rgba(0,212,170,.3);
+  }
+
+  .main-area{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .output-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .output-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .output-head h2{
+    margin:0;
+    font-size:16px;
+    color:var(--card-title);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+  }
+  .output-head h2 .num{
+    width:26px;
+    height:26px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+  }
+  .output-sub{
+    color:var(--card-desc);
+    font-size:12px;
+    margin:0 0 14px;
+    line-height:1.5;
+  }
+
+  .btn-group{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .generate-btn{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    font-weight:800;
+    border:none;
+    font-size:12px;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s ease;
+    letter-spacing:.02em;
+  }
+  .generate-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,212,170,.3);}
+  .regenerate-btn{
+    background:var(--panel2);
+    color:var(--text);
+    border:1px solid var(--border);
+    font-weight:600;
+    font-size:12px;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+  .regenerate-btn:hover{border-color:var(--accent);background:rgba(0,212,170,.08);}
+
+  .style-dna{
+    background:linear-gradient(135deg,rgba(0,212,170,.1),rgba(59,130,246,.06));
+    border:1px solid var(--accent);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+  }
+  .style-dna .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--accent);
+    font-weight:800;
+    margin-right:4px;
+  }
+  .style-dna .value{
+    font-size:12px;
+    font-weight:600;
+    color:var(--text);
+    background:var(--panel2);
+    padding:4px 10px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    display:inline-block;
+  }
+  .style-dna .separator{color:var(--muted);font-size:12px;font-weight:400;}
+
+  .variety-counter{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+    padding:10px 14px;
+    background:var(--panel2);
+    border-radius:8px;
+    border:1px solid var(--border);
+  }
+  .variety-counter .stat{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1;
+    min-width:70px;
+  }
+  .variety-counter .stat-value{
+    font-size:16px;
+    font-weight:800;
+    color:var(--accent);
+  }
+  .variety-counter .stat-label{
+    font-size:9px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  .prompt-blocks{display:grid;grid-template-columns:1fr;gap:14px;margin-top:6px;}
+  @media(min-width:768px){.prompt-blocks{grid-template-columns:1fr 1fr 1fr;}}
+  .prompt-block{
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .prompt-block .header{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .prompt-block .header .title{font-weight:700;font-size:12px;color:var(--card-title);}
+  .prompt-block .header .icon{font-size:18px;}
+  .prompt-block textarea{
+    flex:1;
+    min-height:200px;
+    background:#0d1520;
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'SFMono-Regular',Consolas,monospace;
+    font-size:11px;
+    line-height:1.55;
+    padding:12px;
+    resize:vertical;
+  }
+  .mini-btn{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    border:none;
+    font-weight:700;
+    font-size:10px;
+    padding:5px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+  .mini-btn:hover{opacity:.9;transform:translateY(-1px);}
+  .mini-btn.copied{background:var(--success);}
+  .copy-all-btn{
+    display:block;
+    width:100%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    border:none;
+    font-weight:800;
+    font-size:13px;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s ease;
+    margin-top:14px;
+    letter-spacing:.03em;
+  }
+  .copy-all-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,212,170,.3);}
+  .copy-all-btn.copied{background:var(--success);}
+
+  .tips{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:4px 22px;
+    box-shadow:var(--shadow);
+  }
+  details{padding:14px 0;border-bottom:1px solid var(--border);}
+  details:last-child{border-bottom:none;}
+  summary{
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--card-title);
+  }
+  summary::marker{color:var(--accent);}
+  .tips-body{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+    margin-top:8px;
+    padding-left:4px;
+  }
+  .tips-body ol,.tips-body ul{margin:6px 0 0;padding-left:20px;}
+  .tips-body li{margin-bottom:5px;}
+  .tips-body strong{color:var(--text);}
+
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:11px;
+    margin-top:32px;
+  }
+  footer b{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="pricing-info">
+      Niche Interior Library — Complete 3-Prompt Book Sets
+    </div>
+    <h1>KDP Page Crafter <span>— Niche Interior Library</span></h1>
+    <p>Pick a niche and get a complete 3-piece prompt set: cover, main interior page, and chapter divider — all locked to the same style DNA for a cohesive published-ready book. Every generation is uniquely fresh.</p>
+  </header>
+
+  <div class="layout-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <h3><span class="num">1</span> Niche</h3>
+        <select class="compact-select" id="nicheSelect"></select>
+      </div>
+      <div class="sidebar-card">
+        <h3><span class="num">2</span> Page Size</h3>
+        <select class="compact-select" id="pageSizeSelect"></select>
+      </div>
+      <div class="sidebar-card">
+        <button class="custom-niche-toggle" id="customNicheToggle">➕ Create Custom Niche</button>
+        <div class="custom-niche-form" id="customNicheForm" style="display:none;">
+          <div>
+            <label>Niche Name</label>
+            <input type="text" id="customName" placeholder="E.g., Garden Journal" />
+          </div>
+          <div>
+            <label>Emoji</label>
+            <input type="text" id="customEmoji" placeholder="🌱" maxlength="4" />
+          </div>
+          <div>
+            <label>Cover Concept</label>
+            <textarea id="customCover" placeholder="What the front cover should depict..."></textarea>
+          </div>
+          <div>
+            <label>Main Interior Page Concept</label>
+            <textarea id="customMain" placeholder="What the repeatable interior page should contain (fields, layout, prompts)..."></textarea>
+          </div>
+          <div>
+            <label>Divider Concept</label>
+            <textarea id="customDivider" placeholder="What the chapter/section divider should depict..."></textarea>
+          </div>
+          <button class="add-btn" onclick="addCustomNiche()">✨ Add Custom Niche</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN OUTPUT AREA -->
+    <div class="main-area">
+      <div class="output-card">
+        <div class="output-head">
+          <h2><span class="num">3</span> Your Book Set — 3 Prompts</h2>
+          <div class="btn-group">
+            <button class="regenerate-btn" onclick="regenerateStyleOnly()">🎨 New Style, Same Content</button>
+            <button class="generate-btn" onclick="regenerateAll()">🔁 New Content + Style</button>
+          </div>
+        </div>
+        <p class="output-sub">One niche → one coherent 3-piece prompt set. All 3 share the same locked style DNA below.</p>
+        
+        <div class="style-dna" id="styleDna"></div>
+        
+        <div class="variety-counter" id="varietyCounter"></div>
+        
+        <div class="prompt-blocks">
+          <div class="prompt-block">
+            <div class="header">
+              <span class="icon">📕</span>
+              <span class="title">① Cover Prompt</span>
+              <button class="mini-btn" onclick="copySingle(0)">Copy</button>
+            </div>
+            <textarea id="prompt0" readonly></textarea>
+          </div>
+          <div class="prompt-block">
+            <div class="header">
+              <span class="icon">📄</span>
+              <span class="title">② Main Interior Page Prompt</span>
+              <button class="mini-btn" onclick="copySingle(1)">Copy</button>
+            </div>
+            <textarea id="prompt1" readonly></textarea>
+          </div>
+          <div class="prompt-block">
+            <div class="header">
+              <span class="icon">📑</span>
+              <span class="title">③ Chapter Divider Prompt</span>
+              <button class="mini-btn" onclick="copySingle(2)">Copy</button>
+            </div>
+            <textarea id="prompt2" readonly></textarea>
+          </div>
+        </div>
+        
+        <button class="copy-all-btn" id="copyAllBtn" onclick="copyAll()">📋 Copy All 3 Prompts</button>
+      </div>
+
+      <div class="tips">
+        <details>
+          <summary>📐 Step 1: Generate & Save Your Pages</summary>
+          <div class="tips-body">
+            <ol>
+              <li>Copy each of the 3 prompts and paste them into GPT Image 2 one at a time.</li>
+              <li>Save each image with right-click → "Save image" to get native high-res export.</li>
+              <li>Rename files as <strong>cover.png</strong>, <strong>interior-main.png</strong>, <strong>divider.png</strong>.</li>
+              <li>If any export is below 300 DPI at your trim size, upscale in Canva or Photoshop before proceeding.</li>
+            </ol>
+          </div>
+        </details>
+        <details>
+          <summary>📁 Step 2: Assemble Your Interior File</summary>
+          <div class="tips-body">
+            <ol>
+              <li>Create a new document at your exact trim size (e.g., 6×9in = 1800×2700px @ 300 DPI).</li>
+              <li>Place <strong>interior-main.png</strong> as the main repeatable page.</li>
+              <li>Insert <strong>divider.png</strong> between sections (e.g., after every 20 pages).</li>
+              <li>Duplicate the main page for the total number of pages you need — KDP requires minimum 24 pages for paperback.</li>
+              <li>Export as <strong>print-ready PDF</strong> with margins set per KDP requirements (minimum 0.25in, recommended 0.5in inside margin).</li>
+            </ol>
+          </div>
+        </details>
+        <details>
+          <summary>🎨 Step 3: Cover File Specs</summary>
+          <div class="tips-body">
+            <ul>
+              <li>KDP cover must be <strong>one full spread</strong>: back cover + spine + front cover.</li>
+              <li>Your generated cover is the <strong>front cover only</strong> — you must add spine and back cover separately.</li>
+              <li>Use KDP's <strong>Cover Calculator</strong> to get exact dimensions based on your page count and trim size.</li>
+              <li>Export cover as separate <strong>PDF or PNG</strong>, minimum 300 DPI.</li>
+              <li>For print, include <strong>0.125in bleed</strong> on all sides if using full-bleed art.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>📦 Step 4: KDP Upload & Preview</summary>
+          <div class="tips-body">
+            <ol>
+              <li>Sign in to <strong>kdp.amazon.com</strong> → Create New Title → Paperback or Hardcopy.</li>
+              <li>Enter your book details (title, author, description, keywords).</li>
+              <li>Upload your <strong>interior PDF</strong> (single file containing all pages in order).</li>
+              <li>Upload your <strong>cover file</strong> separately.</li>
+              <li>Use KDP's <strong>Preview tool</strong> to check every page for cropping, margins, and text alignment.</li>
+              <li>Order a <strong>physical proof copy</strong> before publishing — never skip this step.</li>
+            </ol>
+          </div>
+        </details>
+        <details>
+          <summary>✅ Final Pre-Publish Checklist</summary>
+          <div class="tips-body">
+            <ul>
+              <li>All text is legible and correctly spelled in generated pages.</li>
+              <li>Margins are consistent on every page (no text near edges).</li>
+              <li>Page count matches your book description (KDP shows this on detail page).</li>
+              <li>Cover spine text is centered and readable.</li>
+              <li>Interior pages use consistent style (yours will — that's the point of the Style Lock).</li>
+              <li>No watermarks, mockup frames, or 3D effects remain in generated art.</li>
+              <li>You have a legal right to all content (no copyrighted text or images).</li>
+              <li>Your book title and author name appear on the cover exactly as entered in KDP.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <footer>Built with the <b>KDP Page Crafter Pro — Niche Interior Library</b> upgrade. One niche → one coherent 3-piece book set. Style Lock keeps your whole book visually unified.</footer>
+</div>
+
+<script>
+const niches = [
+  {
+    id:'sobriety', em:'🕊️', t:'Sobriety Tracker', d:'Daily check-ins + milestones',
+    covers: [
+      'a clean sobriety tracker front cover with the title "My Sobriety Journey" in elegant serif capital letters centered, a subtle rising sun motif above the title, and small milestone markers like "Day 1", "30 Days", "90 Days", "1 Year" arranged in a horizontal timeline along the bottom border',
+      'a bold sobriety tracker front cover with the title "Sober & Strong" in chunky sans-serif, a line-art mountain peak with a flag at the summit centered behind the title, and a small "One Day at a Time" tagline at the bottom',
+      'a minimalist sobriety tracker front cover with the title "The Sober Path" in thin elegant sans-serif, a single winding path line-drawn from bottom left to top right, and small circle markers along the path representing milestones'
+    ],
+    mains: [
+      'a sobriety tracker daily check-in interior page with header "Daily Sobriety Check-In", sections for "Date", "Mood (1-10)", "Cravings Level (1-10)", "Coping Strategy Used", three lined prompts reading "Today I stayed sober by...", "Something I\'m proud of today:", and "Tomorrow I will focus on:", plus a boxed "Milestone Tracker" area with 30 small checkboxes labeled "Days Sober"',
+      'a sobriety tracker daily reflection interior page with header "Sober Day ___", a large "Trigger Awareness" box reading "What triggered me today?", a "Coping Toolbox" checklist with items like "Called sponsor", "Went to meeting", "Journaled", "Exercised", and a "Gratitude for Sobriety" section with 5 blank lines',
+      'a sobriety tracker morning/evening interior page with two columns labeled "Morning Intention" and "Evening Reflection", each with 4 lined prompts, a "Daily Victory" box with a large checkmark icon and space to write one win, and a small "Craving Log" with time/intensity/response columns'
+    ],
+    dividers: [
+      'a sobriety tracker section divider page with the words "Section Break" in small italic text above a centered motivational phrase "One Day at a Time" in elegant script, flanked by thin horizontal lines with a single small lotus flower motif in the center',
+      'a sobriety tracker divider with the centered phrase "Milestone Reached" in bold modern font, a small trophy or star icon above, and thin ruled lines with small checkmark accents at both ends',
+      'a sobriety tracker divider with a centered sun icon, the phrase "New Dawn" in light serif, and two thin horizontal lines with tiny star accents'
+    ]
+  },
+  {
+    id:'anxiety', em:'🌿', t:'Anxiety Journal', d:'Grounding exercises + log',
+    covers: [
+      'a calming anxiety journal front cover with the title "Finding Calm" in soft rounded sans-serif, a minimalist line-drawn tree with roots and branches filling the lower third, and a small breathing exercise instruction "Breathe In... Breathe Out..." in tiny text at the top',
+      'a soothing anxiety journal front cover with the title "Quiet Mind" in thin elegant serif, a line-art ocean wave with a small boat on the horizon, and a subtitle "A Journal for Anxiety Relief" in small text below',
+      'a gentle anxiety journal front cover with the title "Here & Now" in handwritten script, a simple grounding stone or leaf motif centered, and a small "5-4-3-2-1 Grounding" reference at the bottom'
+    ],
+    mains: [
+      'an anxiety journal interior page with header "Daily Anxiety Log", sections for "Time", "Trigger", "Physical Sensations", "Anxiety Level (1-10)", a boxed "Grounding Exercise" area with prompt "5 things I can see...", "4 things I can touch...", "3 things I can hear...", "2 things I can smell...", "1 thing I can taste...", and a bottom lined section reading "After the exercise, my anxiety level is now:"',
+      'an anxiety journal interior page with header "Anxiety Check-In", a "Body Scan" section with checklist items like "Jaw tight", "Shoulders raised", "Stomach tight", "Breathing shallow", a "What I\'m Worrying About" lined box, a "Reframe" prompt reading "What\'s a more balanced way to see this?", and a "Calm Action" section with 3 blank lines',
+      'an anxiety journal interior page with header "Panic Attack Log", fields for "Date", "Duration", "Intensity (1-10)", "Physical symptoms" with 6 blank checkboxes, a "What helped?" lined area, and a "Prevention Notes" box reading "What I can do differently next time:"'
+    ],
+    dividers: [
+      'an anxiety journal section divider with the centered phrase "A Pause for Peace" in soft handwritten script, framed by two small leaf sprigs on either side, and thin dotted lines running horizontally to the page edges',
+      'an anxiety journal divider with a centered breathing circle icon, the phrase "Breathe" in large thin sans, and two small "In... Out..." labels on either side',
+      'an anxiety journal divider with a centered small stone stack icon, the phrase "Grounded" in bold serif, and thin single rules above and below'
+    ]
+  },
+  {
+    id:'pregnancy', em:'🤰', t:'Pregnancy Milestone Diary', d:'Weekly tracking + memories',
+    covers: [
+      'a soft pregnancy milestone diary cover with title "Growing Together" in elegant script, a simple line-art illustration of a growing belly silhouette in three progressive stages across the middle, and a subtitle "A Weekly Pregnancy Journal" in small caps below',
+      'a warm pregnancy diary cover with title "Hello Little One" in rounded serif, a line-art baby rattle and booties icon centered, and small heart accents around the border',
+      'a minimalist pregnancy journal cover with title "Nine Months" in modern thin sans, a simple circular calendar icon with a heart in the center, and a small "Week by Week" tagline'
+    ],
+    mains: [
+      'a pregnancy weekly diary interior page with header "Week ___ of 40", fields for "Baby Size (compare to fruit)", "Weight", "Symptoms", "Cravings", "Energy Level", a lined section for "Letter to Baby This Week", and a small checkbox list labeled "This Week I Want to Remember" with 5 blank lines',
+      'a pregnancy milestone interior page with header "Milestone Week ___", a "Doctor Visit Notes" box with fields for "Weight", "Blood pressure", "Baby\'s heartbeat", "Next appointment", a "Questions for Doctor" lined area, and a "Baby\'s Firsts" section with checkboxes like "First kick", "First hiccup", "First ultrasound"',
+      'a pregnancy symptom tracker interior page with header "Symptom Check-In", a grid with days of the week and symptom checkboxes like "Nausea", "Fatigue", "Headache", "Back pain", "Heartburn", a "Cravings & Aversions" box, and a lined "Notes to Self" section'
+    ],
+    dividers: [
+      'a pregnancy journal section divider with centered text "Trimester ___" in large elegant serif, a delicate line-drawn stork or heart motif above, and a thin decorative border along top and bottom edges with small dot accents',
+      'a pregnancy journal divider with a centered small baby footprints icon, the phrase "A New Chapter" in soft script, and two thin wavy lines above and below',
+      'a pregnancy journal divider with a centered heart inside a circle, the phrase "Week ___" in bold sans, and small decorative stars along the edges'
+    ]
+  },
+  {
+    id:'adhd', em:'⚡', t:'ADHD Focus Planner', d:'Time-blocking + dopamine menu',
+    covers: [
+      'a bold ADHD focus planner cover with title "Hyperfocus" in chunky modern sans-serif, a geometric lightning bolt or abstract burst line-art behind the title, and a tagline "Plan Less. Do More." in small letters at the bottom',
+      'a playful ADHD focus planner cover with title "Brain Boost" in rounded bold font, a line-art brain with spark lines radiating from it, and a small "Daily Focus System" subtitle',
+      'a clean ADHD focus planner cover with title "The Focus Formula" in strong serif, a simple line-art target or dartboard motif, and a small "Organize. Prioritize. Execute." tagline'
+    ],
+    mains: [
+      'an ADHD focus planner interior page with header "Today\'s Focus", a "Top 3 Priorities" section with three large numbered blank lines, a "Time Block Schedule" grid with columns for "Time", "Task", "Done", a small "Dopamine Menu" box labeled "Reward Options" with 5 blank checkboxes, and a bottom note area reading "What got in the way? How can I make it easier tomorrow?"',
+      'an ADHD focus planner interior page with header "The Dopamine Menu", a "Starters" section with small quick-win tasks, a "Main Course" section for deep work blocks with time estimates, a "Sides" section for background tasks, and a "Desserts" section for rewards',
+      'an ADHD focus planner interior page with header "Time Block Mastery", a large daily timeline from 6am to 10pm with dotted lines for each hour, a "Distraction Parking Lot" box for intrusive thoughts, and a "End-of-Day Review" section with three lined prompts'
+    ],
+    dividers: [
+      'an ADHD focus planner section divider with the centered phrase "Reset & Refocus" in bold modern font, a simple geometric arrow or circle motif, and two thin horizontal rules above and below the text',
+      'an ADHD focus planner divider with a centered lightning bolt icon, the phrase "Power Hour" in bold sans, and thin dotted lines at top and bottom',
+      'an ADHD focus planner divider with a centered hourglass icon, the phrase "Time to Reset" in medium sans, and small tick marks along the horizontal rules'
+    ]
+  },
+  {
+    id:'petmemorial', em:'🐾', t:'Pet Memorial Book', d:'Remembrance prompts + photos',
+    covers: [
+      'a tender pet memorial book cover with title "Forever in My Heart" in refined serif, a simple line-art paw print surrounded by a heart outline in the center, and space at the bottom for a pet name and dates in small text',
+      'a warm pet memorial book cover with title "Best Friend" in handwritten script, a line-art dog and cat silhouette side by side, and a small "A Memorial Keepsake" subtitle',
+      'a gentle pet memorial cover with title "Until We Meet Again" in elegant serif, a line-art rainbow bridge with small paw prints crossing it, and a small "A Pet Memorial Journal" tagline'
+    ],
+    mains: [
+      'a pet memorial book interior page with header "Remembering [Pet Name]", sections for "Gotcha Day", "Favorite Toy", "Favorite Treat", "Funniest Memory", "What I Miss Most", a lined prompt "A letter to my best friend...", and a 4x6 photo placeholder box labeled "Photo Here"',
+      'a pet memorial interior page with header "Our Story", a "Timeline of Memories" with blank lines for dates and events, a "Personality Traits" checklist with words like "Loyal", "Playful", "Cuddly", "Brave", "Goofy", and a lined section for "The Day We Met"',
+      'a pet memorial interior page with header "Tribute to [Pet Name]", a "Favorite Things" box with lines for food, toy, place, activity, a "What I Learned From You" lined prompt, and a small "Paw Print" drawing area with a circle frame'
+    ],
+    dividers: [
+      'a pet memorial section divider with a centered paw print inside a small circle, the phrase "Until We Meet Again" in gentle script beneath, and small scattered stars or paw dots around the border',
+      'a pet memorial divider with a centered small heart and paw print icon, the phrase "Forever Loved" in soft serif, and thin ruled lines with tiny paw accents',
+      'a pet memorial divider with a centered small bone or fish icon, the phrase "Good Memories" in medium sans, and two thin horizontal lines with small dot accents'
+    ]
+  },
+  {
+    id:'christian', em:'✝️', t:'Christian Devotional', d:'Scripture + prayer prompts',
+    covers: [
+      'a Christian devotional cover with title "Daily Bread" in classic serif, a simple line-art open book or chalice icon centered, and a small cross above the title, with a verse reference "Matthew 4:4" in tiny text at the bottom',
+      'a Christian devotional cover with title "Morning Light" in elegant serif, a line-art sunrise with a small cross silhouette, and a subtitle "A 90-Day Devotional Journal"',
+      'a Christian devotional cover with title "Living Water" in soft script, a line-art flowing water or fish motif, and a small "Scripture & Prayer Journal" tagline'
+    ],
+    mains: [
+      'a Christian devotional interior page with header "Today\'s Scripture", a large boxed area labeled "Verse of the Day" with ruled lines, a section for "What is God saying to me through this verse?", a lined prompt for "My Prayer Today", and a small boxed "Application" area reading "One thing I will do differently because of this word"',
+      'a Christian devotional interior page with header "Morning Devotion", a "Scripture" box with ruled lines, a "Reflection" lined prompt reading "What stands out to me in this passage?", a "Thanksgiving" section with 3 blank lines, and a "Prayer Requests" box with 5 lines',
+      'a Christian devotional interior page with header "Evening Reflection", a "Verse for the Night" box, a "Confession" lined area, a "Gratitude" section with 5 blank lines, and a "Tomorrow\'s Prayer Focus" prompt'
+    ],
+    dividers: [
+      'a Christian devotional section divider with a centered small cross motif, the phrase "Selah — Pause and Reflect" in italic serif, and thin decorative lines with small diamond accents',
+      'a Christian devotional divider with a centered small open book icon, the phrase "The Word" in bold serif, and two thin horizontal rules with cross accents',
+      'a Christian devotional divider with a centered small dove icon, the phrase "Peace Be Still" in soft script, and thin dotted lines at top and bottom'
+    ]
+  },
+  {
+    id:'language', em:'🗣️', t:'Language Learning Log', d:'Vocabulary + practice tracker',
+    covers: [
+      'a vibrant language learning log cover with title "My Language Journey" in modern sans-serif, a line-art speech bubble with a globe or flag pattern inside, and a small "100 Days of Practice" badge at the bottom',
+      'a playful language learning log cover with title "Word Collector" in bold rounded font, a line-art jar filled with small word bubbles or letters, and a small "Daily Vocabulary Log" subtitle',
+      'a minimal language learning cover with title "Fluent Path" in thin modern sans, a line-art road or path with flag markers, and a small "Daily Progress Tracker" tagline'
+    ],
+    mains: [
+      'a language learning log interior page with header "Daily Practice Log", fields for "Date", "Language", "New Words Learned" with 10 ruled lines, a boxed "Grammar Focus" area, a small "Speaking Practice" section with prompt "I practiced with...", and a bottom checkbox row labeled "Listening", "Reading", "Writing", "Speaking"',
+      'a language learning interior page with header "Vocabulary Builder", a "Word of the Day" box with fields for "Word", "Translation", "Example Sentence", a "Phrase Bank" section with 8 blank lines, and a "Mistakes I Made" prompt reading "What did I learn from my errors today?"',
+      'a language learning interior page with header "Weekly Review", a "Words Mastered This Week" checklist with 15 blank lines, a "Grammar Rule to Remember" box, a "Conversation Practice" section with prompt "Who did I speak with?", and a "Cultural Note" lined area'
+    ],
+    dividers: [
+      'a language learning section divider with the centered phrase "New Chapter" in bold sans, a small globe or book icon above, and a thin horizontal line with arrow endpoints suggesting progress',
+      'a language learning divider with a centered small speech bubble icon, the phrase "Level Up" in bold modern font, and two thin horizontal rules with small star accents',
+      'a language learning divider with a centered small flag icon, the phrase "Milestone Reached" in medium serif, and thin dotted lines at top and bottom'
+    ]
+  },
+  {
+    id:'teenbudget', em:'💸', t:'Budget Planner for Teens', d:'Money basics + saving goals',
+    covers: [
+      'a fresh teen budget planner cover with title "Cash Course" in playful bold font, a line-art piggy bank with a graduation cap or phone beside it, and a subtitle "Money Skills for Real Life" in small text below',
+      'a vibrant teen budget planner cover with title "My Money Moves" in rounded sans, a line-art wallet with dollar bills flying out or a coin stack, and a small "Spend. Save. Grow." tagline',
+      'a minimal teen budget planner cover with title "Dollar Smart" in bold modern font, a line-art target or bullseye with a dollar sign in the center, and a small "Budget Basics" subtitle'
+    ],
+    mains: [
+      'a teen budget planner interior page with header "My Money This Month", sections for "Income (allowance, job, gifts)", "Expenses" with 8 ruled lines and amount columns, a "Savings Goal" box with prompt "I\'m saving for..." and a progress bar with 10 empty segments, and a bottom tip box reading "Needs vs. Wants Check"',
+      'a teen budget planner interior page with header "Weekly Money Check", a "What I Earned" section with 5 lines, a "What I Spent" section with 8 lines, a "What I Saved" box, and a "Money Goal This Week" prompt reading "One thing I won\'t spend on this week:"',
+      'a teen budget planner interior page with header "My First Budget", a "Fixed Expenses" box with lines for phone, subscriptions, food, a "Fun Money" section, a "Savings Challenge" checklist with 30 small boxes, and a bottom note reading "Best money decision I made today:"'
+    ],
+    dividers: [
+      'a teen budget planner section divider with centered text "Money Milestone" in bold rounded font, a simple coin or dollar sign motif, and two thin ruled lines above and below',
+      'a teen budget planner divider with a centered small piggy bank icon, the phrase "Savings Goal" in bold sans, and thin dotted lines with coin accents',
+      'a teen budget planner divider with a centered small chart or graph icon, the phrase "Money Wins" in bold font, and two thin horizontal rules with small star accents'
+    ]
+  },
+  {
+    id:'grief', em:'🕯️', t:'Grief & Loss Journal', d:'Healing prompts + memories',
+    covers: [
+      'a gentle grief & loss journal cover with title "Healing Slowly" in soft serif, a line-art candle with a small flame, and a subtle single teardrop or falling leaf motif, with no dates so the user can start anytime',
+      'a warm grief journal cover with title "Seasons of Grief" in elegant script, a line-art tree with falling leaves, and a small "A Gentle Journal" subtitle',
+      'a minimalist grief journal cover with title "Held" in thin serif, a line-art pair of hands cradling a heart or candle, and a small "A Space for Your Grief" tagline'
+    ],
+    mains: [
+      'a grief & loss journal interior page with header "Today I Remember", prompts reading "A memory that brings me comfort is...", "Today I felt...", "Something I want my loved one to know is...", a small checklist for "How I\'m taking care of myself today" with items like "Drank water", "Ate a meal", "Spoke to someone", and a lined free-writing section',
+      'a grief & loss journal interior page with header "Grief Check-In", a "Where I Feel It" body outline area with lines pointing to different body parts, a "What I\'m Missing" lined box, a "Comforting Ritual" prompt reading "One thing I did today to honor my loved one:", and a bottom note area',
+      'a grief & loss journal interior page with header "Letter to My Loved One", a large lined area with the prompt "Dear...", a "What I Wish I Could Say" section, a "Signs & Symbols" box for dreams or synchronicities, and a closing line reading "With love always,"'
+    ],
+    dividers: [
+      'a grief & loss journal section divider with a centered small candle icon, the phrase "A Moment of Stillness" in italic serif, and a thin single line running beneath',
+      'a grief & loss journal divider with a centered small heart outline, the phrase "Remembering You" in soft script, and two thin dotted lines',
+      'a grief & loss journal divider with a centered small leaf icon, the phrase "Letting In Light" in medium serif, and thin wavy lines at top and bottom'
+    ]
+  },
+  {
+    id:'postpartum', em:'🍼', t:'Postpartum Recovery Tracker', d:'Healing + self-care check-ins',
+    covers: [
+      'a soft postpartum recovery tracker cover with title "Nurtured" in gentle rounded serif, a line-art mother-and-baby silhouette or a cradling hands icon, and a subtitle "A Gentle Recovery Journal" in small text',
+      'a warm postpartum tracker cover with title "Finding Me Again" in soft script, a line-art flower blooming or a sunrise motif, and a small "A Postpartum Self-Care Journal" tagline',
+      'a minimal postpartum tracker cover with title "The Fourth Trimester" in thin sans, a line-art moon and stars, and a small "A Gentle Healing Journal" subtitle'
+    ],
+    mains: [
+      'a postpartum recovery tracker interior page with header "Day ___ Postpartum", sections for "Physical Symptoms" with checklist items like "Bleeding", "Cramping", "Breast pain", "Incision care", a "Mental Health Check" with prompt "How am I feeling emotionally today?", a small grid for "Sleep (hours)", "Water (glasses)", "Meals", and a lined note area',
+      'a postpartum recovery tracker interior page with header "Self-Care Check-In", a "What I Did for Me Today" checklist with items like "Showered", "Ate a warm meal", "Rested", "Spoke to someone", "Went outside", a "Support System" section with lines for names, and a "Feelings Word Bank" box with words like "Overwhelmed", "Grateful", "Lonely", "Hopeful"',
+      'a postpartum recovery tracker interior page with header "Healing Journal", a "Body Appreciation" prompt reading "What did my body do for me this week?", a "Emotional Check" with a mood scale from 1-10, a "Baby Notes" small box, and a "Questions for Doctor" lined area'
+    ],
+    dividers: [
+      'a postpartum recovery section divider with the centered phrase "Rest and Recover" in soft script, a small heart or swaddle icon, and thin dotted lines at top and bottom',
+      'a postpartum recovery divider with a centered small flower icon, the phrase "Gentle Days" in soft serif, and thin single rules with dot accents',
+      'a postpartum recovery divider with a centered small moon icon, the phrase "Night Feedings & Quiet Moments" in medium serif, and thin wavy lines'
+    ]
+  },
+  {
+    id:'sleep', em:'😴', t:'Sleep & Insomnia Journal', d:'Sleep hygiene + nightly log',
+    covers: [
+      'a soothing sleep journal cover with title "Restful Nights" in calm serif, a line-art crescent moon with stars, and a small subtitle "A Nightly Sleep Log" beneath',
+      'a dreamy sleep journal cover with title "Sweet Dreams" in soft script, a line-art cloud with a crescent moon and stars, and a small "A Bedtime Journal" tagline',
+      'a minimal sleep journal cover with title "The Sleep Diary" in thin sans, a line-art hourglass with a moon inside, and a small "Track Your Rest" subtitle'
+    ],
+    mains: [
+      'a sleep & insomnia journal interior page with header "Tonight\'s Sleep Log", fields for "Bedtime", "Wake time", "Hours Slept", "Sleep Quality (1-10)", "Number of Awakenings", a boxed "Wind-Down Routine" checklist with items like "No screens 1hr before bed", "Read a book", "Warm shower", "Meditation", and a lined prompt "What kept me awake?"',
+      'a sleep & insomnia journal interior page with header "Morning After Check-In", a "How I Slept" rating scale from 1-10 with faces, a "Dreams" lined box, a "What Helped" checklist with items like "White noise", "Weighted blanket", "Cool room", "Stretching", and a "Tonight I Will Try" prompt with 3 blank lines',
+      'a sleep & insomnia journal interior page with header "Weekly Sleep Review", a 7-day grid with rows for "Bedtime", "Wake time", "Hours", "Quality", a "Patterns I Notice" lined box, and a "Sleep Goal for Next Week" prompt'
+    ],
+    dividers: [
+      'a sleep journal section divider with a centered crescent moon and three small stars, the phrase "Nightly Reset" in light script, and a thin dotted horizontal line',
+      'a sleep journal divider with a centered small pillow or bed icon, the phrase "Time to Rest" in soft serif, and two thin horizontal rules with star accents',
+      'a sleep journal divider with a centered small moon and cloud icon, the phrase "Dreamland" in medium script, and thin wavy lines at top and bottom'
+    ]
+  },
+  {
+    id:'chronic', em:'🩺', t:'Chronic Illness Symptom Tracker', d:'Symptom logs + meds + triggers',
+    covers: [
+      'a clinical but warm chronic illness symptom tracker cover with title "My Health Log" in clean sans-serif, a line-art medical cross with a heart inside, and a small "Track. Learn. Thrive." tagline at bottom',
+      'a warm chronic illness tracker cover with title "Day by Day" in soft serif, a line-art heart with a healing wave or pulse line, and a small "A Symptom & Wellness Journal" subtitle',
+      'a minimal chronic illness tracker cover with title "My Body, My Data" in thin modern sans, a line-art chart or graph with a heartbeat line, and a small "Symptom Tracking Made Simple" tagline'
+    ],
+    mains: [
+      'a chronic illness symptom tracker interior page with header "Daily Symptom Log", sections for "Date", "Pain Level (1-10)", "Fatigue (1-10)", "Symptoms" with 10 blank checkboxes and lines, a "Medications Taken" area with time/name columns, a "Food & Drink" log, and a "Trigger Suspects" prompt reading "What might have caused a flare today?"',
+      'a chronic illness symptom tracker interior page with header "Weekly Symptom Review", a 7-day grid with symptom checkboxes for each day, a "Pain Map" body outline with areas to circle, a "Mood & Energy" tracker with lines, and a "What Helped This Week" lined box',
+      'a chronic illness symptom tracker interior page with header "Flare-Up Log", fields for "Start Date", "End Date", "Intensity (1-10)", "Symptoms" with 8 blank lines, "Possible Triggers" checklist like "Stress", "Food", "Weather", "Activity", "Hormones", and a "Recovery Notes" lined area'
+    ],
+    dividers: [
+      'a chronic illness tracker section divider with centered text "Weekly Review" in clean sans, a small heartbeat line icon, and two thin horizontal rules',
+      'a chronic illness tracker divider with a centered small heart with pulse line icon, the phrase "Healing Day by Day" in soft serif, and thin dotted lines',
+      'a chronic illness tracker divider with a centered small medical cross icon, the phrase "Data is Power" in bold sans, and thin single rules with dot accents'
+    ]
+  },
+  {
+    id:'homeschool', em:'🏠', t:'Homeschool Planner', d:'Lesson plans + attendance',
+    covers: [
+      'a cheerful homeschool planner cover with title "Learning at Home" in rounded sans-serif, a line-art house with a pencil or open book, and a small "Daily, Weekly, Monthly" subtitle',
+      'a vibrant homeschool planner cover with title "The Homeschool Hub" in bold rounded font, a line-art apple with a pencil or globe, and a small "Plan. Teach. Inspire." tagline',
+      'a minimal homeschool planner cover with title "Home Classroom" in modern sans, a line-art open book with a house silhouette, and a small "Lesson Planning Journal" subtitle'
+    ],
+    mains: [
+      'a homeschool planner interior page with header "Daily Lesson Plan", a "Today\'s Subjects" section with columns for "Subject", "Time", "Materials", "Done", an "Attendance" small grid with date/months, a "Field Trip or Activity" box, and a lined note area for "Notes & Observations"',
+      'a homeschool planner interior page with header "Weekly Overview", a 5-day grid with rows for "Math", "Reading", "Science", "History", "Art", "PE", a "Goals for This Week" box, and a "Reading Log" section with book title and minutes columns',
+      'a homeschool planner interior page with header "Unit Study Planner", a "Topic" box, a "Books & Resources" section with 6 lines, an "Activities" area with 5 blank lines, a "Field Trip Idea" box, and a "Assessment" prompt reading "How will I know my child understood this?"'
+    ],
+    dividers: [
+      'a homeschool planner section divider with centered text "New Week" in bold rounded font, a small apple or pencil icon, and thin ruled lines at top and bottom',
+      'a homeschool planner divider with a centered small book or pencil icon, the phrase "Chapter Break" in medium sans, and two thin horizontal rules with star accents',
+      'a homeschool planner divider with a centered small globe icon, the phrase "New Unit" in bold sans, and thin dotted lines at top and bottom'
+    ]
+  },
+  {
+    id:'wedding', em:'💍', t:'Wedding Planning Journal', d:'Checklists + budgets + vendors',
+    covers: [
+      'an elegant wedding planning journal cover with title "Our Wedding Story" in flowing script, line-art rings or a bouquet motif, and a small "Planning & Keepsake" subtitle',
+      'a romantic wedding planner cover with title "To Have & To Hold" in classic serif, a line-art heart with rings or a floral wreath, and a small "A Wedding Planning Journal" tagline',
+      'a modern wedding planner cover with title "The Big Day" in bold sans, a line-art calendar with a heart on one date, and a small "Countdown & Checklist" subtitle'
+    ],
+    mains: [
+      'a wedding planning journal interior page with header "Wedding Countdown — ___ Days", a "Vendor Contacts" section with columns for "Vendor", "Contact", "Deposit Paid", "Confirmed", a "Budget Tracker" with categories and amount columns, a "Guest List" small grid, and a lined prompt "Today\'s wedding win:"',
+      'a wedding planning journal interior page with header "Guest List & Seating", a large table with columns for "Name", "Side", "RSVP", "Meal Choice", "Seat #", a "Table Layout" small grid area, and a lined note box for "Special Requests"',
+      'a wedding planning journal interior page with header "Vendor Comparison", a table with columns for "Vendor", "Price", "Includes", "Notes", a "Deposit Schedule" checklist, a "Contract Review" checklist with items like "Cancellation policy", "Overtime fees", "Backup plan", and a lined "Questions to Ask" box'
+    ],
+    dividers: [
+      'a wedding planning section divider with centered phrase "Chapter ___ of Our Journey" in elegant script, a small ring or floral motif, and thin decorative rules with dot accents',
+      'a wedding planning divider with a centered small heart with rings icon, the phrase "Countdown Continues" in soft serif, and two thin horizontal rules with small heart accents',
+      'a wedding planning divider with a centered small bouquet icon, the phrase "Almost There" in bold script, and thin dotted lines with floral accents'
+    ]
+  },
+  {
+    id:'senior', em:'🧠', t:'Senior Memory Care Journal', d:'Reminiscence prompts + photos',
+    covers: [
+      'a warm senior memory care journal cover with title "My Life Story" in large serif, a line-art sun or vintage clock motif, and a subtitle "Memories to Share" in small text below',
+      'a nostalgic senior memory journal cover with title "Days to Remember" in soft script, a line-art photo album or vintage key, and a small "A Reminiscence Journal" tagline',
+      'a minimal senior memory journal cover with title "This Is Me" in warm sans, a line-art family tree or portrait silhouette, and a small "A Personal History Journal" subtitle'
+    ],
+    mains: [
+      'a senior memory care journal interior page with header "Today\'s Memory Prompt", a single large lined prompt reading "What was your favorite season as a child? Describe the smells, sounds, and feelings.", a small "People I Shared This Memory With" section, a photo placeholder box labeled "Photo Here", and a bottom check-in line reading "Today\'s mood (circle one): Happy Calm Nostalgic Tired"',
+      'a senior memory care journal interior page with header "Story Time", a large lined prompt reading "Tell me about the house you grew up in. What did the kitchen smell like?", a "Family Tree" small diagram area with branches, a "Life Lesson" prompt reading "What\'s the most important lesson you\'ve learned?", and a small "Photo Here" box',
+      'a senior memory care journal interior page with header "Memory Lane", a prompt reading "What was your first job? What did you earn and what did you buy?", a "Friends Through the Years" section with 5 blank lines, a "Favorite Music" box, and a "Photo Here" placeholder'
+    ],
+    dividers: [
+      'a senior memory care journal section divider with centered text "A New Chapter of My Story" in large serif, a small vintage key or photo corner motif, and thin single rules above and below',
+      'a senior memory care divider with a centered small clock icon, the phrase "Time for a Story" in soft serif, and two thin horizontal rules with star accents',
+      'a senior memory care divider with a centered small book or photo icon, the phrase "Remember When..." in medium script, and thin dotted lines'
+    ]
+  },
+  {
+    id:'sidehustle', em:'🚀', t:'Side Hustle / Freelance Income Tracker', d:'Client work + invoice log',
+    covers: [
+      'a bold side hustle tracker cover with title "The Grind" in strong sans-serif, a line-art rocket or ascending chart icon, and a small "Freelance & Side Income Log" subtitle',
+      'a vibrant side hustle tracker cover with title "Money Maker" in playful bold font, a line-art cash register or money tree, and a small "Client & Invoice Tracker" tagline',
+      'a minimal side hustle tracker cover with title "The Side Hustle System" in modern sans, a line-art laptop with dollar signs or a briefcase, and a small "Organize. Invoice. Scale." subtitle'
+    ],
+    mains: [
+      'a side hustle income tracker interior page with header "Income This Month", a "Client/Project" section with columns for "Name", "Hours", "Rate", "Status", "Invoice #", a small "Expenses" box with 5 lines, a "Total Earned This Month" summary bar, and a bottom prompt reading "What\'s one thing that would 10x this month\'s income?"',
+      'a side hustle income tracker interior page with header "Client Tracker", a "Current Projects" section with columns for "Client", "Deliverable", "Deadline", "Quote", "Status", a "Follow-Up List" with 5 lines, and a "Payment Log" with date/invoice/amount columns',
+      'a side hustle income tracker interior page with header "Weekly Hustle Review", an "Income Breakdown" section with lines for each revenue stream, a "Time Spent" log with hours per project, a "What Worked" prompt, and a "Next Week\'s Focus" box with 3 blank lines'
+    ],
+    dividers: [
+      'a side hustle tracker section divider with centered phrase "Next Level" in bold modern font, a simple upward arrow or chart icon, and thin horizontal lines with small tick marks',
+      'a side hustle tracker divider with a centered small rocket icon, the phrase "Launch Week" in bold sans, and two thin horizontal rules with star accents',
+      'a side hustle tracker divider with a centered small dollar sign icon, the phrase "Payday" in bold modern font, and thin dotted lines with coin accents'
+    ]
+  }
+];
+
+const pageSizes = [
+  {id:'6x9', t:'6 × 9 in', d:'Most common KDP trim', prompt:'sized for a 6x9 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8.5x11', t:'8.5 × 11 in', d:'Letter / large format', prompt:'sized for an 8.5x11 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'5x8', t:'5 × 8 in', d:'Compact pocket size', prompt:'sized for a 5x8 inch KDP book page (portrait orientation, print-ready margins of 0.4in on all sides)'},
+  {id:'7x10', t:'7 × 10 in', d:'Medium format', prompt:'sized for a 7x10 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8x10', t:'8 × 10 in', d:'Square format', prompt:'sized for an 8x10 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'6x9-landscape', t:'6 × 9 in (Landscape)', d:'Horizontal orientation', prompt:'sized for a 6x9 inch KDP book page (landscape orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8.5x11-landscape', t:'8.5 × 11 in (Landscape)', d:'Horizontal letter', prompt:'sized for an 8.5x11 inch KDP book page (landscape orientation, print-ready margins of 0.5in on all sides)'}
+];
+
+const stylePools = {
+  artStyles: [
+    'minimalist black line art on a pure white background with crisp vector precision',
+    'elegant ink illustration style with fine cross-hatching and subtle texture',
+    'clean vector graphics with subtle geometric patterns and balanced proportions',
+    'hand-drawn sketch style with organic, flowing lines and natural imperfections',
+    'modern flat design with soft curves, rounded corners, and generous negative space',
+    'Art Deco-inspired decorative line work with symmetrical geometric elegance',
+    'crisp architectural drawing style with precise measurements and clean rules',
+    'playful doodle style with whimsical details, expressive lines, and personality',
+    'vintage engraving style with classic typography and intricate line detail',
+    'watercolor-inspired line art with soft, flowing edges and gentle gradients',
+    'zen doodle style with meditative patterns, mandala elements, and repetitive motifs',
+    'retro-modern geometric fusion with bold shapes and mid-century influences',
+    'cottagecore floral line art with delicate botanical details and romantic charm',
+    'Scandinavian minimal line work with clean simplicity and functional beauty',
+    'bohemian organic line style with free-spirited curves and natural textures',
+    'elegant calligraphy-forward design with expressive letterforms and flowing lines',
+    'Art Nouveau inspired with flowing curves, organic whiplash lines, and botanical motifs',
+    'Japanese sumi-e ink style with minimal brush strokes and zen simplicity',
+    'line art with subtle gradient depth and dimensional layering',
+    'geometric mandala-inspired line work with radial symmetry and intricate detail'
+  ],
+  colorTreatments: [
+    'pure black lines on white, no gray, no shading, maximum contrast',
+    'soft warm sepia-tinted lines (line art uses muted brown-black) for gentle vintage feel',
+    'navy-blue-black lines on cream-white background for calm sophistication',
+    'charcoal gray lines with subtle stippled shading for depth',
+    'olive-green-black lines on off-white for natural warmth',
+    'burgundy-black lines on warm white for romantic elegance',
+    'slate-gray lines with light hatching for quiet refinement',
+    'warm graphite lines with soft gradient depth for modern luxury',
+    'cool blue-black lines on bright white for clinical precision',
+    'dark espresso-brown lines on ivory for rustic warmth',
+    'deep forest-green-black lines on parchment for earthy charm',
+    'midnight-black lines with subtle silver-gray accents for premium feel',
+    'soft plum-black lines on blush-white for gentle femininity',
+    'warm honey-brown lines on cream for cozy approachability',
+    'deep teal-black lines on cool white for contemporary freshness'
+  ],
+  motifs: [
+    'botanical corner flourishes and small leaf accents at page corners',
+    'geometric diamond and triangle corner marks for structured elegance',
+    'small star or celestial dot accents scattered along margins',
+    'thin ruled double lines with no extra decoration for pure minimalism',
+    'Art Deco fan or sunrise motif repeated subtly in headers',
+    'vintage filigree corner scrolls with delicate ornamental detail',
+    'minimal dotted line separators with tiny arrow elements',
+    'organic vine or branch motifs weaving along page edges',
+    'small heart motifs on section headers for warmth',
+    'paw print or animal-inspired corner icons for playfulness',
+    'crescent moon and star accents for dreamy atmosphere',
+    'simple cross or faith-inspired corner marks for spirituality',
+    'diamond lattice or trellis patterns in subtle background',
+    'wave or ripple line patterns for flowing energy',
+    'small feather motifs for lightness and freedom',
+    'butterfly or dragonfly accents for transformation themes',
+    'key or lock motifs for journaling and reflection',
+    'circular badge or medallion elements for achievement tracking',
+    'small musical note motifs for rhythm and harmony',
+    'tiny mountain or landscape line icons for adventure themes'
+  ],
+  typography: [
+    'elegant serif headers with clean sans-serif body for timeless readability',
+    'modern bold sans-serif for headers, light sans for body for contemporary clarity',
+    'handwritten script headers with simple sans body for personal warmth',
+    'classic typewriter font for labels and headers for vintage authenticity',
+    'art deco geometric letterforms for headers for glamorous sophistication',
+    'rounded friendly sans for headers and body for approachable softness',
+    'condensed elegant serif for headers, airy body for refined density',
+    'wide letter-spacing luxury serif for headers for premium breathing room',
+    'slab serif for headers with strong presence and confidence',
+    'minimalist thin sans with generous line spacing for zen simplicity',
+    'playful handwritten print for headers for cheerful informality',
+    'calligraphy-style cursive for main titles only for romantic flair',
+    'geometric sans with uniform stroke weight for modern precision',
+    'transitional serif with high contrast strokes for editorial elegance',
+    'humanist sans with organic proportions for natural readability',
+    'bold extended sans for headers for maximum impact',
+    'elegant script with flourishes for special occasion themes',
+    'clean monoline sans with perfect consistency for minimalism',
+    'vintage serif with decorative initials for classic charm',
+    'modern grotesque sans with tight tracking for contemporary edge'
+  ],
+  layoutEnhancements: [
+    'generous white space with breathing room around every element',
+    'structured grid layout with clearly defined zones for each section',
+    'organic flow with subtle boundary curves between sections',
+    'symmetrical balance with mirror-image decorative elements',
+    'asymmetrical modern composition with dynamic tension',
+    'card-based modular design with distinct content blocks',
+    'timeline-style vertical progression for chronological tracking',
+    'circular focal point with supporting elements radiating outward',
+    'layered depth with foreground and background visual planes',
+    'geometric compartmentalization with clean rectangular zones'
+  ],
+  atmosphericTouches: [
+    'delicate light rays filtering through the design',
+    'subtle constellation patterns in the background',
+    'soft cloud-like border undulations',
+    'gentle wave patterns along the bottom edge',
+    'tiny sparkle or glimmer accents throughout',
+    'feathery light stroke textures',
+    'subtle dot matrix background texture',
+    'whisper-thin double border frames',
+    'tiny arrow or directional cues for flow',
+    'micro-sized inspirational quotes scattered subtly'
+  ]
+};
+
+let state = {
+  niche: niches[0].id,
+  size: pageSizes[0].id,
+  styleDna: null,
+  prompts: ['','',''],
+  currentCoverVariant: 0,
+  currentMainVariant: 0,
+  currentDividerVariant: 0,
+  customNiches: []
+};
+
+function getRandomStyleDna() {
+  const art = stylePools.artStyles[Math.floor(Math.random() * stylePools.artStyles.length)];
+  const color = stylePools.colorTreatments[Math.floor(Math.random() * stylePools.colorTreatments.length)];
+  const motif = stylePools.motifs[Math.floor(Math.random() * stylePools.motifs.length)];
+  const typo = stylePools.typography[Math.floor(Math.random() * stylePools.typography.length)];
+  const layout = stylePools.layoutEnhancements[Math.floor(Math.random() * stylePools.layoutEnhancements.length)];
+  const atmosphere = stylePools.atmosphericTouches[Math.floor(Math.random() * stylePools.atmosphericTouches.length)];
+  return { art, color, motif, typo, layout, atmosphere };
+}
+
+function getAllNiches() {
+  return [...niches, ...state.customNiches];
+}
+
+function renderSelectors() {
+  const allNiches = getAllNiches();
+  const nicheSelect = document.getElementById('nicheSelect');
+  nicheSelect.innerHTML = allNiches.map(n => 
+    `<option value="${n.id}" ${state.niche===n.id?'selected':''}>${n.em} ${n.t}</option>`
+  ).join('');
+  
+  const sizeSelect = document.getElementById('pageSizeSelect');
+  sizeSelect.innerHTML = pageSizes.map(s => 
+    `<option value="${s.id}" ${state.size===s.id?'selected':''}>${s.t} — ${s.d}</option>`
+  ).join('');
+  
+  nicheSelect.addEventListener('change', () => {
+    state.niche = nicheSelect.value;
+    regenerateAll();
+  });
+  
+  sizeSelect.addEventListener('change', () => {
+    state.size = sizeSelect.value;
+    regenerateAll();
+  });
+}
+
+function buildStyleDnaDisplay() {
+  const dna = state.styleDna;
+  if (!dna) return '';
+  return `
+    <span class="label">🔒 Style Lock:</span>
+    <span class="value">${dna.art}</span>
+    <span class="separator">·</span>
+    <span class="value">${dna.color}</span>
+    <span class="separator">·</span>
+    <span class="value">${dna.motif}</span>
+    <span class="separator">·</span>
+    <span class="value">${dna.typo}</span>
+    <span class="separator">·</span>
+    <span class="value">${dna.layout}</span>
+    <span class="separator">·</span>
+    <span class="value">${dna.atmosphere}</span>
+  `;
+}
+
+function buildVarietyCounter() {
+  const allNiches = getAllNiches();
+  const niche = allNiches.find(n => n.id === state.niche);
+  if (!niche) return '';
+  const cv = niche.covers ? niche.covers.length : 0;
+  const mv = niche.mains ? niche.mains.length : 0;
+  const dv = niche.dividers ? niche.dividers.length : 0;
+  return `
+    <div class="stat">
+      <span class="stat-value">${cv}</span>
+      <span class="stat-label">Cover Variants</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">${mv}</span>
+      <span class="stat-label">Page Variants</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">${dv}</span>
+      <span class="stat-label">Divider Variants</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">∞</span>
+      <span class="stat-label">Style Combos</span>
+    </div>
+  `;
+}
+
+function generatePrompts() {
+  const allNiches = getAllNiches();
+  const niche = allNiches.find(n => n.id === state.niche);
+  const size = pageSizes.find(s => s.id === state.size);
+  const dna = state.styleDna;
+  if (!niche || !size || !dna) return;
+  
+  if (!niche.covers || !niche.mains || !niche.dividers) return;
+  
+  const commonStyle = `Style DNA (applies identically to all 3 prompts): ${dna.art}. Color treatment: ${dna.color}. Decorative motif: ${dna.motif}. Typography: ${dna.typo}. Layout enhancement: ${dna.layout}. Atmospheric touch: ${dna.atmosphere}.`;
+  
+  state.prompts = [
+    `Generate a print-ready KDP front cover design for a "${niche.t}" book.\n\nConcept: ${niche.covers[state.currentCoverVariant]}, ${size.prompt}.\n\n${commonStyle}\n\nLayout: front cover only, no spine, no back cover, no barcode area. Title centered with breathing room, all decorative elements balanced and intentional. No watermark, no mockup frame, no 3D effects.\n\nOutput: high resolution flat 2D design at 300 DPI. All text rendered exactly as specified with correct spelling.`,
+    `Generate a print-ready KDP main interior page for a "${niche.t}" book.\n\nPage Layout: ${niche.mains[state.currentMainVariant]}, ${size.prompt}.\n\n${commonStyle}\n\nLayout: clear visual hierarchy, generous writing space, all fields and labels correctly aligned and legible. Consistent margins throughout. No watermark, no mockup frame.\n\nOutput: high resolution flat 2D design at 300 DPI. All text rendered exactly as specified with correct spelling.`,
+    `Generate a print-ready KDP chapter/section divider page for a "${niche.t}" book.\n\nDivider Concept: ${niche.dividers[state.currentDividerVariant]}, ${size.prompt}.\n\n${commonStyle}\n\nLayout: centered text, minimal but decorative, visually consistent with the cover and interior page style. Balanced whitespace. No watermark, no mockup frame.\n\nOutput: high resolution flat 2D design at 300 DPI. All text rendered exactly as specified with correct spelling.`
+  ];
+  
+  document.getElementById('prompt0').value = state.prompts[0];
+  document.getElementById('prompt1').value = state.prompts[1];
+  document.getElementById('prompt2').value = state.prompts[2];
+  document.getElementById('styleDna').innerHTML = buildStyleDnaDisplay();
+  document.getElementById('varietyCounter').innerHTML = buildVarietyCounter();
+}
+
+function pickRandomVariants() {
+  const allNiches = getAllNiches();
+  const niche = allNiches.find(n => n.id === state.niche);
+  if (!niche || !niche.covers || !niche.mains || !niche.dividers) return;
+  state.currentCoverVariant = Math.floor(Math.random() * niche.covers.length);
+  state.currentMainVariant = Math.floor(Math.random() * niche.mains.length);
+  state.currentDividerVariant = Math.floor(Math.random() * niche.dividers.length);
+}
+
+function regenerateStyleOnly() {
+  state.styleDna = getRandomStyleDna();
+  generatePrompts();
+}
+
+function regenerateAll() {
+  state.styleDna = getRandomStyleDna();
+  pickRandomVariants();
+  generatePrompts();
+}
+
+function copySingle(index) {
+  const ta = document.getElementById('prompt' + index);
+  ta.select();
+  ta.setSelectionRange(0, 999999);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+function copyAll() {
+  const allNiches = getAllNiches();
+  const niche = allNiches.find(n => n.id === state.niche);
+  if (!niche) return;
+  const combined = `=== KDP BOOK SET — ${niche.t} ===\n\n${document.getElementById('styleDna').textContent.trim()}\n\n=== ① COVER PROMPT ===\n${state.prompts[0]}\n\n=== ② MAIN INTERIOR PAGE PROMPT ===\n${state.prompts[1]}\n\n=== ③ CHAPTER DIVIDER PROMPT ===\n${state.prompts[2]}`;
+  
+  navigator.clipboard.writeText(combined).then(() => {
+    const btn = document.getElementById('copyAllBtn');
+    const original = btn.textContent;
+    btn.textContent = '📋 Copied All 3!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function addCustomNiche() {
+  const name = document.getElementById('customName').value.trim();
+  const emoji = document.getElementById('customEmoji').value.trim() || '📄';
+  const cover = document.getElementById('customCover').value.trim();
+  const main = document.getElementById('customMain').value.trim();
+  const divider = document.getElementById('customDivider').value.trim();
+  
+  if (!name || !cover || !main || !divider) {
+    alert('Please fill in all fields (name, cover concept, main page concept, and divider concept).');
+    return;
+  }
+  
+  const newNiche = {
+    id: 'custom_' + Date.now(),
+    em: emoji,
+    t: name,
+    d: 'Custom niche',
+    covers: [cover],
+    mains: [main],
+    dividers: [divider]
+  };
+  
+  state.customNiches.push(newNiche);
+  state.niche = newNiche.id;
+  
+  document.getElementById('customName').value = '';
+  document.getElementById('customEmoji').value = '';
+  document.getElementById('customCover').value = '';
+  document.getElementById('customMain').value = '';
+  document.getElementById('customDivider').value = '';
+  
+  document.getElementById('customNicheForm').style.display = 'none';
+  document.getElementById('customNicheToggle').textContent = '➕ Create Custom Niche';
+  
+  renderSelectors();
+  regenerateAll();
+}
+
+// Custom niche toggle
+document.getElementById('customNicheToggle').addEventListener('click', () => {
+  const form = document.getElementById('customNicheForm');
+  const toggle = document.getElementById('customNicheToggle');
+  if (form.style.display === 'none') {
+    form.style.display = 'flex';
+    toggle.textContent = '✖ Hide Custom Niche Form';
+  } else {
+    form.style.display = 'none';
+    toggle.textContent = '➕ Create Custom Niche';
+  }
+});
+
+// Init
+renderSelectors();
+state.styleDna = getRandomStyleDna();
+pickRandomVariants();
+generatePrompts();
+</script>
+</body>
+</html>
