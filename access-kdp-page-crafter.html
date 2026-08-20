@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDP Page Crafter Pro — GPT Image 2 Interior Prompt System</title>
+<style>
+  :root{
+    --bg:#0f1115;
+    --panel:#1a1e27;
+    --panel2:#232836;
+    --accent:#ff6b35;
+    --accent2:#ffb703;
+    --text:#ffffff;
+    --text-secondary:#e0e4eb;
+    --muted:#b8c0cc;
+    --border:#3a4252;
+    --success:#3ddc97;
+    --warning:#ff4d4d;
+    --premium:#ffd700;
+    --card-text:#ffffff;
+    --card-title:#ffffff;
+    --card-desc:#d0d5dd;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:radial-gradient(circle at 20% 0%, #1a1e27 0%, #0f1115 55%);
+    color:var(--text);
+    min-height:100vh;
+    padding:32px 16px 60px;
+  }
+  .wrap{max-width:1200px;margin:0 auto;}
+  header{text-align:center;margin-bottom:32px;}
+  .pricing-info{
+    display:inline-block;
+    background:rgba(255,215,0,.1);
+    border:1px solid var(--premium);
+    border-radius:8px;
+    padding:8px 16px;
+    margin-bottom:15px;
+    font-size:14px;
+    color:var(--premium);
+    font-weight:600;
+  }
+  h1{font-size:clamp(24px,4vw,36px);margin:0 0 10px;line-height:1.2;color:#ffffff;}
+  h1 span{color:var(--accent2);}
+  header p{color:var(--muted);max-width:620px;margin:0 auto;font-size:15px;}
+
+  .guide-section{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:20px;
+  }
+  .guide-section h2{
+    margin:0 0 16px;
+    font-size:18px;
+    color:#ffffff;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .guide-section h2 .icon{
+    font-size:24px;
+  }
+  .guide-steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  @media(min-width:768px){
+    .guide-steps{
+      grid-template-columns:repeat(3,1fr);
+    }
+  }
+  .guide-step{
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px;
+  }
+  .guide-step .step-num{
+    display:inline-block;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;
+    font-size:12px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:8px;
+  }
+  .guide-step h3{
+    margin:0 0 6px;
+    font-size:14px;
+    color:#ffffff;
+  }
+  .guide-step p{
+    margin:0;
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.5;
+  }
+
+  .grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:860px){.grid{grid-template-columns:1fr 1fr;}}
+
+  .card{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:22px;
+  }
+  .card h2{
+    margin:0 0 4px;font-size:16px;display:flex;align-items:center;gap:8px;
+    color:#ffffff;
+  }
+  .card h2 .num{
+    width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#ffffff;font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:800;
+  }
+  .card .sub{
+    color:var(--card-desc);font-size:13px;margin:0 0 16px;
+  }
+
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+  .opt{
+    background:var(--panel2);border:2px solid var(--border);border-radius:12px;
+    padding:12px 10px;cursor:pointer;text-align:left;transition:.15s ease;
+    color:#ffffff;
+  }
+  .opt:hover{
+    border-color:var(--accent);
+    background:linear-gradient(135deg,rgba(255,107,53,.2),rgba(255,183,3,.1));
+  }
+  .opt.active{
+    border-color:var(--accent);
+    background:linear-gradient(135deg,rgba(255,107,53,.25),rgba(255,183,3,.15));
+    box-shadow:0 0 15px rgba(255,107,53,.3);
+  }
+  .opt .em{
+    font-size:24px;display:block;margin-bottom:6px;
+    filter:drop-shadow(0 0 5px rgba(255,255,255,.3));
+  }
+  .opt .t{
+    font-weight:700;font-size:14px;display:block;
+    color:#ffffff;
+    margin-bottom:4px;
+  }
+  .opt .d{
+    color:var(--card-desc);font-size:11.5px;display:block;
+    line-height:1.3;
+  }
+
+  .full{grid-column:1/-1;}
+  
+  .custom-section{
+    grid-column:1/-1;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+  }
+  
+  .custom-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+  @media(min-width:768px){
+    .custom-grid{
+      grid-template-columns:1fr 1fr;
+    }
+  }
+  
+  .input-group{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  
+  .input-group label{
+    font-size:13px;
+    font-weight:600;
+    color:#ffffff;
+  }
+  
+  .input-group input,
+  .input-group textarea,
+  .input-group select{
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:10px 12px;
+    color:#ffffff;
+    font-size:13px;
+    font-family:inherit;
+    transition:.15s ease;
+  }
+  
+  .input-group input::placeholder,
+  .input-group textarea::placeholder{
+    color:#8b93a1;
+  }
+  
+  .input-group input:focus,
+  .input-group textarea:focus,
+  .input-group select:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  
+  .input-group textarea{
+    min-height:80px;
+    resize:vertical;
+  }
+  
+  .input-group select{
+    cursor:pointer;
+  }
+  .input-group select option{
+    background:var(--panel2);
+    color:#ffffff;
+  }
+
+  .output-head{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;
+  }
+  .output-head h2{
+    margin:0;color:#ffffff;
+  }
+  .btn-group{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .copy-btn, .generate-btn, .export-btn{
+    color:#151515;border:none;font-weight:700;font-size:13px;
+    padding:10px 16px;border-radius:10px;cursor:pointer;transition:.15s ease;
+  }
+  .copy-btn{
+    background:var(--accent);color:#151515;
+  }
+  .copy-btn:hover{
+    background:var(--accent2);
+    transform:translateY(-1px);
+  }
+  .copy-btn.copied{
+    background:var(--success);color:#151515;
+  }
+  .generate-btn{
+    background:linear-gradient(135deg,var(--accent2),var(--accent));
+    color:#151515;
+    font-weight:800;
+  }
+  .generate-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 15px rgba(255,107,53,.4);
+  }
+  .generate-btn:active{
+    transform:translateY(0);
+  }
+  .export-btn{
+    background:var(--success);
+    color:#151515;
+  }
+  .export-btn:hover{
+    background:#2ecc71;
+    transform:translateY(-1px);
+  }
+
+  textarea{
+    width:100%;min-height:220px;background:#0c0e12;border:1px solid var(--border);
+    border-radius:12px;color:#ffffff;font-family:'SFMono-Regular',Consolas,monospace;
+    font-size:12.8px;line-height:1.55;padding:16px;resize:vertical;
+  }
+
+  .tips{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:4px 22px;margin-top:20px;
+  }
+  details{padding:14px 0;border-bottom:1px solid var(--border);}
+  details:last-child{border-bottom:none;}
+  summary{
+    cursor:pointer;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;
+    color:#ffffff;
+  }
+  summary::marker{color:var(--accent);}
+  .tips-body{
+    color:var(--muted);font-size:13.5px;line-height:1.6;margin-top:10px;padding-left:4px;
+  }
+  .tips-body ol,.tips-body ul{margin:6px 0 0;padding-left:20px;}
+  .tips-body li{margin-bottom:5px;}
+  .tips-body strong{color:#ffffff;}
+
+  .generation-counter{
+    display:inline-block;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:4px 10px;
+    font-size:11px;
+    color:#ffffff;
+    margin-left:10px;
+  }
+  
+  .variation-badge{
+    display:inline-block;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    color:#151515;
+    font-weight:600;
+    font-size:10px;
+    padding:3px 8px;
+    border-radius:6px;
+    margin-left:8px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+  }
+  
+  .stats-bar{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:10px;
+    padding:10px;
+    background:var(--panel2);
+    border-radius:8px;
+    border:1px solid var(--border);
+  }
+  
+  .stat-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1;
+    min-width:100px;
+  }
+  
+  .stat-value{
+    font-size:20px;
+    font-weight:800;
+    color:var(--accent2);
+  }
+  
+  .stat-label{
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  footer{
+    text-align:center;color:var(--muted);font-size:12px;margin-top:34px;
+  }
+  footer b{color:var(--accent2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="pricing-info">
+      ⚡ Professional Access — Unlimited generations
+    </div>
+    <h1>KDP Page Crafter <span>— GPT Image 2 Prompt System</span></h1>
+    <p>Generate unique, creative prompts for your KDP interior pages. Every generation is different — customize or choose a template.</p>
+  </header>
+
+  <div class="guide-section">
+    <h2><span class="icon">📖</span> How to Use This Tool</h2>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <span class="step-num">1</span>
+        <h3>Choose Your Book Type</h3>
+        <p>Select from 12+ predefined templates (journals, planners, trackers) or create your own custom layout with your specific requirements.</p>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">2</span>
+        <h3>Select Page Size</h3>
+        <p>Pick the exact KDP trim size for your book — from compact 5×8 to large 8.5×11, including landscape options.</p>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">3</span>
+        <h3>Generate & Copy</h3>
+        <p>Click "Generate New Creativity" for unlimited unique prompts. Copy the prompt and paste it into ChatGPT (GPT Image 2).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2><span class="num">1</span> Book Type</h2>
+      <p class="sub">Choose a template or create your own custom layout.</p>
+      <div class="options" id="bookTypes"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">2</span> Page Size</h2>
+      <p class="sub">KDP print trim size for your interior pages.</p>
+      <div class="options" id="pageSizes"></div>
+    </div>
+
+    <div class="card full">
+      <h2><span class="num">3</span> Customize Your Book Type</h2>
+      <p class="sub">Create a unique layout for your book — even if it's not among the predefined templates.</p>
+      <div class="custom-grid">
+        <div class="input-group">
+          <label>Layout Name</label>
+          <input type="text" id="customName" placeholder="E.g., Recipe Book" />
+        </div>
+        <div class="input-group">
+          <label>Emoji</label>
+          <input type="text" id="customEmoji" placeholder="📖" maxlength="4" />
+        </div>
+        <div class="input-group full-width">
+          <label>Detailed Layout Description</label>
+          <textarea id="customDescription" placeholder="E.g., A recipe layout with space for ingredients, step-by-step instructions, preparation time, and chef's notes..."></textarea>
+        </div>
+        <div class="input-group full-width">
+          <button class="generate-btn" onclick="addCustomTemplate()" style="width:100%;">
+            ✨ Add My Custom Template
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card full">
+      <div class="output-head">
+        <h2>
+          <span class="num">4</span> Your GPT Image 2 Prompt 
+          <span class="generation-counter" id="generationCounter">Generation #1</span>
+        </h2>
+        <div class="btn-group">
+          <button class="generate-btn" onclick="generateNewPrompt()">
+            🎲 Generate New Creativity
+          </button>
+          <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy Prompt</button>
+          <button class="export-btn" onclick="exportPrompt()">📥 Export</button>
+        </div>
+      </div>
+      <p class="sub">Each generation is unique — click "Generate New Creativity" for creative variations of the same layout.</p>
+      <textarea id="promptOut" readonly></textarea>
+      
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-value" id="totalGenerations">0</span>
+          <span class="stat-label">Total Generations</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="uniqueCombos">0</span>
+          <span class="stat-label">Unique Combinations</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="availableCombos">∞</span>
+          <span class="stat-label">Available Combos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="creativityScore">100%</span>
+          <span class="stat-label">Creativity Score</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips">
+    <details open>
+      <summary>💡 How Creative Generation Works</summary>
+      <div class="tips-body">
+        <ul>
+          <li><strong>Unique generation:</strong> Each click on "Generate New Creativity" creates a different prompt with creative variations while maintaining the base structure.</li>
+          <li><strong>Complete customization:</strong> Add your own custom templates for any type of book — not just low-content!</li>
+          <li><strong>Controlled creativity:</strong> Prompts maintain layout coherence but vary in style, decorative elements, and micro-details.</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+      <summary>📐 How to Save Your Pages at 300 DPI</summary>
+      <div class="tips-body">
+        <ol>
+          <li>In ChatGPT, generate the image using the prompt above.</li>
+          <li>Right-click the generated image → "Save image" (this gives you the native high-res export, not a screenshot).</li>
+          <li>Open the file in Canva or Photoshop and check/set the document to 300 DPI at your exact trim size.</li>
+          <li>If the export is under 300 DPI at your trim size, upscale with Canva's "Enhance" or Photoshop's "Preserve Details 2.0".</li>
+          <li>Repeat the prompt for each page you need — each generation will be slightly different, perfect for unique books!</li>
+        </ol>
+      </div>
+    </details>
+    <details>
+      <summary>🔁 How to Batch 50 Pages Fast</summary>
+      <div class="tips-body">
+        Use creative generation to create unique variations of the same layout. Each click on "Generate New Creativity" will produce a slightly different version — ideal for books with many pages that shouldn't all be identical. Keep the base layout and let creative variations add uniqueness to each page.
+      </div>
+    </details>
+  </div>
+
+  <footer>Built with the <b>KDP Page Crafter Pro</b> professional prompt system. Unlimited creative generations.</footer>
+</div>
+
+<script>
+const bookTypes = [
+  {id:'gratitude', em:'🙏', t:'Gratitude Journal', d:'Daily prompts + reflection lines', 
+   prompts:[
+     'a gratitude journal interior page with a dated header, three lined prompts reading "Today I am grateful for...", "One small win today:", and "Tomorrow I will focus on:", each followed by 3 ruled writing lines',
+     'a gratitude journal page featuring elegant script headers with space for morning intentions, evening reflections, and three blessings with decorative corner flourishes',
+     'a gratitude journal layout with a minimalist design, subtle botanical accents, prompts for daily gratitude, moments of joy, and lessons learned with generous writing space',
+     'a gratitude journal page with a nature-inspired design, leaf motifs, prompts for "Morning Gratitude", "Afternoon Reflection", and "Evening Blessings" with decorative dividers',
+     'a gratitude journal featuring a geometric pattern background, space for "Three Good Things", "Person I Appreciate", and "Lesson Learned Today" with elegant borders'
+   ]},
+  {id:'habit', em:'✅', t:'Habit Tracker', d:'Grid + checkbox layout',
+   prompts:[
+     'a monthly habit tracker interior page with a header reading "Habit Tracker", a 31-column by 6-row grid of small checkboxes, row labels on the left reading "Water", "Exercise", "Sleep 8hrs", "Read", "No Sugar", "Meditate", and column numbers 1 through 31 across the top',
+     'a habit tracker page with a circular design layout, weekly goals section, progress bars for each habit, and motivational quotes scattered throughout with checkmark icons',
+     'a habit tracker featuring a minimalist grid system with color-coded habit categories, monthly overview calendar, streak counter, and achievement badges',
+     'a habit tracker with a rocket ship theme, "Mission Control" header, daily mission checkboxes, and progress stars for each completed week',
+     'a habit tracker using a garden theme where each completed habit grows a flower in a monthly garden grid'
+   ]},
+  {id:'meal', em:'🍽️', t:'Meal Planner', d:'Weekly grid + grocery list',
+   prompts:[
+     'a weekly meal planner interior page with a header reading "Weekly Meal Plan", a 7-column grid labeled Monday through Sunday with rows for "Breakfast", "Lunch", "Dinner", "Snacks", and a boxed sidebar on the right reading "Grocery List" with 12 blank ruled lines',
+     'a meal planner page with a modern layout featuring meal cards for each day, color-coded meal types, shopping list sidebar, and space for nutritional notes',
+     'a meal planning page with a clean design including a weekly calendar view, meal prep section, grocery list organized by category, and water intake tracker',
+     'a meal planner with a rustic kitchen theme, recipe card styling, shopping list with checkboxes, and space for "Chef\'s Special" notes',
+     'a meal planner featuring a bingo-style grid where each cell contains a meal idea with checkboxes for selection'
+   ]},
+  {id:'budget', em:'💰', t:'Budget Journal', d:'Income/expense tracking layout',
+   prompts:[
+     'a monthly budget journal interior page with a header reading "Monthly Budget", two side-by-side boxed sections titled "Income" and "Expenses" each with 8 ruled line items and a dollar-amount column, and a bottom summary bar reading "Total Saved This Month: $______"',
+     'a budget planner page with expense tracking categories, savings goals progress bars, bill payment checklist, and monthly overview charts',
+     'a financial planning page featuring income sources, fixed expenses, variable spending tracker, debt payoff plan, and savings milestones',
+     'a budget tracker with a treasure chest theme, "Treasure Map to Savings" header, and gold coin icons for each savings milestone',
+     'a budget journal with a rocket launch theme, "Mission: Financial Freedom" header, and progress bars styled as launch trajectories'
+   ]},
+  {id:'kids', em:'🎨', t:'Kids Activity Book', d:'Playful layout with activity labels',
+   prompts:[
+     'a kids activity book interior page in a playful hand-drawn style with a large header reading "Color Me!", a simple bold-outline illustration in the center suitable for coloring, and a small caption underneath reading "What color will you choose?"',
+     'a children\'s activity page with maze puzzles, dot-to-dot activities, word searches, and coloring sections featuring cute animal characters',
+     'a kids workbook page with letter tracing practice, number counting exercises, shape recognition activities, and reward stars section',
+     'a kids activity page with a space theme, "Astronaut Training" header, planet matching game, and rocket coloring section',
+     'a children\'s puzzle page with an underwater theme, "Ocean Explorer" header, fish matching game, and treasure hunt activity'
+   ]},
+  {id:'reading', em:'📚', t:'Reading Journal', d:'Book tracking + reviews',
+   prompts:[
+     'a reading journal page with space for book title, author, genre, start/finish dates, star rating, favorite quotes section, and a lined area for personal review notes',
+     'a book review page featuring a bookshelf illustration at the top, space for "Currently Reading", "Books Completed This Month", and a 5-star rating system with blank stars to fill in',
+     'a reading tracker with a library card theme, "My Reading Adventure" header, book spine illustrations to fill in, and space for reading goals and challenges'
+   ]},
+  {id:'fitness', em:'💪', t:'Fitness Planner', d:'Workout tracking + goals',
+   prompts:[
+     'a fitness planner page with sections for workout type, duration, intensity level, calories burned, personal bests, and a weekly exercise schedule grid',
+     'a workout tracker featuring "My Fitness Journey" header, exercise illustrations, sets/reps tracking boxes, progress measurement charts, and motivational quote space',
+     'a fitness journal with a mountain climbing theme, "Peak Performance" header, trail progress indicators, and summit goal achievements'
+   ]},
+  {id:'business', em:'💼', t:'Business Planner', d:'Goals + meeting notes',
+   prompts:[
+     'a business planner page with sections for daily priorities, meeting notes, action items, project deadlines, contact follow-ups, and a mini calendar for scheduling',
+     'a professional business planner featuring "Success Roadmap" header, quarterly goals section, KPI tracking boxes, meeting agenda template, and networking contact list',
+     'a business journal with an executive dashboard layout, "Business Command Center" header, metric tracking charts, and strategic planning sections'
+   ]},
+  {id:'recipe', em:'📖', t:'Recipe Book', d:'Cooking instructions + ingredients',
+   prompts:[
+     'a recipe book page with sections for recipe title, preparation time, cooking time, servings, ingredients list with checkboxes, and step-by-step instructions with numbered lines',
+     'a recipe page featuring a rustic design with space for recipe name, difficulty rating, ingredients in two columns, cooking instructions, and a notes section for personal modifications',
+     'a recipe layout with a modern minimalist design including recipe title, prep time, cook time, total time, ingredient list with measurements, numbered instructions, and a section for wine pairing suggestions'
+   ]},
+  {id:'travel', em:'✈️', t:'Travel Journal', d:'Trip planning + memories',
+   prompts:[
+     'a travel journal page with sections for destination, date, weather, places visited, memorable moments, expenses tracker, and space for ticket stubs or photos',
+     'a travel planner featuring a world map illustration, space for itinerary, packing list with checkboxes, budget tracker, and journaling prompts for daily reflections',
+     'a travel journal with a passport theme, "My Adventures" header, country stamps to fill in, space for travel memories, and a bucket list section'
+   ]},
+  {id:'pregnancy', em:'🤰', t:'Pregnancy Journal', d:'Weekly tracking + memories',
+   prompts:[
+     'a pregnancy journal page with sections for week number, baby size comparison, symptoms tracker, mood tracker, cravings list, and space for ultrasound photos',
+     'a pregnancy planner featuring a trimester timeline, appointment tracker, shopping list for baby items, name ideas section, and daily journaling prompts',
+     'a pregnancy journal with a floral design, "Growing Miracle" header, weekly milestone tracker, bump photos section, and space for letters to baby'
+   ]},
+  {id:'pet', em:'🐾', t:'Pet Journal', d:'Pet care + health tracking',
+   prompts:[
+     'a pet journal page with sections for pet name, date, weight, food intake, exercise log, medication tracker, vet appointments, and space for memorable moments',
+     'a pet care planner featuring vaccination schedule, grooming tracker, expense log, favorite treats list, and training progress charts',
+     'a pet journal with a paw print theme, "My Best Friend" header, daily care checklist, health monitoring section, and space for photos and memories'
+   ]},
+];
+
+const pageSizes = [
+  {id:'6x9', t:'6 × 9 in', d:'Most common KDP trim', prompt:'sized for a 6x9 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8.5x11', t:'8.5 × 11 in', d:'Letter / large format', prompt:'sized for an 8.5x11 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'5x8', t:'5 × 8 in', d:'Compact pocket size', prompt:'sized for a 5x8 inch KDP book page (portrait orientation, print-ready margins of 0.4in on all sides)'},
+  {id:'7x10', t:'7 × 10 in', d:'Medium format', prompt:'sized for a 7x10 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8x10', t:'8 × 10 in', d:'Square format', prompt:'sized for an 8x10 inch KDP book page (portrait orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'6x9-landscape', t:'6 × 9 in (Landscape)', d:'Horizontal orientation', prompt:'sized for a 6x9 inch KDP book page (landscape orientation, print-ready margins of 0.5in on all sides)'},
+  {id:'8.5x11-landscape', t:'8.5 × 11 in (Landscape)', d:'Horizontal letter', prompt:'sized for an 8.5x11 inch KDP book page (landscape orientation, print-ready margins of 0.5in on all sides)'},
+];
+
+let state = { 
+  book: bookTypes[0].id, 
+  size: pageSizes[0].id,
+  generationCount: 0,
+  customTemplates: [],
+  usedPromptCombinations: new Set(),
+  lastGenerationTime: 0,
+  totalGenerations: 0,
+  uniqueCombosGenerated: 0
+};
+
+// Load custom templates from localStorage
+function loadCustomTemplates() {
+  const saved = localStorage.getItem('kdp_custom_templates');
+  if (saved) {
+    state.customTemplates = JSON.parse(saved);
+    renderCustomTemplates();
+  }
+}
+
+function saveCustomTemplates() {
+  localStorage.setItem('kdp_custom_templates', JSON.stringify(state.customTemplates));
+}
+
+function renderCustomTemplates() {
+  state.customTemplates.forEach(template => {
+    bookTypes.push(template);
+  });
+}
+
+function addCustomTemplate() {
+  const name = document.getElementById('customName').value.trim();
+  const emoji = document.getElementById('customEmoji').value.trim() || '📄';
+  const description = document.getElementById('customDescription').value.trim();
+  
+  if (!name || !description) {
+    alert('Please enter both the name and description of your template.');
+    return;
+  }
+  
+  const newTemplate = {
+    id: 'custom_' + Date.now(),
+    em: emoji,
+    t: name,
+    d: 'Custom template',
+    prompts: [description]
+  };
+  
+  state.customTemplates.push(newTemplate);
+  saveCustomTemplates();
+  renderOptions(document.getElementById('bookTypes'), bookTypes, 'book');
+  
+  // Select the new template
+  state.book = newTemplate.id;
+  renderOptions(document.getElementById('bookTypes'), bookTypes, 'book');
+  updatePrompt();
+  
+  // Clear fields
+  document.getElementById('customName').value = '';
+  document.getElementById('customEmoji').value = '';
+  document.getElementById('customDescription').value = '';
+  
+  // Visual feedback
+  const btn = event.target;
+  const original = btn.textContent;
+  btn.textContent = '✅ Template Added!';
+  setTimeout(() => { btn.textContent = original; }, 2000);
+}
+
+function renderOptions(container, items, key){
+  container.innerHTML = items.map(it => `
+    <button class="opt ${state[key]===it.id ? 'active':''}" data-id="${it.id}" data-key="${key}">
+      <span class="em">${it.em || '📄'}</span>
+      <span class="t">${it.t}${it.id.startsWith('custom_') ? ' <span class="variation-badge">Custom</span>' : ''}</span>
+      <span class="d">${it.d}</span>
+    </button>
+  `).join('');
+  
+  container.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state[btn.dataset.key] = btn.dataset.id;
+      renderOptions(container, items, key);
+      updatePrompt();
+    });
+  });
+}
+
+// Ultra-advanced creative engine for unique generations
+function getCreativePrompt(book) {
+  const basePrompt = book.prompts[Math.floor(Math.random() * book.prompts.length)];
+  
+  // Expanded style variations
+  const styles = [
+    'minimalist black line art on a pure white background',
+    'elegant ink illustration style with fine details and cross-hatching',
+    'clean vector graphics with subtle geometric patterns',
+    'hand-drawn sketch style with organic, flowing lines',
+    'modern flat design with soft curves and rounded corners',
+    'sophisticated line art with Art Deco-inspired decorative elements',
+    'crisp architectural drawing style with precise measurements',
+    'playful doodle style with whimsical details and personality',
+    'vintage engraving style with classic typography',
+    'contemporary minimalist design with generous white space',
+    'bohemian style with organic shapes and natural elements',
+    'Scandinavian design with clean lines and subtle patterns',
+    'Art Nouveau inspired with flowing curves and botanical motifs',
+    'geometric pattern-based design with repeating elements',
+    'hand-lettered style with calligraphy-inspired headers',
+    'watercolor-inspired line art with soft, flowing edges',
+    'zen doodle style with mandala elements and meditative patterns',
+    'retro-modern fusion with bold geometric accents',
+    'cottagecore aesthetic with delicate floral details',
+    'industrial chic with clean lines and functional design'
+  ];
+  
+  // Creative enhancements
+  const enhancements = [
+    'Add subtle decorative corners or frame elements that don\'t interfere with text.',
+    'Include small thematic icons or illustrations throughout the layout.',
+    'Add inspiring quotes or decorative dividers between sections.',
+    'Incorporate subtle texture or pattern elements in the header area.',
+    'Use varying line weights to create visual hierarchy and interest.',
+    'Add small progress trackers or motivational elements.',
+    'Include decorative borders that complement the overall design.',
+    'Add small illustrative elements in the margins for visual interest.',
+    'Feature a unique header design with ornamental details.',
+    'Include subtle watermark-style background elements.',
+    'Add elegant page numbers or section markers in decorative frames.',
+    'Incorporate themed motifs that repeat throughout the design.',
+    'Use dotted lines or dashed borders for a softer look.',
+    'Add small decorative icons next to section headings.',
+    'Include a subtle monogram or personalization area.',
+    'Feature an ornamental initial letter or drop cap design.',
+    'Add delicate filigree or lace-like patterns in corners.',
+    'Include small nature-inspired elements like leaves or flowers.',
+    'Use geometric shapes as decorative separators between sections.',
+    'Add subtle celestial elements like stars or moons for decoration.',
+    'Incorporate whimsical illustrated characters or mascots.',
+    'Add elegant scrollwork or arabesque patterns.',
+    'Include small motivational badges or achievement icons.',
+    'Feature decorative arrows or directional elements.',
+    'Add subtle grid patterns or dot matrices in backgrounds.'
+  ];
+  
+  // Layout variations
+  const layoutVariations = [
+    'Emphasize vertical hierarchy with clearly defined sections.',
+    'Create a balanced symmetrical layout with equal visual weight.',
+    'Use an asymmetrical design for modern appeal.',
+    'Incorporate a bordered frame design for a classic look.',
+    'Feature a split layout with distinct functional zones.',
+    'Design with a focus on generous whitespace for easy writing.',
+    'Create a structured grid layout with clear organization.',
+    'Use flowing organic boundaries between sections for a soft look.',
+    'Incorporate a central focal point with supporting elements around it.',
+    'Use a stepped or staggered layout for dynamic visual interest.',
+    'Feature a diagonal flow for modern, energetic design.',
+    'Create a modular design with interchangeable sections.',
+    'Use a spiral or circular layout for a unique approach.',
+    'Incorporate a timeline-style vertical layout.',
+    'Feature a card-based layout with distinct content blocks.'
+  ];
+  
+  // Typography variations
+  const typographyStyles = [
+    'Use a combination of serif and sans-serif fonts for hierarchy.',
+    'Feature elegant script fonts for headers with clean body text.',
+    'Use bold modern typography with strong visual impact.',
+    'Incorporate classic typewriter-style fonts for a vintage feel.',
+    'Feature rounded, friendly fonts suitable for a casual audience.',
+    'Use condensed fonts to maximize space efficiency.',
+    'Incorporate wide letter-spacing for a luxurious feel.',
+    'Feature handwritten-style fonts for a personal touch.',
+    'Use art deco typography with geometric letterforms.',
+    'Incorporate playful bubble letters for headers.',
+    'Feature elegant calligraphy with flourishes.',
+    'Use minimalist sans-serif with precise alignment.',
+    'Incorporate mixed typography with contrasting weights.',
+    'Feature vintage serif with decorative initials.',
+    'Use modern slab serif for strong headers.'
+  ];
+  
+  // Color scheme hints (even though it's black and white, these influence line weight and shading)
+  const shadingStyles = [
+    'Use pure black lines with no shading.',
+    'Incorporate subtle stippling or dot shading.',
+    'Use cross-hatching for depth in decorative elements.',
+    'Feature gradient-like effects through varied line spacing.',
+    'Incorporate solid black accents for contrast.',
+    'Use delicate line weights throughout with occasional bold accents.',
+    'Feature varying opacity for depth effects.',
+    'Incorporate geometric patterns as shading elements.'
+  ];
+  
+  const randomStyle = styles[Math.floor(Math.random() * styles.length)];
+  const randomEnhancement = enhancements[Math.floor(Math.random() * enhancements.length)];
+  const randomLayout = layoutVariations[Math.floor(Math.random() * layoutVariations.length)];
+  const randomTypography = typographyStyles[Math.floor(Math.random() * typographyStyles.length)];
+  const randomShading = shadingStyles[Math.floor(Math.random() * shadingStyles.length)];
+  
+  // Create unique combination key with timestamp for guaranteed uniqueness
+  const timestamp = Date.now();
+  const randomSeed = Math.random().toString(36).substring(7);
+  const combinationKey = `${basePrompt}|${randomStyle}|${randomEnhancement}|${randomLayout}|${randomTypography}|${randomShading}|${timestamp}|${randomSeed}`;
+  
+  // Track unique combinations
+  state.uniqueCombosGenerated++;
+  
+  return {
+    basePrompt,
+    style: randomStyle,
+    enhancement: randomEnhancement,
+    layout: randomLayout,
+    typography: randomTypography,
+    shading: randomShading,
+    combinationKey
+  };
+}
+
+function generateNewPrompt() {
+  state.generationCount++;
+  state.totalGenerations++;
+  
+  document.getElementById('generationCounter').textContent = `Generation #${state.generationCount}`;
+  document.getElementById('totalGenerations').textContent = state.totalGenerations;
+  document.getElementById('uniqueCombos').textContent = state.uniqueCombosGenerated;
+  
+  updatePrompt();
+  
+  // Visual feedback on button
+  const btn = event.target;
+  btn.style.transform = 'scale(0.95)';
+  setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
+}
+
+function updatePrompt(){
+  const book = bookTypes.find(b => b.id === state.book);
+  const size = pageSizes.find(s => s.id === state.size);
+  
+  const creative = getCreativePrompt(book);
+  
+  const prompt = `Generate a unique, creative, and print-ready KDP book interior page design.
+
+Page Layout: ${creative.basePrompt}, ${size.prompt}.
+
+Visual Style: ${creative.style}, no color fills, no watermark, no border decoration outside the printable margin, crisp vector-style linework suitable for print. All text must be rendered exactly as specified above, spelled correctly, legible, and properly aligned within the layout — do not paraphrase or alter the wording of any label or prompt text.
+
+Layout Design: ${creative.layout}
+
+Typography: ${creative.typography}
+
+Shading Technique: ${creative.shading}
+
+Creative Enhancement: ${creative.enhancement}
+
+Output: high resolution, flat 2D design, no shadows, no 3D effects, no mockup frame — just the standalone page design ready to be placed into a KDP interior file at 300 DPI.`;
+  
+  document.getElementById('promptOut').value = prompt;
+}
+
+function copyPrompt(){
+  const ta = document.getElementById('promptOut');
+  ta.select();
+  ta.setSelectionRange(0, 999999);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1600);
+  });
+}
+
+function exportPrompt() {
+  const prompt = document.getElementById('promptOut').value;
+  const blob = new Blob([prompt], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `kdp-prompt-generation-${state.generationCount}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Initialization
+loadCustomTemplates();
+renderOptions(document.getElementById('bookTypes'), bookTypes, 'book');
+renderOptions(document.getElementById('pageSizes'), pageSizes, 'size');
+updatePrompt();
+</script>
+</body>
+</html>
