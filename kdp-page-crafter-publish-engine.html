@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDP Launch Toolkit Pro — List, Price & Publish</title>
+<style>
+  :root{
+    --bg:#0d0a14;
+    --panel:#1a1425;
+    --panel2:#251c33;
+    --accent:#a855f7;
+    --accent2:#ec4899;
+    --text:#f8f7fc;
+    --muted:#a89bb5;
+    --border:#3a2d4f;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --premium:#f0abfc;
+    --shadow:0 8px 24px rgba(0,0,0,0.5);
+    --shadow-accent:0 4px 16px rgba(168,85,247,.25);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter','Segoe UI',system-ui,sans-serif;
+    background:radial-gradient(circle at 15% 0%,#1a1425 0%,#0d0a14 55%);
+    color:var(--text);
+    min-height:100vh;
+    padding:32px 16px 60px;
+  }
+  .wrap{max-width:1300px;margin:0 auto;}
+  header{text-align:center;margin-bottom:24px;}
+  .pricing-info{
+    display:inline-block;background:rgba(240,171,252,.08);border:1px solid var(--premium);
+    border-radius:999px;padding:8px 20px;margin-bottom:14px;font-size:13px;
+    color:var(--premium);font-weight:600;letter-spacing:.04em;
+  }
+  h1{font-size:clamp(24px,4vw,34px);margin:0 0 8px;line-height:1.2;color:var(--text);font-weight:800;}
+  h1 span{color:var(--accent2);}
+  header p{color:var(--muted);max-width:700px;margin:0 auto;font-size:14px;line-height:1.5;}
+
+  .project-manager{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:16px 20px;margin-bottom:18px;box-shadow:var(--shadow);
+  }
+  .project-manager-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .project-manager-top h3{margin:0;font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+  .project-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .small-btn{
+    background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    padding:7px 14px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:600;
+    font-family:inherit;transition:.2s ease;
+  }
+  .small-btn:hover{border-color:var(--accent);background:rgba(168,85,247,.1);}
+  .small-btn.primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;font-weight:700;
+  }
+  .small-btn.primary:hover{box-shadow:var(--shadow-accent);transform:translateY(-1px);}
+  .project-list{display:flex;gap:8px;flex-wrap:wrap;}
+  .project-chip{
+    background:var(--panel2);border:1px solid var(--border);border-radius:999px;
+    padding:6px 14px;cursor:pointer;font-size:11px;font-weight:600;color:var(--muted);
+    transition:.2s ease;display:flex;align-items:center;gap:6px;
+  }
+  .project-chip:hover{border-color:var(--accent);color:var(--text);}
+  .project-chip.active{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;
+  }
+  .project-chip .delete{background:none;border:none;color:inherit;cursor:pointer;font-size:12px;padding:0;font-weight:800;opacity:.7;line-height:1;}
+  .project-chip .delete:hover{opacity:1;}
+
+  .project-panel{
+    background:var(--panel);border:1px solid var(--border);border-radius:14px;
+    padding:16px 20px;margin-bottom:20px;box-shadow:var(--shadow);
+  }
+  .project-panel h3{
+    margin:0 0 10px;font-size:13px;color:var(--accent);font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px;
+  }
+  .project-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  @media(min-width:768px){.project-grid{grid-template-columns:1fr 1fr 1fr 1fr;}}
+  .input-group{display:flex;flex-direction:column;gap:4px;}
+  .input-group label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:2px;}
+  .input-group input,.input-group select,.input-group textarea{
+    background:var(--panel2);border:1px solid var(--border);border-radius:8px;
+    padding:9px 12px;color:var(--text);font-size:12px;font-family:inherit;
+    transition:.2s ease;width:100%;
+  }
+  .input-group input:focus,.input-group select:focus,.input-group textarea:focus{
+    outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(168,85,247,.15);
+  }
+  .input-group select{
+    cursor:pointer;appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a89bb5' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;
+  }
+
+  .tab-bar{
+    display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;background:var(--panel);
+    border:1px solid var(--border);border-radius:14px;padding:5px;
+  }
+  .tab-btn{
+    flex:1;min-width:95px;padding:10px 6px;border:none;border-radius:10px;cursor:pointer;
+    font-weight:700;font-size:10.5px;font-family:inherit;transition:.2s ease;
+    background:transparent;color:var(--muted);text-align:center;
+  }
+  .tab-btn:hover{background:var(--panel2);color:var(--text);}
+  .tab-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:var(--shadow-accent);}
+  .tab-btn.payoff{background:rgba(168,85,247,.12);border:1px solid var(--accent);}
+  .tab-btn.payoff.active{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 20px rgba(168,85,247,.4);}
+  .tab-content{display:none;}
+  .tab-content.active{display:block;}
+
+  .card{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:22px;box-shadow:var(--shadow);margin-bottom:18px;
+  }
+  .card h2{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px;color:var(--text);font-weight:700;}
+  .card h2 .num{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+  .card .sub{color:var(--muted);font-size:12px;margin:0 0 16px;line-height:1.5;}
+
+  .input-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:14px;}
+  @media(min-width:768px){.input-grid{grid-template-columns:1fr 1fr;}}
+  .full-width{grid-column:1/-1;}
+
+  .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;}
+  .primary-btn{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;
+    font-weight:800;font-size:12px;padding:10px 18px;border-radius:8px;cursor:pointer;
+    transition:.2s ease;font-family:inherit;
+  }
+  .primary-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-accent);}
+  .secondary-btn{
+    background:var(--panel2);color:var(--text);border:1px solid var(--border);
+    font-weight:600;font-size:12px;padding:10px 18px;border-radius:8px;cursor:pointer;
+    transition:.2s ease;font-family:inherit;
+  }
+  .secondary-btn:hover{border-color:var(--accent);background:rgba(168,85,247,.08);}
+  .copy-btn{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;
+    font-weight:700;font-size:10px;padding:5px 10px;border-radius:6px;cursor:pointer;
+    transition:.2s ease;font-family:inherit;
+  }
+  .copy-btn:hover{opacity:.9;}
+  .copy-btn.copied{background:var(--success);}
+
+  .output-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:12px;}
+  .output-header{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+  .output-header .label{font-weight:700;font-size:12px;color:var(--text);}
+  .output-box textarea{
+    width:100%;min-height:120px;background:#0d0a14;border:1px solid var(--border);
+    border-radius:8px;color:var(--text);font-family:'SFMono-Regular',Consolas,monospace;
+    font-size:11px;line-height:1.5;padding:12px;resize:vertical;
+  }
+
+  .keyword-list{list-style:none;padding:0;margin:0 0 10px;display:grid;grid-template-columns:1fr;gap:6px;}
+  @media(min-width:600px){.keyword-list{grid-template-columns:1fr 1fr;}}
+  .keyword-list li{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:11px;color:var(--text);display:flex;align-items:center;gap:6px;}
+  .keyword-list li .num{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;}
+
+  .category-path{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:11px;color:var(--text);}
+  .category-path .arrow{color:var(--accent);font-weight:700;margin:0 3px;}
+
+  .price-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px;}
+  .price-table th,.price-table td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
+  .price-table th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:9px;letter-spacing:.04em;}
+  .price-table td{color:var(--text);}
+  .price-table tr:last-child td{border-bottom:none;}
+  .highlight-row{background:rgba(168,85,247,.08);}
+
+  .progress-bar{width:100%;height:7px;background:var(--panel2);border-radius:4px;margin-bottom:10px;overflow:hidden;}
+  .progress-bar .fill{height:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:4px;transition:width .3s ease;}
+  .progress-text{font-size:11px;color:var(--muted);margin-bottom:14px;}
+
+  .checklist-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;cursor:pointer;transition:.15s ease;}
+  .checklist-item:hover{border-color:var(--accent);background:rgba(168,85,247,.04);}
+  .checklist-item input[type="checkbox"]{margin-top:2px;width:16px;height:16px;cursor:pointer;accent-color:var(--accent);flex-shrink:0;}
+  .checklist-item .label{font-size:12px;color:var(--text);line-height:1.4;}
+  .checklist-item.checked .label{text-decoration:line-through;color:var(--muted);}
+  .checklist-section{margin-bottom:12px;}
+  .checklist-section h4{font-size:12px;color:var(--accent);margin:0 0 6px;font-weight:700;}
+
+  .disclaimer{font-size:10px;color:var(--muted);line-height:1.4;margin-top:10px;padding:8px 10px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:6px;}
+
+  .ab-cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px;}
+  @media(min-width:768px){.ab-cards{grid-template-columns:1fr 1fr 1fr;}}
+  .ab-card{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;}
+  .ab-card .ab-header{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;}
+  .ab-card .ab-title{font-weight:800;font-size:12px;color:var(--text);line-height:1.4;}
+  .ab-card .ab-angle{font-size:10px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .ab-card .ab-best{font-size:11px;color:var(--muted);line-height:1.4;}
+
+  .kit-section{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px;}
+  .kit-section h4{margin:0 0 8px;font-size:12px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+  .kit-section .kit-content{font-size:12px;color:var(--text);line-height:1.5;white-space:pre-wrap;}
+  .completion-meter{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px;}
+  .completion-meter .meter-text{font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .completion-meter .meter-bar{height:7px;background:var(--panel);border-radius:4px;overflow:hidden;}
+  .completion-meter .meter-fill{height:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:4px;transition:width .3s ease;}
+
+  footer{text-align:center;color:var(--muted);font-size:10px;margin-top:28px;}
+  footer b{color:var(--accent2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="pricing-info">FINAL STEP — LAUNCH & LIST</div>
+    <h1>KDP <span>Launch Toolkit Pro</span></h1>
+    <p>One unified system to list, price, and publish your KDP book. Save multiple projects, generate professional listing copy, and manage your entire launch workflow.</p>
+  </header>
+
+  <!-- PROJECT MANAGER -->
+  <div class="project-manager">
+    <div class="project-manager-top">
+      <h3>📁 Your Projects</h3>
+      <div class="project-actions">
+        <button class="small-btn primary" onclick="createNewProject()" type="button">+ New Project</button>
+        <button class="small-btn" onclick="saveCurrentProject()" type="button">💾 Save Project</button>
+      </div>
+    </div>
+    <div class="project-list" id="projectList"></div>
+  </div>
+
+  <!-- PROJECT INFO PANEL -->
+  <div class="project-panel">
+    <h3>📋 Project Info — <span id="currentProjectName">Untitled Project</span></h3>
+    <div class="project-grid">
+      <div class="input-group">
+        <label>Book Niche / Topic</label>
+        <input type="text" id="projectNiche" placeholder="E.g., Sobriety Tracker" />
+      </div>
+      <div class="input-group">
+        <label>Target Audience</label>
+        <input type="text" id="projectAudience" placeholder="E.g., men in early recovery" />
+      </div>
+      <div class="input-group">
+        <label>Book Type</label>
+        <select id="projectBookType">
+          <option value="journal">Journal</option>
+          <option value="tracker">Tracker</option>
+          <option value="planner">Planner</option>
+          <option value="activity book">Activity Book</option>
+          <option value="devotional">Devotional</option>
+          <option value="log book">Log Book</option>
+          <option value="workbook">Workbook</option>
+          <option value="coloring book">Coloring Book</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Unique Angle / Hook</label>
+        <input type="text" id="projectHook" placeholder="E.g., 90-day daily check-in" />
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="module1" type="button">📝 Listing Copy</button>
+    <button class="tab-btn" data-tab="module2" type="button">🔍 Keywords</button>
+    <button class="tab-btn" data-tab="module3" type="button">💰 Pricing</button>
+    <button class="tab-btn" data-tab="module4" type="button">✅ Checklist</button>
+    <button class="tab-btn" data-tab="module5" type="button">🆚 A/B Tester</button>
+    <button class="tab-btn" data-tab="module6" type="button">🎨 Cover</button>
+    <button class="tab-btn payoff" data-tab="module7" type="button">📦 Complete Kit</button>
+  </div>
+
+  <!-- MODULE 1: LISTING COPY -->
+  <div class="tab-content active" id="module1">
+    <div class="card">
+      <h2><span class="num">1</span> KDP Listing Copy Generator</h2>
+      <p class="sub">Professional listing copy with tone, length, structure, and bonuses controls.</p>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>Tone</label>
+          <select id="m1Tone">
+            <option value="supportive">Supportive & Encouraging</option>
+            <option value="professional">Professional & Authoritative</option>
+            <option value="casual">Casual & Conversational</option>
+            <option value="urgent">Urgent & Action-Oriented</option>
+            <option value="warm">Warm & Empathetic</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Description Length</label>
+          <select id="m1Length">
+            <option value="short">Short (120-150 words)</option>
+            <option value="medium">Medium (150-200 words)</option>
+            <option value="long">Long (200-250 words)</option>
+            <option value="extended">Extended (250-350 words)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Copy Structure</label>
+          <select id="m1Structure">
+            <option value="standard">Standard (Hook → Benefits → CTA)</option>
+            <option value="features">Feature-First (Features → Benefits → CTA)</option>
+            <option value="story">Story-Driven (Narrative → Solution → CTA)</option>
+            <option value="urgency">Urgency-Focused (Problem → Cost → CTA)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Include Bonuses Section</label>
+          <select id="m1Bonuses">
+            <option value="no">No bonuses section</option>
+            <option value="yes">Yes, add bonuses section</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="primary-btn" onclick="generateListingCopy()" type="button">Generate Copy</button>
+        <button class="secondary-btn" onclick="regenerateListingCopy()" type="button">Regenerate Variation</button>
+      </div>
+      <div class="output-box" id="m1Output" style="display:none;">
+        <div class="output-header">
+          <span class="label">Title & Subtitle</span>
+          <button class="copy-btn" onclick="copyText('m1Title')" type="button">Copy Title</button>
+        </div>
+        <textarea id="m1Title" readonly></textarea>
+        <div class="output-header" style="margin-top:10px;">
+          <span class="label">Book Description</span>
+          <button class="copy-btn" onclick="copyText('m1Description')" type="button">Copy Description</button>
+        </div>
+        <textarea id="m1Description" readonly style="min-height:220px;"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 2-7 same as before -->
+  <div class="tab-content" id="module2"><div class="card"><h2><span class="num">2</span> Keyword & Category Finder</h2><p class="sub">Generate KDP search keywords and category paths based on proven low-content patterns.</p><div class="input-grid"><div class="input-group full-width"><label>Keyword Strategy</label><select id="m2Strategy"><option value="balanced">Balanced (mix of all)</option><option value="audience">Audience-Focused</option><option value="gift">Gift-Focused</option><option value="seo">SEO-Optimized</option><option value="longtail">Long-Tail Focused</option></select></div></div><div class="btn-row"><button class="primary-btn" onclick="generateKeywords()" type="button">Generate Keywords & Categories</button><button class="secondary-btn" onclick="regenerateKeywords()" type="button">Regenerate Keywords</button></div><div class="output-box" id="m2Output" style="display:none;"><div class="output-header"><span class="label">7 Keyword Phrases</span><button class="copy-btn" onclick="copyKeywordList()" type="button">Copy All 7</button></div><ul class="keyword-list" id="keywordList"></ul><div class="output-header" style="margin-top:10px;"><span class="label">Suggested KDP Category Paths</span></div><div id="categoryPaths"></div><div class="disclaimer">⚠️ Strong starting-point suggestions based on common KDP low-content patterns. Verify against live KDP category browsing before publishing.</div></div></div></div>
+
+  <div class="tab-content" id="module3"><div class="card"><h2><span class="num">3</span> Pricing & Royalty Calculator</h2><p class="sub">Estimate printing costs and royalty at different price points using KDP's published paperback formula.</p><div class="input-grid"><div class="input-group"><label>Trim Size</label><select id="m3Trim"><option value="6x9">6 × 9 in</option><option value="8.5x11">8.5 × 11 in</option><option value="5x8">5 × 8 in</option><option value="7x10">7 × 10 in</option><option value="8x10">8 × 10 in</option><option value="6x9-landscape">6 × 9 in (Landscape)</option><option value="8.5x11-landscape">8.5 × 11 in (Landscape)</option></select></div><div class="input-group"><label>Page Count</label><input type="number" id="m3Pages" min="24" max="800" value="100" /></div><div class="input-group"><label>Interior Type</label><select id="m3Interior"><option value="bw">Black & White</option><option value="standard">Standard Color</option><option value="premium">Premium Color</option></select></div><div class="input-group"><label>Pricing Strategy</label><select id="m3Strategy"><option value="market">Market-Based Bands</option><option value="royalty">Royalty-Optimized</option><option value="competitive">Competitive Low</option></select></div></div><div class="btn-row"><button class="primary-btn" onclick="calculateRoyalty()" type="button">Calculate</button></div><div class="output-box" id="m3Output" style="display:none;"><div class="output-header"><span class="label">Estimated Printing Cost</span></div><div id="printingCost" style="font-size:16px;font-weight:800;color:var(--accent2);margin-bottom:10px;"></div><div class="output-header"><span class="label">Royalty at Suggested Price Points</span></div><div style="overflow-x:auto;"><table class="price-table" id="priceTable"></table></div><div class="disclaimer">⚠️ Estimates based on KDP's published 60% royalty formula. Confirm exact numbers in your KDP dashboard.</div></div></div></div>
+
+  <div class="tab-content" id="module4"><div class="card"><h2><span class="num">4</span> Interactive Launch Checklist</h2><p class="sub">Check off each step as you complete it. Progress saves with your project.</p><div class="progress-bar"><div class="fill" id="progressFill" style="width:0%;"></div></div><div class="progress-text" id="progressText">0/26 steps complete</div><div id="checklistContainer"></div></div></div>
+
+  <div class="tab-content" id="module5"><div class="card"><h2><span class="num">5</span> A/B Title Tester</h2><p class="sub">Compare 3 strategic title variants side by side with positioning context.</p><div class="btn-row"><button class="primary-btn" onclick="generateABTest()" type="button">Generate 3 Variants</button><button class="secondary-btn" onclick="regenerateABTest()" type="button">Regenerate All 3</button></div><div class="output-box" id="m5Output" style="display:none;"><div class="output-header"><span class="label">3 Strategic Title Variants</span><button class="copy-btn" onclick="copyABComparison()" type="button">Copy All 3</button></div><div class="ab-cards" id="abCards"></div></div></div></div>
+
+  <div class="tab-content" id="module6"><div class="card"><h2><span class="num">6</span> Cover Text & Layout</h2><p class="sub">Generate style-specific cover placement guidance and a niche-aware GPT Image 2 cover prompt.</p><div class="input-grid"><div class="input-group"><label>Cover Style</label><select id="m6Style"><option value="minimal">Minimalist</option><option value="bold">Bold & Modern</option><option value="elegant">Elegant & Classic</option><option value="playful">Playful & Colorful</option><option value="premium">Premium & Luxurious</option></select></div><div class="input-group"><label>Cover Elements (comma-separated)</label><input type="text" id="m6Elements" placeholder="E.g., sun motif, milestone markers, tagline" /></div><div class="input-group"><label>Mood / Emotion</label><select id="m6Mood"><option value="calm">Calm & Serene</option><option value="energetic">Energetic & Motivating</option><option value="premium">Premium & Sophisticated</option><option value="warm">Warm & Nurturing</option><option value="hopeful">Hopeful & Uplifting</option></select></div><div class="input-group"><label>Cover Subtitle (optional)</label><input type="text" id="m6Subtitle" placeholder="E.g., A 90-Day Journey to Sobriety" /></div></div><div class="btn-row"><button class="primary-btn" onclick="generateCoverPrompt()" type="button">Generate Cover Prompt</button><button class="secondary-btn" onclick="regenerateCoverPrompt()" type="button">Regenerate Variation</button></div><div class="output-box" id="m6Output" style="display:none;"><div class="output-header"><span class="label">Cover Text Placement</span></div><div id="m6Placement"></div><div class="output-header" style="margin-top:10px;"><span class="label">GPT Image 2 Cover Prompt</span><button class="copy-btn" onclick="copyText('m6Prompt')" type="button">Copy Prompt</button></div><textarea id="m6Prompt" readonly style="min-height:220px;"></textarea></div></div></div>
+
+  <div class="tab-content" id="module7"><div class="card"><h2><span class="num">7</span> My Complete Launch Kit</h2><p class="sub">Assemble everything you've generated into one cohesive, exportable document.</p><div class="completion-meter" id="completionMeter"><div class="meter-text" id="meterText">0/4 sections ready</div><div class="meter-bar"><div class="meter-fill" id="meterFill" style="width:0%;"></div></div></div><div class="btn-row"><button class="primary-btn" onclick="generateCompleteKit()" type="button">Generate My Complete Launch Kit</button><button class="secondary-btn" onclick="copyCompleteKit()" type="button">📋 Copy Complete Kit</button><button class="secondary-btn" onclick="downloadCompleteKit()" type="button">⬇️ Download as .txt</button></div><div class="output-box" id="m7Output" style="display:none;"><div id="kitContent"></div></div></div></div>
+
+  <footer>Built with the <b>KDP Launch Toolkit Pro</b> — Final tier. One unified system to list, price, and publish your KDP book.</footer>
+</div>
+
+<script>
+// ============================================
+// PROJECT MANAGER
+// ============================================
+var projects = [];
+var currentProjectId = null;
+
+function loadProjects() {
+  try { var saved = localStorage.getItem('kdp_launch_projects'); if (saved) projects = JSON.parse(saved); } catch(e) { projects = []; }
+  if (projects.length === 0) createNewProject(true);
+}
+
+function saveProjects() { try { localStorage.setItem('kdp_launch_projects', JSON.stringify(projects)); } catch(e) {} }
+
+function getCurrentProject() { for (var i = 0; i < projects.length; i++) { if (projects[i].id === currentProjectId) return projects[i]; } return null; }
+
+function createNewProject(silent) {
+  var name = prompt('Project name:', 'Book Project ' + (projects.length + 1));
+  if (!name) return;
+  var newProject = { id: Date.now().toString(), name: name, info: { niche: '', audience: '', bookType: 'journal', hook: '' }, checklist: {}, createdAt: new Date().toISOString() };
+  projects.push(newProject); currentProjectId = newProject.id; saveProjects(); renderProjectList(); loadProjectIntoForm();
+  if (!silent) alert('New project created: ' + name);
+}
+
+function saveCurrentProject() {
+  var project = getCurrentProject(); if (!project) return;
+  var name = prompt('Save project as:', project.name); if (name) project.name = name;
+  project.info.niche = document.getElementById('projectNiche').value.trim();
+  project.info.audience = document.getElementById('projectAudience').value.trim();
+  project.info.bookType = document.getElementById('projectBookType').value;
+  project.info.hook = document.getElementById('projectHook').value.trim();
+  var checklistState = {};
+  checklistSections.forEach(function(section, si) { section.items.forEach(function(item, ii) { var checkbox = document.getElementById('check_' + si + '_' + ii); if (checkbox) checklistState['check_' + si + '_' + ii] = checkbox.checked; }); });
+  project.checklist = checklistState; saveProjects(); renderProjectList(); alert('Project saved!');
+}
+
+function deleteProject(id) { if (projects.length <= 1) { alert('Cannot delete the last project.'); return; } projects = projects.filter(function(p) { return p.id !== id; }); if (currentProjectId === id) currentProjectId = projects[0].id; saveProjects(); renderProjectList(); loadProjectIntoForm(); }
+
+function switchProject(id) { currentProjectId = id; renderProjectList(); loadProjectIntoForm(); }
+
+function renderProjectList() {
+  var container = document.getElementById('projectList'); container.innerHTML = '';
+  projects.forEach(function(project) {
+    var chip = document.createElement('div');
+    chip.className = 'project-chip' + (project.id === currentProjectId ? ' active' : '');
+    chip.innerHTML = project.name + ' <button class="delete" onclick="deleteProject(\'' + project.id + '\')" type="button">×</button>';
+    chip.addEventListener('click', function(e) { if (e.target.tagName !== 'BUTTON') switchProject(project.id); });
+    container.appendChild(chip);
+  });
+  document.getElementById('currentProjectName').textContent = getCurrentProject() ? getCurrentProject().name : 'Untitled Project';
+}
+
+function loadProjectIntoForm() {
+  var project = getCurrentProject(); if (!project) return;
+  document.getElementById('projectNiche').value = project.info.niche || '';
+  document.getElementById('projectAudience').value = project.info.audience || '';
+  document.getElementById('projectBookType').value = project.info.bookType || 'journal';
+  document.getElementById('projectHook').value = project.info.hook || '';
+  buildChecklist();
+  if (project.checklist) { for (var key in project.checklist) { var checkbox = document.getElementById(key); if (checkbox && project.checklist[key]) { checkbox.checked = true; checkbox.closest('.checklist-item').classList.add('checked'); checkedItems++; } } updateProgress(); }
+}
+
+// ============================================
+// TAB SYSTEM
+// ============================================
+var tabBar = document.getElementById('tabBar');
+var tabBtns = tabBar.querySelectorAll('.tab-btn');
+var tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var targetTab = btn.getAttribute('data-tab');
+    tabBtns.forEach(function(b) { b.classList.remove('active'); });
+    tabContents.forEach(function(c) { c.classList.remove('active'); });
+    btn.classList.add('active'); document.getElementById(targetTab).classList.add('active');
+    if (targetTab === 'module7') updateCompletionMeter();
+  });
+});
+
+// ============================================
+// SHARED STATE
+// ============================================
+function getProjectInfo() { return { niche: document.getElementById('projectNiche').value.trim(), audience: document.getElementById('projectAudience').value.trim(), bookType: document.getElementById('projectBookType').value, hook: document.getElementById('projectHook').value.trim() }; }
+function isProjectInfoFilled() { return getProjectInfo().niche.length > 0; }
+
+// ============================================
+// TONE MODIFIERS
+// ============================================
+var toneModifiers = {
+  supportive: { opener: "Looking for a", closer: "Start today. Build momentum. See results.", connector: "designed specifically for", encouragement: "you're not alone on this journey", pitch: "This is your tool for real, lasting change." },
+  professional: { opener: "A comprehensive", closer: "Order your copy today to begin.", connector: "engineered for", encouragement: "a proven system for measurable results", pitch: "This is the structured system you've been missing." },
+  casual: { opener: "Hey — a", closer: "Grab yours and get started!", connector: "made for", encouragement: "no fluff, just what works", pitch: "Simple, useful, and ready when you are." },
+  urgent: { opener: "Stop waiting. A", closer: "Start now — your future self is counting on it.", connector: "built exclusively for", encouragement: "every day you wait is a day of progress lost", pitch: "The time to start is right now." },
+  warm: { opener: "A gentle", closer: "Begin when you're ready. We're here for you.", connector: "lovingly crafted for", encouragement: "you deserve this kind of care", pitch: "Be kind to yourself. This book helps." }
+};
+
+// ============================================
+// STRUCTURE MODIFIERS (applied to ALL templates)
+// ============================================
+var structureModifiers = {
+  standard: {
+    label: 'Standard',
+    opener: function(mod, n, a, t, h) { return mod.opener + ' ' + t.toLowerCase() + ' that actually works with your ' + n.toLowerCase() + ' journey? This ' + n + ' ' + t + ' is ' + mod.connector + ' ' + (a || 'anyone who wants real results') + '.'; },
+    body: function(mod, n, a, t, h) { return "Inside, you'll find:\n• Daily structured prompts that guide you through your " + n.toLowerCase() + " practice\n• Easy-to-use tracking layouts that keep you consistent\n• " + (h ? h + '\n' : '') + "• A clean, no-nonsense design that lets you focus on what matters\n• Dedicated sections for reflection, progress tracking, and goal setting"; },
+    close: function(mod, n, a, t, h) { return "This " + t.toLowerCase() + " makes it simple to build a daily habit, track your progress, and see real improvement. " + mod.encouragement + '.'; }
+  },
+  features: {
+    label: 'Feature-First',
+    opener: function(mod, n, a, t, h) { return "Introducing the " + n + ' ' + t + " — built for " + (a || 'people who want real results') + '.'; },
+    body: function(mod, n, a, t, h) { return "Features you'll love:\n• Daily structured prompts that guide your " + n.toLowerCase() + " practice\n• Easy-to-use tracking layouts that keep you consistent\n• " + (h ? h + '\n' : '') + "• A clean design that puts focus where it belongs\n• Dedicated sections for reflection and progress tracking"; },
+    close: function(mod, n, a, t, h) { return "Every feature is designed for one thing: helping you build a lasting " + n.toLowerCase() + " habit. " + mod.encouragement + '.'; }
+  },
+  story: {
+    label: 'Story-Driven',
+    opener: function(mod, n, a, t, h) { return "Every " + (a || 'person') + " who succeeds with " + n.toLowerCase() + " starts with a system. This " + n + ' ' + t + ' is that system.'; },
+    body: function(mod, n, a, t, h) { return "The journey isn't about willpower — it's about having the right tools:\n• Daily prompts that make progress automatic\n• Tracking layouts that show how far you've come\n• " + (h ? h + '\n' : '') + "• Reflection space that deepens understanding\n• A structure designed for real life, not perfection"; },
+    close: function(mod, n, a, t, h) { return "This " + t.toLowerCase() + " has helped others build real, lasting " + n.toLowerCase() + " practices. Now it's your turn. " + mod.encouragement + '.'; }
+  },
+  urgency: {
+    label: 'Urgency-Focused',
+    opener: function(mod, n, a, t, h) { return "Every day you wait to start your " + n.toLowerCase() + " practice is a day of progress lost."; },
+    body: function(mod, n, a, t, h) { return "This " + n + ' ' + t + " gives you everything to start today:\n• Daily prompts that take under 5 minutes\n• Simple layouts that remove all friction\n• " + (h ? h + '\n' : '') + "• Progress tracking that keeps you accountable\n• A structure that makes consistency feel easy"; },
+    close: function(mod, n, a, t, h) { return "The cost of waiting is real. The time to start is now. " + mod.encouragement + '.'; }
+  }
+};
+
+// ============================================
+// TITLE TEMPLATES (unchanged)
+// ============================================
+var titleTemplates = [
+  { template: function(n,a,t,h) { return n + ' ' + t + (a ? ' for ' + a : '') + (h ? ' — ' + h : ''); }, angle: 'Benefit-forward', best: 'Best for competitive niches where clarity wins' },
+  { template: function(n,a,t,h) { return t + ' for ' + (a || 'Beginners') + ': ' + n + ' Edition' + (h ? ' — ' + h : ''); }, angle: 'Audience-specific', best: 'Best for niches where the audience already knows what they want' },
+  { template: function(n,a,t,h) { return 'The Complete ' + n + ' ' + t + (a ? ' for ' + a : '') + (h ? ': ' + h : ''); }, angle: 'Authority-led', best: 'Best for premium positioning and higher price points' },
+  { template: function(n,a,t,h) { return n + ' ' + t + (h ? ' — ' + h : '') + ' (' + (a || 'All Levels') + ' Edition)'; }, angle: 'Audience-specific', best: 'Best for broad niches with multiple audience segments' },
+  { template: function(n,a,t,h) { return (h ? h + ': ' : '') + 'A ' + n + ' ' + t + (a ? ' for ' + a : ''); }, angle: 'Curiosity-driven', best: 'Best for niches where the hook is the selling point' },
+  { template: function(n,a,t,h) { return n + ' Made Simple' + (a ? ' — A ' + a + ' ' + t : '') + (h ? ' | ' + h : ''); }, angle: 'Benefit-forward', best: 'Best for beginners or overwhelmed audiences' },
+  { template: function(n,a,t,h) { return 'The ' + (a || 'Ultimate') + ' ' + n + ' ' + t + (h ? ' (' + h + ')' : ''); }, angle: 'Authority-led', best: 'Best for established niches where trust matters' },
+  { template: function(n,a,t,h) { return n + ' ' + t + ' Gift' + (a ? ' for ' + a : '') + (h ? ' — ' + h : ''); }, angle: 'Gift-led', best: 'Best for Q4 holiday sales or gift-giving seasons' },
+  { template: function(n,a,t,h) { return (h ? h + ' — ' : '') + 'The ' + n + ' ' + t + ' System' + (a ? ' for ' + a : ''); }, angle: 'System-led', best: 'Best for buyers who want a proven method' },
+  { template: function(n,a,t,h) { return n + ' ' + t + ': ' + (a || 'A Practical Guide') + (h ? ' — ' + h : ''); }, angle: 'Practical-led', best: 'Best for buyers who want actionable, no-fluff tools' },
+  { template: function(n,a,t,h) { return 'Daily ' + n + ' ' + t + (a ? ' for ' + a : '') + (h ? ' | ' + h : ''); }, angle: 'Habit-led', best: 'Best for niches where consistency is the core value' },
+  { template: function(n,a,t,h) { return n + ' ' + t + (a ? ' — Designed for ' + a : '') + (h ? ' (' + h + ')' : ''); }, angle: 'Design-led', best: 'Best for visually-oriented niches where aesthetics matter' }
+];
+
+// ============================================
+// DESCRIPTION TEMPLATES (ALL 12 now use structureModifiers)
+// ============================================
+var descriptionTemplates = [
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [st.opener(mod, n, a, t, h), st.body(mod, n, a, t, h), st.close(mod, n, a, t, h), mod.pitch];
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("Designed for " + (a || 'anyone serious about their ' + n.toLowerCase() + ' practice') + ", this " + t.toLowerCase() + " cuts through the noise with a simple, repeatable system that actually works.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push("Transform your " + n.toLowerCase() + " practice with this focused, easy-to-use " + t.toLowerCase() + '.');
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("Built for " + (a || 'everyday people who want better results') + ", this " + t.toLowerCase() + " strips away the fluff and gives you exactly what you need.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("This " + n + ' ' + t + " was created for " + (a || 'busy people who need simplicity, not complexity') + '.');
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("This isn't just another notebook. This is a complete " + n.toLowerCase() + " system designed to help you build a lasting practice.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("Thoughtful, practical, and beautifully designed — this " + t.toLowerCase() + " gives " + (a || 'them') + " everything needed to build a real " + n.toLowerCase() + ' practice.');
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("This " + t.toLowerCase() + " brings structure, clarity, and consistency to your daily practice — so you can focus on what actually matters.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("This " + n + ' ' + t + " was created to remove every excuse and make it easy to build a daily practice that sticks.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("Designed for " + (a || 'people who want results without the complexity') + ", this " + t.toLowerCase() + " strips away the noise and gives you exactly what works.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("Built for " + (a || 'anyone who wants a simple, effective system') + ", this " + t.toLowerCase() + " gives you a proven daily structure without the fluff.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  },
+  function(n,a,t,h,tone,length,mod,structure,bonuses) {
+    var st = structureModifiers[structure] || structureModifiers.standard;
+    var p = [];
+    p.push(st.opener(mod, n, a, t, h));
+    p.push("This " + t.toLowerCase() + " gives you the structure, prompts, and tracking tools you need to build a real " + n.toLowerCase() + " practice — without the overwhelm.");
+    p.push(st.body(mod, n, a, t, h));
+    p.push(st.close(mod, n, a, t, h));
+    p.push(mod.pitch);
+    if (bonuses === 'yes') p.push("BONUS: Includes a bonus section with extra pages for notes, reflections, and free writing — making this a complete " + n.toLowerCase() + " system, not just a one-time tool.");
+    p.push(mod.closer);
+    return assembleDescription(p, length);
+  }
+];
+
+function assembleDescription(paragraphs, length) {
+  var full = paragraphs.join('\n\n');
+  if (length === 'short') return paragraphs.slice(0, 3).join('\n\n');
+  if (length === 'medium') return paragraphs.slice(0, 4).join('\n\n');
+  if (length === 'long') return full;
+  if (length === 'extended') return full + '\n\nBONUS CONTENT: This ' + getProjectInfo().bookType + ' also includes a quick-start guide to help you get the most out of every page, plus extra reflection prompts for deeper insight as your practice grows.';
+  return full;
+}
+
+var currentTitleVariant = -1;
+var currentDescriptionVariant = -1;
+
+function generateListingCopy() {
+  if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; }
+  var info = getProjectInfo();
+  var tone = document.getElementById('m1Tone').value;
+  var length = document.getElementById('m1Length').value;
+  var structure = document.getElementById('m1Structure').value;
+  var bonuses = document.getElementById('m1Bonuses').value;
+  currentTitleVariant = Math.floor(Math.random() * titleTemplates.length);
+  currentDescriptionVariant = Math.floor(Math.random() * descriptionTemplates.length);
+  renderListingCopy(info, tone, length, structure, bonuses);
+}
+
+function regenerateListingCopy() {
+  if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; }
+  var info = getProjectInfo();
+  var tone = document.getElementById('m1Tone').value;
+  var length = document.getElementById('m1Length').value;
+  var structure = document.getElementById('m1Structure').value;
+  var bonuses = document.getElementById('m1Bonuses').value;
+  var newTitleVariant;
+  do { newTitleVariant = Math.floor(Math.random() * titleTemplates.length); } while (newTitleVariant === currentTitleVariant && titleTemplates.length > 1);
+  currentTitleVariant = newTitleVariant;
+  var newDescVariant;
+  do { newDescVariant = Math.floor(Math.random() * descriptionTemplates.length); } while (newDescVariant === currentDescriptionVariant && descriptionTemplates.length > 1);
+  currentDescriptionVariant = newDescVariant;
+  renderListingCopy(info, tone, length, structure, bonuses);
+}
+
+function renderListingCopy(info, tone, length, structure, bonuses) {
+  var mod = toneModifiers[tone] || toneModifiers.supportive;
+  var title = titleTemplates[currentTitleVariant].template(info.niche, info.audience, info.bookType, info.hook);
+  var description = descriptionTemplates[currentDescriptionVariant](info.niche, info.audience, info.bookType, info.hook, tone, length, mod, structure, bonuses);
+  document.getElementById('m1Title').value = title;
+  document.getElementById('m1Description').value = description;
+  document.getElementById('m1Output').style.display = 'block';
+}
+
+// ============================================
+// MODULE 2: KEYWORDS
+// ============================================
+var keywordPatterns = {
+  balanced: [function(n) { return n + ' journal for daily use'; }, function(n) { return n + ' tracker 6x9'; }, function(n) { return 'daily ' + n + ' planner for beginners'; }, function(n) { return n + ' gift for women'; }, function(n) { return n + ' log book with prompts'; }, function(n) { return n + ' notebook for adults'; }, function(n) { return n + ' journal for mental health'; }, function(n) { return 'guided ' + n + ' journal with prompts'; }, function(n) { return n + ' workbook for women'; }, function(n) { return '90 day ' + n + ' planner'; }, function(n) { return n + ' journal hardcover'; }, function(n) { return n + ' tracker for beginners'; }, function(n) { return 'weekly ' + n + ' planner'; }, function(n) { return n + ' activity book for adults'; }, function(n) { return n + ' journal with daily checklists'; }, function(n) { return n + ' gift for mom'; }, function(n) { return n + ' notebook for teens'; }, function(n) { return 'simple ' + n + ' tracker for daily use'; }],
+  audience: [function(n) { return n + ' journal for women'; }, function(n) { return n + ' planner for men'; }, function(n) { return n + ' tracker for beginners'; }, function(n) { return n + ' journal for teens'; }, function(n) { return n + ' workbook for adults'; }, function(n) { return n + ' log for seniors'; }, function(n) { return n + ' journal for moms'; }, function(n) { return n + ' notebook for busy professionals'; }, function(n) { return n + ' planner for students'; }, function(n) { return n + ' tracker for new moms'; }, function(n) { return n + ' journal for men'; }, function(n) { return n + ' workbook for women over 50'; }, function(n) { return n + ' log book for kids'; }, function(n) { return n + ' journal for young adults'; }],
+  gift: [function(n) { return n + ' gift for mom'; }, function(n) { return n + ' gift for women'; }, function(n) { return n + ' gift for men'; }, function(n) { return n + ' gift for best friend'; }, function(n) { return n + ' stocking stuffer for women'; }, function(n) { return n + ' birthday gift for her'; }, function(n) { return n + ' christmas gift for mom'; }, function(n) { return n + ' gift for coworker'; }, function(n) { return n + ' gift for sister'; }, function(n) { return n + ' gift for grandma'; }, function(n) { return n + ' thoughtful gift for women'; }, function(n) { return n + ' gift for new mom'; }],
+  seo: [function(n) { return n + ' journal 6x9 120 pages'; }, function(n) { return n + ' tracker daily 100 days'; }, function(n) { return n + ' planner weekly monthly yearly'; }, function(n) { return n + ' journal hardcover large print'; }, function(n) { return n + ' workbook with prompts and exercises'; }, function(n) { return n + ' log book 8.5x11'; }, function(n) { return n + ' journal with daily checklists'; }, function(n) { return n + ' planner 2026 2027'; }, function(n) { return n + ' tracker with habit scorecard'; }, function(n) { return n + ' notebook 200 pages lined'; }],
+  longtail: [function(n) { return n + ' journal for daily mental health tracking'; }, function(n) { return 'guided ' + n + ' workbook with daily prompts and exercises'; }, function(n) { return n + ' tracker for beginners 90 day challenge'; }, function(n) { return 'simple ' + n + ' planner for busy working professionals'; }, function(n) { return n + ' notebook for adults with daily reflection prompts'; }, function(n) { return n + ' journal for women over 40 with gratitude prompts'; }, function(n) { return n + ' log book 6x9 120 pages with habit tracker'; }, function(n) { return n + ' planner for new moms with postpartum recovery tracker'; }]
+};
+
+var categoryMap = [
+  { keywords: ['mental health','anxiety','stress','depression','mindfulness','calm'], paths: ['Self-Help → Mental Health → Anxiety Disorders','Health, Fitness & Dieting → Mental Health → Anxiety Disorders','Journals & Notebooks → Journals → Mental Health'] },
+  { keywords: ['sobriety','recovery','addiction','alcohol','sober','aa','12 step'], paths: ['Self-Help → Substance Abuse & Addictions → Alcoholism','Self-Help → Substance Abuse & Addictions → Drug Dependency','Journals & Notebooks → Journals → Self-Help & Personal Growth'] },
+  { keywords: ['christian','bible','devotional','faith','god','jesus','prayer','religious','church'], paths: ['Christian Books & Bibles → Christian Living → Devotionals','Christian Books & Bibles → Christian Living → Prayer','Journals & Notebooks → Journals → Devotional'] },
+  { keywords: ['kids','children','toddler','preschool','activity','coloring','puzzle'], paths: ["Children's Books → Activities, Crafts & Games → Activity Books","Children's Books → Activities, Crafts & Games → Coloring Books","Journals & Notebooks → Journals → Children's"] },
+  { keywords: ['fitness','workout','exercise','gym','health','wellness'], paths: ['Health, Fitness & Dieting → Exercise & Fitness → Workouts','Health, Fitness & Dieting → Wellness & Self-Care','Journals & Notebooks → Journals → Health & Wellness'] },
+  { keywords: ['budget','finance','money','savings','debt','investing','teens','teach'], paths: ['Business & Money → Personal Finance → Budgeting & Money Management','Business & Money → Personal Finance → Financial Planning','Journals & Notebooks → Journals → Finance & Budgeting'] },
+  { keywords: ['pregnancy','baby','pregnant','postpartum','mom','mother','family'], paths: ['Parenting & Relationships → Pregnancy & Childbirth → Pregnancy','Parenting & Relationships → Pregnancy & Childbirth → Postpartum','Journals & Notebooks → Journals → Pregnancy'] },
+  { keywords: ['pet','dog','cat','animal','puppy','kitten'], paths: ['Crafts, Hobbies & Home → Pets & Animal Care → Dogs','Crafts, Hobbies & Home → Pets & Animal Care → Cats','Journals & Notebooks → Journals → Pet Care'] },
+  { keywords: ['travel','trip','adventure','vacation'], paths: ['Travel → Specialty Travel → Adventure Travel','Travel → Specialty Travel → Family Travel','Journals & Notebooks → Journals → Travel'] },
+  { keywords: ['recipe','cook','food','meal','kitchen','baking'], paths: ['Cookbooks, Food & Wine → Quick & Easy','Cookbooks, Food & Wine → Special Diet → Healthy','Journals & Notebooks → Journals → Recipes & Meal Planning'] },
+  { keywords: ['wedding','bride','marriage','engagement','groom'], paths: ['Self-Help → Relationships → Marriage','Crafts, Hobbies & Home → Weddings → Planning','Journals & Notebooks → Journals → Wedding Planning'] },
+  { keywords: ['senior','memory','alzheimer','dementia','elderly','grandma','grandpa'], paths: ['Self-Help → Memory Improvement','Health, Fitness & Dieting → Aging → Memory','Journals & Notebooks → Journals → Reminiscence'] },
+  { keywords: ['business','hustle','freelance','income','side hustle','entrepreneur'], paths: ['Business & Money → Small Business & Entrepreneurship → Home-Based Business','Business & Money → Small Business & Entrepreneurship → Freelancing','Journals & Notebooks → Journals → Business'] },
+  { keywords: ['grief','loss','bereavement','mourning','healing'], paths: ['Self-Help → Death & Grief → Grief & Bereavement','Self-Help → Death & Grief → Loss','Journals & Notebooks → Journals → Grief'] },
+  { keywords: ['sleep','insomnia','rest','bedtime'], paths: ['Health, Fitness & Dieting → Sleep Disorders → Insomnia','Health, Fitness & Dieting → Sleep Disorders → General','Journals & Notebooks → Journals → Sleep'] },
+  { keywords: ['homeschool','education','lesson','teacher','learning'], paths: ['Education & Teaching → Homeschooling → Curriculum Planning','Education & Teaching → Homeschooling → Parent Participation','Journals & Notebooks → Journals → Education'] },
+  { keywords: ['chronic','illness','pain','symptom','health log','medical'], paths: ['Health, Fitness & Dieting → Diseases & Physical Ailments → Chronic Pain','Health, Fitness & Dieting → Diseases & Physical Ailments → General','Journals & Notebooks → Journals → Health & Wellness'] },
+  { keywords: ['adhd','focus','attention','executive function'], paths: ['Self-Help → ADHD','Health, Fitness & Dieting → Mental Health → ADHD','Journals & Notebooks → Journals → Productivity'] }
+];
+
+var currentKeywordSet = [];
+var currentCategorySet = [];
+
+function generateKeywords() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); var strategy = document.getElementById('m2Strategy').value; generateKeywordSet(info.niche.toLowerCase(), strategy); generateCategorySet(info.niche.toLowerCase()); document.getElementById('m2Output').style.display = 'block'; }
+function regenerateKeywords() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); var strategy = document.getElementById('m2Strategy').value; generateKeywordSet(info.niche.toLowerCase(), strategy); document.getElementById('m2Output').style.display = 'block'; }
+function generateKeywordSet(nicheLower, strategy) { var patternPool = keywordPatterns[strategy] || keywordPatterns.balanced; var shuffled = patternPool.slice().sort(function() { return Math.random() - 0.5; }); currentKeywordSet = shuffled.slice(0, 7).map(function(fn) { return fn(nicheLower); }); var keywordList = document.getElementById('keywordList'); keywordList.innerHTML = currentKeywordSet.map(function(kw, i) { return '<li><span class="num">' + (i+1) + '</span> ' + kw + '</li>'; }).join(''); }
+function generateCategorySet(nicheLower) { var matched = false; var matchedPaths = []; for (var i = 0; i < categoryMap.length; i++) { var group = categoryMap[i]; for (var j = 0; j < group.keywords.length; j++) { if (nicheLower.indexOf(group.keywords[j]) !== -1) { matchedPaths = matchedPaths.concat(group.paths); matched = true; break; } } if (matched) break; } currentCategorySet = matched ? matchedPaths.slice(0, 3) : ['Journals & Notebooks → Journals → Self-Help & Personal Growth','Self-Help → Personal Transformation → Journaling','Journals & Notebooks → Journals → General']; document.getElementById('categoryPaths').innerHTML = currentCategorySet.map(function(path) { return '<div class="category-path">' + path.replace(/ → /g, ' <span class="arrow">→</span> ') + '</div>'; }).join(''); }
+function copyKeywordList() { navigator.clipboard.writeText(currentKeywordSet.join('\n')).then(function() { var btn = event.target; btn.textContent = 'Copied ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = 'Copy All 7'; btn.classList.remove('copied'); }, 1500); }); }
+
+// ============================================
+// MODULE 3: PRICING
+// ============================================
+var kdpRates = { '5x8': { bw: { fixed: 0.85, perPage: 0.012 }, standard: { fixed: 0.85, perPage: 0.025 }, premium: { fixed: 0.85, perPage: 0.035 } }, '6x9': { bw: { fixed: 0.85, perPage: 0.012 }, standard: { fixed: 0.85, perPage: 0.025 }, premium: { fixed: 0.85, perPage: 0.035 } }, '7x10': { bw: { fixed: 0.85, perPage: 0.013 }, standard: { fixed: 0.85, perPage: 0.027 }, premium: { fixed: 0.85, perPage: 0.038 } }, '8x10': { bw: { fixed: 1.10, perPage: 0.016 }, standard: { fixed: 1.10, perPage: 0.032 }, premium: { fixed: 1.10, perPage: 0.045 } }, '8.5x11': { bw: { fixed: 1.10, perPage: 0.016 }, standard: { fixed: 1.10, perPage: 0.032 }, premium: { fixed: 1.10, perPage: 0.045 } }, '6x9-landscape': { bw: { fixed: 0.85, perPage: 0.012 }, standard: { fixed: 0.85, perPage: 0.025 }, premium: { fixed: 0.85, perPage: 0.035 } }, '8.5x11-landscape': { bw: { fixed: 1.10, perPage: 0.016 }, standard: { fixed: 1.10, perPage: 0.032 }, premium: { fixed: 1.10, perPage: 0.045 } } };
+var priceBands = { market: [{ label: 'Budget / Entry', price: 6.99 }, { label: 'Competitive Market', price: 9.99 }, { label: 'Premium', price: 12.99 }, { label: 'Luxury / Gift', price: 14.99 }], royalty: [{ label: 'Royalty-Optimized Low', price: 7.99 }, { label: 'Royalty-Optimized Mid', price: 9.49 }, { label: 'Royalty-Optimized High', price: 11.99 }, { label: 'Max Royalty', price: 13.49 }], competitive: [{ label: 'Aggressive Low', price: 5.99 }, { label: 'Competitive Entry', price: 7.49 }, { label: 'Market Standard', price: 8.99 }, { label: 'Slight Premium', price: 10.49 }] };
+var lastRoyaltyResult = null;
+function calculateRoyalty() { var trim = document.getElementById('m3Trim').value; var pages = parseInt(document.getElementById('m3Pages').value) || 100; var interior = document.getElementById('m3Interior').value; var strategy = document.getElementById('m3Strategy').value; var rate = kdpRates[trim][interior]; var printingCost = rate.fixed + (rate.perPage * pages); var bands = priceBands[strategy] || priceBands.market; lastRoyaltyResult = { printingCost: printingCost, bands: bands }; document.getElementById('printingCost').textContent = '$' + printingCost.toFixed(2) + ' USD'; var table = document.getElementById('priceTable'); table.innerHTML = '<tr><th>Price Point</th><th>List Price</th><th>Printing Cost</th><th>Royalty (60%)</th></tr>'; bands.forEach(function(band, i) { var royalty = (0.6 * band.price) - printingCost; var isRecommended = i === 1; table.innerHTML += '<tr class="' + (isRecommended ? 'highlight-row' : '') + '"><td>' + band.label + (isRecommended ? ' ★' : '') + '</td><td>$' + band.price.toFixed(2) + '</td><td>$' + printingCost.toFixed(2) + '</td><td>$' + royalty.toFixed(2) + '</td></tr>'; }); document.getElementById('m3Output').style.display = 'block'; }
+
+// ============================================
+// MODULE 4: CHECKLIST
+// ============================================
+var checklistSections = [
+  { title: 'Generate & Save Your Pages', items: ['Generate the cover image with GPT Image 2','Generate the main interior page with GPT Image 2','Generate the chapter divider (if applicable) with GPT Image 2','Save all images as high-res files (minimum 300 DPI at trim size)','Upscale any low-resolution exports in Canva or Photoshop'] },
+  { title: 'Assemble Your Interior File', items: ['Create a new document at exact trim size (e.g., 6×9in = 1800×2700px @ 300 DPI)','Place main interior page and duplicate for total page count (min 24 pages)','Insert chapter dividers between sections','Export as print-ready PDF with margins (min 0.25in, recommended 0.5in)'] },
+  { title: 'Cover File Specs', items: ['Create full cover spread (back cover + spine + front cover)','Use KDP Cover Calculator for exact dimensions','Export cover as PDF or PNG at 300 DPI minimum','Include 0.125in bleed if using full-bleed art'] },
+  { title: 'KDP Upload & Preview', items: ['Sign in to kdp.amazon.com and create a new title','Enter book details (title, author, description, keywords)','Upload interior PDF file','Upload cover file separately','Use KDP Preview tool to check every page','Order a physical proof copy'] },
+  { title: 'Final Pre-Publish Checklist', items: ['All text is legible and correctly spelled','Margins are consistent on every page','Page count matches book description','Cover spine text is centered and readable','No watermarks or mockup frames remain','Book title and author name appear correctly on cover'] },
+  { title: 'Post-Launch — First 30 Days', items: ['Verify listing displays correctly on desktop and mobile Amazon','Check for content/formatting errors reported by KDP automated review','Monitor initial Look Inside accuracy','Verify keyword indexing after 48-72 hours','Plan a soft-launch price test','Set a calendar reminder to review sales data after 2 weeks'] }
+];
+var totalChecklistItems = 0;
+var checkedItems = 0;
+function buildChecklist() { var container = document.getElementById('checklistContainer'); container.innerHTML = ''; totalChecklistItems = 0; checkedItems = 0; checklistSections.forEach(function(section, si) { var sectionDiv = document.createElement('div'); sectionDiv.className = 'checklist-section'; sectionDiv.innerHTML = '<h4>' + section.title + '</h4>'; section.items.forEach(function(item, ii) { totalChecklistItems++; var id = 'check_' + si + '_' + ii; var itemDiv = document.createElement('div'); itemDiv.className = 'checklist-item'; itemDiv.innerHTML = '<input type="checkbox" id="' + id + '" onchange="updateChecklist(this)" /><label class="label" for="' + id + '">' + item + '</label>'; sectionDiv.appendChild(itemDiv); }); container.appendChild(sectionDiv); }); updateProgress(); }
+function updateChecklist(checkbox) { var item = checkbox.closest('.checklist-item'); if (checkbox.checked) { item.classList.add('checked'); checkedItems++; } else { item.classList.remove('checked'); checkedItems--; } updateProgress(); }
+function updateProgress() { var percent = totalChecklistItems > 0 ? (checkedItems / totalChecklistItems) * 100 : 0; document.getElementById('progressFill').style.width = percent + '%'; document.getElementById('progressText').textContent = checkedItems + '/' + totalChecklistItems + ' steps complete'; }
+
+// ============================================
+// MODULE 5: A/B TESTER
+// ============================================
+var currentABVariants = [];
+function generateABTest() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); currentABVariants = pickThreeDistinctTemplates(); renderABTest(info); }
+function regenerateABTest() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); currentABVariants = pickThreeDistinctTemplates(); renderABTest(info); }
+function pickThreeDistinctTemplates() { var indices = []; var pool = []; for (var i = 0; i < titleTemplates.length; i++) pool.push(i); for (var j = 0; j < 3; j++) { var randomIndex = Math.floor(Math.random() * pool.length); indices.push(pool.splice(randomIndex, 1)[0]); } return indices; }
+function renderABTest(info) { var container = document.getElementById('abCards'); container.innerHTML = ''; currentABVariants.forEach(function(variantIndex, i) { var variant = titleTemplates[variantIndex]; var title = variant.template(info.niche, info.audience, info.bookType, info.hook); var card = document.createElement('div'); card.className = 'ab-card'; card.innerHTML = '<div class="ab-header"><span class="ab-angle">Variant ' + (i+1) + ': ' + variant.angle + '</span><button class="copy-btn" onclick="copyABVariant(' + i + ')" type="button">Copy</button></div><div class="ab-title">' + title + '</div><div class="ab-best">' + variant.best + '</div>'; container.appendChild(card); }); document.getElementById('m5Output').style.display = 'block'; }
+function copyABVariant(index) { var info = getProjectInfo(); var variant = titleTemplates[currentABVariants[index]]; var title = variant.template(info.niche, info.audience, info.bookType, info.hook); navigator.clipboard.writeText(title).then(function() { var btn = event.target; btn.textContent = 'Copied ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500); }); }
+function copyABComparison() { var info = getProjectInfo(); var output = '=== A/B TITLE COMPARISON ===\n\n'; currentABVariants.forEach(function(variantIndex, i) { var variant = titleTemplates[variantIndex]; var title = variant.template(info.niche, info.audience, info.bookType, info.hook); output += 'VARIANT ' + (i+1) + ' — ' + variant.angle + '\n' + title + '\nBest for: ' + variant.best + '\n\n'; }); navigator.clipboard.writeText(output).then(function() { var btn = event.target; btn.textContent = 'Copied ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = 'Copy All 3'; btn.classList.remove('copied'); }, 1500); }); }
+
+// ============================================
+// MODULE 6: COVER
+// ============================================
+var coverPlacements = { minimal: { title: 'Title centered in upper third, small font size, generous whitespace around it', subtitle: 'Subtitle directly below, very light weight', elements: 'One small focal element only', guidance: 'Scale: Small title, large whitespace. Focus on breathing room.' }, bold: { title: 'Title large and commanding, centered or slightly offset, high contrast', subtitle: 'Subtitle in contrasting color directly below title', elements: 'Bold geometric shapes behind or beside title', guidance: 'Scale: Large title, tight spacing. Focus on impact.' }, elegant: { title: 'Title in refined serif, centered, medium size with decorative flourishes', subtitle: 'Subtitle in italic serif, smaller', elements: 'Delicate corner flourishes or thin borders', guidance: 'Scale: Balanced title, refined spacing. Focus on timelessness.' }, playful: { title: 'Title in rounded bold font, slightly tilted or curved', subtitle: 'Subtitle in contrasting color, playful placement', elements: 'Whimsical icons or doodles around title', guidance: 'Scale: Title can be larger and more expressive. Focus on fun.' }, premium: { title: 'Title in elegant serif or bold sans, centered, gold-foil style accents', subtitle: 'Subtitle in smaller caps, letter-spaced', elements: 'Rich textures, gold accents, ornamental details', guidance: 'Scale: Title prominent, luxurious spacing. Focus on exclusivity.' } };
+var coverMoods = { calm: 'Overall mood: Calm and serene. Use soft, gentle visual language with relaxing color palette and peaceful imagery.', energetic: 'Overall mood: Energetic and motivating. Use dynamic, bold visual language with vibrant colors and action-oriented imagery.', premium: 'Overall mood: Premium and sophisticated. Use refined, elegant visual language with luxurious textures and high-end aesthetics.', warm: 'Overall mood: Warm and nurturing. Use soft, inviting visual language with cozy colors and comforting imagery.', hopeful: 'Overall mood: Hopeful and uplifting. Use bright, positive visual language with inspiring imagery and optimistic tone.' };
+var nicheMotifs = { 'mental health': 'calming leaf or wave motifs', 'anxiety': 'grounding stone or breathing circle motifs', 'sobriety': 'rising sun with milestone markers', 'recovery': 'lotus flower or rising sun motifs', 'christian': 'small cross or open book motifs', 'faith': 'dove or light ray motifs', 'kids': 'stars, crayons, or animal characters', 'fitness': 'dumbbell, running figure, or pulse line motifs', 'budget': 'coin, piggy bank, or ascending chart motifs', 'finance': 'dollar sign, piggy bank, or growth arrows', 'pregnancy': 'baby footprint, heart, or blooming flower motifs', 'pet': 'paw print, bone, or heart motifs', 'travel': 'compass, map pin, or passport stamp motifs', 'recipe': 'fork, spoon, or herb sprig motifs', 'wedding': 'rings, bouquet, or heart motifs', 'senior': 'vintage key, clock, or photo frame motifs', 'memory': 'vintage key or photo corner motifs', 'business': 'briefcase, rocket, or upward chart motifs', 'grief': 'candle, leaf, or teardrop motifs', 'sleep': 'crescent moon, stars, or cloud motifs', 'homeschool': 'apple, pencil, or open book motifs', 'chronic': 'heart with pulse line or medical cross motifs', 'adhd': 'lightning bolt, brain, or target motifs' };
+function getNicheMotif(nicheLower) { for (var keyword in nicheMotifs) { if (nicheLower.indexOf(keyword) !== -1) return nicheMotifs[keyword]; } return null; }
+function generateCoverPrompt() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); var style = document.getElementById('m6Style').value; var elements = document.getElementById('m6Elements').value.trim(); var mood = document.getElementById('m6Mood').value; var subtitle = document.getElementById('m6Subtitle').value.trim(); var placement = coverPlacements[style]; var moodText = coverMoods[mood]; var nicheMotif = getNicheMotif(info.niche.toLowerCase()); var placementHtml = '<div class="category-path"><strong>Title:</strong> ' + placement.title + '</div>'; placementHtml += '<div class="category-path"><strong>Subtitle:</strong> ' + (subtitle || placement.subtitle) + '</div>'; placementHtml += '<div class="category-path"><strong>Elements:</strong> ' + (elements || placement.elements) + '</div>'; placementHtml += '<div class="category-path"><strong>Guidance:</strong> ' + placement.guidance + '</div>'; placementHtml += '<div class="category-path"><strong>Mood:</strong> ' + moodText.split(':')[1].trim() + '</div>'; if (nicheMotif) placementHtml += '<div class="category-path"><strong>Niche Motif:</strong> ' + nicheMotif + '</div>'; document.getElementById('m6Placement').innerHTML = placementHtml; var motifText = nicheMotif ? 'Niche-appropriate decorative motif: ' + nicheMotif + '.' : 'No specific niche motif — keep decorative elements generic and clean.'; var prompt = 'Generate a print-ready KDP front cover design for a "' + info.niche + '" ' + info.bookType + (info.audience ? ' for ' + info.audience : '') + (info.hook ? ' — ' + info.hook : '') + '.\n\n'; prompt += 'Cover Style: ' + placement.title + '. ' + placement.guidance + '\n'; prompt += 'Design Elements: ' + (elements || placement.elements) + '\n'; prompt += motifText + '\n'; prompt += moodText + '\n\n'; prompt += 'Title Text: "' + info.niche + ' ' + info.bookType + '"\n'; if (subtitle) prompt += 'Subtitle Text: "' + subtitle + '"\n'; prompt += '\nLayout:\n- Title placed ' + placement.title.toLowerCase().split(',')[0] + '\n'; prompt += '- Subtitle below title, smaller font\n- Decorative elements balanced without overwhelming\n- No spine, no back cover, no barcode area — front cover only\n- No watermark, no mockup frame, no 3D effects\n\n'; prompt += 'Output: high resolution flat 2D design at 300 DPI. All text rendered exactly as specified with correct spelling.'; document.getElementById('m6Prompt').value = prompt; document.getElementById('m6Output').style.display = 'block'; }
+function regenerateCoverPrompt() { generateCoverPrompt(); }
+
+// ============================================
+// MODULE 7: COMPLETE KIT
+// ============================================
+var completeKitData = null;
+function updateCompletionMeter() { var sections = []; if (document.getElementById('m1Output').style.display === 'block') sections.push('Listing Copy'); if (document.getElementById('m2Output').style.display === 'block') sections.push('Keywords'); if (document.getElementById('m3Output').style.display === 'block') sections.push('Pricing'); if (document.getElementById('m6Output').style.display === 'block') sections.push('Cover'); var count = sections.length; var total = 4; document.getElementById('meterText').textContent = count + '/' + total + ' sections ready' + (count < 4 ? ' — finish remaining modules to complete your kit' : ' — all sections ready!'); document.getElementById('meterFill').style.width = ((count / total) * 100) + '%'; }
+function generateCompleteKit() { if (!isProjectInfoFilled()) { alert('Please fill in your Project Info first.'); return; } var info = getProjectInfo(); if (document.getElementById('m1Output').style.display !== 'block') { currentTitleVariant = Math.floor(Math.random() * titleTemplates.length); currentDescriptionVariant = Math.floor(Math.random() * descriptionTemplates.length); var tone = document.getElementById('m1Tone').value || 'supportive'; var length = document.getElementById('m1Length').value || 'medium'; var structure = document.getElementById('m1Structure').value || 'standard'; var bonuses = document.getElementById('m1Bonuses').value || 'no'; renderListingCopy(info, tone, length, structure, bonuses); } if (document.getElementById('m2Output').style.display !== 'block') { generateKeywordSet(info.niche.toLowerCase(), 'balanced'); generateCategorySet(info.niche.toLowerCase()); document.getElementById('m2Output').style.display = 'block'; } if (document.getElementById('m6Output').style.display !== 'block') { generateCoverPrompt(); } if (document.getElementById('m3Output').style.display !== 'block') { alert('Please complete the Pricing & Royalty module (tab 3) before generating your Complete Kit — this section needs your trim size and page count.'); return; } var title = document.getElementById('m1Title').value; var description = document.getElementById('m1Description').value; var keywords = currentKeywordSet; var categories = currentCategorySet; var printingCost = document.getElementById('printingCost').textContent; var recommendedRow = lastRoyaltyResult ? lastRoyaltyResult.bands[1] : null; var coverPrompt = document.getElementById('m6Prompt').value; var uncheckedItems = []; checklistSections.forEach(function(section, si) { var sectionUnchecked = []; section.items.forEach(function(item, ii) { var checkbox = document.getElementById('check_' + si + '_' + ii); if (checkbox && !checkbox.checked) sectionUnchecked.push(item); }); if (sectionUnchecked.length > 0) uncheckedItems.push({ section: section.title, items: sectionUnchecked }); }); var kitHtml = '<div class="kit-section"><h4>Project Summary</h4><div class="kit-content">Niche: ' + info.niche + '\nAudience: ' + (info.audience || 'Not specified') + '\nBook Type: ' + info.bookType + '\nHook: ' + (info.hook || 'None specified') + '</div></div>'; kitHtml += '<div class="kit-section"><h4>① Book Title & Description</h4><div class="kit-content"><strong>Title:</strong> ' + title + '\n\n<strong>Description:</strong>\n' + description + '</div></div>'; kitHtml += '<div class="kit-section"><h4>② Keywords & Categories</h4><div class="kit-content"><strong>7 Keywords:</strong>\n' + keywords.map(function(k,i) { return (i+1) + '. ' + k; }).join('\n') + '\n\n<strong>Category Paths:</strong>\n' + categories.join('\n') + '</div></div>'; kitHtml += '<div class="kit-section"><h4>③ Pricing Summary</h4><div class="kit-content">Estimated Printing Cost: ' + printingCost + '\n'; if (recommendedRow) { kitHtml += 'Recommended Price: $' + recommendedRow.price.toFixed(2) + ' (' + recommendedRow.label + ')\n'; kitHtml += 'Estimated Royalty: $' + ((0.6 * recommendedRow.price) - lastRoyaltyResult.printingCost).toFixed(2) + '</div></div>'; } else { kitHtml += 'Pricing not calculated yet.</div></div>'; } kitHtml += '<div class="kit-section"><h4>④ Cover Prompt</h4><div class="kit-content">' + coverPrompt + '</div></div>'; kitHtml += '<div class="kit-section"><h4>⑤ Launch Progress: ' + checkedItems + '/' + totalChecklistItems + ' steps complete</h4><div class="kit-content">'; if (uncheckedItems.length > 0) { kitHtml += '<strong>Remaining steps:</strong>\n' + uncheckedItems.map(function(s) { return s.section + ':\n' + s.items.map(function(i) { return '  ☐ ' + i; }).join('\n'); }).join('\n\n'); } else { kitHtml += "All checklist items completed! You're ready to publish."; } kitHtml += '</div></div>'; document.getElementById('kitContent').innerHTML = kitHtml; document.getElementById('m7Output').style.display = 'block'; completeKitData = { info: info, title: title, description: description, keywords: keywords, categories: categories, printingCost: printingCost, recommendedRow: recommendedRow, coverPrompt: coverPrompt, uncheckedItems: uncheckedItems, checkedItems: checkedItems, totalChecklistItems: totalChecklistItems }; updateCompletionMeter(); }
+function copyCompleteKit() { if (!completeKitData) { alert('Please generate your Complete Launch Kit first.'); return; } var d = completeKitData; var output = '=== MY COMPLETE KDP LAUNCH KIT ===\n\n'; output += '=== PROJECT SUMMARY ===\nNiche: ' + d.info.niche + '\nAudience: ' + (d.info.audience || 'Not specified') + '\nBook Type: ' + d.info.bookType + '\nHook: ' + (d.info.hook || 'None') + '\n\n'; output += '=== ① BOOK TITLE ===\n' + d.title + '\n\n'; output += '=== BOOK DESCRIPTION ===\n' + d.description + '\n\n'; output += '=== ② KEYWORDS ===\n' + d.keywords.map(function(k,i) { return (i+1) + '. ' + k; }).join('\n') + '\n\n'; output += '=== CATEGORY PATHS ===\n' + d.categories.join('\n') + '\n\n'; output += '=== ③ PRICING ===\nPrinting Cost: ' + d.printingCost + '\n'; if (d.recommendedRow) { output += 'Recommended Price: $' + d.recommendedRow.price.toFixed(2) + ' (' + d.recommendedRow.label + ')\n'; output += 'Estimated Royalty: $' + ((0.6 * d.recommendedRow.price) - lastRoyaltyResult.printingCost).toFixed(2) + '\n\n'; } output += '=== ④ COVER PROMPT ===\n' + d.coverPrompt + '\n\n'; output += '=== ⑤ LAUNCH PROGRESS ===\n' + d.checkedItems + '/' + d.totalChecklistItems + ' steps complete\n\n'; if (d.uncheckedItems.length > 0) { output += 'REMAINING STEPS:\n'; d.uncheckedItems.forEach(function(s) { output += s.section + ':\n'; s.items.forEach(function(i) { output += '  ☐ ' + i + '\n'; }); output += '\n'; }); } else { output += 'All checklist items completed!\n'; } navigator.clipboard.writeText(output).then(function() { var btn = event.target; btn.textContent = 'Copied ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = '📋 Copy Complete Kit'; btn.classList.remove('copied'); }, 2000); }); }
+function downloadCompleteKit() { if (!completeKitData) { alert('Please generate your Complete Launch Kit first.'); return; } var d = completeKitData; var output = '=== MY COMPLETE KDP LAUNCH KIT ===\n\n'; output += '=== PROJECT SUMMARY ===\nNiche: ' + d.info.niche + '\nAudience: ' + (d.info.audience || 'Not specified') + '\nBook Type: ' + d.info.bookType + '\nHook: ' + (d.info.hook || 'None') + '\n\n'; output += '=== ① BOOK TITLE ===\n' + d.title + '\n\n'; output += '=== BOOK DESCRIPTION ===\n' + d.description + '\n\n'; output += '=== ② KEYWORDS ===\n' + d.keywords.map(function(k,i) { return (i+1) + '. ' + k; }).join('\n') + '\n\n'; output += '=== CATEGORY PATHS ===\n' + d.categories.join('\n') + '\n\n'; output += '=== ③ PRICING ===\nPrinting Cost: ' + d.printingCost + '\n'; if (d.recommendedRow) { output += 'Recommended Price: $' + d.recommendedRow.price.toFixed(2) + ' (' + d.recommendedRow.label + ')\n'; output += 'Estimated Royalty: $' + ((0.6 * d.recommendedRow.price) - lastRoyaltyResult.printingCost).toFixed(2) + '\n\n'; } output += '=== ④ COVER PROMPT ===\n' + d.coverPrompt + '\n\n'; output += '=== ⑤ LAUNCH PROGRESS ===\n' + d.checkedItems + '/' + d.totalChecklistItems + ' steps complete\n\n'; if (d.uncheckedItems.length > 0) { output += 'REMAINING STEPS:\n'; d.uncheckedItems.forEach(function(s) { output += s.section + ':\n'; s.items.forEach(function(i) { output += '  ☐ ' + i + '\n'; }); output += '\n'; }); } else { output += 'All checklist items completed!\n'; } var blob = new Blob([output], { type: 'text/plain' }); var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = 'kdp-launch-kit.txt'; a.click(); URL.revokeObjectURL(url); }
+
+// ============================================
+// COPY HELPER
+// ============================================
+function copyText(elementId) { var ta = document.getElementById(elementId); ta.select(); ta.setSelectionRange(0, 999999); navigator.clipboard.writeText(ta.value).then(function() { var btn = event.target; btn.textContent = 'Copied ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500); }); }
+
+// ============================================
+// INIT
+// ============================================
+loadProjects();
+buildChecklist();
+</script>
+</body>
+</html>
