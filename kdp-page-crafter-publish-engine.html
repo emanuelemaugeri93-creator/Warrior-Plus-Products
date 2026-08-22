@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -351,21 +352,36 @@
 var projects = [];
 var currentProjectId = null;
 
+// FIX: all'avvio non chiede più nulla all'utente.
+// Se non ci sono progetti salvati nel localStorage, ne crea uno
+// di default in modo silenzioso, senza mai chiamare prompt()/alert().
 function loadProjects() {
   try { var saved = localStorage.getItem('kdp_launch_projects'); if (saved) projects = JSON.parse(saved); } catch(e) { projects = []; }
-  if (projects.length === 0) createNewProject(true);
+  if (projects.length === 0) createDefaultProject();
+  currentProjectId = projects[0].id;
+  renderProjectList();
+  loadProjectIntoForm();
 }
 
 function saveProjects() { try { localStorage.setItem('kdp_launch_projects', JSON.stringify(projects)); } catch(e) {} }
 
 function getCurrentProject() { for (var i = 0; i < projects.length; i++) { if (projects[i].id === currentProjectId) return projects[i]; } return null; }
 
-function createNewProject(silent) {
+// Funzione interna, chiamata SOLO da loadProjects() all'avvio quando
+// non esiste ancora nessun progetto. Non mostra popup di alcun tipo.
+function createDefaultProject() {
+  var newProject = { id: Date.now().toString(), name: 'Book Project 1', info: { niche: '', audience: '', bookType: 'journal', hook: '' }, checklist: {}, createdAt: new Date().toISOString() };
+  projects.push(newProject);
+  saveProjects();
+}
+
+// Funzione collegata al bottone "+ New Project": qui il prompt() è corretto
+// perché è l'utente stesso a richiedere l'azione cliccando il bottone.
+function createNewProject() {
   var name = prompt('Project name:', 'Book Project ' + (projects.length + 1));
   if (!name) return;
   var newProject = { id: Date.now().toString(), name: name, info: { niche: '', audience: '', bookType: 'journal', hook: '' }, checklist: {}, createdAt: new Date().toISOString() };
   projects.push(newProject); currentProjectId = newProject.id; saveProjects(); renderProjectList(); loadProjectIntoForm();
-  if (!silent) alert('New project created: ' + name);
 }
 
 function saveCurrentProject() {
