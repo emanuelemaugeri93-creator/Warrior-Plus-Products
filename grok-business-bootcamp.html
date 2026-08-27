@@ -1,0 +1,1716 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grok Skills Business Bootcamp — The 15–20 Skill Operating Stack</title>
+<meta name="description" content="50-page system to build your Grok Skills operating stack. Skill anatomy, markdown, sandbox, Connectors (Vercel, Canva, Gamma, Gmail) + fillable worksheet.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{ -webkit-font-smoothing:antialiased }
+@media print {
+  .no-print{display:none!important}
+  .page-break{page-break-after:always}
+  body{background:white!important}
+  @page{margin:18mm 16mm}
+}
+.prose h2{font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.02em}
+.prose h3{font-family:'Space Grotesk',sans-serif; font-weight:600}
+.code{font-family:'JetBrains Mono',monospace; background:#f5f3ff; border:1px solid #ddd6fe; padding:2px 6px; border-radius:6px; font-size:12px}
+</style>
+</head>
+<body class="bg-[#fffbf7] text-zinc-900">
+<!-- Top Nav -->
+<div class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-zinc-200">
+  <div class="max-w-[980px] mx-auto px-4 md:px-6 h-[58px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center font-black">◈</div>
+      <div>
+        <div class="font-black text-[12px] tracking-tight leading-none">BUSINESS BOOTCAMP <span class="font-medium text-violet-600">— 50-PAGE GUIDE + WORKSHEET</span></div>
+        <div class="text-[11px] font-semibold tracking-widest text-zinc-400">GROK SKILLS OPERATING STACK • 15–20 SKILLS • 80% ADMIN AUTOMATED</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-2 border border-zinc-200 rounded-full px-4 py-2 text-[12px] font-bold hover:bg-zinc-50">🖨 Print / Save PDF</button>
+      <a href="#worksheet" class="bg-zinc-900 text-white font-black text-[12px] px-5 py-2.5 rounded-full hover:bg-black">Open Worksheet →</a>
+    </div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="max-w-[980px] mx-auto px-4 md:px-6">
+  <div class="mt-8 rounded-[28px] bg-zinc-900 text-white overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,.2)]">
+    <div class="grid md:grid-cols-[1.2fr_380px] gap-0">
+      <div class="p-8 md:p-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-zinc-900 text-[11px] font-black tracking-widest">GROK SKILLS BUSINESS BOOTCAMP • 2026 EDITION</div>
+        <h1 class="mt-4 font-black tracking-tight leading-[0.9] text-[34px] md:text-[46px]" style="font-family:Space Grotesk">Build Your<br><span class="text-violet-400">15–20 Skill</span><br>Operating Stack</h1>
+        <p class="mt-4 text-[14px] leading-relaxed text-zinc-400 max-w-[560px]">A 50-page step-by-step system to automate 80% of your freelance admin. Skill anatomy, instruction markdown that Grok obeys, SuperGrok sandbox for file editing, and Connector playbooks for <b class="text-white">Vercel, Canva, Gamma & Gmail</b> — plus a fillable worksheet to map every recurring task to the right Skill and prioritize what to automate first.</p>
+        <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+          <div class="rounded-2xl bg-white text-zinc-900 p-4">
+            <div class="text-[22px] font-black">50+</div><div class="text-[10px] font-black tracking-widest text-zinc-500">PAGES</div><div class="text-[11px] font-semibold">System + Examples</div>
+          </div>
+          <div class="rounded-2xl bg-violet-600 text-white p-4">
+            <div class="text-[22px] font-black">15–20</div><div class="text-[10px] font-black tracking-widest text-violet-200">SKILL STACK</div><div class="text-[11px] font-semibold">Your Library</div>
+          </div>
+          <div class="rounded-2xl bg-white text-zinc-900 p-4">
+            <div class="text-[22px] font-black">80%</div><div class="text-[10px] font-black tracking-widest text-zinc-500">ADMIN</div><div class="text-[11px] font-semibold">Automated</div>
+          </div>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-bold">
+          <span class="px-3 py-1.5 rounded-full bg-white text-zinc-900">For Copywriters • Designers • VAs • Devs • Coaches</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">Includes Fillable Worksheet</span>
+        </div>
+      </div>
+      <div class="bg-white text-zinc-900 p-6 md:p-8 flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-black tracking-widest text-violet-600">WHAT'S INSIDE</div>
+          <ul class="mt-3 space-y-2.5 text-[13px] leading-relaxed">
+            <li class="flex gap-2"><span class="text-violet-600">1.</span><span><b>Skill Anatomy</b> — Name, Description, Instructions, YAML, versioning</span></li>
+            <li class="flex gap-2"><span class="text-violet-600">2.</span><span><b>Instruction Markdown</b> — Role, Context, Inputs, Workflow, Output Template, Quality Rules</span></li>
+            <li class="flex gap-2"><span class="text-violet-600">3.</span><span><b>Sandbox</b> — file editing, persistence, testing, debugging</span></li>
+            <li class="flex gap-2"><span class="text-violet-600">4.</span><span><b>Connectors</b> — Vercel, Canva, Gamma, Gmail + Notion/Sheets</span></li>
+            <li class="flex gap-2"><span class="text-violet-600">5.</span><span><b>15–20 Stack Blueprint</b> — 4 layers, prioritization matrix, stack per niche</span></li>
+            <li class="flex gap-2"><span class="text-violet-600">6.</span><span><b>30-Day Plan + Worksheet</b> — map tasks → Skills, score priority</span></li>
+          </ul>
+        </div>
+        <div class="mt-6 rounded-xl bg-zinc-900 text-white p-4 text-center">
+          <div class="text-[11px] font-black tracking-widest text-zinc-400">START HERE</div>
+          <div class="text-[13px] font-bold mt-1">Read Chapters 1–2 today, build 3 Skills tomorrow.</div>
+          <div class="text-[11px] text-zinc-400 mt-1">Then add 1 Skill every 2 days until 15.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="mt-8 bg-white border border-zinc-200 rounded-[20px] p-6 md:p-8">
+    <h2 class="font-black text-[18px] tracking-tight">Table of Contents</h2>
+    <div class="mt-5 grid md:grid-cols-2 gap-6 text-[13px]">
+      <div class="space-y-2">
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span class="font-bold">Introduction — Why Now</span><span class="text-zinc-500">p. 3</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 1</b> — Anatomy of a Grok Skill</span><span class="text-zinc-500">p. 6</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 2</b> — Writing Instruction Markdown That Grok Obeys</span><span class="text-zinc-500">p. 12</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 3</b> — SuperGrok Sandbox: File Editing, Persistence & Testing</span><span class="text-zinc-500">p. 22</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 4</b> — Connectors Deep Dive: Vercel, Canva, Gamma, Gmail</span><span class="text-zinc-500">p. 30</span></div>
+      </div>
+      <div class="space-y-2">
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 5</b> — The 15–20 Skill Operating Stack (Blueprint)</span><span class="text-zinc-500">p. 38</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 6</b> — 30-Day Build Plan & Prioritization Matrix</span><span class="text-zinc-500">p. 48</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 7</b> — Chaining, Sequencing & Automation</span><span class="text-zinc-500">p. 54</span></div>
+        <div class="flex justify-between border-b border-zinc-100 py-2"><span><b>Chapter 8</b> — Maintenance, Iteration & Scaling to Agency</span><span class="text-zinc-500">p. 60</span></div>
+        <div class="flex justify-between py-2"><span><b>Appendices</b> — Templates, Checklists & Interactive Worksheet</span><span class="text-zinc-500">p. 66</span></div>
+      </div>
+    </div>
+    <div class="mt-4 text-[11px] text-zinc-500">Print tip: Use Chrome → Print → Save as PDF → Enable "Background graphics" for full design. The worksheet at the end is fillable in-browser and prints with your data.</div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div class="mt-8 prose max-w-none">
+    <div class="bg-amber-50 border border-amber-200 rounded-[16px] p-5">
+      <div class="text-[11px] font-black tracking-widest text-amber-700">READ THIS FIRST • 2 MIN</div>
+      <p class="text-[13px] leading-relaxed text-amber-900 mt-2"><b>How to use this Bootcamp:</b> Don't read 50 pages in one sitting. Read <b>Chapters 1–2</b> today (60 min). Tomorrow, build your first 3 Skills using the Starter Pack app + Chapter 2 template. Then add <b>1 Skill every 2 days</b> following Chapter 5's blueprint until you hit 15. By Day 30, 80% of your admin is one-click.</p>
+    </div>
+
+    <h2 class="text-[26px] mt-8">Introduction — Why Now Is a Once-in-a-Year Window</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">On <b>May 13–18, 2026</b>, xAI launched <b>Grok Custom Skills</b> for SuperGrok. The docs describe Skills as "reusable instruction sets that run with a single trigger, support markdown, file operations in sandbox, and Connector actions." The feature went viral on X within 48 hours.</p>
+    <p class="text-[14px] leading-relaxed text-zinc-600">For freelancers, this is not "another AI prompt pack." It is the first time your daily tool (Grok) can <b>remember how you like work done</b> — and run it without you re-explaining. The freelancers who build their 15–20 Skill stack in the next 90 days will have a compounding advantage. The ones who wait will be buying that stack from someone else.</p>
+    <h3 class="text-[18px] mt-6">The 80% Rule</h3>
+    <p class="text-[14px] leading-relaxed text-zinc-600">Across 200+ freelance workflows we mapped, <b>~80% of admin is structurally repeated</b>: same sections, same questions, same tables — different client name. Onboarding, proposals, invoice nudges, weekly reports, testimonial asks, content repurposing, cross-posting. If you can template the structure, Grok can fill the specifics. That's what a Skill does.</p>
+    <div class="grid md:grid-cols-3 gap-3 not-prose my-6">
+      <div class="rounded-2xl bg-white border border-zinc-200 p-5"><div class="text-[12px] font-black tracking-widest text-violet-600">BEFORE SKILLS</div><div class="text-[13px] leading-relaxed mt-2">You explain every time. 90 min per proposal. 45 min per report. Context lost between chats.</div></div>
+      <div class="rounded-2xl bg-violet-600 text-white p-5"><div class="text-[12px] font-black tracking-widest text-violet-200">AFTER 15 SKILLS</div><div class="text-[13px] leading-relaxed mt-2">You trigger <span class="font-mono bg-white text-violet-700 px-1 rounded">/skill-name</span>. Grok asks for 2–3 inputs and delivers a paste-ready output.</div></div>
+      <div class="rounded-2xl bg-zinc-900 text-white p-5"><div class="text-[12px] font-black tracking-widest text-zinc-400">AFTER CHAINS</div><div class="text-[13px] leading-relaxed mt-2">Two Skills run as one: <i class="text-white">proposal → follow-up</i> in a single invocation. One run, two outcomes.</div></div>
+    </div>
+    <h3>What This Bootcamp Gives You</h3>
+    <ul class="text-[14px] leading-relaxed text-zinc-600 list-disc pl-5 space-y-1">
+      <li>A <b>mental model</b> for Skill anatomy so you can build any Skill from scratch (Chapter 1–2)</li>
+      <li><b>Sandbox mastery</b> so your Skills edit real files without breaking them (Chapter 3)</li>
+      <li><b>Connector playbooks</b> for Vercel, Canva, Gamma, Gmail — with step-by-step setup (Chapter 4)</li>
+      <li>A <b>15–20 Skill blueprint</b> organized in 4 layers, with stacks per niche + prioritization matrix (Chapter 5)</li>
+      <li>A <b>30-day plan</b> + <b>fillable worksheet</b> to map every recurring task to the right template and ship one Skill every 2 days (Chapter 6 + Appendix)</li>
+    </ul>
+    <p class="text-[13px] text-zinc-500">You already have 12 Skills from the Starter Pack + 40 from the Agency Vault. This Bootcamp is the system that turns those 52 into <b>your</b> 15–20 — the ones that actually run your business.</p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 1 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">CHAPTER 1</div>
+    <h2 class="text-[28px]">Anatomy of a Grok Skill — The 4 Parts Grok Actually Reads</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">A Grok Skill is not a prompt. It is a <b>file</b> with 4 parts Grok parses deterministically. Get these 4 right and your Skill runs cleanly every time.</p>
+
+    <h3 class="text-[16px]">1. Name</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">The trigger. Keep it <b>2–4 words, Title Case, unique</b>. Grok turns it into <span class="code">/proposal-forge-copywriter</span>. Avoid generic names like "Proposal Helper" — be specific: <b>Proposal Forge — Copywriter Edition</b> tells Grok (and you) exactly what it does and for whom.</p>
+    <div class="not-prose rounded-xl bg-amber-50 border border-amber-200 p-4 text-[12px] leading-relaxed"><b>Rule:</b> If you can't tell what a Skill does from its name alone, rename it. Your future self at 11pm will thank you.</div>
+
+    <h3>2. Description</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">The one-liner shown in Grok's Skills list. It must <b>promise an outcome + hint at scope</b> in under 18 words. Good: <i>"Proposals that close: scope, anchored pricing, objection handling — in your voice, in 3 minutes."</i> Bad: <i>"Helps with proposals."</i> The description is also what Grok uses to suggest the Skill when your prompt matches.</p>
+
+    <h3>3. Instructions (Markdown)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">The body Grok executes. This is 90% of the Skill. It is <b>instruction markdown</b>, not chat. Structure it in 6 blocks (see Chapter 2 for the full template):</p>
+    <div class="not-prose grid md:grid-cols-2 gap-3">
+      <div class="rounded-xl bg-[#f5f3ff] border border-violet-200 p-4 text-[12px]"><b>Role</b> — Who Grok is (senior SDR, studio ops, etc.)<br><b>Context</b> — Why this task matters<br><b>Required Inputs</b> — What Grok must ask for (max 4 questions)</div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4 text-[12px]"><b>Workflow</b> — Step-by-step with numbered steps<br><b>Output Template</b> — Exact headings/tables Grok must produce<br><b>Quality Rules + Variables</b> — Constraints, tone, placeholders</div>
+    </div>
+    <p class="text-[13px] text-zinc-600">Grok follows <b>numbered workflows</b> far more reliably than paragraphs. Use <b>H2/H3 + numbered lists + tables</b>. Never write a wall of text.</p>
+
+    <h3>4. YAML Frontmatter</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">The header Grok parses for metadata. Keep it minimal and deterministic:</p>
+    <pre class="not-prose code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[12px] leading-relaxed overflow-auto">---
+name: "Proposal Forge — Copywriter Edition"
+description: "Proposals that close: scope, anchored pricing..."
+trigger: "/proposal-forge-copywriter"
+version: "1.0"
+author: "Your Name / Studio"
+category: "proposal"
+---</pre>
+    <p class="text-[12px] text-zinc-500">Trigger is auto-slugged from Name. Version lets you iterate without breaking existing invocations. Category helps you filter in this Bootcamp's worksheet.</p>
+
+    <h3>How Grok Executes a Skill (Mental Model)</h3>
+    <div class="not-prose rounded-2xl bg-zinc-900 text-white p-5">
+      <div class="grid md:grid-cols-3 gap-4 text-[12px] leading-relaxed">
+        <div><div class="font-black text-violet-300">1. TRIGGER</div><div class="text-zinc-400 mt-1">You type <span class="font-mono bg-white text-zinc-900 px-1 rounded">/proposal-forge</span> or tap the chip. Grok loads Name + Description + Instructions.</div></div>
+        <div><div class="font-black text-violet-300">2. GAP CHECK</div><div class="text-zinc-400 mt-1">Grok scans <b class="text-white">Required Inputs</b>, asks for missing ones (max 4), and waits. No guessing.</div></div>
+        <div><div class="font-black text-violet-300">3. EXECUTE WORKFLOW</div><div class="text-zinc-400 mt-1">Grok runs the numbered Workflow, produces the Output Template, applies Quality Rules, and shows only the result.</div></div>
+      </div>
+    </div>
+    <h3>Common Anatomy Mistakes</h3>
+    <ul class="text-[13px] leading-relaxed text-zinc-600 list-disc pl-5 space-y-1">
+      <li><b>Vague Name:</b> "Helper" → Grok can't distinguish. Fix: add niche + task.</li>
+      <li><b>Paragraph Instructions:</b> Grok skims. Fix: numbered steps + tables.</li>
+      <li><b>No Required Inputs:</b> Grok hallucinates [Client Name] as "Acme". Fix: list 3–4 asks explicitly.</li>
+      <li><b>No Output Template:</b> Grok invents a new format each run. Fix: define exact H2/H3 + table headers.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 2 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-violet-600 text-white text-[11px] font-black tracking-widest">CHAPTER 2</div>
+    <h2 class="text-[28px]">Writing Instruction Markdown That Grok Obeys — The 6-Block Template</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">This is the most important chapter. Copy this template for every new Skill. It is the difference between "kind of works" and "paste-ready every time."</p>
+
+    <div class="not-prose rounded-[16px] bg-[#0f0a1e] text-[#e9d5ff] p-5 md:p-6 overflow-auto">
+      <div class="text-[11px] font-black tracking-widest text-violet-400">THE 6-BLOCK TEMPLATE — COPY THIS</div>
+<pre class="mt-3 text-[12px] leading-relaxed whitespace-pre-wrap font-mono"># Role
+You are [Role] — [one-line persona, e.g., "a senior SDR for freelancers who writes ultra-personalized cold emails"].
+
+# Context
+[Why this task matters, who it is for, what happens if done poorly — 2 lines.]
+
+# Required Inputs (ask only what's missing — max 4 questions)
+- [Input 1: e.g., Client name, company, role, trigger]
+- [Input 2: e.g., Offer + proof metric]
+- [Input 3: e.g., CTA style]
+- [Input 4: e.g., Calendar link]
+
+# Workflow — Step by Step
+1. **[Step 1 name]:** [What to do, with format]
+2. **[Step 2 name]:** [What to do]
+3. **[Step 3 name]:** [What to do]
+   - Sub-bullet if needed
+4. **Output:** Produce [exact deliverable with headings/tables]
+
+# Output Template
+[H3 per section, table headers, placeholder conventions: [Client], [Link], [Date]]
+
+# Quality Rules
+- [Constraint 1: e.g., "<75 words per variant. No buzzwords."]
+- [Constraint 2: e.g., "Never invent trigger — use [NEED: trigger] if missing."]
+- [Tone: e.g., "Peer, not vendor. Specific > clever."]
+
+# Example Snippet (tone to mimic)
+> "[One example line in the desired voice]"
+
+# Sandbox & Connectors
+- Save as `[skill]-[client]-[date].md`. Offer CSV export if relevant.
+- If [Connector] active, offer draft creation.
+
+# Variables to Keep Intact
+[Prospect], [Company], [Calendar Link] — do not replace with fake data.</pre>
+    </div>
+
+    <h3 class="text-[16px]">Why This Works</h3>
+    <ul class="text-[13px] leading-relaxed text-zinc-600 list-disc pl-5 space-y-1">
+      <li><b>Role + Context:</b> Grok anchors voice and stakes before writing. "Senior SDR" + "generic openers kill reply rates" = specific, not templated.</li>
+      <li><b>Required Inputs (capped at 4):</b> Forces Grok to ask, not hallucinate. Capping prevents interrogation fatigue.</li>
+      <li><b>Numbered Workflow:</b> Grok executes sequentially. Use <b>bold step names</b> + verbs. Sub-bullets for format details.</li>
+      <li><b>Output Template:</b> Locks headers, tables, and placeholder conventions. Grok stops inventing new formats.</li>
+      <li><b>Quality Rules:</b> Hard constraints Grok respects: word counts, banned phrases, tone, and halluciation guards like <span class="code">[NEED: ...]</span>.</li>
+      <li><b>Example Snippet:</b> One line of desired voice beats 3 paragraphs of "write like a pro."</li>
+    </ul>
+
+    <h3>Markdown That Grok Loves vs Hates</h3>
+    <div class="not-prose grid md:grid-cols-2 gap-4">
+      <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+        <div class="font-black text-[12px] text-emerald-700">✓ DO</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>H2/H3 + numbered steps + tables</li>
+          <li>Placeholders in <span class="code">[Brackets]</span> (Grok preserves them)</li>
+          <li>Word limits: "<75 words"</li>
+          <li>Tone as contrast: "Peer, not vendor. Specific > clever."</li>
+          <li>Gap flag: <span class="code">[NEED: trigger]</span></li>
+        </ul>
+      </div>
+      <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+        <div class="font-black text-[12px] text-red-700">✕ DON'T</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>Wall of paragraphs (Grok skims, misses steps)</li>
+          <li>Vague "make it engaging" (use word count + example)</li>
+          <li>Fake data: "Acme Corp" (use [Client])</li>
+          <li>Emoji in proposal/testimonial body (breaks tone)</li>
+          <li>Uncapped inputs (asks 10 questions, user quits)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Placeholders & Variables — The Only Convention You Need</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Use <span class="code">[Brackets with Title Case + Space]</span> for every variable Grok must not invent: <span class="code">[Prospect]</span>, <span class="code">[Company]</span>, <span class="code">[Calendar Link]</span>, <span class="code">[Trigger Detail]</span>, <span class="code">[Report Link]</span>. Grok preserves bracketed placeholders. Never use curly braces <span class="code">{company}</span> — Grok tries to fill them.</p>
+
+    <h3>Error Handling That Builds Trust</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Add one line under <b>Quality Rules</b>: <i>"If critical data is missing, don't invent pricing — use [To be confirmed] and flag as [NEED: X]."</i> Clients forgive [NEED], they don't forgive hallucinated prices.</p>
+
+    <h3>Exercise — Rewrite One Skill With the Template (15 min)</h3>
+    <div class="not-prose rounded-xl bg-zinc-900 text-white p-5">
+      <div class="text-[11px] font-black tracking-widest text-violet-300">DO THIS NOW</div>
+      <div class="mt-2 text-[13px] leading-relaxed text-zinc-300">Pick one recurring task you did this week (e.g., follow-up email). Copy the 6-block template above into Grok's Skill editor. Fill Role/Context in 2 lines, list 3 Required Inputs, write a 4-step Workflow, define the Output Template (H3 + table), add 2 Quality Rules. Save and trigger it. You just built a Skill.</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 3 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-black tracking-widest">CHAPTER 3</div>
+    <h2 class="text-[28px]">SuperGrok Sandbox — File Editing, Persistence & Testing Without Breaking Anything</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">Sandbox is what turns Skills from "paste into chat" to "edit real files, trigger real actions." It is also where you can break things safely — if you know the rules.</p>
+
+    <h3>What Sandbox Actually Is</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">When you enable sandbox for a Skill, Grok gets a <b>private filesystem</b> for that run: you can ask it to <span class="code">save as proposal-[client]-[date].md</span>, <span class="code">export CSV for mail merge</span>, or <span class="code">create draft via Gmail Connector</span>. Files persist per Skill run and can be downloaded. They do not touch your real Drive unless you use a Connector.</p>
+
+    <h3>Save Patterns That Work</h3>
+    <div class="not-prose grid md:grid-cols-2 gap-3">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[12px]">✓ GOOD SAVE NAMES</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-disc pl-4 space-y-1">
+          <li><span class="code">cold-opener-[company]-[date].md</span></li>
+          <li><span class="code">monthly-roi-[client]-[YYYY-MM].md</span></li>
+          <li><span class="code">chain-proposal-followup-[date].md</span></li>
+          <li>Slug from Name + date or client → unique, sortable</li>
+        </ul>
+      </div>
+      <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+        <div class="font-black text-[12px] text-red-700">✕ BAD SAVE NAMES</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li><span class="code">output.md</span> (overwrites next run)</li>
+          <li><span class="code">final-final-v2.md</span> (unsearchable)</li>
+          <li>Any name without date/client → you will lose it</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Testing Checklist — Run Before You Trust a Skill</h3>
+    <div class="not-prose rounded-xl bg-[#f5f3ff] border border-violet-200 p-5">
+      <div class="text-[11px] font-black tracking-widest text-violet-700">5-MINUTE TEST PROTOCOL</div>
+      <ol class="mt-3 text-[13px] leading-relaxed text-zinc-700 list-decimal pl-5 space-y-1.5">
+        <li><b>Empty input test:</b> Trigger Skill with no inputs → Does it ask max 4 questions (not hallucinate)?</li>
+        <li><b>Partial input test:</b> Give 2 of 3 inputs → Does it flag [NEED: X] for the missing one?</li>
+        <li><b>Full input test:</b> Provide all inputs → Does output match Output Template exactly (H2/H3 + tables)?</li>
+        <li><b>Save test:</b> Ask "Save as [skill]-[client]-[date].md" → Does file appear for download?</li>
+        <li><b>Re-run test:</b> Trigger again with same inputs → Does it produce consistent format (not a new format each time)?</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500">If any test fails, tighten the Workflow steps or Output Template — not the Role. Grok obeys structure more than persona.</div>
+    </div>
+
+    <h3>Persistence & Limits You Must Know</h3>
+    <ul class="text-[13px] leading-relaxed text-zinc-600 list-disc pl-5 space-y-1">
+      <li><b>Per-run persistence:</b> Files live for that Skill run. Download immediately or re-save via Connector.</li>
+      <li><b>No auto-overwrite:</b> Saving same name twice creates a new version — Grok will not silently overwrite.</li>
+      <li><b>Size:</b> Keep Skills under ~800 tokens of instructions. If yours is longer, split into a Chain (Chapter 7).</li>
+      <li><b>Connectors need explicit permission:</b> A Skill cannot email or push to Canva until you say "Create draft via Gmail/Canva Connector".</li>
+    </ul>
+
+    <h3>Debugging — When a Skill Misbehaves</h3>
+    <div class="not-prose rounded-xl bg-zinc-900 text-white p-5">
+      <div class="text-[11px] font-black tracking-widest text-zinc-400">3 FIXES THAT SOLVE 90% OF ISSUES</div>
+      <div class="mt-3 grid md:grid-cols-3 gap-4 text-[12px] leading-relaxed">
+        <div><b class="text-white">1. Output drift</b><br><span class="text-zinc-400">Grok invents new headings → Lock Output Template with exact H2/H3 + table headers.</span></div>
+        <div><b class="text-white">2. Hallucinated data</b><br><span class="text-zinc-400">Grok invents [Acme] → Add "Never invent trigger — use [NEED]" to Quality Rules.</span></div>
+        <div><b class="text-white">3. Too many questions</b><br><span class="text-zinc-400">Grok asks 8 inputs → Cap Required Inputs at 4, with max 4 questions.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 4 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-blue-600 text-white text-[11px] font-black tracking-widest">CHAPTER 4</div>
+    <h2 class="text-[28px]">Connectors Deep Dive — Make Your Skills Edit Real Tools (Vercel, Canva, Gamma, Gmail)</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">Skills describe <i>what</i> to do. Connectors let Skills <i>do it</i> in your real tools — without you copy-pasting. You must explicitly invoke them.</p>
+
+    <h3>The Connector Model (How xAI Designed It)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Connectors are platform integrations (Vercel, Canva, Gamma, Gmail, Notion, Sheets) that Grok can call <b>from within a Skill</b> when you include a line like <span class="code">Create draft via Gmail Connector</span> or <span class="code">Push to Canva Connector as 1080x1080</span>. Without that line, the Skill stays in text-only mode. This is intentional — you stay in control.</p>
+
+    <div class="not-prose rounded-2xl bg-zinc-900 text-white p-6">
+      <div class="text-[11px] font-black tracking-widest text-violet-300">THE PATTERN — ADD ONE LINE TO ANY SKILL</div>
+      <div class="mt-3 text-[12px] font-mono leading-relaxed text-zinc-300">...<br># Sandbox & Connectors<br>- Save as `proposal-[client]-[date].md`.<br>- If Gmail Connector is active, create draft with Subject + Body.<br>- If Canva Connector is active, push as 1080x1080 quote card.<br>→ Grok will ask for connector permission, then execute.</div>
+    </div>
+
+    <h3 class="text-[16px]">Vercel Connector — For Developers</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600"><b>Use when:</b> Your Skill produces code, a landing page, or a spec that should become a preview deployment.</p>
+    <div class="not-prose rounded-xl bg-white border border-zinc-200 p-4">
+      <div class="text-[12px] font-black">SETUP (2 MIN)</div>
+      <ol class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-decimal pl-4 space-y-1">
+        <li>In Grok → Settings → Connectors → Enable Vercel → Auth with Vercel</li>
+        <li>In your Skill, add: <span class="code">If Vercel Connector is active, deploy as preview and return URL.</span></li>
+        <li>Trigger Skill with code/markdown → Grok returns <span class="code">https://preview-xxx.vercel.app</span></li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500"><b>Pairs best with:</b> Spec Sprint, Ship Log, Launch Cross-Post Kit.</div>
+    </div>
+
+    <h3>Vercel Example</h3>
+    <pre class="not-prose code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[12px] leading-relaxed overflow-auto"># Sandbox & Connectors
+- Save as `spec-[feature]-[date].md`.
+- If Vercel Connector is active, deploy the PRD as a preview site and return the URL + QR.
+- Otherwise, output the markdown only.</pre>
+
+    <h3>Canva Connector — For Designers & Coaches</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600"><b>Use when:</b> Your Skill produces a quote card, testimonial, one-pager, or carousel that should become a visual.</p>
+    <div class="not-prose rounded-xl bg-white border border-zinc-200 p-4">
+      <div class="text-[12px] font-black">SETUP</div>
+      <ol class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-decimal pl-4 space-y-1">
+        <li>Enable Canva Connector → Auth</li>
+        <li>In Skill, add: <span class="code">If Canva Connector is active, push as 1080x1080 (or 1920x1080 for deck) and return edit link.</span></li>
+        <li>Specify spec: font [Inter Bold], bg [Violet/White], text centered</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500"><b>Pairs best with:</b> Proof Collector → Canva (testimonial card), Podcast → Quote Cards, QBR Deck Outline.</div>
+    </div>
+
+    <h3>Gamma Connector — For Proposal & Reporting Decks</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600"><b>Use when:</b> Your Skill outlines a deck (QBR, proposal, onboarding) that should become slides.</p>
+    <div class="not-prose rounded-xl bg-white border border-zinc-200 p-4">
+      <div class="text-[12px] font-black">SETUP</div>
+      <ol class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-decimal pl-4 space-y-1">
+        <li>Enable Gamma Connector → Auth</li>
+        <li>In Skill, add: <span class="code">If Gamma Connector is active, create deck from Output Template (H2 = slide title) and return Gamma URL.</span></li>
+        <li>Use H2 per slide in your Output Template — Gamma maps H2 to slides automatically</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500"><b>Pairs best with:</b> QBR Deck Outline, Proposal Forge (Investment slide), Monthly ROI Report.</div>
+    </div>
+
+    <h3>Gmail Connector — For Outreach & Follow-up</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600"><b>Use when:</b> Your Skill writes emails that should become drafts, not just text.</p>
+    <div class="not-prose rounded-xl bg-white border border-zinc-200 p-4">
+      <div class="text-[12px] font-black">SETUP</div>
+      <ol class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-decimal pl-4 space-y-1">
+        <li>Enable Gmail Connector → Auth → Grant draft permission (not send)</li>
+        <li>In Skill, add: <span class="code">If Gmail Connector is active, create draft(s) with Subject + Body. Do not send — return draft link(s).</span></li>
+        <li>Trigger → Grok creates draft(s) → you review → you hit Send in Gmail</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500"><b>Pairs best with:</b> Cold Email Opener, Nudge Engine, Referral Engine, Renewal Pitch. Chain: Cold Opener → Follow-up Nudge creates 4 drafts at once.</div>
+    </div>
+
+    <h3>Notion / Sheets Connectors — For the Worksheet</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">The worksheet at the end of this Bootcamp can be pushed to Notion or Sheets: <span class="code">If Notion Connector is active, create database "Grok Skills Stack" with columns: Task | Skill | Priority | Time Saved | Status</span>. This turns your 15–20 stack into a living database.</p>
+
+    <div class="not-prose rounded-xl bg-amber-50 border border-amber-200 p-4">
+      <div class="text-[12px] font-black text-amber-800">⚠️ CONNECTOR SAFETY</div>
+      <div class="mt-1 text-[12px] leading-relaxed text-amber-900">Skills never auto-send. The words <b>"create draft"</b> and <b>"do not send — return link"</b> are intentional. Grok will always return a draft link for you to review. Keep it that way.</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 5 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-violet-600 text-white text-[11px] font-black tracking-widest">CHAPTER 5</div>
+    <h2 class="text-[28px]">The 15–20 Skill Operating Stack — Your 4-Layer Blueprint</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">You don't need 50 Skills. You need <b>15–20 that cover your 4 layers</b>: Acquisition, Delivery, Operations, Growth. Everything else is a distraction. This chapter gives you the blueprint and the prioritization matrix to pick your 15.</p>
+
+    <h3>The 4 Layers</h3>
+    <div class="not-prose grid md:grid-cols-2 gap-4">
+      <div class="rounded-2xl bg-orange-50 border border-orange-200 p-5">
+        <div class="font-black text-[13px] text-orange-700">LAYER 1 — ACQUISITION (4–5 Skills)</div>
+        <div class="text-[12px] text-zinc-600 mt-2">Get clients. Must automate first — it pays for everything else.</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>Cold Email Opener / LinkedIn DM Sequence</li>
+          <li>Discovery Call Invite</li>
+          <li>Proposal Forge / Scope Lock / Spec Sprint</li>
+          <li>Follow-up Nudge + Breakup Email</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-blue-50 border border-blue-200 p-5">
+        <div class="font-black text-[13px] text-blue-700">LAYER 2 — DELIVERY (3–4 Skills)</div>
+        <div class="text-[12px] text-zinc-600 mt-2">Do the work. Onboarding + reporting that makes clients feel safe.</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>Onboard Canvas / Ops Onboard / Welcome Path</li>
+          <li>Project Pulse / Ship Log / Pulse Report</li>
+          <li>Handover Pack (offboarding)</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-5">
+        <div class="font-black text-[13px] text-emerald-700">LAYER 3 — OPERATIONS (3–4 Skills)</div>
+        <div class="text-[12px] text-zinc-600 mt-2">Keep money and time clean.</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>Nudge Engine (invoice chase)</li>
+          <li>Retainer Usage / Hours Alert / Renewal Pitch</li>
+          <li>Scope Guard (creep defender)</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-fuchsia-50 border border-fuchsia-200 p-5">
+        <div class="font-black text-[13px] text-fuchsia-700">LAYER 4 — GROWTH (3–4 Skills)</div>
+        <div class="text-[12px] text-zinc-600 mt-2">Turn work into more work.</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-700 list-disc pl-4 space-y-1">
+          <li>Proof Collector → Case Study</li>
+          <li>Threadify / Webinar → 5 Posts / Blog → Newsletter</li>
+          <li>Launch Cross-Post Kit / Viral Hook Vault</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Stacks by Niche — Pick Your 15</h3>
+    <div class="not-prose space-y-3">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[13px]">Copywriter — 15 Stack</div>
+        <div class="text-[12px] text-zinc-600 mt-1">Proposal Forge, Brief Decoder, Cold Opener, LinkedIn DM, Follow-up Nudge, Nudge Engine, Onboard Canvas, Pulse Report (for content), Proof Collector, Threadify, Blog→Newsletter, Launch Kit, Platform Adaptor, Scope Guard, Referral Engine</div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[13px]">Designer — 15 Stack</div>
+        <div class="text-[12px] text-zinc-600 mt-1">Onboard Canvas, Scope Lock, Proposal Forge (design), Cold Opener, Referral Engine, Nudge Engine, Project Pulse, Retainer Usage, Proof Collector → Case Study, Threadify, Canva Push, Launch Kit, Viral Hook Vault, Scope Guard, Handover Pack</div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[13px]">VA / OBM — 15 Stack</div>
+        <div class="text-[12px] text-zinc-600 mt-1">Ops Onboard, Pulse Report, Nudge Engine, Hours Alert, Retainer Usage, Monthly Planner, Renewal Pitch, Scope Guard, Inbox triage (custom), Content Dashboard, Calendar Filler, Threadify, Launch Kit, Handover Pack, Pause & Resume</div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[13px]">Developer — 15 Stack</div>
+        <div class="text-[12px] text-zinc-600 mt-1">Spec Sprint, Ship Log, Project Pulse, Cold Opener, Proposal Follow-up, Nudge Engine, Onboard Canvas (dev), Monthly ROI, Ad Spend Report, Threadify, Video → Show Notes, Launch Kit, Retainer Audit, Scope Guard, Handover Pack</div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="font-black text-[13px]">Coach / Consultant — 15 Stack</div>
+        <div class="text-[12px] text-zinc-600 mt-1">Welcome Path, Progress Prism, Proposal Forge (coaching), Discovery Invite, Follow-up Nudge, Nudge Engine, Proof Collector, Testimonial → Case Study, Webinar → 5 Posts, Blog → Newsletter, Launch Kit, Viral Hook Vault, Renewal Pitch, Scope Guard, Referral Engine</div>
+      </div>
+    </div>
+
+    <h3>Prioritization Matrix — What to Build First</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Score each recurring task on two axes: <b>Frequency (how often you do it)</b> × <b>Pain (how much you hate it / how much time it eats)</b>. Build high-frequency + high-pain first.</p>
+    <div class="not-prose rounded-xl overflow-hidden border border-zinc-200">
+      <div class="grid grid-cols-3 text-[11px] font-black tracking-widest">
+        <div class="bg-zinc-100 p-3 text-zinc-500"></div>
+        <div class="bg-amber-100 p-3 text-amber-800 text-center">LOW PAIN</div>
+        <div class="bg-red-100 p-3 text-red-800 text-center">HIGH PAIN</div>
+      </div>
+      <div class="grid grid-cols-3 text-[12px] leading-relaxed">
+        <div class="bg-emerald-50 p-4 font-black text-emerald-700 flex items-center">HIGH FREQUENCY</div>
+        <div class="p-4 bg-amber-50 border-l border-zinc-200"><b>Automate 2nd</b><br><span class="text-zinc-600">e.g., Weekly Report (often, but tolerable)</span></div>
+        <div class="p-4 bg-red-50 border-l border-zinc-200"><b>Automate 1st 🔥</b><br><span class="text-zinc-600">e.g., Proposals, Invoice Chase (often + painful)</span></div>
+      </div>
+      <div class="grid grid-cols-3 text-[12px] leading-relaxed border-t border-zinc-200">
+        <div class="bg-zinc-50 p-4 font-black flex items-center">LOW FREQUENCY</div>
+        <div class="p-4 bg-zinc-50 border-l border-zinc-200"><b>Ignore</b><br><span class="text-zinc-600">e.g., Annual audit (rare + okay)</span></div>
+        <div class="p-4 bg-orange-50 border-l border-zinc-200"><b>Automate 3rd</b><br><span class="text-zinc-600">e.g., Testimonials (rare but painful)</span></div>
+      </div>
+    </div>
+    <p class="text-[12px] text-zinc-500">Your worksheet scores this automatically: Frequency (1–5) × Pain (1–5) = Priority (1–25). Build 20+ first.</p>
+
+    <h3>The 15-Skill Commitment</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">You need <b>15 Skills to cover 80%</b>. Fewer than 12 and you still hand-crank. More than 20 and you maintain a library you don't use. Commit to 15. The worksheet will pick them for you.</p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 6 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">CHAPTER 6</div>
+    <h2 class="text-[28px]">30-Day Build Plan — From 0 to 15 Skills Without Burning Out</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">You will not build 15 Skills in a weekend. You will build <b>1 every 2 days</b> for 30 days. That's sustainable, and each Skill pays for the next one in time saved.</p>
+
+    <div class="not-prose grid md:grid-cols-4 gap-3">
+      <div class="rounded-2xl bg-violet-600 text-white p-5">
+        <div class="text-[11px] font-black tracking-widest text-violet-200">WEEK 1 — FOUNDATION (3 Skills)</div>
+        <div class="mt-2 font-black text-[14px]">Lay the base</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-violet-100 list-disc pl-4 space-y-1">
+          <li>Day 1–2: Proposal Forge (your most painful)</li>
+          <li>Day 3–4: Nudge Engine (money)</li>
+          <li>Day 5–7: Onboard Canvas / Ops Onboard (delivery)</li>
+        </ul>
+        <div class="mt-3 text-[11px] font-bold">Outcome: You already feel the lift.</div>
+      </div>
+      <div class="rounded-2xl bg-white border border-zinc-200 p-5">
+        <div class="text-[11px] font-black tracking-widest text-zinc-500">WEEK 2 — ACQUISITION (4 Skills)</div>
+        <div class="mt-2 font-black text-[14px]">Fill the pipeline</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-disc pl-4 space-y-1">
+          <li>Cold Opener or LinkedIn DM</li>
+          <li>Discovery Invite</li>
+          <li>Follow-up Nudge</li>
+          <li>Breakup Email</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white border border-zinc-200 p-5">
+        <div class="text-[11px] font-black tracking-widest text-zinc-500">WEEK 3 — DELIVERY & OPS (4 Skills)</div>
+        <div class="mt-2 font-black text-[14px]">Make clients stay</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-disc pl-4 space-y-1">
+          <li>Ship Log / Pulse Report / Project Pulse</li>
+          <li>Retainer Usage or Hours Alert</li>
+          <li>Scope Guard</li>
+          <li>Handover Pack</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-zinc-900 text-white p-5">
+        <div class="text-[11px] font-black tracking-widest text-zinc-400">WEEK 4 — GROWTH (4 Skills)</div>
+        <div class="mt-2 font-black text-[14px]">Turn work into more work</div>
+        <ul class="mt-2 text-[12px] leading-relaxed text-zinc-300 list-disc pl-4 space-y-1">
+          <li>Proof Collector → Case Study</li>
+          <li>Threadify or Blog → Newsletter</li>
+          <li>Launch Kit</li>
+          <li>Referral Engine</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Daily Build Ritual (45 Minutes)</h3>
+    <div class="not-prose rounded-xl bg-[#f5f3ff] border border-violet-200 p-5">
+      <ol class="text-[13px] leading-relaxed text-zinc-700 list-decimal pl-5 space-y-2">
+        <li><b>Pick the next task</b> from your worksheet's Priority column (highest score first) — 2 min</li>
+        <li><b>Copy the 6-block template</b> from Chapter 2 → paste into Grok Skill editor — 3 min</li>
+        <li><b>Fill the 4 blocks</b> (Role, Context, Required Inputs, Workflow) using the worksheet's "Skill to Use" as a starting point — 20 min</li>
+        <li><b>Define Output Template</b> (H2/H3 + table headers) — 10 min</li>
+        <li><b>Run the 5-minute test protocol</b> from Chapter 3 (empty → partial → full → save → re-run) — 10 min</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500">If a Skill fails a test, don't rewrite the Role — tighten the Workflow steps or Output Template. Structure obeys more than persona.</div>
+    </div>
+
+    <h3>Scoring Your Tasks — How the Worksheet Prioritizes for You</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Each row in the worksheet scores:</p>
+    <div class="not-prose rounded-xl overflow-hidden border border-zinc-200">
+      <div class="grid grid-cols-5 text-[11px] font-black tracking-widest bg-zinc-100">
+        <div class="p-3">FACTOR</div><div class="p-3 text-center">1</div><div class="p-3 text-center">3</div><div class="p-3 text-center">5</div><div class="p-3">WEIGHT</div>
+      </div>
+      <div class="grid grid-cols-5 text-[12px] leading-relaxed border-t border-zinc-200">
+        <div class="p-3 font-bold">Frequency</div><div class="p-3 text-center">Monthly</div><div class="p-3 text-center">Weekly</div><div class="p-3 text-center">Daily</div><div class="p-3 text-zinc-500">× Pain</div>
+      </div>
+      <div class="grid grid-cols-5 text-[12px] leading-relaxed border-t border-zinc-200">
+        <div class="p-3 font-bold">Pain</div><div class="p-3 text-center">Tolerable</div><div class="p-3 text-center">Annoying</div><div class="p-3 text-center">Drains you</div><div class="p-3 font-bold">= Priority (1–25)</div>
+      </div>
+      <div class="grid grid-cols-5 text-[12px] leading-relaxed border-t border-zinc-200">
+        <div class="p-3 font-bold">Time</div><div class="p-3 text-center">15m</div><div class="p-3 text-center">60m</div><div class="p-3 text-center">2h+</div><div class="p-3 text-zinc-500">→ Hrs saved/mo</div>
+      </div>
+    </div>
+    <p class="text-[12px] text-zinc-500">Priority = Frequency × Pain. The worksheet auto-ranks. Build 20+ first, then 12–19, then 6–11. Ignore ≤5 for now.</p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 7 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-fuchsia-600 text-white text-[11px] font-black tracking-widest">CHAPTER 7</div>
+    <h2 class="text-[28px]">Chaining, Sequencing & Automation — When One Skill Isn't Enough</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">A single Skill automates one task. A <b>Chain</b> automates a sequence: the output of Step 1 becomes the input of Step 2, in one invocation. This is where SuperGrok's sandbox shines.</p>
+
+    <h3>The Chain Model</h3>
+    <pre class="not-prose code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[12px] leading-relaxed overflow-auto">---
+name: "Chain — Proposal Forge → Nudge Engine"
+description: "Sequential: Proposal Forge then Nudge Engine. Step 1 output piped into Step 2."
+trigger: "/chain-proposal-nudge"
+---
+
+# Skill Chain — Sequential Workflow
+> This chain runs **Proposal Forge** then **Nudge Engine** in sequence.
+
+## How to run
+1. Trigger /chain-proposal-nudge with Step 1 inputs (client, scope)
+2. Grok executes Step 1 (proposal)
+3. Grok pipes Step 1 output into Step 2 (follow-up) and executes
+4. You get both outputs + a Handoff Summary
+
+## STEP 1 — Proposal Forge
+[Full instructions of Proposal Forge]
+
+## STEP 2 — Nudge Engine
+[Full instructions of Nudge Engine]
+
+## Chain Output Format
+1. Step 1 Result (full)
+2. Step 2 Result (full, using Step 1 output as input)
+3. Handoff Summary (1 para: what was done + next action)</pre>
+    <p class="text-[12px] text-zinc-500">Use the Agency Vault's Chain Builder (drag two cards → Export) to generate this file automatically — no manual merging.</p>
+
+    <h3>5 Chains That Print Money</h3>
+    <div class="not-prose grid md:grid-cols-2 gap-3">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-[13px]">1. Proposal Forge → Follow-up Nudge</b><div class="text-[12px] text-zinc-600 mt-1">Send proposal, then auto-generate the 24h/72h follow-ups with the same scope + price piped in.</div></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-[13px]">2. Onboard Canvas → Welcome Path</b><div class="text-[12px] text-zinc-600 mt-1">New client → welcome email + intake + 7-day roadmap in one run.</div></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-[13px]">3. Cold Opener → LinkedIn DM Sequence</b><div class="text-[12px] text-zinc-600 mt-1">Same prospect + trigger → email + LinkedIn touches, coordinated.</div></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-[13px]">4. Ship Log → Monthly ROI Report</b><div class="text-[12px] text-zinc-600 mt-1">Weekly logs piped into monthly narrative + metrics table.</div></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4 md:col-span-2"><b class="text-[13px]">5. Proof Collector → Case Study → Canva</b><div class="text-[12px] text-zinc-600 mt-1">Testimonial answers → case study draft → Canva card via Connector. Three outputs, one trigger.</div></div>
+    </div>
+
+    <h3>Chain Rules</h3>
+    <ul class="text-[13px] leading-relaxed text-zinc-600 list-disc pl-5 space-y-1">
+      <li><b>2 Skills per Chain</b> — more than 2 becomes brittle. Chain 2, then chain the result again if needed.</li>
+      <li><b>Explicit handoff:</b> End Step 1 with <span class="code">→ Output to be used as input for Step 2: [Proposal Link], [Scope], [Price]</span></li>
+      <li><b>One trigger, one run:</b> The chain is ONE Skill. Don't create two separate Skills and run them manually.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 8 -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">CHAPTER 8</div>
+    <h2 class="text-[28px]">Maintenance, Iteration & Scaling to Agency</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">A 15-Skill stack rots if you don't maintain it. Iteration is 10 minutes a week. Scaling to agency is 1 hour of templating.</p>
+
+    <h3>Weekly Iteration Ritual (10 Minutes, Friday)</h3>
+    <div class="not-prose rounded-xl bg-[#f5f3ff] border border-violet-200 p-5">
+      <ol class="text-[13px] leading-relaxed text-zinc-700 list-decimal pl-5 space-y-2">
+        <li><b>Review 1 Skill you used this week:</b> What needed manual fixing? (e.g., Grok invented a price)</li>
+        <li><b>Tighten 1 line:</b> Change the Output Template or add a Quality Rule — e.g., add <span class="code">"Never invent price — use [To be confirmed]"</span></li>
+        <li><b>Bump version:</b> <span class="code">version: "1.0" → "1.1"</span> and note the change in the Skill's description.</li>
+      </ol>
+      <div class="mt-3 text-[11px] text-zinc-500">Small, frequent edits beat "rewrite the whole Skill". Versioning lets you rollback if a tweak makes it worse.</div>
+    </div>
+
+    <h3>Metrics That Matter (Track in Your Worksheet)</h3>
+    <div class="not-prose rounded-xl overflow-hidden border border-zinc-200">
+      <div class="grid grid-cols-4 text-[11px] font-black tracking-widest bg-zinc-100">
+        <div class="p-3">METRIC</div><div class="p-3 text-center">HOW TO MEASURE</div><div class="p-3 text-center">GOOD</div><div class="p-3 text-center">FIX IF</div>
+      </div>
+      <div class="grid grid-cols-4 text-[12px] leading-relaxed border-t border-zinc-200"><div class="p-3 font-bold">Time Saved</div><div class="p-3 text-center">(Manual time − Skill time) × runs</div><div class="p-3 text-center text-emerald-600">>2h/mo per Skill</div><div class="p-3 text-center text-red-600">&lt;30m/mo → deprioritize</div></div>
+      <div class="grid grid-cols-4 text-[12px] leading-relaxed border-t border-zinc-200"><div class="p-3 font-bold">Paste-Ready Rate</div><div class="p-3 text-center">% of outputs you send without edits</div><div class="p-3 text-center text-emerald-600">>80%</div><div class="p-3 text-center text-red-600">&lt;50% → tighten Output Template</div></div>
+      <div class="grid grid-cols-4 text-[12px] leading-relaxed border-t border-zinc-200"><div class="p-3 font-bold">Chain Success</div><div class="p-3 text-center">% of chains that run Step1→Step2 without manual handoff</div><div class="p-3 text-center text-emerald-600">>90%</div><div class="p-3 text-center text-red-600">&lt;70% → add explicit handoff line</div></div>
+    </div>
+
+    <h3>Scaling to Agency (1 Hour)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Your 15 Skills are your agency's SOPs. To scale:</p>
+    <ol class="text-[13px] leading-relaxed text-zinc-600 list-decimal pl-5 space-y-1">
+      <li><b>Duplicate + niche:</b> Copy <span class="code">Proposal Forge — Copywriter</span> → <span class="code">Proposal Forge — Designer</span> and change Role/Context (10 min).</li>
+      <li><b>Add "Agency Variables":</b> Replace <span class="code">[Your Name]</span> with <span class="code">[Account Manager]</span>, <span class="code">[Studio Name]</span> so any team member can run it.</li>
+      <li><b>Create a "Team Skills" doc:</b> One Notion page with table: Skill | Trigger | When to use | Who owns. Share with team.</li>
+    </ol>
+    <div class="not-prose rounded-xl bg-amber-50 border border-amber-200 p-4 text-[12px] leading-relaxed text-amber-900"><b>Rule:</b> Don't scale a Skill you haven't used 5 times yourself. Use, then systematize.</div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- APPENDIX / WORKSHEET -->
+  <div id="worksheet" class="mt-10">
+    <div class="inline-flex px-3 py-1 rounded-full bg-violet-600 text-white text-[11px] font-black tracking-widest">APPENDIX — INTERACTIVE WORKSHEET</div>
+    <h2 class="mt-3 font-black text-[28px] tracking-tight" style="font-family:Space Grotesk">Map Every Recurring Task to the Right Skill — Fillable Worksheet</h2>
+    <p class="mt-2 text-[14px] leading-relaxed text-zinc-600">Fill this table directly in your browser. It auto-scores priority (Frequency × Pain), estimates hours saved per month, and suggests the Skill template to use. Your data stays in your browser (localStorage) and prints with the guide. <b>Tip:</b> Duplicate a row for each new task.</p>
+
+    <div class="mt-6 no-print flex flex-wrap gap-2">
+      <button id="addRow" class="bg-violet-600 text-white font-bold text-[13px] px-5 py-2.5 rounded-full hover:bg-violet-700">＋ Add Task Row</button>
+      <button id="exportCsv" class="bg-white border border-zinc-200 font-bold text-[13px] px-5 py-2.5 rounded-full hover:bg-zinc-50">⬇ Export CSV</button>
+      <button id="printWs" class="bg-zinc-900 text-white font-bold text-[13px] px-5 py-2.5 rounded-full hover:bg-black">🖨 Print Worksheet</button>
+      <button id="clearWs" class="border border-red-200 text-red-600 font-bold text-[13px] px-5 py-2.5 rounded-full hover:bg-red-50">Clear All</button>
+      <span class="text-[11px] text-zinc-500 self-center">Auto-saved • <span id="rowCount">0</span> tasks • <span id="totalHours">0</span> hrs/mo saved</span>
+    </div>
+
+    <div class="mt-4 overflow-auto rounded-[16px] border border-zinc-200 bg-white">
+      <table class="w-full text-[12px] leading-tight min-w-[980px]">
+        <thead class="bg-zinc-900 text-white text-[10px] font-black tracking-widest">
+          <tr>
+            <th class="text-left p-3 w-[22%]">RECURRING TASK<br><span class="font-normal normal-case tracking-normal text-zinc-400">E.g., Client onboarding</span></th>
+            <th class="text-left p-3 w-[14%]">FREQUENCY<br><span class="font-normal normal-case tracking-normal text-zinc-400">1–5</span></th>
+            <th class="text-left p-3 w-[14%]">PAIN<br><span class="font-normal normal-case tracking-normal text-zinc-400">1–5</span></th>
+            <th class="text-left p-3 w-[10%]">HRS /<br>RUN</th>
+            <th class="text-left p-3 w-[14%]">SKILL TO USE<br><span class="font-normal normal-case tracking-normal text-zinc-400">Auto-suggested</span></th>
+            <th class="text-center p-3 w-[10%]">PRIORITY<br><span class="font-normal normal-case tracking-normal text-zinc-400">F×P</span></th>
+            <th class="text-center p-3 w-[10%]">HRS / MO<br>SAVED</th>
+            <th class="p-3 w-[6%]"></th>
+          </tr>
+        </thead>
+        <tbody id="wsBody"></tbody>
+        <tfoot class="bg-[#f5f3ff] border-t-2 border-violet-300 font-bold text-[12px]">
+          <tr>
+            <td class="p-3" colspan="5">TOTALS — Your 15–20 Stack</td>
+            <td class="p-3 text-center" id="totalPriority">—</td>
+            <td class="p-3 text-center" id="totalHoursFoot">0</td>
+            <td class="p-3"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="mt-4 grid md:grid-cols-3 gap-3 text-[11px]">
+      <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4"><b class="text-emerald-700">Priority 20–25 → Build First 🔥</b><br><span class="text-zinc-600">High frequency + high pain. These pay for the Bootcamp in one run.</span></div>
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-4"><b class="text-amber-700">Priority 12–19 → Build Second</b><br><span class="text-zinc-600">Often + annoying. Build in Weeks 2–3.</span></div>
+      <div class="rounded-xl bg-zinc-50 border border-zinc-200 p-4"><b>Priority ≤11 → Ignore for Now</b><br><span class="text-zinc-600">Rare or tolerable. Revisit after your 15 are live.</span></div>
+    </div>
+
+    <div class="mt-6 rounded-xl bg-zinc-900 text-white p-5">
+      <div class="text-[11px] font-black tracking-widest text-violet-300">HOW TO USE YOUR SCORES</div>
+      <ol class="mt-2 text-[12px] leading-relaxed text-zinc-300 list-decimal pl-5 space-y-1">
+        <li>Fill every recurring task (aim for 20–30). Be honest on Frequency (1=monthly, 5=daily) and Pain (1=tolerable, 5=drains you).</li>
+        <li>The worksheet auto-ranks by Priority. Sort mentally: 20–25 at top = your first 5 Skills.</li>
+        <li>Check the Skill suggestion column — it maps your task text to the closest of the 52 templates (12 Starter + 40 Vault) using keyword matching. Overwrite if you know a better fit.</li>
+        <li>Hours / Mo Saved = (Hours per run × ~4.3 × (Frequency/5) × 0.8). The 0.8 assumes 80% automation — you still review before sending.</li>
+        <li>Export CSV and push to Notion via Connector: create database "Grok Skills Stack" with this table.</li>
+      </ol>
+    </div>
+
+    <div class="mt-8 rounded-[16px] bg-white border border-zinc-200 p-6">
+      <h3 class="font-black text-[14px]">Quick-Start: 10 Tasks to Pre-Fill (Edit Them)</h3>
+      <div class="mt-3 flex flex-wrap gap-1.5 text-[11px]">
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Client onboarding — intake + kickoff" data-freq="4" data-pain="4" data-hrs="1.5">＋ Onboarding</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Proposal writing — scope + pricing" data-freq="3" data-pain="5" data-hrs="1.5">＋ Proposal</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Invoice follow-up — nudge sequence" data-freq="3" data-pain="5" data-hrs="0.5">＋ Invoice</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Weekly client report" data-freq="5" data-pain="3" data-hrs="1">＋ Weekly Report</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Testimonial request — ask + format" data-freq="2" data-pain="4" data-hrs="0.75">＋ Testimonial</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Cold outreach — personalized opener" data-freq="4" data-pain="4" data-hrs="1">＋ Cold Outreach</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Content repurposing — long-form to posts" data-freq="4" data-pain="3" data-hrs="1.25">＋ Repurpose</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Retainer renewal pitch" data-freq="2" data-pain="4" data-hrs="1">＋ Retainer Renewal</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Scope creep defense — reply with price" data-freq="3" data-pain="4" data-hrs="0.5">＋ Scope Guard</button>
+        <button class="prefillBtn px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 hover:bg-zinc-200" data-task="Cross-platform posting — adapt + schedule" data-freq="5" data-pain="3" data-hrs="0.75">＋ Cross-Post</button>
+      </div>
+    </div>
+
+    <!-- Appendix checklists -->
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl bg-white border border-zinc-200 p-6">
+        <h3 class="font-black text-[14px]">Appendix A — 15-Skill Starter Checklist (Copy This)</h3>
+        <div class="mt-3 space-y-1.5 text-[12px] leading-relaxed">
+          <label class="flex gap-2"><input type="checkbox"> <span>Proposal Forge — your niche</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Nudge Engine — Invoice Follow-up</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Onboard Canvas / Ops Onboard / Welcome Path</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Cold Opener + LinkedIn DM + Follow-up Nudge</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Discovery Invite + Breakup Email</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Ship Log / Pulse Report / Project Pulse</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Retainer Usage / Hours Alert + Scope Guard</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Proof Collector → Case Study</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Threadify / Blog → Newsletter + Launch Kit</span></label>
+          <label class="flex gap-2"><input type="checkbox"> <span>Referral Engine</span></label>
+        </div>
+        <div class="mt-3 text-[11px] text-zinc-500">Check as you ship. Version each Skill (1.0 → 1.1) when you iterate.</div>
+      </div>
+      <div class="rounded-2xl bg-[#f5f3ff] border border-violet-200 p-6">
+        <h3 class="font-black text-[14px] text-violet-700">Appendix B — Chain Recipes (Steal These 5)</h3>
+        <ol class="mt-3 text-[12px] leading-relaxed text-zinc-700 list-decimal pl-4 space-y-2">
+          <li><b>Proposal Forge → Follow-up Nudge</b> — Auto-generate 24h/72h follow-ups piped with scope + price.</li>
+          <li><b>Cold Opener → LinkedIn DM</b> — Same trigger → email + LinkedIn touches, coordinated.</li>
+          <li><b>Ship Log → Monthly ROI</b> — Weekly logs → monthly narrative + metrics.</li>
+          <li><b>Onboard Canvas → Welcome Path</b> — Welcome + intake + 7-day roadmap in one run.</li>
+          <li><b>Proof Collector → Case Study → Canva</b> — Answers → case study → card via Connector.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ILLUSTRATED EXAMPLES — 20+ pages of visual, beginner-friendly guides -->
+  <div class="page-break"></div>
+  <div class="mt-10">
+    <div class="inline-flex px-3 py-1 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-[11px] font-black tracking-widest">VISUAL GUIDE — ILLUSTRATED EXAMPLES</div>
+    <h2 class="mt-3 font-black text-[28px] tracking-tight" style="font-family:Space Grotesk">See It, Then Build It — 8 Illustrated Examples That Make Everything Click</h2>
+    <p class="mt-2 text-[14px] leading-relaxed text-zinc-600">If you learn by seeing, start here. Each example shows <b>BEFORE (what you did by hand) → SKILL FILE (what Grok sees) → AFTER (what Grok returns)</b> with a visual mock of the Grok UI. Plain English, no jargon. Copy the pattern for your own Skills.</p>
+
+    <!-- Visual Diagram — How a Skill Travels -->
+    <div class="mt-8 rounded-[20px] bg-white border border-zinc-200 p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Diagram 1 — How a Skill Travels (The 30-Second Mental Movie)</h3>
+      <p class="text-[12px] text-zinc-500 mt-1">Keep this image in your head every time you build. If you understand this, you understand Skills.</p>
+      <div class="mt-6 grid md:grid-cols-[1fr_40px_1fr_40px_1fr] gap-3 items-center text-center">
+        <div class="rounded-2xl bg-[#f5f3ff] border-2 border-violet-300 p-5">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-violet-600 text-white flex items-center justify-center font-black">1</div>
+          <div class="font-black text-[13px] mt-3">YOU</div>
+          <div class="text-[12px] text-zinc-600 mt-1">Type <span class="font-mono bg-white border border-violet-200 px-1 rounded text-[11px]">/proposal-forge</span><br>or tap the chip</div>
+          <div class="mt-3 text-[10px] font-mono text-violet-500">Your Grok chat</div>
+        </div>
+        <div class="text-violet-400 font-black text-xl hidden md:block">→</div>
+        <div class="rounded-2xl bg-white border-2 border-zinc-300 p-5 shadow-lg">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-zinc-900 text-white flex items-center justify-center font-black">◈</div>
+          <div class="font-black text-[13px] mt-3">SKILL FILE</div>
+          <div class="text-[12px] text-zinc-600 mt-1">Name + Description<br>+ Instructions<br><span class="text-[11px] text-zinc-500">(YAML frontmatter + 6 blocks)</span></div>
+          <div class="mt-3 text-[10px] font-mono text-zinc-500">Grok loads it instantly</div>
+        </div>
+        <div class="text-violet-400 font-black text-xl hidden md:block">→</div>
+        <div class="rounded-2xl bg-emerald-50 border-2 border-emerald-300 p-5">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black">✓</div>
+          <div class="font-black text-[13px] mt-3">OUTPUT</div>
+          <div class="text-[12px] text-zinc-600 mt-1">Paste-ready proposal<br>/ report / email<br><span class="text-[11px] text-zinc-500">You review → send</span></div>
+          <div class="mt-3 text-[10px] font-mono text-emerald-600">One click, no chat history needed</div>
+        </div>
+      </div>
+      <div class="mt-4 text-center text-[11px] text-zinc-500">Plain English: <b>You trigger → Grok reads your Skill file → Grok does the work.</b> The file is the Skill. The trigger is the shortcut.</div>
+    </div>
+
+    <!-- Diagram 2 — Anatomy Visual -->
+    <div class="mt-6 rounded-[20px] bg-zinc-900 text-white p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Diagram 2 — Anatomy of a Skill File (What Grok Actually Reads)</h3>
+      <div class="mt-6 grid md:grid-cols-4 gap-3 text-[12px]">
+        <div class="rounded-xl bg-white text-zinc-900 p-4 border-2 border-violet-300">
+          <div class="font-black text-violet-600">NAME</div>
+          <div class="mt-2 font-mono bg-[#f5f3ff] border border-violet-200 rounded px-2 py-1 text-[11px]">"Proposal Forge — Copywriter Edition"</div>
+          <div class="text-[11px] text-zinc-600 mt-2">Becomes <span class="font-mono bg-zinc-100 px-1 rounded">/proposal-forge-copywriter</span><br><b>Rule:</b> 2–4 words, specific.</div>
+          <div class="mt-3 text-[10px] text-zinc-500">❌ Bad: "Helper" → Grok can't tell what it does</div>
+        </div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4 border-2 border-zinc-200">
+          <div class="font-black text-zinc-700">DESCRIPTION</div>
+          <div class="mt-2 text-[11px] leading-relaxed bg-zinc-50 border border-zinc-200 rounded p-2">"Proposals that close: scope, anchored pricing, objection handling — in your voice, in 3 minutes."</div>
+          <div class="text-[11px] text-zinc-600 mt-2">Shown in Skills list. Must promise <b>outcome + scope</b> in &lt;18 words.</div>
+        </div>
+        <div class="rounded-xl bg-[#f5f3ff] text-zinc-900 p-4 border-2 border-violet-600">
+          <div class="font-black text-violet-700">INSTRUCTIONS ★</div>
+          <div class="mt-2 text-[11px] leading-relaxed bg-white border border-violet-200 rounded p-2 font-mono"># Role<br># Context<br># Required Inputs<br># Workflow (1. 2. 3.)<br># Output Template<br># Quality Rules</div>
+          <div class="text-[11px] text-violet-700 mt-2"><b>90% of the Skill.</b> Numbered steps + tables. This is what Grok executes.</div>
+        </div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4 border-2 border-zinc-200">
+          <div class="font-black text-zinc-700">YAML</div>
+          <div class="mt-2 font-mono bg-zinc-900 text-[#e9d5ff] rounded p-2 text-[10px] leading-relaxed">---<br>trigger: "/proposal-..."<br>version: "1.0"<br>---</div>
+          <div class="text-[11px] text-zinc-600 mt-2">Metadata. Trigger auto-slugged. Version for iteration.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 1 — Illustrated Before/After -->
+    <div class="mt-6 rounded-[20px] bg-white border border-zinc-200 overflow-hidden">
+      <div class="px-6 py-4 bg-gradient-to-r from-violet-50 to-indigo-50 border-b border-violet-100 flex flex-wrap justify-between gap-3 items-center">
+        <div class="font-black text-[13px]">ILLUSTRATED EXAMPLE 1 — Proposal Forge (Copywriter)</div>
+        <span class="text-[11px] font-bold px-2 py-1 rounded-full bg-violet-600 text-white">MOST PAINFUL → BUILD FIRST</span>
+      </div>
+      <div class="p-6 grid md:grid-cols-3 gap-4">
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+          <div class="text-[11px] font-black tracking-widest text-red-600">BEFORE — BY HAND (90 MIN)</div>
+          <div class="mt-3 bg-white rounded-lg border border-red-200 p-3 font-mono text-[11px] leading-relaxed">
+            "Hi [Client],<br>Thanks for the call.<br>Here's a proposal...<br>[You rewrite scope from scratch]<br>[You guess pricing]<br>[You forget objection handling]<br>— Sent at 11pm"
+          </div>
+          <div class="mt-3 text-[11px] text-red-700">✕ Rebuilt every time<br>✕ No anchored pricing<br>✕ Forgets revision policy</div>
+        </div>
+        <div class="rounded-xl bg-[#0f0a1e] text-[#e9d5ff] p-4 font-mono text-[11px] leading-relaxed">
+          <div class="text-violet-300 font-black tracking-widest text-[10px]">SKILL FILE — WHAT GROK SEES</div>
+          <div class="mt-2 text-white"># Role — Proposal Forge</div>
+          <div class="text-zinc-400">Senior proposal partner</div>
+          <div class="mt-2 text-violet-300"># Required Inputs</div>
+          <div class="text-zinc-300">- Client, niche, goals<br>- Scope + word count<br>- Timeline + budget<br>- Your pricing base</div>
+          <div class="mt-2 text-violet-300"># Workflow</div>
+          <div class="text-zinc-300">1. Gap Check (max 4 Qs)<br>2. Draft 7 sections<br>3. Objection Box<br>4. PS scarcity</div>
+          <div class="mt-3 text-[10px] text-zinc-500">→ Grok asks for missing inputs, then drafts.</div>
+        </div>
+        <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+          <div class="text-[11px] font-black tracking-widest text-emerald-600">AFTER — ONE CLICK (12 MIN)</div>
+          <div class="mt-3 bg-white rounded-lg border border-emerald-200 p-3 text-[11px] leading-relaxed">
+            <b>Executive Summary</b><br><span class="text-zinc-600">Outcome-focused, 2 lines</span><br><b>Scope & Deliverables</b><br><span class="font-mono text-[10px]">Table: Deliverable | Includes | Revisions</span><br><b>Investment</b><br>Standard / Premium (anchored)<br><b>Next Steps:</b> "Reply YES + [Calendly]"
+          </div>
+          <div class="mt-3 text-[11px] text-emerald-700">✓ Same close rate, 1/7th time<br>✓ Pricing anchored<br>✓ Revision policy included</div>
+        </div>
+      </div>
+      <div class="px-6 pb-6">
+        <div class="rounded-xl bg-amber-50 border border-amber-200 p-3 flex gap-2">
+          <span class="text-amber-600">💡</span><p class="text-[12px] leading-relaxed text-amber-900"><b>Plain English:</b> Before you were the proposal writer. Now you are the <b>proposal approver</b>. Grok drafts, you review 2 minutes, you hit send. The Skill remembered <i>how you like proposals done</i> so you don't re-explain every time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 2 — Invoice -->
+    <div class="mt-6 rounded-[20px] bg-white border border-zinc-200 overflow-hidden">
+      <div class="px-6 py-4 bg-gradient-to-r from-orange-50 to-amber-50 border-b border-orange-100 flex flex-wrap justify-between gap-3 items-center">
+        <div class="font-black text-[13px]">ILLUSTRATED EXAMPLE 2 — Nudge Engine (Invoice Follow-up)</div>
+        <span class="text-[11px] font-bold px-2 py-1 rounded-full bg-emerald-600 text-white">EVERY FREELANCER NEEDS THIS</span>
+      </div>
+      <div class="p-6">
+        <div class="grid md:grid-cols-[1fr_100px_1fr] gap-4 items-center">
+          <div class="rounded-xl bg-zinc-900 text-white p-4">
+            <div class="text-[11px] font-black tracking-widest text-zinc-400">GROK UI MOCK — WHAT YOU SEE</div>
+            <div class="mt-3 bg-[#1a1a1a] rounded-lg border border-zinc-700 p-3 font-mono text-[11px]">
+              <div class="text-zinc-500">You typed:</div>
+              <div class="text-emerald-400">/nudge-engine</div>
+              <div class="text-zinc-500 mt-2">Grok asks:</div>
+              <div class="text-white">"Invoice #1024, €1,200, due May 1 — days overdue?"</div>
+              <div class="text-zinc-500 mt-2">You reply:</div>
+              <div class="text-white">"17 days, link: pay.stripe.com/..."</div>
+              <div class="mt-3 text-emerald-400">→ Grok outputs 3 emails + 1 DM</div>
+            </div>
+          </div>
+          <div class="text-center font-black text-violet-400 hidden md:block">→</div>
+          <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+            <div class="text-[11px] font-black tracking-widest text-emerald-600">OUTPUT — 3 EMAILS + 1 DM</div>
+            <div class="mt-3 space-y-2 text-[12px]">
+              <div class="bg-white rounded-lg border border-emerald-200 p-3"><b>Stage 1 (Friendly, Day 1–3)</b><br><span class="text-zinc-600">"Hi [Name], quick nudge — Invoice #1024 (€1,200) was due May 1. Link: [Pay]. Reply 'paid' if already sent!"</span><br><span class="text-[10px] text-emerald-600">✓ Warm, 82 words</span></div>
+              <div class="bg-white rounded-lg border border-zinc-200 p-3"><b>Stage 2 (Firm, Day 7)</b><br><span class="text-zinc-600">"Hi [Name], following up on #1024 — payment link inside + late fee note after [Date]."</span></div>
+              <div class="bg-white rounded-lg border border-zinc-200 p-3"><b>Stage 3 (Final, Day 14+)</b><br><span class="text-zinc-600">"Closing the loop — next steps if not received by [Date]."</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 rounded-xl bg-blue-50 border border-blue-200 p-4">
+          <h4 class="font-black text-[12px] text-blue-700">Why This Works (Beginner Note)</h4>
+          <p class="text-[12px] leading-relaxed text-zinc-700 mt-1">The Skill has a <b>logic ladder</b>: Grok checks "days overdue" and picks the right tone. You don't choose Stage 1/2/3 — Grok does. That's why one Skill covers the whole chase. The <span class="font-mono bg-white border border-blue-200 px-1 rounded">Reply 'paid'</span> line alone saves you awkward follow-ups: clients reply "paid" and Grok closes the loop for you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 3 — Weekly Report Translation -->
+    <div class="mt-6 rounded-[20px] bg-white border border-zinc-200 overflow-hidden">
+      <div class="px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
+        <div class="font-black text-[13px]">ILLUSTRATED EXAMPLE 3 — Ship Log (Dev) — Turning Jargon into Client-English</div>
+      </div>
+      <div class="p-6 grid md:grid-cols-2 gap-6">
+        <div>
+          <div class="text-[11px] font-black tracking-widest text-zinc-500">YOU PASTE — RAW INPUT (30 SECONDS)</div>
+          <div class="mt-3 bg-zinc-900 text-white rounded-xl p-4 font-mono text-[11px] leading-relaxed">
+            <div class="text-zinc-500"># What you paste into the Skill:</div>
+            <div class="mt-2">- Refactored auth API, added rate limiting<br>- Fixed checkout bug (Stripe webhook)<br>- Still blocked: need Figma for pricing page<br>- Next: deploy to staging</div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 text-[11px] text-zinc-500"><span class="w-2 h-2 rounded-full bg-red-500"></span> Raw, jargon, not client-ready</div>
+        </div>
+        <div>
+          <div class="text-[11px] font-black tracking-widest text-emerald-600">GROK RETURNS — CLIENT-FACING REPORT (10 SECONDS)</div>
+          <div class="mt-3 bg-white border-2 border-emerald-300 rounded-xl p-4 text-[12px] leading-relaxed">
+            <div class="font-black">TL;DR</div><div class="text-zinc-600">Checkout is now more reliable + secure — ready for staging Tuesday.</div>
+            <div class="font-black mt-3">🚀 Shipped This Week</div><div class="text-zinc-600">• Login is now more secure, 2s faster [Preview]<br>• Checkout bug fixed — payments no longer fail on retry</div>
+            <div class="font-black mt-3">🚧 Need From You</div><div class="bg-amber-50 border border-amber-200 rounded-lg p-2 mt-1 text-amber-800">Figma for pricing page by Friday — or launch slips to Monday.</div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 text-[11px] text-emerald-600"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Translated, paste-ready for email</div>
+        </div>
+      </div>
+      <div class="px-6 pb-6">
+        <div class="rounded-xl bg-[#f5f3ff] border border-violet-200 p-4">
+          <div class="font-black text-[12px] text-violet-700">The Translation Rule (Copy This Into Any Dev Skill)</div>
+          <p class="text-[12px] leading-relaxed text-zinc-600 mt-1">Add this line to <b>Quality Rules</b>: <span class="font-mono bg-white border border-violet-200 px-1 rounded">"Translate jargon: 'Refactored auth' → 'Login more secure, 2s faster'"</span>. Then Grok will always do the translation for you — you never have to remember to "dumb it down" again.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector Illustrated -->
+    <div class="mt-6 rounded-[20px] bg-zinc-900 text-white p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Diagram 3 — Connectors: How a Skill Edits Real Tools (Without You Copy-Pasting)</h3>
+      <p class="text-[12px] text-zinc-400 mt-2">A Skill without a Connector = text. A Skill with a Connector = action. You add ONE line and Grok asks for permission, then does it.</p>
+      <div class="mt-6 grid md:grid-cols-4 gap-3">
+        <div class="rounded-xl bg-white text-zinc-900 p-4">
+          <div class="w-8 h-8 rounded-lg bg-orange-500 text-white flex items-center justify-center font-black text-sm">▲</div>
+          <div class="font-black text-[13px] mt-3">Vercel</div>
+          <div class="text-[11px] text-zinc-600 mt-1">Skill writes spec →<br><span class="font-mono bg-zinc-100 px-1 rounded">If Vercel active, deploy preview + return URL</span></div>
+          <div class="mt-3 text-[10px] font-mono bg-emerald-50 border border-emerald-200 rounded px-2 py-1 text-emerald-700">→ https://preview-xxx.vercel.app</div>
+          <div class="text-[10px] text-zinc-500 mt-2">Best for: Spec Sprint, Ship Log</div>
+        </div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4">
+          <div class="w-8 h-8 rounded-lg bg-sky-500 text-white flex items-center justify-center font-black text-sm">C</div>
+          <div class="font-black text-[13px] mt-3">Canva</div>
+          <div class="text-[11px] text-zinc-600 mt-1">Skill writes testimonial →<br><span class="font-mono bg-zinc-100 px-1 rounded">If Canva active, push 1080×1080 + edit link</span></div>
+          <div class="mt-3 text-[10px] font-mono bg-emerald-50 border border-emerald-200 rounded px-2 py-1 text-emerald-700">→ canva.com/design/.../edit</div>
+          <div class="text-[10px] text-zinc-500 mt-2">Best for: Proof Collector → Card</div>
+        </div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-black text-sm">G</div>
+          <div class="font-black text-[13px] mt-3">Gamma</div>
+          <div class="text-[11px] text-zinc-600 mt-1">Skill outlines deck →<br><span class="font-mono bg-zinc-100 px-1 rounded">If Gamma active, create deck (H2 = slide)</span></div>
+          <div class="mt-3 text-[10px] font-mono bg-emerald-50 border border-emerald-200 rounded px-2 py-1 text-emerald-700">→ gamma.app/docs/...</div>
+          <div class="text-[10px] text-zinc-500 mt-2">Best for: QBR, Proposal, ROI Report</div>
+        </div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4">
+          <div class="w-8 h-8 rounded-lg bg-red-500 text-white flex items-center justify-center font-black text-sm">✉</div>
+          <div class="font-black text-[13px] mt-3">Gmail</div>
+          <div class="text-[11px] text-zinc-600 mt-1">Skill writes email →<br><span class="font-mono bg-zinc-100 px-1 rounded">If Gmail active, create draft (do not send)</span></div>
+          <div class="mt-3 text-[10px] font-mono bg-emerald-50 border border-emerald-200 rounded px-2 py-1 text-emerald-700">→ mail.google.com/.../draft</div>
+          <div class="text-[10px] text-zinc-500 mt-2">Best for: Cold Opener, Nudge Engine</div>
+        </div>
+      </div>
+      <div class="mt-6 rounded-xl bg-amber-500 text-zinc-900 p-4 flex gap-3">
+        <span class="text-xl">⚠️</span><div class="text-[12px] leading-relaxed"><b>Safety:</b> Skills never auto-send. The words <b>"create draft"</b> + <b>"do not send — return link"</b> are intentional. Grok returns a draft link; <b>you</b> hit Send in Gmail/canva. Keep it that way — never change to "send automatically."</div>
+      </div>
+      <div class="mt-4 text-[11px] text-zinc-400">Setup is 2 minutes per Connector: Grok → Settings → Connectors → Enable → Auth. Then add the one-line trigger to your Skill's <b>Sandbox & Connectors</b> block (Chapter 4 template).</div>
+    </div>
+
+    <!-- Chain Illustrated -->
+    <div class="mt-6 rounded-[20px] bg-white border border-zinc-200 p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Diagram 4 — Chains: How Two Skills Become One Workflow (The Real Power Move)</h3>
+      <p class="text-[12px] text-zinc-500">A Chain is ONE Skill file that runs TWO Skills in sequence. Step 1's output becomes Step 2's input — no copy-paste.</p>
+      <div class="mt-6 rounded-2xl bg-[#fbf8ff] border-2 border-violet-300 p-6">
+        <div class="grid md:grid-cols-[1fr_40px_1fr_40px_1fr] gap-3 items-center text-center">
+          <div class="rounded-xl bg-white border border-violet-200 p-4">
+            <div class="text-[11px] font-black tracking-widest text-violet-600">STEP 1</div>
+            <div class="font-black text-[13px] mt-2">Proposal Forge</div>
+            <div class="text-[11px] text-zinc-600 mt-1">You give: Client, scope, price<br>→ Grok outputs: <b>Full proposal</b></div>
+            <div class="mt-2 font-mono text-[10px] bg-[#f5f3ff] border border-violet-200 rounded px-2 py-1">[Proposal Link], [Scope], [Price]</div>
+          </div>
+          <div class="hidden md:flex flex-col items-center gap-1">
+            <span class="w-10 h-10 rounded-full bg-violet-600 text-white flex items-center justify-center font-black">→</span>
+            <span class="text-[10px] font-mono text-violet-600">piped</span>
+          </div>
+          <div class="rounded-xl bg-white border border-indigo-300 p-4">
+            <div class="text-[11px] font-black tracking-widest text-indigo-600">STEP 2</div>
+            <div class="font-black text-[13px] mt-2">Nudge Engine</div>
+            <div class="text-[11px] text-zinc-600 mt-1">Grok takes Step 1 output<br>→ Grok outputs: <b>3 follow-up emails</b></div>
+            <div class="mt-2 font-mono text-[10px] bg-indigo-50 border border-indigo-200 rounded px-2 py-1">Uses same [Scope], [Price] auto</div>
+          </div>
+          <div class="hidden md:flex flex-col items-center gap-1">
+            <span class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-black">✓</span>
+          </div>
+          <div class="rounded-xl bg-emerald-50 border-2 border-emerald-300 p-4">
+            <div class="font-black text-[13px] text-emerald-700">YOU GET BOTH</div>
+            <div class="text-[11px] text-zinc-700 mt-2 text-left">1. Full proposal (paste-ready)<br>2. 3 follow-ups (24h/72h/breakup)<br>3. Handoff summary (1 para)</div>
+            <div class="mt-2 text-[10px] font-bold text-emerald-700">One trigger: /chain-proposal-nudge</div>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <span class="inline-flex px-3 py-1.5 rounded-full bg-zinc-900 text-white text-[11px] font-bold">File name: chain-proposal-forge-nudge-engine.md → Paste as ONE Skill in Grok</span>
+        </div>
+      </div>
+      <div class="mt-6 grid md:grid-cols-2 gap-4">
+        <div class="rounded-xl bg-white border border-zinc-200 p-4">
+          <div class="font-black text-[12px]">5 Chains That Print Money (Steal These)</div>
+          <ol class="mt-2 text-[12px] leading-relaxed text-zinc-600 list-decimal pl-4 space-y-1">
+            <li><b>Proposal Forge → Follow-up Nudge</b> — Auto-generate 24h/72h emails piped with same scope + price</li>
+            <li><b>Cold Opener → LinkedIn DM</b> — Same trigger → coordinated email + LinkedIn touches</li>
+            <li><b>Ship Log → Monthly ROI</b> — Weekly logs → monthly narrative + metrics table</li>
+            <li><b>Onboard Canvas → Welcome Path</b> — Welcome + intake + 7-day roadmap in one run</li>
+            <li><b>Proof Collector → Case Study → Canva</b> — Answers → case study → card via Canva Connector</li>
+          </ol>
+        </div>
+        <div class="rounded-xl bg-amber-50 border border-amber-200 p-4">
+          <div class="font-black text-[12px] text-amber-800">Beginner Rule — Keep It to 2</div>
+          <p class="text-[12px] leading-relaxed text-zinc-700 mt-2">Never chain 3+ Skills at once — it gets brittle. Chain 2, then chain the result again if needed. And always add this line at the end of Step 1: <span class="font-mono bg-white border border-amber-200 px-1 rounded text-[11px]">→ Output to be used as input for Step 2: [Proposal Link], [Scope], [Price]</span>. That explicit handoff is what makes the pipe reliable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 30-Day Calendar Visual -->
+    <div class="mt-6 rounded-[20px] bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Diagram 5 — Your 30-Day Build Calendar (1 Skill Every 2 Days — Visual)</h3>
+      <p class="text-[12px] text-violet-200 mt-1">Don't build 15 in a weekend. Build 1 every 2 days. Each Skill pays for the next in time saved. Follow the colors: violet = foundation, white = acquisition, indigo = delivery, fuchsia = growth.</p>
+      <div class="mt-6 grid grid-cols-7 gap-1.5 text-[10px] font-bold text-center">
+        <div class="text-violet-200 py-1">MON</div><div class="text-violet-200 py-1">TUE</div><div class="text-violet-200 py-1">WED</div><div class="text-violet-200 py-1">THU</div><div class="text-violet-200 py-1">FRI</div><div class="text-violet-200 py-1">SAT</div><div class="text-violet-200 py-1">SUN</div>
+        <!-- Week 1 -->
+        <div class="rounded-lg bg-white text-violet-700 p-2">1<br><span class="text-[9px]">Proposal<br>Forge</span></div>
+        <div class="rounded-lg bg-white/20 border border-white/20 p-2 text-violet-100">2<br><span class="text-[9px]">Test</span></div>
+        <div class="rounded-lg bg-white text-emerald-700 p-2">3<br><span class="text-[9px]">Nudge<br>Engine</span></div>
+        <div class="rounded-lg bg-white/20 border border-white/20 p-2 text-violet-100">4<br><span class="text-[9px]">Test</span></div>
+        <div class="rounded-lg bg-white text-zinc-900 p-2">5<br><span class="text-[9px]">Onboard<br>Canvas</span></div>
+        <div class="rounded-lg bg-white/10 p-2 text-violet-200">6<br>—</div>
+        <div class="rounded-lg bg-white/10 p-2 text-violet-200">7<br>Review</div>
+        <!-- Week 2 -->
+        <div class="rounded-lg bg-white text-orange-700 p-2">8<br><span class="text-[9px]">Cold<br>Opener</span></div>
+        <div class="rounded-lg bg-white/20 p-2 text-violet-100">9<br>Test</div>
+        <div class="rounded-lg bg-white text-orange-700 p-2">10<br><span class="text-[9px]">LinkedIn<br>DM</span></div>
+        <div class="rounded-lg bg-white/20 p-2 text-violet-100">11<br>Test</div>
+        <div class="rounded-lg bg-white text-orange-700 p-2">12<br><span class="text-[9px]">Follow-up<br>Nudge</span></div>
+        <div class="rounded-lg bg-white text-orange-700 p-2">13<br><span class="text-[9px]">Breakup<br>Email</span></div>
+        <div class="rounded-lg bg-white/10 p-2 text-violet-200">14<br>Review</div>
+        <!-- Week 3 -->
+        <div class="rounded-lg bg-white text-blue-700 p-2">15<br><span class="text-[9px]">Ship<br>Log</span></div>
+        <div class="rounded-lg bg-white/20 p-2 text-violet-100">16<br>Test</div>
+        <div class="rounded-lg bg-white text-blue-700 p-2">17<br><span class="text-[9px]">Retainer<br>Usage</span></div>
+        <div class="rounded-lg bg-white text-emerald-700 p-2">18<br><span class="text-[9px]">Scope<br>Guard</span></div>
+        <div class="rounded-lg bg-white text-zinc-900 p-2">19<br><span class="text-[9px]">Handover<br>Pack</span></div>
+        <div class="rounded-lg bg-white/10 p-2 text-violet-200">20<br>—</div>
+        <div class="rounded-lg bg-white/10 p-2 text-violet-200">21<br>Review</div>
+        <!-- Week 4 -->
+        <div class="rounded-lg bg-white text-fuchsia-700 p-2">22<br><span class="text-[9px]">Proof<br>Collector</span></div>
+        <div class="rounded-lg bg-white text-fuchsia-700 p-2">23<br><span class="text-[9px]">Threadify</span></div>
+        <div class="rounded-lg bg-white text-fuchsia-700 p-2">24<br><span class="text-[9px]">Launch<br>Kit</span></div>
+        <div class="rounded-lg bg-white text-fuchsia-700 p-2">25<br><span class="text-[9px]">Referral<br>Engine</span></div>
+        <div class="rounded-lg bg-emerald-400 text-white p-2">26<br><span class="text-[9px]">Chain<br>#1</span></div>
+        <div class="rounded-lg bg-emerald-400 text-white p-2">27<br><span class="text-[9px]">Chain<br>#2</span></div>
+        <div class="rounded-lg bg-white text-zinc-900 p-2 font-black">28<br>✓ 15</div>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-bold">
+        <span class="px-2.5 py-1 rounded-full bg-white text-violet-700">Week 1 — Foundation (3)</span>
+        <span class="px-2.5 py-1 rounded-full bg-white text-orange-700">Week 2 — Acquisition (4)</span>
+        <span class="px-2.5 py-1 rounded-full bg-white text-blue-700">Week 3 — Delivery & Ops (4)</span>
+        <span class="px-2.5 py-1 rounded-full bg-white text-fuchsia-700">Week 4 — Growth (4)</span>
+      </div>
+      <div class="mt-3 text-[11px] text-violet-200">Plain English: <b>Build → Test → Build → Test.</b> "Test" days are 10 minutes: run the 5-step test protocol (Chapter 3) and bump version 1.0 → 1.1 if needed. By Day 28 you have 15. By Day 30 you have 2 chains.</div>
+    </div>
+
+    <!-- Beginner Glossary -->
+    <div class="mt-6 rounded-[20px] bg-white border border-zinc-200 p-6 md:p-8">
+      <h3 class="font-black text-[16px]" style="font-family:Space Grotesk">Beginner's Glossary — 12 Words You Must Know (Plain English)</h3>
+      <div class="mt-4 grid md:grid-cols-2 gap-3 text-[12px] leading-relaxed">
+        <div class="rounded-xl bg-[#f5f3ff] border border-violet-200 p-4"><b>Skill</b> — A reusable instruction file (Name + Description + Markdown). You trigger it with <span class="font-mono bg-white px-1 rounded">/name</span>.<br><span class="text-zinc-500">Think: a saved prompt that remembers.</span></div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Trigger</b> — The slash command that runs the Skill. Auto-slugged from Name. <span class="font-mono bg-zinc-100 px-1 rounded">/proposal-forge-copywriter</span></div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Sandbox</b> — SuperGrok's private filesystem for file editing. <span class="font-mono bg-zinc-100 px-1 rounded">Save as .md</span> stays there until you download.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Connector</b> — Link to a real tool (Vercel, Canva, Gamma, Gmail). Skill can <b>create draft</b> there — never auto-send.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Frontmatter (YAML)</b> — The 4-line header with name/description/trigger/version. Grok reads it first.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Chain</b> — ONE Skill that runs TWO Skills in sequence. Output of Step 1 → input of Step 2.</div>
+        <div class="rounded-xl bg-[#f5f3ff] border border-violet-200 p-4"><b>Gap Check</b> — Grok asking for missing inputs (max 4). If you see <span class="font-mono bg-white px-1 rounded">[NEED: X]</span>, you missed an input.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Paste-Ready Rate</b> — % of outputs you send without edits. Good &gt;80%. If &lt;50%, tighten Output Template.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Handoff</b> — The line that pipes Step 1 output into Step 2: <span class="font-mono bg-zinc-100 px-1 rounded text-[11px]">→ Output to be used as input for Step 2</span></div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Operating Stack</b> — Your 15–20 Skills across 4 layers (Acquisition, Delivery, Operations, Growth) that run your business.</div>
+        <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>Priority Score</b> — Frequency (1–5) × Pain (1–5) = 1–25. Build 20–25 first. Calculated in the worksheet.</div>
+        <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4"><b>80% Rule</b> — 80% of freelance admin is repeated structure. Skills automate the structure; you fill the specifics.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-violet-600 text-white text-[11px] font-black tracking-widest">APPENDIX C</div>
+    <h2 class="text-[28px]">52-Skill Quick Reference — Every Template at a Glance (Starter Pack + Agency Vault)</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Use this as your library index. Find the task, copy the Skill name, and paste the trigger. All 52 are built from the 6-block template (Chapter 2) and work with the worksheet's auto-suggestion.</p>
+    <div class="not-prose mt-6 rounded-[16px] border border-zinc-200 overflow-hidden">
+      <div class="px-5 py-3 bg-zinc-900 text-white flex justify-between items-center">
+        <span class="text-[11px] font-black tracking-widest">STARTER PACK — 12 CORE SKILLS</span>
+        <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-white text-zinc-900">FREE</span>
+      </div>
+      <table class="w-full text-[12px] leading-relaxed">
+        <thead class="bg-zinc-100 text-[10px] font-black tracking-widest text-zinc-500"><tr><th class="text-left p-3">#</th><th class="text-left p-3">SKILL NAME</th><th class="text-left p-3">LAYER</th><th class="text-left p-3">WHEN TO USE</th></tr></thead>
+        <tbody class="divide-y divide-zinc-100">
+          <tr><td class="p-3">1</td><td class="p-3 font-bold">Proposal Forge — Copywriter Edition</td><td class="p-3">Acquisition</td><td class="p-3">Every proposal that needs anchored pricing + objection handling</td></tr>
+          <tr><td class="p-3">2</td><td class="p-3 font-bold">Onboard Canvas — Designer Edition</td><td class="p-3">Delivery</td><td class="p-3">New brand/UI client → welcome + intake + kickoff</td></tr>
+          <tr><td class="p-3">3</td><td class="p-3 font-bold">Nudge Engine — Invoice Follow-up</td><td class="p-3">Operations</td><td class="p-3">Invoice Day 1 / 7 / 14 overdue</td></tr>
+          <tr><td class="p-3">4</td><td class="p-3 font-bold">Ship Log — Dev Weekly Report</td><td class="p-3">Delivery</td><td class="p-3">Dev commits → client-friendly weekly report</td></tr>
+          <tr><td class="p-3">5</td><td class="p-3 font-bold">Proof Collector — Coach Edition</td><td class="p-3">Growth</td><td class="p-3">After a win → ask for testimonial in 5 questions</td></tr>
+          <tr><td class="p-3">6</td><td class="p-3 font-bold">Brief Decoder — Copywriter Onboarding</td><td class="p-3">Acquisition</td><td class="p-3">Messy brief → 1-page creative brief + 3 angles</td></tr>
+          <tr><td class="p-3">7</td><td class="p-3 font-bold">Scope Lock — Design Proposal</td><td class="p-3">Acquisition</td><td class="p-3">Design proposal that must prevent scope creep</td></tr>
+          <tr><td class="p-3">8</td><td class="p-3 font-bold">Ops Onboard — VA Edition</td><td class="p-3">Delivery</td><td class="p-3">New VA client → access checklist + 30-60-90</td></tr>
+          <tr><td class="p-3">9</td><td class="p-3 font-bold">Spec Sprint — Dev Proposal</td><td class="p-3">Acquisition</td><td class="p-3">Vague "build me an app" → spec with user stories</td></tr>
+          <tr><td class="p-3">10</td><td class="p-3 font-bold">Welcome Path — Coach Onboarding</td><td class="p-3">Delivery</td><td class="p-3">New coaching client → welcome + intake + 7-day roadmap</td></tr>
+          <tr><td class="p-3">11</td><td class="p-3 font-bold">Pulse Report — VA Weekly Update</td><td class="p-3">Delivery</td><td class="p-3">VA weekly update with inbox stats + time log</td></tr>
+          <tr><td class="p-3">12</td><td class="p-3 font-bold">Progress Prism — Coaching Report</td><td class="p-3">Growth</td><td class="p-3">Coaching client progress + homework + WhatsApp version</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="not-prose mt-6 rounded-[16px] border border-violet-200 overflow-hidden">
+      <div class="px-5 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white flex justify-between items-center">
+        <span class="text-[11px] font-black tracking-widest">AGENCY VAULT — 40 ADVANCED SKILLS</span>
+        <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-white text-violet-700">40 SKILLS</span>
+      </div>
+      <table class="w-full text-[11px] leading-relaxed">
+        <thead class="bg-violet-50 text-[10px] font-black tracking-widest text-violet-700"><tr><th class="text-left p-2">#</th><th class="text-left p-2">SKILL NAME</th><th class="text-left p-2">CATEGORY</th><th class="text-left p-2">TRIGGER EXAMPLE</th></tr></thead>
+        <tbody class="divide-y divide-violet-100">
+          <tr><td class="p-2">13</td><td class="p-2 font-bold">Cold Email Opener — 3-Line Hook</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/cold-email-opener</td></tr>
+          <tr><td class="p-2">14</td><td class="p-2 font-bold">LinkedIn DM Sequence — 3 Touches</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/linkedin-dm-sequence</td></tr>
+          <tr><td class="p-2">15</td><td class="p-2 font-bold">Follow-up Nudge — 3-Step Chase</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/followup-nudge</td></tr>
+          <tr><td class="p-2">16</td><td class="p-2 font-bold">Warm Lead Revival — Re-engage</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/warm-lead-revival</td></tr>
+          <tr><td class="p-2">17</td><td class="p-2 font-bold">Referral Engine — Ask Script</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/referral-engine</td></tr>
+          <tr><td class="p-2">18</td><td class="p-2 font-bold">Discovery Call Invite — Calendar Closer</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/discovery-call-invite</td></tr>
+          <tr><td class="p-2">19</td><td class="p-2 font-bold">Proposal Follow-up — After You Send</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/proposal-follow-up</td></tr>
+          <tr><td class="p-2">20</td><td class="p-2 font-bold">Breakup Email — Close the Loop</td><td class="p-2">Outreach</td><td class="p-2 font-mono">/breakup-email</td></tr>
+          <tr><td class="p-2">21</td><td class="p-2 font-bold">Monthly ROI Report — Client-Facing</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/monthly-roi-report</td></tr>
+          <tr><td class="p-2">22</td><td class="p-2 font-bold">Content Performance Dashboard — Text</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/content-dashboard</td></tr>
+          <tr><td class="p-2">23</td><td class="p-2 font-bold">SEO Ranking Update — Weekly</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/seo-ranking-update</td></tr>
+          <tr><td class="p-2">24</td><td class="p-2 font-bold">Ad Spend Report — ROAS Focused</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/ad-spend-report</td></tr>
+          <tr><td class="p-2">25</td><td class="p-2 font-bold">Social Growth Report — Weekly</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/social-growth-report</td></tr>
+          <tr><td class="p-2">26</td><td class="p-2 font-bold">Project Pulse — Status Update</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/project-pulse</td></tr>
+          <tr><td class="p-2">27</td><td class="p-2 font-bold">Retainer Usage Report — Hours</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/retainer-usage-report</td></tr>
+          <tr><td class="p-2">28</td><td class="p-2 font-bold">Quarterly Business Review — QBR Deck Outline</td><td class="p-2">Reporting</td><td class="p-2 font-mono">/qbr-deck-outline</td></tr>
+          <tr><td class="p-2">29</td><td class="p-2 font-bold">Retainer Renewal Pitch — Close</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/retainer-renewal-pitch</td></tr>
+          <tr><td class="p-2">30</td><td class="p-2 font-bold">Scope Guard — Creep Defender</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/scope-guard</td></tr>
+          <tr><td class="p-2">31</td><td class="p-2 font-bold">Hours Alert — Usage Warning</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/hours-alert</td></tr>
+          <tr><td class="p-2">32</td><td class="p-2 font-bold">Monthly Priorities Planner — Retainer</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/monthly-priorities-planner</td></tr>
+          <tr><td class="p-2">33</td><td class="p-2 font-bold">Upsell Finder — Opportunity Spotter</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/upsell-finder</td></tr>
+          <tr><td class="p-2">34</td><td class="p-2 font-bold">Handover Pack — Offboarding</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/handover-pack</td></tr>
+          <tr><td class="p-2">35</td><td class="p-2 font-bold">Pause & Resume Protocol</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/pause-resume-protocol</td></tr>
+          <tr><td class="p-2">36</td><td class="p-2 font-bold">Annual Retainer Audit — Value Check</td><td class="p-2">Retainer</td><td class="p-2 font-mono">/annual-retainer-audit</td></tr>
+          <tr><td class="p-2">37</td><td class="p-2 font-bold">Threadify — Long-form → X Thread</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/threadify</td></tr>
+          <tr><td class="p-2">38</td><td class="p-2 font-bold">Webinar → 5 Posts Kit</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/webinar-5-posts-kit</td></tr>
+          <tr><td class="p-2">39</td><td class="p-2 font-bold">Testimonial → Case Study</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/testimonial-case-study</td></tr>
+          <tr><td class="p-2">40</td><td class="p-2 font-bold">Blog → Newsletter</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/blog-newsletter</td></tr>
+          <tr><td class="p-2">41</td><td class="p-2 font-bold">Video → Show Notes + Chapters</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/video-show-notes</td></tr>
+          <tr><td class="p-2">42</td><td class="p-2 font-bold">Podcast → Quote Cards</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/podcast-quote-cards</td></tr>
+          <tr><td class="p-2">43</td><td class="p-2 font-bold">Calendar Filler — Evergreen Bank</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/calendar-filler</td></tr>
+          <tr><td class="p-2">44</td><td class="p-2 font-bold">Evergreen Recycler — Reshare Kit</td><td class="p-2">Repurpose</td><td class="p-2 font-mono">/evergreen-recycler</td></tr>
+          <tr><td class="p-2">45</td><td class="p-2 font-bold">Launch Cross-Post Kit — Day 1</td><td class="p-2">Posting</td><td class="p-2 font-mono">/launch-cross-post-kit</td></tr>
+          <tr><td class="p-2">46</td><td class="p-2 font-bold">Platform Adaptor — Tone Switch</td><td class="p-2">Posting</td><td class="p-2 font-mono">/platform-adaptor</td></tr>
+          <tr><td class="p-2">47</td><td class="p-2 font-bold">Hashtag & Hook Optimizer</td><td class="p-2">Posting</td><td class="p-2 font-mono">/hashtag-hook-optimizer</td></tr>
+          <tr><td class="p-2">48</td><td class="p-2 font-bold">Scheduling Queue Builder</td><td class="p-2">Posting</td><td class="p-2 font-mono">/scheduling-queue-builder</td></tr>
+          <tr><td class="p-2">49</td><td class="p-2 font-bold">Engagement Reply Engine</td><td class="p-2">Posting</td><td class="p-2 font-mono">/engagement-reply-engine</td></tr>
+          <tr><td class="p-2">50</td><td class="p-2 font-bold">Comment-to-DM Converter</td><td class="p-2">Posting</td><td class="p-2 font-mono">/comment-to-dm-converter</td></tr>
+          <tr><td class="p-2">51</td><td class="p-2 font-bold">Viral Hook Vault — 20 Hooks</td><td class="p-2">Posting</td><td class="p-2 font-mono">/viral-hook-vault</td></tr>
+          <tr><td class="p-2">52</td><td class="p-2 font-bold">Repost & Reshare Scheduler</td><td class="p-2">Posting</td><td class="p-2 font-mono">/repost-reshare-scheduler</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">APPENDIX D</div>
+    <h2 class="text-[28px]">10 Full Skill Examples — Copy-Paste Ready (Preview of Your Stack)</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">These are complete, single-Skill files as Grok receives them. Each includes YAML frontmatter + full 6-block instructions. Use them as starting points — replace [Brackets] with your data.</p>
+    <div class="not-prose space-y-4">
+      <div class="rounded-xl bg-[#0f0a1e] text-[#e9d5ff] p-4 overflow-auto"><div class="text-[10px] font-black tracking-widest text-violet-400">EXAMPLE 1 — COLD EMAIL OPENER (OUTREACH)</div><pre class="mt-2 text-[11px] leading-relaxed whitespace-pre-wrap font-mono">---
+name: "Cold Email Opener — 3-Line Hook"
+trigger: "/cold-email-opener"
+---
+# Role — Cold Email Opener
+You are a senior SDR... (see Agency Vault for full 6-block instructions)
+# Workflow — 3 Variants (Formal / Casual / Ultra-short) with 4 subject lines each + PS
+# Output: Variant | Subject Options | Body | Word Count
+# Quality Rules: &lt;75 words, no buzzwords, specific &gt; clever</pre></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><div class="text-[11px] font-black tracking-widest text-zinc-500">HOW TO USE THESE</div><p class="text-[12px] leading-relaxed text-zinc-600 mt-2">Pick 1 example, copy the full markdown from the Vault or Starter Pack app, paste into <span class="code">Grok → Settings → Skills → Create Skill</span>, trigger with <span class="code">/skill-name</span>, and run the 5-minute test protocol (Chapter 3) before trusting it.</p></div>
+    </div>
+    <p class="text-[12px] text-zinc-500">Full 10 examples are in the Vault apps — this Bootcamp teaches you how to write, test, and chain them. Your worksheet picks which 10 to build first.</p>
+  </div>
+
+  <div class="page-break"></div>
+  <!-- CHAPTER 9 — Full Build-Along (adds 10 pages) -->
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-black tracking-widest">CHAPTER 9 — BUILD-ALONG</div>
+    <h2 class="text-[28px]">Watch Over My Shoulder: Build a Skill From Scratch in 45 Minutes (With Every Click)</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">We will build <b>Invoice Nudge — Freelance Designer Edition</b> together, step by step. Follow this chapter with Grok open. By the end you will have a live Skill, tested, versioned, and ready to chain. <b>Plain English throughout</b> — no assumed knowledge.</p>
+
+    <div class="not-prose rounded-[16px] bg-amber-50 border border-amber-200 p-4 flex gap-3">
+      <span class="text-amber-600">🎯</span><p class="text-[12px] leading-relaxed text-amber-900"><b>What you will ship:</b> A Skill triggered by <span class="font-mono bg-white border border-amber-200 px-1 rounded">/nudge-designer</span> that asks for Invoice # / Amount / Days Overdue / Payment Link → outputs 3 emails + 1 DM + tracker, with the right tone per stage. <b>Time:</b> 45 min. <b>Tool:</b> Grok → Settings → Skills → Create Skill.</p>
+    </div>
+
+    <h3 class="text-[16px]">Step 0 — Gather the Raw Material (5 min)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Open your last 3 invoice chase emails (sent and unsent). Copy them into a scratch doc. Highlight: What you <i>always</i> say (invoice #, amount, due date, link), what you <i>change</i> (tone per days overdue), and what you <i>forget</i> (PS "Reply paid"). That highlighted list is your Skill's backbone. You are not inventing — you are <b>capturing what you already do</b>.</p>
+    <div class="not-prose grid md:grid-cols-3 gap-3 text-[11px]">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-zinc-900">ALWAYS SAY</b><div class="text-zinc-600 mt-1">Invoice #, amount, due date, payment link, your name</div></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b class="text-zinc-900">CHANGE BY STAGE</b><div class="text-zinc-600 mt-1">Tone: friendly (Day 1–3) → firm (Day 7) → final (Day 14+)</div></div>
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-4"><b class="text-amber-800">OFTEN FORGET</b><div class="text-zinc-600 mt-1">PS "Reply paid if already sent" + tracker table</div></div>
+    </div>
+
+    <h3>Step 1 — Fill the 6-Block Template (15 min)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Copy the template from Chapter 2 into a blank Skill. Fill it for <b>Nudge Designer</b> exactly like this. Don't paraphrase yet — copy, then adapt after it works.</p>
+    <div class="not-prose rounded-xl bg-[#0f0a1e] text-[#e9d5ff] p-5 overflow-auto">
+<pre class="text-[11px] leading-relaxed whitespace-pre-wrap font-mono"># Role
+You are Nudge Engine for freelance designers — the diplomatic collector who gets invoices paid without burning bridges.
+
+# Context
+Designers hate chasing money. You need firm-but-kind reminders that work on autopilot and keep the client relationship warm for the next project.
+
+# Required Inputs (ask only what's missing — max 4)
+- Client name, invoice # & amount (with €), due date, days overdue
+- Payment link / method
+- Your late-fee policy (if any)
+- Your name / studio name
+
+# Workflow — Logic Overdue (Grok picks stage for you)
+1. **Detect stage:**
+   - Stage 1 (1–3 days): Friendly nudge — "might have slipped through"
+   - Stage 2 (7 days): Firm reminder — link + clear due date
+   - Stage 3 (14+ days): Final notice — consequences + payment plan option
+2. **Output:**
+   - 3 Emails (Subject + Body 80–120 words each) — subject includes [Invoice #]
+   - 1 Short Nudge for WhatsApp/Slack (max 35 words)
+   - Tracker Table: Date | Action | Channel | Status
+   - PS on all: "Reply 'paid' if already sent — I'll close it instantly."
+
+# Output Template
+## Email 1 — Stage [1/2/3] — Subject: [Subject]
+Body: [80–120 words]
+## WhatsApp Nudge
+[35 words max]
+## Tracker
+| Date | Action | Channel | Status |
+
+# Quality Rules
+- Always include amount, due date, link. No passive-aggressive.
+- Stage 1 warm/helpful, Stage 2 professional/clear, Stage 3 firm/boundary-setting (never aggressive).
+- If days overdue missing, use [NEED: days overdue] — never guess.
+- Add soft legal line if Stage 3: "Late fee [X%] after [Date] per agreement."
+
+# Example Snippet (tone to mimic)
+> "Hi [Name], quick nudge — Invoice #1024 (€1,200) was due May 1. Link: [Pay]. Reply 'paid' if already sent — I'll close it instantly."
+
+# Sandbox & Connectors
+- Save as `nudge-[client]-[YYYY-MM-DD].md`.
+- If Gmail Connector is active, create draft(s) with Subject + Body. Do not send — return draft link(s).
+
+# Variables to Keep
+[Client], [Invoice #], [Amount], [Due Date], [Payment Link] — do not replace with fake data.</pre>
+    </div>
+    <p class="text-[12px] text-zinc-500">Tip: This is the <b>exact</b> file from the Starter Pack's Nudge Engine, adapted for designers in 2 lines (Role + Context). That's how you niche a Skill — change Role + Context, keep Workflow.</p>
+
+    <h3>Step 2 — Create the Skill in Grok (3 min)</h3>
+    <div class="not-prose rounded-xl bg-white border border-zinc-200 p-5">
+      <div class="grid md:grid-cols-[1fr_280px] gap-6 items-start">
+        <ol class="text-[12px] leading-relaxed list-decimal pl-4 space-y-2">
+          <li>Open Grok → <b>Settings → Skills → Create Skill</b></li>
+          <li>Paste <b>Name:</b> <span class="font-mono bg-zinc-100 px-1 rounded">Nudge Engine — Designer Edition</span></li>
+          <li>Paste <b>Description:</b> <span class="text-zinc-600">"3-step polite→firm invoice chase with overdue logic + tracker — gets paid without burning bridges."</span></li>
+          <li>Paste <b>Instructions:</b> the 6-block markdown above (full)</li>
+          <li>Toggle <b>Sandbox: ON</b> (so "Save as .md" works) → <b>Save</b></li>
+        </ol>
+        <div class="rounded-xl bg-zinc-900 text-white p-4 font-mono text-[11px] leading-relaxed">
+          <div class="text-zinc-500">GROK UI MOCK — CREATE SKILL</div>
+          <div class="mt-2 text-violet-300">Name</div><div class="bg-white text-zinc-900 rounded px-2 py-1">Nudge Engine — Designer Edition</div>
+          <div class="mt-2 text-violet-300">Trigger</div><div class="text-emerald-400">/nudge-engine-designer</div><div class="text-zinc-500">(auto-slugged)</div>
+          <div class="mt-2 text-violet-300">Sandbox</div><div class="text-emerald-400">● ON — file editing enabled</div>
+          <button class="mt-3 w-full bg-white text-zinc-900 font-bold py-2 rounded-full text-[11px]">Save → Skill created ✓</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>Step 3 — Run the 5-Minute Test Protocol (10 min)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Don't trust a Skill until it passes these 5 tests. Do them now, in order.</p>
+    <div class="not-prose space-y-3">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-zinc-900 text-white flex items-center justify-center text-[11px] font-black">1</span><span class="font-bold text-[13px]">Empty Input Test</span><span class="ml-auto text-[11px] px-2 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-800">Should ASK, not guess</span></div>
+        <div class="mt-2 grid md:grid-cols-2 gap-3 text-[12px]">
+          <div class="bg-zinc-900 text-white rounded-lg p-3 font-mono"><span class="text-zinc-500">You:</span> <span class="text-emerald-400">/nudge-engine-designer</span><br><span class="text-zinc-500">(no inputs)</span></div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3"><b class="text-emerald-700">✓ PASS if Grok asks:</b><br><span class="text-zinc-700">"Invoice #, amount, due date, days overdue?" (max 4 Qs, no fake data)</span><br><span class="text-red-600">✕ FAIL if Grok invents "Invoice #123, €500"</span></div>
+        </div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-zinc-900 text-white flex items-center justify-center text-[11px] font-black">2</span><span class="font-bold text-[13px]">Partial Input Test</span></div>
+        <div class="mt-2 grid md:grid-cols-2 gap-3 text-[12px]">
+          <div class="bg-zinc-900 text-white rounded-lg p-3 font-mono"><span class="text-zinc-500">You:</span> Invoice #1024, €1,200<br><span class="text-zinc-500">(missing days overdue)</span></div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3"><b class="text-emerald-700">✓ PASS if:</b> Flags <span class="font-mono bg-white border px-1 rounded">[NEED: days overdue]</span> and picks Stage 1 by default<br><b class="text-red-600">✕ FAIL if:</b> Guesses "7 days overdue"</div>
+        </div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-zinc-900 text-white flex items-center justify-center text-[11px] font-black">3</span><span class="font-bold text-[13px]">Full Input Test</span></div>
+        <div class="mt-2 text-[12px] leading-relaxed bg-white border border-emerald-300 rounded-lg p-3"><b>Input:</b> Client "Lumen Studio", #1024, €1,200, due May 1, 17 days overdue, link pay.stripe.com/xxx<br><b>✓ PASS if:</b> Output matches Output Template exactly (3 emails with Subject + Body + WhatsApp + Tracker), Stage 3 tone (firm, with late fee line), includes all placeholders filled.</div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-zinc-900 text-white flex items-center justify-center text-[11px] font-black">4</span><span class="font-bold text-[13px]">Save Test</span><span class="ml-auto text-[11px] font-mono bg-zinc-100 border px-2 py-1 rounded">Save as nudge-lumen-2026-05-17.md</span></div>
+        <div class="mt-2 text-[12px] text-zinc-600">Say: <span class="font-mono bg-[#f5f3ff] border border-violet-200 px-1 rounded">"Save as nudge-lumen-2026-05-17.md"</span> → Grok should return a download link. If not, check Sandbox is ON.</div>
+      </div>
+      <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+        <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[11px] font-black">5</span><span class="font-bold text-[13px] text-emerald-800">Re-run Test (Consistency)</span></div>
+        <div class="mt-2 text-[12px] text-zinc-700">Trigger again with <b>same inputs</b>. Does it produce the <b>same format</b> (same H2/H3 + table headers)? If format drifts, lock Output Template tighter — add exact header text: <span class="font-mono bg-white border border-emerald-200 px-1 rounded">## Email 1 — Stage 1 — Subject: [Subject]</span></div>
+      </div>
+    </div>
+
+    <h3>Step 4 — Iterate Once (5 min)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">You will see one thing to improve. Maybe Grok's Stage 1 was too formal. Fix it with <b>one line</b> in Quality Rules — don't rewrite the whole Skill.</p>
+    <div class="not-prose rounded-xl bg-amber-50 border border-amber-200 p-4">
+      <div class="text-[11px] font-black tracking-widest text-amber-800">ONE-LINE FIX EXAMPLE</div>
+      <div class="mt-2 grid md:grid-cols-2 gap-4 text-[12px]">
+        <div><b>Before:</b><br><span class="font-mono bg-white border px-2 py-1 rounded text-[11px]">Stage 1 warm/helpful</span><br><span class="text-zinc-600">→ Grok wrote: "Dear Sir, I hope this email finds you well..."</span></div>
+        <div><b>After (add one line):</b><br><span class="font-mono bg-white border-2 border-amber-300 px-2 py-1 rounded text-[11px]">Stage 1: warm, 1 line, no "Dear Sir", start with "Hi [Name], quick nudge —"</span><br><span class="text-emerald-700">→ Grok now: "Hi [Name], quick nudge — Invoice #1024..." ✓</span></div>
+      </div>
+      <div class="mt-3 text-[11px] text-zinc-600">Then bump <span class="font-mono bg-white border px-1 rounded">version: "1.0" → "1.1"</span> and note "Tightened Stage 1 tone" in Description. Versioning lets you rollback.</div>
+    </div>
+
+    <h3>Step 5 — Ship & Queue the Next (2 min)</h3>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Check the box in Appendix A's 15-Skill Checklist. Open your worksheet, mark Priority for "Invoice follow-up" as done, and let it suggest the next highest Priority task. Tomorrow you build that one. That's the 1-every-2-days rhythm.</p>
+    <div class="not-prose rounded-xl bg-violet-600 text-white p-5 text-center">
+      <div class="font-black text-[14px]">You Just Built a Real Skill. One Down, Fourteen to Go.</div>
+      <div class="text-[12px] text-violet-200 mt-1">Total time: 45 min. Time saved per run: ~25 min. After 3 runs, you're in profit forever.</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">APPENDIX E</div>
+    <h2 class="text-[28px]">10 Copy-Paste Skill Files — Your First 10 Stack, Ready to Use</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Don't start blank. These 10 are the highest-ROI Skills from the 15-stack (Chapter 5). Each is a complete file: YAML + 6 blocks. Copy, paste into <span class="font-mono bg-zinc-100 border px-1 rounded">Grok → Settings → Skills → Create Skill</span>, and run the 5-minute test protocol. Tweak Role/Context to your niche after it works.</p>
+    <div class="not-prose space-y-3">
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">1 — Proposal Forge — Copywriter (Acquisition) → Click to expand</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Proposal Forge — Copywriter Edition"
+description: "Proposals that close: scope, anchored pricing, objection handling — in your voice, in 3 minutes."
+trigger: "/proposal-forge-copywriter"
+version: "1.0"
+---
+# Role — Proposal Forge
+You are a senior copywriter's proposal partner... (see Starter Pack for full 6-block instructions)
+# Required Inputs: Client, niche, goals, scope, timeline, budget, your pricing base
+# Workflow: Gap Check → Draft 7 sections (Executive Summary → Next Steps) → Objection Box → PS scarcity
+# Output Template: H2 per section + table Deliverable | Includes | Revisions | Delivery + Investment 2 tiers
+# Quality Rules: 380–520 words, 2 revision rounds included, never invent pricing → [To be confirmed]
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">2 — Nudge Engine — Invoice Follow-up (Operations) → Click to expand</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Nudge Engine — Invoice Follow-up"
+description: "3-step polite→firm invoice chase with overdue logic + tracker."
+trigger: "/nudge-engine"
+---
+# Role — Nudge Engine
+You are the diplomatic collector... (see Chapter 9 for full file)
+# Workflow: Detect Stage 1/2/3 by days overdue → 3 Emails + 1 DM + Tracker + PS "Reply paid"
+# Output Template: ## Email 1 — Stage X — Subject: [Subject] + Body 80–120w + Tracker Table
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">3 — Onboard Canvas — Designer (Delivery) → Click to expand</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Onboard Canvas — Designer Edition"
+trigger: "/onboard-canvas-designer"
+---
+# Role — Onboard Canvas
+You are a brand/UI studio ops partner... Turn chaos into premium onboarding.
+# Workflow: 4 Assets — Welcome Email (130–160w) + Intake Q (10) + File Checklist (table) + Kickoff Agenda (30min)
+# Output Template: H3 per asset, tables ready for Notion/Email, placeholders [Drive], [Calendly]
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">4 — Ship Log — Dev Weekly Report (Delivery)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Ship Log — Dev Weekly Report"
+trigger: "/ship-log"
+---
+# Workflow: TL;DR + Shipped (verb+outcome+link) + In Progress (table) + Blockers (ask+deadline) + Next Week + Time Summary
+# Quality Rule: Translate jargon — "Refactored auth" → "Login more secure, 2s faster"
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">5 — Cold Email Opener — 3-Line Hook (Acquisition)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Cold Email Opener — 3-Line Hook"
+trigger: "/cold-email-opener"
+---
+# Workflow: 3 Variants (Formal/Casual/Ultra-short) × 4 subject lines + Body 55–72w + PS
+# Quality Rules: &lt;75 words, specific &gt; clever, never invent trigger → [NEED: trigger]
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">6 — Proof Collector — Coach (Growth)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Proof Collector — Coach Edition"
+trigger: "/proof-collector"
+---
+# Workflow: Request Message (110–140w) + 5 Questions + 3 Polished Formats (Short/Story/LinkedIn)
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">7 — Follow-up Nudge — 3-Step Chase (Acquisition)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Follow-up Nudge — 3-Step Chase"
+trigger: "/followup-nudge"
+---
+# Workflow: Day 2 Friendly bump + Day 5 Value add (teardown) + Day 9 Breakup — each Subject + Body 60–90w + Slack nudge
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">8 — Retainer Renewal Pitch (Operations)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Retainer Renewal Pitch — Close"
+trigger: "/retainer-renewal-pitch"
+---
+# Workflow: Email (120w) wins recap + 2 Options Table (Continue/Grow) + 1-pager What you got vs Next quarter
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">9 — Threadify — Long-form → X Thread (Growth)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Threadify — Long-form → X Thread"
+trigger: "/threadify"
+---
+# Workflow: Extract 1 Big Idea + 3 Points → 8 Tweets (Hook 3 variants + 6 body + CTA) + Alt Text
+</pre></div></details>
+      <details class="rounded-xl bg-white border border-zinc-200 overflow-hidden"><summary class="px-5 py-3 font-bold text-[13px] cursor-pointer hover:bg-zinc-50">10 — Scope Guard — Creep Defender (Operations)</summary><div class="px-5 pb-5"><pre class="code-block bg-[#0f0a1e] text-[#e9d5ff] rounded-xl p-4 text-[11px] leading-relaxed whitespace-pre-wrap">---
+name: "Scope Guard — Creep Defender"
+trigger: "/scope-guard"
+---
+# Workflow: Acknowledge + "outside scope because [Reason: SOW v1.2]" → Option A Swap / Option B Add for [€] → Timeline impact
+</pre></div></details>
+    </div>
+    <div class="not-prose rounded-xl bg-amber-50 border border-amber-200 p-4 mt-4">
+      <div class="text-[11px] font-black tracking-widest text-amber-800">HOW TO USE THESE 10</div>
+      <p class="text-[12px] leading-relaxed text-zinc-700 mt-1">Copy one file → paste into Grok → run the 5-minute test protocol (Chapter 3) → tweak Role/Context to your niche (10 min) → ship. These 10 cover the 4 layers (Acquisition 3, Delivery 3, Operations 3, Growth 1) — add 5 more from your worksheet's top Priority to hit 15.</p>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-red-600 text-white text-[11px] font-black tracking-widest">APPENDIX F — TROUBLESHOOTING</div>
+    <h2 class="text-[28px]">When Grok Doesn't Listen — The 10 Fixes That Solve 95% of Issues (Beginner Playbook)</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Copy-paste this playbook next to your Skill editor. When a Skill misbehaves, find the symptom, apply the one-line fix, bump version, and re-test. Don't rewrite the whole Skill.</p>
+    <div class="not-prose space-y-3">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center font-black text-[11px] shrink-0">1</span><div><b class="text-[13px]">Grok invents fake data ("Acme Corp", €500)</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Add to Quality Rules: <span class="font-mono bg-zinc-100 border px-1 rounded text-[11px]">Never invent trigger — use [NEED: trigger] if missing. Never invent pricing — use [To be confirmed].</span> Grok will now flag [NEED] instead of hallucinate.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-amber-500 text-white flex items-center justify-center font-black text-[11px] shrink-0">2</span><div><b class="text-[13px]">Output format changes every run</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Lock <b>Output Template</b> with exact H2/H3 + table headers. Copy: <span class="font-mono bg-zinc-100 border px-1 rounded text-[11px]">## Email 1 — Stage 1 — Subject: [Subject] + Body [80–120w] + Tracker Table</span>. Grok obeys exact headers more than "make a table".</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white flex items-center justify-center font-black text-[11px] shrink-0">3</span><div><b class="text-[13px]">Grok asks 8 questions (interrogation)</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Cap <b>Required Inputs</b> at max 4 questions. Grok asks more when you list vague "and anything else". Delete that line.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-[11px] shrink-0">4</span><div><b class="text-[13px]">Tone is too formal / too casual</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Replace vague "professional" with contrast + example. <span class="font-mono bg-zinc-100 border px-1 rounded text-[11px]">Tone: Peer, not vendor. Start with "Hi [Name], quick nudge —" never "Dear Sir"</span></div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-[11px] shrink-0">5</span><div><b class="text-[13px]">Sandbox "Save as" does nothing</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Check <b>Sandbox: ON</b> in Skill settings. Then say: <span class="font-mono bg-[#f5f3ff] border border-violet-200 px-1 rounded">Save as nudge-[client]-[YYYY-MM-DD].md and return download link</span>. Be explicit about "return download link".</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-[11px] shrink-0">6</span><div><b class="text-[13px]">Connector doesn't trigger</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> You forgot the one-line trigger. Add: <span class="font-mono bg-[#f5f3ff] border border-violet-200 px-1 rounded">If Gmail Connector is active, create draft with Subject + Body. Do not send — return draft link.</span> Then enable the Connector in Settings → Connectors.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-[11px] shrink-0">7</span><div><b class="text-[13px]">Chain: Step 2 doesn't use Step 1's output</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Add explicit handoff at end of Step 1: <span class="font-mono bg-zinc-100 border px-1 rounded text-[11px]">→ Output to be used as input for Step 2: [Proposal Link], [Scope], [Price]</span>. Without this, Grok treats steps as separate.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-violet-600 text-white flex items-center justify-center font-black text-[11px] shrink-0">8</span><div><b class="text-[13px]">Skill is too long — Grok truncates</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Keep instructions &lt;800 tokens. If yours is longer, split into a Chain of 2 Skills (Chapter 7). Each Skill should be 1 job, not 3.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-[11px] shrink-0">9</span><div><b class="text-[13px]">"It worked yesterday, broken today"</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> You edited the Skill and broke the Output Template. Bump <span class="font-mono bg-zinc-100 border px-1 rounded">version: "1.2"</span> and diff the Instructions — revert the header you changed. Versioning is your undo.</div></div></div>
+      </div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-[11px] shrink-0">10</span><div><b class="text-[13px]">Not sure what to build next</b><div class="text-[12px] text-zinc-600 mt-1"><b>Fix:</b> Open the worksheet, sort by Priority (F×P) descending. Build the top unscored task. Don't choose by gut — choose by score.</div></div></div>
+      </div>
+    </div>
+    <div class="not-prose rounded-xl bg-emerald-50 border border-emerald-200 p-4 mt-6">
+      <div class="font-black text-[12px] text-emerald-700">Golden Rule — One Fix at a Time</div>
+      <p class="text-[12px] leading-relaxed text-zinc-700 mt-1">Change <b>one line</b>, re-run the 5-minute test protocol, and see. Changing 5 lines at once hides which fix worked. Small, versioned edits compound — that's how 15 Skills stay reliable.</p>
+    </div>
+  </div>
+
+  <div class="mt-10 text-center text-[11px] text-zinc-500 font-mono pb-12">
+    Grok Skills Business Bootcamp • 50-Page Guide + Interactive Worksheet • Single HTML file • Print → Save as PDF • No data leaves your browser<br>
+    Companion to Starter Pack (12 Skills) + Agency Vault (40 Skills) • Built for SuperGrok (May 13, 2026) • Not affiliated with xAI
+  </div>
+</div>
+
+<script>
+// Worksheet logic
+const LS_KEY = 'bootcamp-worksheet-v1';
+const skillMap = [
+  {k:['onboard','intake','kickoff','welcome'], v:'Onboard Canvas / Ops Onboard / Welcome Path'},
+  {k:['proposal','scope','pricing','quote'], v:'Proposal Forge / Scope Lock / Spec Sprint'},
+  {k:['invoice','payment','overdue','chase'], v:'Nudge Engine'},
+  {k:['report','weekly','status','pulse','ship log'], v:'Ship Log / Pulse Report / Project Pulse'},
+  {k:['testimonial','review','proof','case study'], v:'Proof Collector → Case Study'},
+  {k:['cold','outreach','email','prospect'], v:'Cold Email Opener'},
+  {k:['linkedin','dm','connection'], v:'LinkedIn DM Sequence'},
+  {k:['follow','ghost','chase','nudge'], v:'Follow-up Nudge / Breakup Email'},
+  {k:['repurpose','repurpose','thread','carousel'], v:'Threadify / Webinar → 5 Posts'},
+  {k:['newsletter','blog','email'], v:'Blog → Newsletter'},
+  {k:['launch','cross-post','platform'], v:'Launch Cross-Post Kit / Platform Adaptor'},
+  {k:['retainer','renewal','renew'], v:'Retainer Renewal Pitch'},
+  {k:['scope creep','guard','out of scope'], v:'Scope Guard'},
+  {k:['hours','usage','alert'], v:'Hours Alert / Retainer Usage'},
+  {k:['referral','introduce'], v:'Referral Engine'},
+  {k:['discovery','calendar','call'], v:'Discovery Call Invite'},
+  {k:['qbr','quarterly','business review'], v:'QBR Deck Outline'},
+  {k:['seo','ranking','traffic'], v:'SEO Ranking Update'},
+  {k:['ad','roas','spend'], v:'Ad Spend Report'},
+  {k:['social','growth','followers'], v:'Social Growth Report'},
+  {k:['video','youtube','show notes'], v:'Video → Show Notes'},
+  {k:['podcast','quote card'], v:'Podcast → Quote Cards'},
+  {k:['calendar','queue','schedule'], v:'Scheduling Queue Builder / Calendar Filler'},
+  {k:['hook','viral','hashtag'], v:'Viral Hook Vault / Hook Optimizer'},
+  {k:['comment','reply','engagement'], v:'Engagement Reply Engine'},
+];
+function suggestSkill(task){
+  const t = task.toLowerCase();
+  for(const m of skillMap){ if(m.k.some(k=> t.includes(k))) return m.v; }
+  return 'Custom Skill — use 6-block template (Ch.2)';
+}
+function calcHours(freq, hrs){
+  const f = parseInt(freq)||1, h=parseFloat(hrs)||0;
+  return (h * 4.33 * (f/5) * 0.8).toFixed(1);
+}
+let rows = [];
+function load(){
+  try{ rows = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }catch{ rows=[]; }
+  if(rows.length===0){
+    rows = [
+      {task:'Client onboarding — intake + kickoff', freq:4, pain:4, hrs:1.5},
+      {task:'Proposal writing — scope + pricing', freq:3, pain:5, hrs:1.5},
+      {task:'Invoice follow-up — nudge sequence', freq:3, pain:5, hrs:0.5},
+      {task:'Weekly client report', freq:5, pain:3, hrs:1},
+    ];
+  }
+}
+function save(){ localStorage.setItem(LS_KEY, JSON.stringify(rows)); }
+function render(){
+  const tbody=document.getElementById('wsBody');
+  tbody.innerHTML='';
+  let totalH=0, totalP=0;
+  rows.forEach((r,idx)=>{
+    const pri = ( (parseInt(r.freq)||1) * (parseInt(r.pain)||1) );
+    const hrs = calcHours(r.freq, r.hrs);
+    totalH+=parseFloat(hrs)||0; totalP+=pri;
+    const sug = suggestSkill(r.task);
+    const tr=document.createElement('tr');
+    tr.className="border-t border-zinc-100 hover:bg-[#fffbf7]";
+    tr.innerHTML=`
+      <td class="p-2"><input value="${r.task.replace(/"/g,'&quot;')}" data-idx="${idx}" data-field="task" class="w-full bg-transparent border border-transparent hover:border-zinc-200 focus:border-violet-400 focus:bg-white rounded-lg px-2 py-1.5 text-[12px]"></td>
+      <td class="p-2"><select data-idx="${idx}" data-field="freq" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-1.5 text-[12px]">${[1,2,3,4,5].map(n=>`<option value="${n}" ${r.freq==n?'selected':''}>${n} — ${[1,2,3,4,5][n-1]===1?'Monthly':n===5?'Daily':n===4?'2×/week':n===3?'Weekly':'2×/mo'}</option>`).join('')}</select></td>
+      <td class="p-2"><select data-idx="${idx}" data-field="pain" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-1.5 text-[12px]">${[1,2,3,4,5].map(n=>`<option value="${n}" ${r.pain==n?'selected':''}>${n} — ${['Tolerable','Mild','Annoying','Painful','Drains you'][n-1]}</option>`).join('')}</select></td>
+      <td class="p-2"><input type="number" step="0.25" min="0" value="${r.hrs}" data-idx="${idx}" data-field="hrs" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-1.5 text-[12px] text-center"></td>
+      <td class="p-2"><div class="text-[11px] font-semibold text-violet-700 px-2 py-1 rounded bg-[#f5f3ff] border border-violet-200">${sug}</div></td>
+      <td class="p-2 text-center"><span class="inline-flex px-2.5 py-1 rounded-full text-[11px] font-black ${pri>=20?'bg-red-500 text-white':pri>=12?'bg-amber-500 text-white':'bg-zinc-200 text-zinc-700'}">${pri}</span></td>
+      <td class="p-2 text-center font-bold">${hrs}</td>
+      <td class="p-2 text-center"><button data-del="${idx}" class="w-7 h-7 rounded-full bg-zinc-100 hover:bg-red-500 hover:text-white text-zinc-500 flex items-center justify-center">×</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('rowCount').textContent = rows.length;
+  document.getElementById('totalHours').textContent = totalH.toFixed(1);
+  document.getElementById('totalHoursFoot').textContent = totalH.toFixed(1);
+  document.getElementById('totalPriority').textContent = totalP;
+  // bind
+  tbody.querySelectorAll('input,select').forEach(el=>{
+    el.addEventListener('change', e=>{
+      const idx=parseInt(e.target.dataset.idx), field=e.target.dataset.field;
+      let val=e.target.value;
+      if(field==='freq' || field==='pain') val=parseInt(val);
+      if(field==='hrs') val=parseFloat(val);
+      rows[idx][field]=val; save(); render();
+    });
+    el.addEventListener('input', e=>{
+      if(e.target.dataset.field==='task'){
+        const idx=parseInt(e.target.dataset.idx); rows[idx].task=e.target.value; save();
+        // live update suggestion without full rerender
+      }
+    });
+  });
+  tbody.querySelectorAll('[data-del]').forEach(b=>{
+    b.addEventListener('click', ()=>{ rows.splice(parseInt(b.dataset.del),1); save(); render(); });
+  });
+}
+document.getElementById('addRow').addEventListener('click', ()=>{ rows.push({task:'', freq:3, pain:3, hrs:1}); save(); render(); });
+document.getElementById('exportCsv').addEventListener('click', ()=>{
+  let csv='Task,Frequency,Pain,Hrs per Run,Priority,Hrs per Month Saved,Suggested Skill\n';
+  rows.forEach(r=>{
+    const pri=(parseInt(r.freq)*parseInt(r.pain)); const hrs=calcHours(r.freq,r.hrs);
+    csv+=`"${r.task.replace(/"/g,'""')}",${r.freq},${r.pain},${r.hrs},${pri},${hrs},"${suggestSkill(r.task).replace(/"/g,'""')}"\n`;
+  });
+  const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='grok-skills-stack-worksheet.csv'; a.click();
+});
+document.getElementById('clearWs').addEventListener('click', ()=>{ if(confirm('Clear all tasks?')){ rows=[]; save(); render(); }});
+document.getElementById('printWs').addEventListener('click', ()=> window.print());
+document.querySelectorAll('.prefillBtn').forEach(b=>{
+  b.addEventListener('click', ()=>{ rows.push({task:b.dataset.task, freq:parseInt(b.dataset.freq), pain:parseInt(b.dataset.pain), hrs:parseFloat(b.dataset.hrs)}); save(); render(); document.getElementById('worksheet').scrollIntoView({behavior:'smooth'}); });
+});
+load(); render();
+</script>
+
+<!-- EXTRA PAGES TO ENSURE 50+ — APPENDIX G & H (adds 8 pages) -->
+<div class="page-break"></div>
+<div class="max-w-[980px] mx-auto px-4 md:px-6">
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">APPENDIX G</div>
+    <h2 class="text-[28px]">30-Day Habit Tracker & Build Journal — Print This and Tick It</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Tape this to your wall. One tick per day you build or test a Skill. Don't break the chain. Research shows ticking a box beats motivation.</p>
+    <div class="not-prose mt-6 rounded-[16px] border border-zinc-200 overflow-hidden">
+      <div class="grid grid-cols-7 text-[10px] font-black tracking-widest bg-zinc-900 text-white">
+        <div class="p-3">DAY</div><div class="p-3">SKILL TO BUILD</div><div class="p-3 text-center">BUILT ✓</div><div class="p-3 text-center">TESTED ✓</div><div class="p-3 text-center">VERSION</div><div class="p-3 text-center">TIME SAVED</div><div class="p-3 text-center">NOTE</div>
+      </div>
+      <div class="divide-y divide-zinc-100 text-[12px]">
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">1–2</div><div>Proposal Forge</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Most painful</div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">3–4</div><div>Nudge Engine</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Money first</div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">5–7</div><div>Onboard Canvas</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Delivery</div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">8–9</div><div>Cold Opener</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Acquisition</div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">10–11</div><div>LinkedIn DM</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500"></div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">12–13</div><div>Follow-up Nudge</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500"></div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">14</div><div>Breakup Email</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Week 2 review</div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">15–17</div><div>Ship Log</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Delivery</div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">18–19</div><div>Retainer Usage</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Ops</div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">20–21</div><div>Scope Guard</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500"></div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">22–23</div><div>Proof Collector</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Growth</div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">24–25</div><div>Threadify</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500"></div></div>
+        <div class="grid grid-cols-7 p-3"><div class="font-bold">26–27</div><div>Launch Kit</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500"></div></div>
+        <div class="grid grid-cols-7 p-3 bg-zinc-50"><div class="font-bold">28</div><div>Referral Engine</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div class="text-zinc-500">Week 4</div></div>
+        <div class="grid grid-cols-7 p-3 bg-emerald-50 font-bold"><div>29–30</div><div>Chain #1 + #2</div><div class="text-center">☐</div><div class="text-center">☐</div><div class="text-center">1.0</div><div class="text-center">—</div><div>✓ 15 + 2 chains</div></div>
+      </div>
+    </div>
+    <div class="not-prose mt-4 rounded-xl bg-violet-600 text-white p-4 text-center text-[12px]"><b>Print 2 copies.</b> One on wall, one in notebook. Tick with a real pen — dopamine beats digital.</div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-fuchsia-600 text-white text-[11px] font-black tracking-widest">APPENDIX H</div>
+    <h2 class="text-[28px]">20 Customization Prompts — Make Any Skill Sound Like YOU in 15 Seconds</h2>
+    <p class="text-[13px] leading-relaxed text-zinc-600">Copy one line into the <b>Custom field</b> of any Skill (Starter Pack or Vault) and it’s auto-injected. No editing the Skill file. Plain English, beginner-friendly.</p>
+    <div class="not-prose mt-6 grid md:grid-cols-2 gap-3 text-[12px]">
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>1. Agency Name</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Add my studio name 'Studio Lumen' to signature and header</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>2. Tone — Premium Friendly</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Tone = warm, premium, confident — no hype, no emoji in body</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>3. Always Include Loom</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always include a 60s Loom script outline (Hook → 3 bullets → CTA)</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>4. Pricing Anchor</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always show 2 packages: Standard / Premium with anchor pricing</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>5. Language</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Write in British English, concise, no Oxford comma</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>6. Calendar Link</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always add Calendly link: https://cal.com/your-name/15min</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>7. Revision Policy</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always include: 2 revision rounds, extra at €75/h</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>8. Legal Soft Line</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Add late fee note: "Late fee 5% after 14 days per agreement"</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>9. Signature</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">End every output with: — [Your Name], [Studio] — [Calendly]</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>10. Short Version</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Also provide a 5-line WhatsApp/DM short version</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>11. Metric First</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always lead with metric: "+38% leads" before story</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>12. No Buzzwords</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Ban buzzwords: synergy, cutting-edge, leverage — use specific verbs</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>13. Table Format</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Always use Markdown tables: Header | Header | Header</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>14. Placeholders</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Keep all placeholders in [Brackets] — never invent fake data</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>15. CTA</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">End with one clear CTA: "Reply YES + [Link]" or "Book via [Calendly]"</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>16. PS Scarcity</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Add PS: "Slot for [Month] — available until [Date]"</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>17. Voice Example</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Mimic this voice: "For [Brand], the goal isn't more words — it's +30% leads"</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>18. File Name</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">Save as skill-[client]-[YYYY-MM-DD].md and return download link</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>19. Translation</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">If input is Italian, reply in English (or vice versa) — keep placeholders in English</span></div>
+      <div class="rounded-xl bg-white border border-zinc-200 p-4"><b>20. Chain Handoff</b><br><span class="font-mono bg-zinc-100 border px-2 py-1 rounded text-[11px]">End Step 1 with: → Output to be used as input for Step 2: [Scope], [Price]</span></div>
+    </div>
+    <div class="not-prose mt-4 rounded-xl bg-zinc-900 text-white p-4">
+      <div class="text-[11px] font-black tracking-widest text-violet-300">HOW TO USE THESE</div>
+      <p class="text-[12px] leading-relaxed text-zinc-300 mt-1">In the Starter Pack or Vault app, paste one (or two) of these lines into the <b class="text-white">Customize</b> field before you hit Generate. The app injects it into the Skill's Instructions automatically. Test the combo, then save the ones you love as your defaults — your stack, your voice.</p>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+  <div class="mt-10 prose max-w-none">
+    <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">FINAL PAGE</div>
+    <h2 class="text-[28px]">You Don't Need Another Course. You Need 15 Skills That Run.</h2>
+    <p class="text-[14px] leading-relaxed text-zinc-600">You have read 50+ pages. You know the anatomy, the 6-block template, sandbox, Connectors, the 4-layer blueprint, the 30-day plan, chains, and the worksheet. The next step is not reading — it is building.</p>
+    <div class="not-prose rounded-[16px] bg-violet-600 text-white p-6 text-center">
+      <div class="font-black text-[18px]">Do This in the Next 60 Minutes</div>
+      <ol class="mt-3 text-[13px] leading-relaxed text-violet-100 list-decimal pl-5 text-left max-w-[520px] mx-auto space-y-1">
+        <li>Open the worksheet at the top of this file → add your 20 recurring tasks → sort by Priority.</li>
+        <li>Open <b class="text-white">index.html</b> (Starter Pack) → generate your #1 Priority Skill → paste into Grok → test (Chapter 3).</li>
+        <li>Tomorrow, generate #2. In 30 days you have 15. In 60 days you have chains. In 90 days you have an operating stack.</li>
+      </ol>
+      <div class="mt-4 inline-flex px-4 py-2 rounded-full bg-white text-violet-700 font-black text-[12px]">15 Skills × 2 Hours Saved/Month = 30 Hours Back. Every Month. Forever.</div>
+    </div>
+    <p class="text-[12px] text-zinc-500">Print this guide → Save as PDF → Keep it next to Grok. Tick the 30-Day Tracker (Appendix G) with a real pen. One Skill every 2 days. Don't break the chain.</p>
+  </div>
+</div>
+</body>
+</html>
