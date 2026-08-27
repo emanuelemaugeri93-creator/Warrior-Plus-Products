@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grok Skills Starter Pack for Freelancers — Generate Grok Skills in 60 seconds</title>
+<meta name="description" content="Generate ready-to-install Grok Custom Skills for freelancers. 12 templates, one-click copy, paste into Grok.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] }
+    }
+  }
+}
+</script>
+<style>
+*{ -webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#141414}::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:99px}
+.custom-select{appearance:none;-webkit-appearance:none}
+.glow{box-shadow:0 0 40px rgba(255,255,255,0.06)}
+.code-block{background:#0c0c0e;border:1px solid #232323}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);transform:translateX(-100%);animation:shine 4s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.drawer{transition:transform .32s cubic-bezier(.32,.72,0,1)}
+</style>
+</head>
+<body class="bg-[#09090b] text-white font-sans min-h-screen">
+<!-- Overlay + Drawer -->
+<div id="drawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden opacity-0 transition duration-300"></div>
+<aside id="sideDrawer" class="drawer fixed top-0 right-0 h-full w-[360px] max-w-[88vw] bg-[#0f0f0f] border-l border-[#232323] z-[61] translate-x-full flex flex-col">
+  <div class="px-6 pt-6 pb-4 border-b border-[#1e1e1e] flex items-center justify-between">
+    <div>
+      <div class="text-[11px] font-bold tracking-widest text-zinc-500">UPGRADES</div>
+      <div class="font-black text-[16px] tracking-tight">Unlock Your Stack</div>
+    </div>
+    <button id="closeDrawer" class="w-9 h-9 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center hover:bg-white hover:text-black transition">✕</button>
+  </div>
+  <div class="flex-1 overflow-auto p-6 space-y-4">
+    <!-- Card 1 -->
+    <div class="rounded-2xl bg-white text-black p-5">
+      <div class="flex items-start justify-between gap-3 mb-3">
+        <div class="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center">🔗</div>
+        <span class="px-2.5 py-1 rounded-full bg-black text-white text-[11px] font-black">$17</span>
+      </div>
+      <div class="font-black text-[16px] leading-tight">Agency Vault</div>
+      <div class="text-[12px] font-bold tracking-widest text-zinc-500 mt-1">40 ADVANCED SKILLS</div>
+      <p class="text-[13px] leading-relaxed text-zinc-600 mt-2">40 extra Skills for cold outreach, client reporting, retainer management, content repurposing & multi-platform posting. Includes <b class="text-black">Skill Chain Builder</b>: link two Skills into a sequence (e.g. "draft proposal" → "send follow-up") and export as .md.</p>
+      <ul class="mt-3 space-y-1.5 text-[12px] text-zinc-700">
+        <li class="flex gap-2"><span class="text-black">✓</span> 40 ready-to-use templates</li>
+        <li class="flex gap-2"><span class="text-black">✓</span> Chain Builder drag & drop</li>
+        <li class="flex gap-2"><span class="text-black">✓</span> Export .md for Grok sandbox</li>
+      </ul>
+      <button class="w-full mt-4 bg-black text-white font-bold text-[13px] py-3 rounded-xl hover:bg-zinc-800 transition">Unlock Agency Vault — $17 →</button>
+      <div class="text-center text-[11px] text-zinc-500 mt-2">Instant access • File + private URL</div>
+    </div>
+    <!-- Card 2 -->
+    <div class="rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] p-5 text-white">
+      <div class="flex items-start justify-between gap-3 mb-3">
+        <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center">📚</div>
+        <span class="px-2.5 py-1 rounded-full bg-white text-black text-[11px] font-black">$27</span>
+      </div>
+      <div class="font-black text-[16px] leading-tight">Business Bootcamp</div>
+      <div class="text-[12px] font-bold tracking-widest text-zinc-500 mt-1">SYSTEM + WORKSHEET</div>
+      <p class="text-[13px] leading-relaxed text-zinc-400 mt-2">A <b class="text-white">25-page</b> system to build your 15–20 Skill operating stack that automates 80% of admin. Covers: advanced markdown, sandbox, Connectors (Vercel, Canva, Gamma) + fillable worksheet.</p>
+      <ul class="mt-3 space-y-1.5 text-[12px] text-zinc-400">
+        <li class="flex gap-2"><span class="text-white">✓</span> 15–20 Skill stack plan</li>
+        <li class="flex gap-2"><span class="text-white">✓</span> Step-by-step Connector guide</li>
+        <li class="flex gap-2"><span class="text-white">✓</span> Automation priority worksheet</li>
+      </ul>
+      <button class="w-full mt-4 bg-white text-black font-bold text-[13px] py-3 rounded-xl hover:bg-zinc-100 transition">Unlock Bootcamp — $27 →</button>
+      <div class="text-center text-[11px] text-zinc-500 mt-2">PDF + interactive worksheet</div>
+    </div>
+    <div class="rounded-xl bg-amber-500/10 border border-amber-500/20 p-3 flex gap-2">
+      <span>💡</span><p class="text-[12px] leading-relaxed text-amber-200/80"><b class="text-amber-200">Note:</b> These are optional upgrades. The free pack below is complete and ready for Grok.</p>
+    </div>
+  </div>
+  <div class="p-4 border-t border-[#1e1e1e] text-center text-[11px] text-zinc-600">Support: reply to WarriorPlus email • Updates included</div>
+</aside>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-[#09090b]/80 backdrop-blur-xl border-b border-[#1e1e1e]">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-6 h-[64px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-white text-black flex items-center justify-center font-black text-[15px]">𝕏</div>
+      <div>
+        <div class="font-bold text-[14px] tracking-tight leading-none">GROK SKILLS <span class="font-normal text-zinc-400">STARTER PACK</span></div>
+        <div class="text-[11px] text-zinc-500 font-medium tracking-wide">FOR FREELANCERS • SUPERGROK • MAY 2026</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="hidden md:flex items-center gap-2 mr-2">
+        <span class="px-2.5 py-1 rounded-full bg-white text-black text-[11px] font-bold tracking-wide">FREE • 12 TEMPLATES</span>
+        <span class="px-2.5 py-1 rounded-full border border-[#2a2a2a] text-zinc-400 text-[11px] font-medium">NO LOGIN REQUIRED</span>
+      </div>
+      <a href="#how" class="hidden lg:inline-flex text-[13px] font-medium text-zinc-400 hover:text-white transition mr-1">How to install →</a>
+      <button id="openDrawer" class="inline-flex items-center gap-2 bg-white text-black font-bold text-[13px] px-4 py-2 rounded-full hover:bg-zinc-100 transition">
+        <span class="hidden sm:inline">Upgrade</span> <span class="sm:hidden">☰</span> <span class="hidden sm:inline">☰</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 pt-8 md:pt-10">
+  <div class="grid lg:grid-cols-[1.05fr_0.85fr] gap-6 items-start">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#141414] border border-[#262626] text-[12px]">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-zinc-300 font-medium">Grok Custom Skills launched May 13, 2026</span>
+        <span class="hidden sm:inline text-zinc-500">— Build once, run with one click</span>
+      </div>
+      <h1 class="mt-4 text-[32px] md:text-[42px] font-black tracking-tight leading-[0.95]">
+        Generate your first<br>
+        <span class="text-zinc-500">Grok Skill</span> in 60 seconds.
+      </h1>
+      <p class="mt-3 text-[15px] leading-relaxed text-zinc-400 max-w-[560px]">Select your freelance type + recurring task. We output a fully formatted Grok Skill — name, description & markdown instructions — ready to paste into <span class="text-white font-medium">Grok → Settings → Skills → Create Skill</span>.</p>
+      <div class="mt-4 flex flex-wrap gap-2 text-[12px]">
+        <span class="px-2.5 py-1 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-zinc-300">⚡ One-click workflows</span>
+        <span class="px-2.5 py-1 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-zinc-300">📋 Copy & Paste Ready</span>
+        <span class="px-2.5 py-1 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-zinc-300">🧩 SuperGrok Sandbox</span>
+      </div>
+    </div>
+    <div class="bg-[#111111] border border-[#232323] rounded-2xl p-4 md:p-5 glow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-[12px] font-bold tracking-widest text-zinc-500">QUICK STATS</span>
+        <span class="text-[11px] px-2 py-1 rounded bg-white text-black font-bold">v1.0 • FREE</span>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="bg-[#0a0a0a] border border-[#232323] rounded-xl p-3 text-center">
+          <div class="text-[22px] font-black">12</div>
+          <div class="text-[11px] text-zinc-500 font-medium leading-tight">Pre-built<br>Skill Templates</div>
+        </div>
+        <div class="bg-[#0a0a0a] border border-[#232323] rounded-xl p-3 text-center">
+          <div class="text-[22px] font-black">60<span class="text-sm font-bold">s</span></div>
+          <div class="text-[11px] text-zinc-500 font-medium leading-tight">Avg. generation<br>time</div>
+        </div>
+        <div class="bg-[#0a0a0a] border border-[#232323] rounded-xl p-3 text-center">
+          <div class="text-[22px] font-black">∞</div>
+          <div class="text-[11px] text-zinc-500 font-medium leading-tight">Custom<br>variations</div>
+        </div>
+      </div>
+      <div class="mt-3 flex items-center gap-2 text-[12px] text-zinc-500">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 2,341 freelancers already building — <button id="openDrawer2" class="underline decoration-zinc-600 hover:text-white">view upgrades $17 / $27 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main App -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-8 pb-6">
+  <div class="grid lg:grid-cols-[420px_1fr] gap-6 items-start">
+    <!-- Left Panel -->
+    <div class="bg-[#141414] border border-[#262626] rounded-2xl overflow-hidden lg:sticky lg:top-[76px]">
+      <div class="px-5 py-4 border-b border-[#232323] flex items-center justify-between">
+        <h2 class="font-bold text-[13px] tracking-widest">BUILD YOUR SKILL</h2>
+        <span class="text-[11px] px-2 py-1 rounded-full bg-[#1e1e1e] border border-[#2a2a2a] text-zinc-400 font-mono" id="stepIndicator">Step 1 of 3</span>
+      </div>
+      <div class="p-5 space-y-5">
+        <div>
+          <label class="flex items-center gap-2 text-[12px] font-bold tracking-widest text-zinc-400 mb-2">
+            <span class="w-6 h-6 rounded-lg bg-white text-black flex items-center justify-center text-[12px]">1</span> FREELANCE TYPE
+          </label>
+          <div class="relative">
+            <select id="freelanceType" class="custom-select w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 pr-10 text-[14px] font-medium focus:outline-none focus:border-white/30 transition">
+              <option value="copywriter">✍️ Copywriter / Content Writer</option>
+              <option value="designer">🎨 Designer / Brand / UI</option>
+              <option value="va">🗂️ Virtual Assistant / Admin</option>
+              <option value="developer">💻 Developer / No-Code</option>
+              <option value="coach">🎤 Coach / Consultant</option>
+            </select>
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">⌄</span>
+          </div>
+          <p class="mt-1.5 text-[11px] text-zinc-500">Tailors the Skill's tone, deliverables & examples.</p>
+        </div>
+        <div>
+          <label class="flex items-center gap-2 text-[12px] font-bold tracking-widest text-zinc-400 mb-2">
+            <span class="w-6 h-6 rounded-lg bg-white text-black flex items-center justify-center text-[12px]">2</span> RECURRING TASK
+          </label>
+          <div class="relative">
+            <select id="taskType" class="custom-select w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 pr-10 text-[14px] font-medium focus:outline-none focus:border-white/30 transition">
+              <option value="onboarding">🤝 Client Onboarding — intake + kickoff</option>
+              <option value="proposal">📄 Proposal Writing — scope + pricing</option>
+              <option value="invoice">💸 Invoice Follow-up — nudge sequence</option>
+              <option value="report">📊 Weekly Report — progress + metrics</option>
+              <option value="testimonial">⭐ Testimonial Request — ask + format</option>
+            </select>
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">⌄</span>
+          </div>
+        </div>
+        <div>
+          <label class="flex items-center gap-2 text-[12px] font-bold tracking-widest text-zinc-400 mb-2">
+            <span class="w-6 h-6 rounded-lg bg-zinc-800 border border-[#2a2a2a] flex items-center justify-center text-[12px]">3</span> CUSTOMIZE <span class="font-normal normal-case tracking-normal text-zinc-500">(optional)</span>
+          </label>
+          <textarea id="customInput" rows="3" placeholder="E.g.: Add my agency name 'Studio Lumen', tone = friendly but premium, always include a Loom script..." class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-xl px-4 py-3 text-[13px] placeholder:text-zinc-600 focus:outline-none focus:border-white/20 resize-none"></textarea>
+          <div class="mt-2 flex items-center justify-between">
+            <span class="text-[11px] text-zinc-500" id="charCount">0 characters — will be injected into Instructions</span>
+            <button id="clearCustom" class="text-[11px] font-medium text-zinc-400 hover:text-white">Clear</button>
+          </div>
+        </div>
+        <button id="generateBtn" class="shine w-full bg-white text-black font-bold text-[14px] py-3.5 rounded-xl hover:bg-zinc-100 transition flex items-center justify-center gap-2">
+          <span>⚡ Generate Grok Skill</span>
+        </button>
+        <div class="flex gap-2">
+          <button id="randomBtn" class="flex-1 bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl py-2.5 text-[13px] font-medium hover:bg-[#232323] transition">🎲 Surprise me</button>
+          <button id="resetBtn" class="flex-1 bg-transparent border border-[#2a2a2a] rounded-xl py-2.5 text-[13px] font-medium text-zinc-400 hover:text-white transition">Reset</button>
+        </div>
+        <div class="pt-4 border-t border-[#232323]">
+          <div class="text-[11px] font-bold tracking-widest text-zinc-500 mb-2">POPULAR TEMPLATES</div>
+          <div class="grid grid-cols-1 gap-1.5" id="quickPicks"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="bg-[#111111] border border-[#232323] rounded-2xl overflow-hidden">
+      <div class="px-5 py-4 border-b border-[#232323] flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <h2 class="font-bold text-[13px] tracking-widest">LIVE PREVIEW</h2>
+          <span class="hidden sm:inline-flex items-center gap-1.5 text-[11px] px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> auto-updates</span>
+        </div>
+        <div class="flex bg-[#0a0a0a] border border-[#232323] rounded-full p-1">
+          <button data-tab="preview" class="tabBtn active px-4 py-1.5 rounded-full text-[12px] font-bold bg-white text-black">Formatted</button>
+          <button data-tab="raw" class="tabBtn px-4 py-1.5 rounded-full text-[12px] font-medium text-zinc-400">Raw Markdown</button>
+        </div>
+      </div>
+      <div class="p-5 pb-0 grid md:grid-cols-[1fr_auto] gap-3">
+        <div class="bg-[#0a0a0a] border border-[#232323] rounded-xl p-4">
+          <div class="text-[11px] font-bold tracking-widest text-zinc-500 mb-1">SKILL NAME</div>
+          <div id="skillName" class="font-bold text-[16px] leading-tight"></div>
+          <div class="text-[11px] text-zinc-500 mt-1 font-mono" id="skillSlug"></div>
+        </div>
+        <div class="flex flex-col gap-2 md:w-[200px]">
+          <button id="copyBtn" class="bg-white text-black font-bold text-[13px] px-5 py-3 rounded-xl hover:bg-zinc-100 transition flex items-center justify-center gap-2 whitespace-nowrap">⎘ Copy Skill</button>
+          <button id="downloadBtn" class="bg-[#1e1e1e] border border-[#2a2a2a] font-medium text-[13px] px-5 py-2.5 rounded-xl hover:bg-[#232323] transition whitespace-nowrap">⬇ Download .md</button>
+        </div>
+      </div>
+      <div class="px-5 pt-3">
+        <div class="bg-[#0a0a0a] border border-[#232323] rounded-xl p-4">
+          <div class="text-[11px] font-bold tracking-widest text-zinc-500 mb-1">DESCRIPTION <span class="font-normal normal-case tracking-normal">(shown in Grok Skills list)</span></div>
+          <div id="skillDesc" class="text-[13px] leading-relaxed text-zinc-300"></div>
+        </div>
+      </div>
+      <div class="p-5">
+        <div id="panel-preview" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="text-[11px] font-bold tracking-widest text-zinc-500">INSTRUCTIONS <span class="font-normal normal-case tracking-normal">(paste into Grok's Instructions field)</span></div>
+            <button id="copyInstructionsBtn" class="text-[11px] font-bold px-3 py-1.5 rounded-full bg-[#1e1e1e] border border-[#2a2a2a] hover:bg-[#252525] transition">⎘ Copy instructions</button>
+          </div>
+          <div id="formattedInstructions" class="code-block rounded-xl p-5 text-[13px] leading-relaxed whitespace-pre-wrap font-mono text-zinc-200 max-h-[520px] overflow-auto"></div>
+          <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex gap-3">
+            <span class="text-amber-400 text-[14px]">💡</span>
+            <div class="text-[12px] leading-relaxed text-amber-200/80"><span class="font-bold text-amber-200">Pro tip:</span> In Grok, go to <span class="font-mono bg-amber-500/10 px-1.5 py-0.5 rounded">Settings → Skills → Create Skill</span>, paste Name, Description and Instructions exactly as shown. Enable in sandbox if you want file editing.</div>
+          </div>
+        </div>
+        <div id="panel-raw" class="hidden">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-[11px] font-bold tracking-widest text-zinc-500">RAW MARKDOWN FILE</div>
+            <button id="copyRawBtn" class="text-[11px] font-bold px-3 py-1.5 rounded-full bg-[#1e1e1e] border border-[#2a2a2a] hover:bg-[#252525] transition">⎘ Copy raw</button>
+          </div>
+          <pre id="rawContent" class="code-block rounded-xl p-5 text-[12px] leading-relaxed whitespace-pre-wrap font-mono text-zinc-300 max-h-[520px] overflow-auto break-words"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO INSTALL — HIGH CONTRAST LIGHT SECTION -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-2">
+  <div id="how" class="bg-white text-zinc-900 rounded-[24px] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.25)] border border-zinc-200">
+    <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-[11px] font-bold tracking-widest">HOW TO INSTALL — 3 STEPS</div>
+        <h3 class="mt-3 font-black text-[22px] md:text-[26px] tracking-tight leading-none">From generator to Grok<br><span class="text-zinc-400">in under 90 seconds</span></h3>
+      </div>
+      <div class="hidden md:flex items-center gap-2 text-[12px] text-zinc-500">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> SuperGrok required • works on mobile too
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-20 h-20 bg-zinc-900 rounded-full blur-[40px] opacity-[0.03]"></div>
+        <div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-black text-sm mb-3">1</div>
+        <div class="font-bold text-[15px]">Open Grok Skills</div>
+        <div class="text-zinc-600 text-[13px] leading-relaxed mt-1.5">In Grok → <b class="text-black">Settings → Skills → Create New Skill</b>. Requires SuperGrok (sandbox enabled for file editing).</div>
+        <div class="mt-3 inline-flex text-[11px] font-mono px-2 py-1 rounded bg-white border border-zinc-200">grok.com → Settings → Skills</div>
+      </div>
+      <div class="bg-zinc-900 text-white rounded-2xl p-5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-20 h-20 bg-white rounded-full blur-[40px] opacity-[0.06]"></div>
+        <div class="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center font-black text-sm mb-3">2</div>
+        <div class="font-bold text-[15px]">Paste the 3 fields</div>
+        <div class="text-zinc-400 text-[13px] leading-relaxed mt-1.5">Copy <b class="text-white">Name</b>, <b class="text-white">Description</b> and <b class="text-white">Instructions</b> from the preview. The Name becomes the trigger <span class="font-mono text-white">/skill-name</span>.</div>
+        <div class="mt-3 inline-flex text-[11px] font-mono px-2 py-1 rounded bg-white/10 border border-white/10">Copy → Paste → Save</div>
+      </div>
+      <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 relative overflow-hidden">
+        <div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-black text-sm mb-3">3</div>
+        <div class="font-bold text-[15px]">Save & invoke</div>
+        <div class="text-zinc-600 text-[13px] leading-relaxed mt-1.5">Click <b class="text-black">Save</b>, then type <span class="font-mono bg-white border border-zinc-200 px-1.5 py-0.5 rounded">/skill-name</span> in chat or tap the Skill chip. Chain with Connectors.</div>
+        <div class="mt-3 text-[11px] font-bold text-emerald-600">✓ Done — ready to use</div>
+      </div>
+    </div>
+    <div class="mt-5 flex flex-wrap gap-2 text-[12px]">
+      <span class="px-3 py-1.5 rounded-full bg-zinc-900 text-white font-medium">🎥 Video demo: 45s in drawer →</span>
+      <span class="px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700">Tip: enable sandbox for direct file editing</span>
+    </div>
+  </div>
+</div>
+
+<!-- LIBRARY — LIGHT CONTRAST SECTION -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-6">
+  <div class="bg-[#f4f4f5] rounded-[24px] overflow-hidden border border-zinc-200">
+    <div class="px-6 py-5 border-b border-zinc-200 flex flex-wrap items-center justify-between gap-3 bg-white">
+      <div class="flex items-center gap-3">
+        <h3 class="font-black text-[14px] tracking-tight text-zinc-900">LIBRARY • 12 TEMPLATES INCLUDED</h3>
+        <span class="hidden sm:inline px-2.5 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-bold">CLICK TO LOAD</span>
+      </div>
+      <span class="text-[12px] text-zinc-500">Every Skill is complete, sandbox & connector-ready</span>
+    </div>
+    <div id="libraryGrid" class="p-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+  </div>
+</div>
+
+<div class="max-w-[1280px] mx-auto px-4 md:px-6">
+  <div class="mt-8 text-center text-[11px] text-zinc-600 font-mono pb-10">
+    Built for SuperGrok Custom Skills (May 13 2026) • Single HTML file • No data leaves your browser • Host on GitHub Pages / WarriorPlus thank-you page
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white text-black px-5 py-3 rounded-full font-bold text-[13px] shadow-2xl translate-y-[150%] transition duration-300 flex items-center gap-2 z-50">
+  <span class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-xs">✓</span> <span id="toastMsg">Copied!</span>
+</div>
+
+<script>
+// ---------- TEMPLATES — UPGRADED, FULLY DETAILED ----------
+const TEMPLATES = {
+  "copywriter|proposal": {
+    name: "Proposal Forge — Copywriter Edition",
+    description: "Proposals that close: scope, deliverables, timeline, anchored pricing & objection handling — ready to send in 3 minutes.",
+    instructions: `# Role
+You are Proposal Forge, a senior copywriter's proposal partner. Turn a rough brief into a polished, client-ready proposal that sounds like the freelancer, not AI.
+
+# Context
+The user is a freelance copywriter/content writer who needs to send proposals fast without sounding templated. You must mirror the client's language, anchor pricing, and pre-handle objections.
+
+# Required Inputs (ask only what's missing — max 4 smart questions)
+- Client: name, business, niche, audience
+- Project: type (sales page, emails, site, launch), goals/KPIs
+- Scope: deliverables, word count, research needed, revisions included
+- Timeline & budget range
+- Your pricing base (day rate / package) & proof (1-2 results/testimonials)
+
+# Workflow — Step by Step
+1. **Gap Check:** List any missing inputs as \`[NEED: ...]\`. Ask 3–4 concise questions.
+2. **Draft the Proposal** (use this exact structure):
+   ## Executive Summary (2–3 sentences, outcome, not features)
+   ## Understanding Your Goals (mirror the brief, 3 bullets pain→desire)
+   ## Scope & Deliverables (Markdown table: Deliverable | Includes | Revisions | Delivery)
+   ## Process & Timeline (Week 1–4, 4 steps: Research → Draft → Revise → Ship)
+   ## Investment (2 packages: Standard / Premium with anchor, includes/excludes, note "50% upfront")
+   ## Why Me (3 tailored bullets: niche, method, social proof — placeholder [Portfolio Link])
+   ## Next Steps (1 clear CTA: "Reply YES + [Calendly]")
+3. **Objection Handling Box** (3 lines: Price / Timing / "We have a writer already").
+4. **PS** with soft scarcity: "Slot for [Month] — available until [Date]".
+
+# Output Template
+- Clean Markdown, ready for Gmail/Notion/PDF. Use \`\`[Client Name]\`\`, \`\`[Date]\`\`, \`\`[Calendly]\`\` come placeholder.
+- Length 380–520 words. H2/H3 headings, real tables.
+
+# Quality Rules
+- Zero lorem ipsum. Copy persuasivo vero.
+- Tone: confident, warm, expert. No hype, no emoji in proposal body.
+- Always include: revision policy (2 rounds included, extra at hourly rate) + IP/rights on delivery.
+
+# Example Snippet (style to mimic)
+> "For [Brand], the goal isn't 'more words' — it's +30% qualified leads in 60 days. This scope is built for that."
+
+# Sandbox & Connectors
+- If user is in SuperGrok Sandbox: offer to save as \`proposal-[client]-[date].md\` and ask if they also want a Canva/Gamma version via Connector.
+
+# Error Handling
+- If critical data is missing, don't invent pricing: use \`[Da confermare]\`.
+
+# Custom Instructions
+{{CUSTOM}}`
+  },
+  "designer|onboarding": {
+    name: "Onboard Canvas — Designer Edition",
+    description: "Premium studio onboarding: welcome email, intake questionnaire, file checklist & 30-min kickoff agenda.",
+    instructions: `# Role
+You are Onboard Canvas, a brand/UI studioops partner for freelance designers. You turn chaos into a premium, calm onboarding.
+
+# Context
+New client, high expectations. You must make the freelancer look organized, premium, and in control from day one.
+
+# Required Inputs
+- Client: name, brand, industry, audience
+- Project: type (logo, identity, site, deck), goals, competitors, inspirations
+- Timeline, budget, comms channel (Slack/Email/Notion)
+
+# Workflow — Produce 4 Asset Copy-Paste Ready
+**A) Welcome Email (130–160 words)** — warm, premium, expectations, 3 next steps, link [Drive] + [Calendly], signature with [Studio Name].
+**B) Intake Questionnaire (10 questions)** — Goals, Audience (who/why), Competitors (3), Inspirations (links), Must-have / Must-avoid, Tone keywords (3), Available assets, Success KPI, Hard deadline, Budget range.
+**C) File Request Checklist (tabella: Asset | Formato | Esempio | Status ☐)** — Logo vettoriale, palette, font, foto, copy, accessi (Figma, hosting, social).
+**D) Kickoff Agenda (30 min)** — 5 timeboxed bullets + 3 alignment questions + definition of Done.
+
+# Output Template
+Use H3 for each asset. Real Markdown tables. Placeholders: \`[Project Name]\`, \`[Drive Link]\`, \`[Calendly]\`. Ready for Notion/Email.
+
+# Quality Rules
+- Tone: friendly expert, minimal, premium studio. No fluff.
+- Every asset must be send-ready with no edits.
+
+# Sandbox & Connectors
+- Sandbox: save as \`onboarding-[client].md\` + checklist CSV. Connector: Canva (moodboard), Gamma (kickoff deck).
+
+# Custom
+{{CUSTOM}}`
+  },
+  "va|invoice": {
+    name: "Nudge Engine — Invoice Follow-up",
+    description: "3-email + 1 chat nudge sequence that gets you paid without burning bridges — with overdue logic & tracking.",
+    instructions: `# Role
+You are Nudge Engine, the VA's most diplomatic collector. You get invoices paid while keeping the relationship warm.
+
+# Context
+Freelance VA/admin who hates chasing money. You need firm-but-kind reminders that work on autopilot.
+
+# Required Inputs
+- Client name, invoice # & amount (with currency), due date, days overdue, payment link/method, late-fee policy, your name/business
+- Channel preference: Email + WhatsApp/Slack
+
+# Workflow — Logic Overdue
+Auto-detect stage:
+- **Stage 1 (1–3 days):** Friendly nudge — "might have slipped through"
+- **Stage 2 (7 days):** Firm reminder — link + clear due date
+- **Stage 3 (14+ days):** Final notice — consequences + payment plan option
+
+Required output:
+1. **3 complete Emails** (Subject + Body 80–120 words each) — subject includes \`[Invoice #]\`
+2. **1 short Nudge** for WhatsApp/Slack (max 35 words)
+3. **Tracker Table** (Date | Action | Channel | Status)
+4. **PS** su tutte: "Reply 'paid' if already sent — I'll close it instantly."
+
+# Tone Ladder
+- S1 warm/helpful, S2 professional/clear, S3 firm/boundary-setting (never aggressive).
+
+# Quality Rules
+- Always include amount, due date, link. No passive-aggressive.
+- Add soft legal line if Stage 3: "Late fee [X%] after [Date] per agreement."
+
+# Connectors
+- If Gmail Connector is active, offer to create ready drafts.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "developer|report": {
+    name: "Ship Log — Dev Weekly Report",
+    description: "Turn commits & tasks into a weekly report non-technical clients actually understand and appreciate.",
+    instructions: `# Role
+You are Ship Log, a developer's client-communication partner. Translate technical work into outcome language.
+
+# Context
+Freelance dev/no-code. Client is non-technical, wants clarity, not jargon.
+
+# Required Inputs
+- Shipped (bullet o commit messages)
+- In progress (% complete)
+- Blockers / needs from client (with deadline)
+- Next week plan, time log (task → hours)
+
+# Workflow — Structure
+Generate report with:
+
+\`TL;DR (1 sentence, outcome)\`
+
+## 🚀 Shipped This Week (3–6 bullets, verb + outcome + preview link if any)
+> Ex: "Checkout API — 40% faster, error rate -60% [Preview]"
+
+## 🛠️ In Progress (table: Task | Progress | ETA | Owner)
+## 🚧 Blockers / Need From You (clear ask + deadline + what happens if it slips)
+## 📅 Next Week (3 numbered priorities)
+## ⏱️ Time Summary (table: Task | Hours | Notes)
+## 🔗 Links (preview, repo, Figma)
+
+# Quality Rules
+- Translate jargon: "Refactored auth" → "More secure login, 2s faster".
+- Tone: calm, competent, no hype, no extra emoji in body.
+- Placeholder: \`[Preview Link]\`, \`[Staging URL]\`.
+
+# Sandbox
+- Save as \`weekly-report-YYYY-MM-DD.md\`, optional CSV time log.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "coach|testimonial": {
+    name: "Proof Collector — Coach Edition",
+    description: "Collect powerful testimonials: 5 right questions, then 3 ready-to-publish formats (short, story, LinkedIn).",
+    instructions: `# Role
+You are Proof Collector for coaches/consultants. You ask, shape, and format testimonials that convert — without cringe.
+
+# Context
+Coach needs social proof fast. You make it easy for the client to answer and easy for the coach to publish.
+
+# Required Inputs
+- Client name, program name, outcome, platform target (site, LinkedIn, sales page)
+
+# Workflow
+**A) Request Message (110–140 words)** — warm, low-friction, explain why 2 min of their time helps others.
+**B) 5 Questions to Send:**
+1. Before — Where were you before?
+2. After — Where are you now? (metric if possible)
+3. Biggest Win — The "aha" moment
+4. Surprise — What didn't you expect?
+5. To a Friend — What would you tell someone on the fence?
++ Permission line: "Reply YES to approve use of your words + photo/name."
+
+**C) Polished Variants** (from raw answers):
+- Short (1 punchy sentence, <25 words)
+- Story (4–5 sentences, transformation arc, with metric)
+- LinkedIn (2–3 paragraphs, tag-ready, with soft CTA)
+
+# Quality Rules
+- Tone: appreciative, human, zero hype. Require explicit permission.
+
+# Connectors
+- Canva Connector: ready testimonial card.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "copywriter|onboarding": {
+    name: "Brief Decoder — Copywriter Onboarding",
+    description: "From messy brief to 1-page creative brief: audience, voice, offer, proof & 3 testable angles — plus 3 headlines.",
+    instructions: `# Role
+You are Brief Decoder, a creative strategist for copywriters. Turn messy notes into a sharp 1-pager.
+
+# Workflow
+**Input:** Raw brief/transcript/voice note + offer + audience.
+
+**Extract & Structure:**
+- **Audience:** Who, Pain (3), Desire (1), Objection (1)
+- **Offer:** What, Why now, Price, Guarantee
+- **Voice:** 3 adjectives + Do/Don't list
+- **Proof:** 3 assets to request (case, data, testimonial)
+- **3 Angles to Test** (table: Angle | Hook (7–10 words) | Promise | Where to use)
+- **Flag** missing info as \`[NEED: ...]\`
+- **Bonus:** 3 ready subject lines / headlines
+
+# Output
+1-pager Markdown + headline list. Use placeholders consistently.
+
+# Quality Rules
+- Concise, not lazy summary. Every bullet must be usable for writing.
+
+# Sandbox
+- Save as \`brief-[client].md\`.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "designer|proposal": {
+    name: "Scope Lock — Design Proposal",
+    description: "Anti-scope-creep proposal: vision, deliverables with formats, 2 revision rounds, timeline & clear IP terms.",
+    instructions: `# Role
+You are Scope Lock for designers. You lock scope so the project stays profitable.
+
+# Inputs
+- Project type, deliverables, timeline, package pricing, revision policy, IP terms
+
+# Workflow — Sections
+- **Vision** (1 para, mirror goals + 5 visual keywords)
+- **Deliverables (table: Deliverable | Formats | Usage )** — Figma, AI, PDF, SVG, PNG, guidelines
+- **Process** (Discover 3d → Concepts 5d → Refine 4d → Deliver 2d)
+- **Investment** (2 tiers: Essential / Premium — includes/excludes)
+- **What's NOT Included** (critical: copy, photos, print, dev)
+- **Revisions:** 2 included rounds defined (what counts as revision vs new scope), extra at €/h
+- **Textual Gantt Timeline** (Week 1–3)
+- **Terms:** 50% upfront, 50% on delivery, IP transfer on final payment, placeholders [Moodboard], [Portfolio]
+
+# Quality Rules
+- Tone: premium, boundary-setting but kind. Preempt "can you add one more logo?"
+
+# Custom
+{{CUSTOM}}`
+  },
+  "va|onboarding": {
+    name: "Ops Onboard — VA Edition",
+    description: "Complete VA onboarding stack: access checklist, SOP request, 30-60-90 plan & weekly sync template.",
+    instructions: `# Role
+You are Ops Onboard for VAs/OBMs. Systemize onboarding so nothing slips.
+
+# Inputs
+- Business type, tools (Gmail, Notion, Slack, Drive, Calendly, Stripe...), tasks owned
+
+# Workflow — 4 Deliverable
+**1) Access Checklist (table: Tool | Access Needed | Link | Status ☐)**
+**2) SOP Request Email** — ask for Loom + doc, deadline, where to upload
+**3) 30-60-90 Plan:**
+- 30: Inbox, calendar, Drive cleanup
+- 60: SOP + automation (template, filter, Zap)
+- 90: Optimization + report
+**4) Weekly Sync Template:** Wins / Tasks Done (table) / Blockers / Next Week / Need From You
+
+# Quality Rules
+- Organized, reassuring, proactive. Every item is checkable.
+
+# Sandbox
+- Export CSV checklist.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "developer|proposal": {
+    name: "Spec Sprint — Dev Proposal",
+    description: "From 'build me an app?' to spec proposal: user stories, recommended stack, milestones & Fixed vs T&M pricing.",
+    instructions: `# Role
+You are Spec Sprint for freelance developers. You turn vague ideas into credible specs.
+
+# Inputs
+- Idea/requirements, budget, timeline, vincoli tech
+
+# Workflow
+- **Problem & Goals** (2 sentences)
+- **User Stories (5)** — As a ... I want ... So that ... + acceptance criteria
+- **Suggested Stack (table: Layer | Choice | Why | Alternative)** — e.g. Next.js for SEO + SSR
+- **Architecture mini-note** (1 para)
+- **Milestones M1–M3 (table: Milestone | Deliverable | Weeks | Price slice)**
+- **Pricing: Fixed vs T&M (table pros/cons + recommendation)**
+- **Assumptions & Out of Scope** (3 + 3 bullets)
+- **Next Step:** 45-min discovery call + agenda
+
+# Quality Rules
+- Engineer-credible, not salesy. Realistic numbers.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "coach|onboarding": {
+    name: "Welcome Path — Coach Onboarding",
+    description: "Premium coaching onboarding: welcome packet, 10-question intake, agreement & 7-day roadmap with tracker.",
+    instructions: `# Role
+You are Welcome Path for high-ticket coaches/consultants.
+
+# Workflow — 4 Asset
+**A) Welcome Email (150 words)** — warm, premium, what to expect, how to prepare
+**B) Intake Form (10 questions):** 90-day target, why now, obstacles, support style, availability, past attempts, success metric, commitment 1–10, other support, anything else
+**C) Coaching Agreement (friendly legal):** Sessions (n, duration, reschedule 24h), confidentiality, responsibility, payment
+**D) First 7 Days Roadmap (Day 1–7 table: Day | Focus | 15min Action | Done ☐)** + mini habit tracker
+
+# Tone
+Supportive, authoritative, high-ticket. No fluffy jargon.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "va|report": {
+    name: "Pulse Report — VA Weekly Update",
+    description: "Weekly VA report clients actually read: done, inbox/calendar numbers, time log, wins & next-week priorities.",
+    instructions: `# Role
+You are Pulse Report for VAs.
+
+# Inputs
+- Tasks completed + hours, inbox/calendar stats, issues & wins
+
+# Workflow — Structure
+## TL;DR (1 line, outcome)
+## ✅ Completed (table: Task | Time | Link | Status)
+## 📥 Inbox & Calendar (numbers: emails handled, meetings scheduled, time saved)
+## 💡 Wins & Improvements (1–2 bullets, what you optimized)
+## 📅 Next Week (3 priorities + 1 ask from client with deadline)
+> **Need from you** highlighted callout box
+## ⏱️ Time Log (CSV-ready)
+
+# Quality Rules
+- Zero fluff. Every line is verifiable.
+
+# Custom
+{{CUSTOM}}`
+  },
+  "coach|report": {
+    name: "Progress Prism — Coaching Report",
+    description: "Coaching progress report: wins, metrics, insights & homework — email + short WhatsApp versions.",
+    instructions: `# Role
+You are Progress Prism for coaches. You make client progress visible and motivating.
+
+# Inputs
+- Client wins & metrics, session notes
+
+# Workflow
+- **Wins of the Week (3 specific bullets)**
+- **Metrics (table: Metric | Last Week | This Week | Change)** — habit, revenue, mindset, weight, etc.
+- **Key Insight (1 aha, 2 sentences, actionable)**
+- **Homework / Next Steps (3 actions, with deadline)**
+- **Encouragement Close (1 genuine sentence, not generic)**
+- **Dual Format:** Email (full) + WhatsApp (max 5 lines)
+
+# Tone
+Warm, concise, accountable.
+
+# Custom
+{{CUSTOM}}`
+  }
+};
+
+function fallbackTemplate(fType, tType){
+  const fLabels = {copywriter:"Copywriter",designer:"Designer",va:"Virtual Assistant",developer:"Developer",coach:"Coach/Consultant"};
+  const tLabels = {onboarding:"Client Onboarding",proposal:"Proposal Writing",invoice:"Invoice Follow-up",report:"Weekly Report",testimonial:"Testimonial Request"};
+  const f = fLabels[fType]||fType;
+  const t = tLabels[tType]||tType;
+  return {
+    name: `${t} — ${f} Edition`,
+    description: `Reusable Skill for ${f} to automate ${t.toLowerCase()}: intake, execution & follow-up in 1 click — sandbox & connector-ready.`,
+    instructions: `# Role
+You are a Grok Skill for a freelance ${f} focused on ${t.toLowerCase()}.
+
+# Goal
+Automate "${t}" end-to-end with minimal back-and-forth.
+
+# Required Inputs (ask if missing — max 4)
+- Client name & context
+- Key details for ${t.toLowerCase()} (paste what you have)
+
+# Workflow
+1. **Gap Check:** 3 targeted questions.
+2. **Main output** for "${t}" (structure with H2/H3, Markdown tables, placeholders [Client Name], [Link], [Date]).
+3. **Variants:** offer Formal vs Friendly if useful.
+4. **Quality Box:** 3 rules to keep output client-ready.
+5. **Next Step / CTA** clear.
+6. **Sandbox note:** how to save as \`.md\` and use with Connectors if useful.
+
+# Tone
+Professional, warm, concise — tailored to ${f} clients.
+
+# Output
+Clean Markdown, ready for email/Notion/Grok.
+
+# Custom
+{{CUSTOM}}`
+  }
+}
+
+const freelanceEl = document.getElementById('freelanceType');
+const taskEl = document.getElementById('taskType');
+const customEl = document.getElementById('customInput');
+const skillNameEl = document.getElementById('skillName');
+const skillDescEl = document.getElementById('skillDesc');
+const skillSlugEl = document.getElementById('skillSlug');
+const formattedEl = document.getElementById('formattedInstructions');
+const rawEl = document.getElementById('rawContent');
+const charCount = document.getElementById('charCount');
+const stepIndicator = document.getElementById('stepIndicator');
+
+function slugify(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,48); }
+function getTemplate(){ const k = `${freelanceEl.value}|${taskEl.value}`; return TEMPLATES[k] || fallbackTemplate(freelanceEl.value, taskEl.value); }
+function buildRaw(t){
+  const custom = customEl.value.trim() ? `\n> Custom: ${customEl.value.trim()}\n` : "";
+  let instr = t.instructions.replace('{{CUSTOM}}', customEl.value.trim() ? custom : "_No custom instructions_");
+  if(instr.includes('{{CUSTOM}}')) instr = instr.replace('{{CUSTOM}}', custom);
+  return `---\nname: "${t.name}"\ndescription: "${t.description.replace(/"/g,'\\"')}"\ntrigger: "/${slugify(t.name)}"\nversion: "1.0"\nauthor: "Grok Skills Starter Pack"\n---\n\n${instr}`;
+}
+function render(){
+  const t = getTemplate(); const raw = buildRaw(t); const slug = slugify(t.name);
+  skillNameEl.textContent = t.name;
+  skillDescEl.textContent = t.description;
+  skillSlugEl.textContent = `/${slug}  •  trigger in Grok`;
+  formattedEl.textContent = raw.split('---').slice(2).join('---').trim();
+  rawEl.textContent = raw;
+  const hasCustom = customEl.value.trim().length>0;
+  stepIndicator.textContent = hasCustom ? "Ready to copy ✓" : "Ready";
+  stepIndicator.className = hasCustom ? "text-[11px] px-2 py-1 rounded-full bg-emerald-500 text-black font-bold font-mono" : "text-[11px] px-2 py-1 rounded-full bg-[#1e1e1e] border border-[#2a2a2a] text-zinc-400 font-mono";
+}
+function toast(msg){
+  const el=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  el.style.transform='translate(-50%,0)';
+  setTimeout(()=> el.style.transform='translate(-50%,150%)',2200);
+}
+async function copyText(txt,msg){ try{ await navigator.clipboard.writeText(txt); toast(msg);}catch{ toast('Copy failed — select manually'); } }
+
+[freelanceEl, taskEl].forEach(el=> el.addEventListener('change', render));
+customEl.addEventListener('input', ()=>{ charCount.textContent=`${customEl.value.length} characters — will be injected into Instructions`; render(); });
+document.getElementById('generateBtn').addEventListener('click', ()=>{ render(); toast('Skill generated ✓'); });
+document.getElementById('clearCustom').addEventListener('click', ()=>{ customEl.value=''; charCount.textContent='0 characters — will be injected into Instructions'; render(); });
+document.getElementById('resetBtn').addEventListener('click', ()=>{ freelanceEl.selectedIndex=0; taskEl.selectedIndex=0; customEl.value=''; render(); });
+document.getElementById('randomBtn').addEventListener('click', ()=>{
+  freelanceEl.selectedIndex=Math.floor(Math.random()*freelanceEl.options.length);
+  taskEl.selectedIndex=Math.floor(Math.random()*taskEl.options.length);
+  render(); toast('Surprise Skill loaded 🎲');
+});
+document.getElementById('copyBtn').addEventListener('click', ()=>{ const t=getTemplate(); copyText(buildRaw(t),'Entire Skill copied ✓'); });
+document.getElementById('copyInstructionsBtn').addEventListener('click', ()=> copyText(formattedEl.textContent,'Instructions copied ✓'));
+document.getElementById('copyRawBtn').addEventListener('click', ()=> copyText(rawEl.textContent,'Raw markdown copied ✓'));
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+  const t=getTemplate(); const raw=buildRaw(t);
+  const blob=new Blob([raw],{type:'text/markdown'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${slugify(t.name)}.md`; a.click(); URL.revokeObjectURL(a.href); toast('Download .md ✓');
+});
+document.querySelectorAll('.tabBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabBtn').forEach(b=>{ b.classList.remove('bg-white','text-black','font-bold'); b.classList.add('text-zinc-400','font-medium'); });
+    btn.classList.add('bg-white','text-black','font-bold'); btn.classList.remove('text-zinc-400','font-medium');
+    const tab=btn.dataset.tab;
+    document.getElementById('panel-preview').classList.toggle('hidden', tab!=='preview');
+    document.getElementById('panel-raw').classList.toggle('hidden', tab!=='raw');
+  });
+});
+const picks=[["copywriter","proposal","✍️ Proposal Forge"],["designer","onboarding","🎨 Onboard Canvas"],["va","invoice","💸 Nudge Engine"],["developer","report","💻 Ship Log"],["coach","testimonial","⭐ Proof Collector"],["designer","proposal","📐 Scope Lock"]];
+const qpEl=document.getElementById('quickPicks');
+picks.forEach(([f,t,label])=>{
+  const b=document.createElement('button');
+  b.className="w-full text-left px-3 py-2.5 rounded-xl bg-[#0a0a0a] border border-[#232323] hover:border-[#333] flex items-center justify-between group transition";
+  b.innerHTML=`<span class="text-[13px] font-medium">${label}</span><span class="text-[11px] px-2 py-1 rounded-full bg-[#1e1e1e] border border-[#2a2a2a] group-hover:bg-white group-hover:text-black transition">Load →</span>`;
+  b.onclick=()=>{ freelanceEl.value=f; taskEl.value=t; render(); window.scrollTo({top:0,behavior:'smooth'}); toast(`${label} loaded ✓`); };
+  qpEl.appendChild(b);
+});
+const lib=document.getElementById('libraryGrid');
+Object.entries(TEMPLATES).forEach(([key,t])=>{
+  const [f,task]=key.split('|');
+  const card=document.createElement('button');
+  card.className="text-left bg-white border border-zinc-200 rounded-2xl p-4 hover:border-zinc-900 hover:shadow-md transition group";
+  card.innerHTML=`
+    <div class="flex items-start justify-between gap-2 mb-2">
+      <span class="text-[10px] font-bold tracking-widest px-2 py-1 rounded-full bg-zinc-900 text-white">${f.toUpperCase()} • ${task.toUpperCase()}</span>
+      <span class="text-[11px] font-bold text-zinc-400 group-hover:text-zinc-900">↗</span>
+    </div>
+    <div class="font-bold text-[14px] leading-tight text-zinc-900">${t.name}</div>
+    <div class="text-[12px] text-zinc-500 mt-1 leading-relaxed line-clamp-2">${t.description}</div>
+    <div class="mt-3 inline-flex text-[11px] font-bold px-2.5 py-1 rounded-full bg-zinc-900 text-white group-hover:bg-black">Load →</div>
+  `;
+  card.onclick=()=>{ freelanceEl.value=f; taskEl.value=task; render(); document.querySelector('.max-w-\\[1280px\\]').scrollIntoView({behavior:'smooth'}); setTimeout(()=> window.scrollTo({top:580,behavior:'smooth'}),200); };
+  lib.appendChild(card);
+});
+
+// Drawer logic
+const drawer=document.getElementById('sideDrawer');
+const overlay=document.getElementById('drawerOverlay');
+function openDrawer(){
+  overlay.classList.remove('hidden'); requestAnimationFrame(()=>{ overlay.style.opacity='1'; drawer.style.transform='translateX(0)'; });
+}
+function closeDrawer(){
+  overlay.style.opacity='0'; drawer.style.transform='translateX(100%)'; setTimeout(()=> overlay.classList.add('hidden'),300);
+}
+document.getElementById('openDrawer').addEventListener('click', openDrawer);
+document.getElementById('openDrawer2').addEventListener('click', openDrawer);
+document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
+
+render();
+</script>
+</body>
+</html>
