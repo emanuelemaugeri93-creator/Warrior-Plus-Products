@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etsy Visual Empire — Complete Shop Identity System</title>
+<meta name="description" content="Complete Shop Identity System — banner & logo, About & FAQ, social calendar, seasonal planner, audit, and full kit. Unlimited generative engines.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{ -webkit-font-smoothing:antialiased }
+.empire-gradient{background:linear-gradient(135deg,#064E3B 0%,#059669 35%,#D97706 85%,#F59E0B 100%)}
+.empire-gold{background:linear-gradient(135deg,#D97706 0%,#F59E0B 100%)}
+.code-block{background:#0F172A; border:1px solid #1E293B; color:#E2E8F0}
+.swatch{width:14px;height:14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);display:inline-block}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.14) 50%,transparent 70%);transform:translateX(-100%);animation:shine 3.5s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.tab-active{background:#0F172A; color:white; border-color:#0F172A}
+</style>
+</head>
+<body class="bg-[#FFFBEB] text-zinc-900 font-[Inter]">
+<header class="sticky top-0 z-40 bg-[#0F172A]/95 backdrop-blur-xl border-b border-white/10">
+ <div class="max-w-[1280px] mx-auto px-4 md:px-6 h-[64px] flex items-center justify-between gap-4">
+  <div class="flex items-center gap-3">
+   <div class="w-9 h-9 rounded-xl empire-gradient text-white flex items-center justify-center font-black text-[11px] shadow" style="font-family:Playfair Display">E</div>
+   <div>
+    <div class="font-black text-[13px] tracking-tight leading-none text-white">ETSY VISUAL EMPIRE <span class="font-medium text-amber-300">— COMPLETE SHOP IDENTITY</span></div>
+    <div class="text-[11px] font-bold tracking-widest text-amber-200/70">COMPLETE SHOP IDENTITY SYSTEM • 6 MODULES • UNLIMITED</div>
+   </div>
+  </div>
+  <div class="hidden lg:flex items-center gap-2">
+   <span class="px-2.5 py-1 rounded-full empire-gradient text-white text-[11px] font-black">TOP TIER • BRAND LAYER</span>
+   <span class="px-2.5 py-1 rounded-full bg-white text-[#0F172A] text-[11px] font-black">6 MODULES • FULL SHOP</span>
+  </div>
+  <div class="flex items-center gap-2">
+   <span class="hidden md:inline-flex text-[11px] font-bold text-white/60">Beyond listing photos → full brand</span>
+  </div>
+ </div>
+</header>
+
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 pt-6">
+ <div class="rounded-[24px] bg-[#0F172A] border border-amber-900/20 p-6 md:p-8 grid lg:grid-cols-[1.1fr_380px] gap-6 items-center relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-emerald-500/10 rounded-full blur-[70px]"></div>
+  <div class="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[60px]"></div>
+  <div class="relative">
+   <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400 text-[#0F172A] text-[11px] font-black tracking-widest">THE BRAND LAYER • BEYOND LISTING PHOTOS</div>
+   <h1 class="mt-3 font-black tracking-tight leading-[0.92] text-[30px] md:text-[42px] text-white" style="font-family:Space Grotesk">Your listings look pro.<br><span class="text-amber-300">Does your shop?</span></h1>
+   <p class="mt-3 text-[13px] leading-relaxed text-white/60 max-w-[640px]">FE/Pro perfect your <b class="text-white">listing photos</b>. This builds everything <b class="text-white">around</b> them — banner, logo, About & FAQ, social calendar, seasonal plan, and a brand audit — so 50+ listings feel like one cohesive brand, not 50 experiments. Every generator is <b class="text-amber-200">seed-based & combinatorially unlimited</b> — regenerate 20× and it’s still fresh.</p>
+   <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-bold">
+    <span class="px-3 py-1.5 rounded-full bg-white text-[#0F172A]">🏛 Banner + Logo — 1200×300 safe-zone</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white">📖 About & FAQ — unlimited voice</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white">📅 Social Calendar • Seasonal • Audit • Kit</span>
+   </div>
+  </div>
+  <div class="relative bg-white rounded-[18px] p-5 text-zinc-900 shadow-xl">
+   <div class="flex items-center justify-between"><span class="text-[11px] font-black tracking-widest text-emerald-700">6-MODULE SYSTEM</span><span class="text-[10px] font-black px-2 py-1 rounded-full bg-[#0F172A] text-amber-300">UNLIMITED ENGINES</span></div>
+   <div class="mt-3 grid grid-cols-3 gap-2 text-center text-[11px] font-bold">
+    <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-3"><div class="text-emerald-700">1. Banner</div><div class="text-[10px] font-normal text-zinc-500">+ Logo</div></div>
+    <div class="rounded-xl bg-amber-50 border border-amber-200 p-3"><div class="text-amber-700">2. About</div><div class="text-[10px] font-normal text-zinc-500">+ FAQ</div></div>
+    <div class="rounded-xl bg-zinc-900 text-white p-3"><div>3. Social</div><div class="text-[10px] font-normal text-white/60">Calendar</div></div>
+   </div>
+   <div class="mt-2 grid grid-cols-3 gap-2 text-center text-[11px] font-bold">
+    <div class="rounded-xl bg-orange-50 border border-orange-200 p-3 text-orange-700">4. Seasonal</div>
+    <div class="rounded-xl bg-zinc-50 border border-zinc-200 p-3">5. Audit</div>
+    <div class="rounded-xl empire-gradient text-white p-3">6. Full Kit</div>
+   </div>
+   <div class="mt-3 rounded-xl bg-[#0F172A] text-white p-3 flex gap-3">
+    <span class="w-8 h-8 rounded-full empire-gradient flex items-center justify-center text-sm shrink-0">♾</span>
+    <div class="text-[11px] leading-tight"><b>Unlimited, not templated</b> — seed + 5–7 independent pools per module = thousands of distinct combos. <span class="text-white/60">Regenerate feels fresh every time.</span></div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Shop Project — persistent -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-6">
+ <div class="bg-white border border-amber-200 rounded-[20px] overflow-hidden shadow-sm">
+  <div class="px-5 py-4 border-b border-amber-100 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-emerald-50 to-amber-50">
+   <h2 class="font-black text-[12px] tracking-widest text-emerald-800 flex items-center gap-2">🏛 SHOP PROJECT — SHARED ACROSS ALL 6 MODULES</h2>
+   <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border border-amber-200 text-amber-700">Fill once → powers every module</span>
+  </div>
+  <div class="p-5 grid lg:grid-cols-3 gap-4">
+   <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Shop Name *</label><input id="shopName" placeholder='E.g., "SunnyPaper Co."' class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold placeholder:text-zinc-400 focus:border-emerald-400 focus:bg-white outline-none"></div>
+   <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Primary Niche / Product Focus *</label><input id="shopNiche" placeholder='E.g., "kawaii sticker sheets & printable planners"' class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-emerald-400 focus:bg-white outline-none"></div>
+   <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Target Audience</label><input id="shopAudience" placeholder='E.g., "busy moms, students, KDP sellers"' class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-emerald-400 focus:bg-white outline-none"></div>
+   <div class="lg:col-span-2"><label class="text-[11px] font-black tracking-widest text-zinc-500">Brand Personality / Keywords <span class="font-normal normal-case tracking-normal text-zinc-400">(e.g. cozy, minimalist, playful)</span></label><input id="shopPersonality" placeholder='E.g., "cozy, minimalist, playful, warm — not corporate"' class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-emerald-400 focus:bg-white outline-none"></div>
+   <div class="grid grid-cols-2 gap-3">
+    <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Locked Palette (from Pro, optional)</label><input id="lockedPalette" placeholder='E.g., "Warm Neutrals — #FFF8E7..."' class="mt-1 w-full bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 text-[12px] placeholder:text-zinc-400 focus:border-amber-400 outline-none"></div>
+    <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Locked Mood (from Pro, optional)</label><input id="lockedMood" placeholder='E.g., "cozy, warm, inviting"' class="mt-1 w-full bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 text-[12px] placeholder:text-zinc-400 focus:border-amber-400 outline-none"></div>
+   </div>
+  </div>
+  <div class="px-5 pb-5">
+   <div class="rounded-xl bg-[#0F172A] text-white p-3 flex items-start gap-3">
+    <span class="text-amber-300">💡</span><p class="text-[11px] leading-relaxed text-white/70"><b class="text-white">Keep visual continuity:</b> If you locked a palette/mood in Pro (the listing photo tool), re-type it here so this shop-level system stays on-brand. No live integration — just re-enter the exact palette name + mood words so banner/logo/social use the same recipe. Every module below reads this Shop Project.</p>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- Tabs -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-6">
+ <div class="bg-white border border-zinc-200 rounded-[16px] p-1.5 flex flex-wrap gap-1.5">
+  <button data-tab="m1" class="modTab tab-active flex-1 min-w-[110px] py-2.5 rounded-xl font-black text-[12px]">1 — Banner & Logo</button>
+  <button data-tab="m2" class="modTab flex-1 min-w-[110px] py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">2 — About & FAQ</button>
+  <button data-tab="m3" class="modTab flex-1 min-w-[110px] py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">3 — Social Calendar</button>
+  <button data-tab="m4" class="modTab flex-1 min-w-[110px] py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">4 — Seasonal</button>
+  <button data-tab="m5" class="modTab flex-1 min-w-[110px] py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">5 — Audit</button>
+  <button data-tab="m6" class="modTab flex-1 min-w-[110px] py-2.5 rounded-xl empire-gradient text-white font-black text-[12px]">6 — Full Kit ✨</button>
+ </div>
+</div>
+
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 mt-6 pb-12 space-y-6">
+
+ <!-- M1 -->
+ <div id="mod-m1" class="modPanel space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-gradient-to-r from-emerald-50 to-amber-50">
+    <h3 class="font-black text-[13px] tracking-widest text-emerald-800">MODULE 1 — SHOP BANNER & LOGO GENERATOR</h3>
+    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border border-amber-200 text-amber-700">1200×300 safe-zone + icon</span>
+   </div>
+   <div class="p-5 grid lg:grid-cols-[360px_1fr] gap-6">
+    <div class="space-y-4">
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Banner Style</label>
+      <select id="m1BannerStyle" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold">
+       <option value="minimal">Minimal — airy, negative space, quiet</option>
+       <option value="bold">Bold — high contrast, color pop, punchy</option>
+       <option value="elegant">Elegant — editorial, refined, serif</option>
+       <option value="playful">Playful — vibrant, hand-drawn, cheerful</option>
+       <option value="vintage">Vintage — aged, ornate, muted, textured</option>
+      </select>
+     </div>
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Banner Text / Tagline (optional)</label><input id="m1BannerText" placeholder='E.g., "Printable Joy for Busy Days"' class="mt-1 w-full bg-white border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400"></div>
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Logo Concept</label>
+      <select id="m1LogoConcept" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold">
+       <option value="combination">Combination mark (icon + wordmark) — recommended</option>
+       <option value="icon">Icon-only — works at 25px</option>
+       <option value="wordmark">Wordmark — typography only</option>
+      </select>
+     </div>
+     <div class="grid grid-cols-2 gap-2">
+      <button id="m1Generate" class="shine empire-gradient text-white font-black text-[13px] py-3 rounded-xl">✦ Generate Banner + Logo</button>
+      <button id="m1Regen" class="bg-zinc-900 text-white font-black text-[13px] py-3 rounded-xl">↻ New Variation</button>
+     </div>
+     <p class="text-[11px] text-zinc-500">Every regenerate picks a new seed → new composition, motif, lighting phrasing, and color grading — informed by Shop Project niche + personality.</p>
+    </div>
+    <div class="space-y-4">
+     <div class="rounded-xl overflow-hidden border border-zinc-900">
+      <div class="px-4 py-3 bg-zinc-900 flex items-center justify-between">
+       <span class="text-[11px] font-black tracking-widest text-white">BANNER PROMPT — 1200×300 • SAFE-ZONE INCLUDED</span>
+       <button data-copy="m1Banner" class="copyBtn text-[11px] font-black px-3 py-1.5 rounded-full bg-white text-zinc-900">⎘ Copy</button>
+      </div>
+      <pre id="m1BannerOut" class="code-block p-4 text-[12px] leading-relaxed whitespace-pre-wrap max-h-[300px] overflow-auto">Fill Shop Project above, then Generate.</pre>
+     </div>
+     <div class="rounded-xl overflow-hidden border border-zinc-900">
+      <div class="px-4 py-3 bg-zinc-900 flex items-center justify-between">
+       <span class="text-[11px] font-black tracking-widest text-white">LOGO / ICON PROMPT — TRANSPARENT-BACKGROUND-FRIENDLY</span>
+       <button data-copy="m1Logo" class="copyBtn text-[11px] font-black px-3 py-1.5 rounded-full bg-white text-zinc-900">⎘ Copy</button>
+      </div>
+      <pre id="m1LogoOut" class="code-block p-4 text-[12px] leading-relaxed whitespace-pre-wrap max-h-[260px] overflow-auto"></pre>
+     </div>
+     <div class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-[11px] leading-relaxed text-amber-900"><b>Safe-zone note included in every banner prompt:</b> keeps critical art inside the central ~800×300, leaving ~200px left/right padding where Etsy's circular shop icon and shop name overlay sit, so nothing gets obscured.</div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- M2 -->
+ <div id="mod-m2" class="modPanel hidden space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-gradient-to-r from-amber-50 to-orange-50">
+    <h3 class="font-black text-[13px] tracking-widest text-amber-800">MODULE 2 — SHOP ABOUT & POLICY COPY GENERATOR</h3>
+    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border">Unlimited voice — combinatorial</span>
+   </div>
+   <div class="p-5 grid lg:grid-cols-[360px_1fr] gap-6">
+    <div class="space-y-4">
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Origin story hook (optional)</label><textarea id="m2Origin" rows="2" placeholder='E.g., "started after my daughter asked for custom stickers"' class="mt-1 w-full bg-white border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400"></textarea></div>
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">What makes you different (optional)</label><textarea id="m2Diff" rows="2" placeholder='E.g., "every printable is tested by my own kids, 300 DPI, instant download"' class="mt-1 w-full bg-white border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400"></textarea></div>
+     <div class="grid grid-cols-2 gap-3">
+      <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Shipping / Processing</label>
+       <select id="m2Shipping" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[12px] font-bold">
+        <option value="instant">Instant download — no shipping</option>
+        <option value="1-3">1–3 business days (printable + support)</option>
+        <option value="3-5">3–5 business days</option>
+        <option value="custom">Custom — type below</option>
+       </select>
+       <input id="m2ShippingCustom" placeholder="Custom processing note" class="mt-2 hidden w-full bg-white border border-zinc-200 rounded-xl px-3 py-2 text-[12px]">
+      </div>
+      <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Returns</label>
+       <select id="m2Returns" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[12px] font-bold">
+        <option value="noret">No returns on digital — instant download</option>
+        <option value="case">Case-by-case — message me</option>
+        <option value="standard">Standard — 14 days</option>
+       </select>
+      </div>
+     </div>
+     <div class="grid grid-cols-2 gap-2">
+      <button id="m2Generate" class="shine empire-gradient text-white font-black text-[13px] py-3 rounded-xl">✦ Generate About + FAQ</button>
+      <button id="m2Regen" class="bg-zinc-900 text-white font-black text-[13px] py-3 rounded-xl">↻ New Voice</button>
+     </div>
+    </div>
+    <div class="space-y-4">
+     <div class="rounded-xl border border-zinc-200 overflow-hidden">
+      <div class="px-4 py-2 bg-zinc-900 text-white flex items-center justify-between"><span class="text-[11px] font-black tracking-widest">ABOUT SECTION — MULTI-PARAGRAPH</span><button data-copy="m2About" class="copyBtn text-[11px] font-black px-3 py-1 rounded-full bg-white text-zinc-900">⎘ Copy</button></div>
+      <div id="m2AboutOut" class="p-4 text-[13px] leading-relaxed whitespace-pre-wrap bg-white max-h-[320px] overflow-auto">Fill Shop Project, then Generate.</div>
+     </div>
+     <div class="rounded-xl border border-zinc-200 overflow-hidden">
+      <div class="px-4 py-2 bg-zinc-900 text-white flex items-center justify-between"><span class="text-[11px] font-black tracking-widest">SHOP ANNOUNCEMENT — SHORT</span><button data-copy="m2Ann" class="copyBtn text-[11px] font-black px-3 py-1 rounded-full bg-white text-zinc-900">⎘ Copy</button></div>
+      <div id="m2AnnOut" class="p-4 text-[13px] leading-relaxed bg-amber-50 max-h-[120px] overflow-auto"></div>
+     </div>
+     <div class="rounded-xl border border-zinc-200 overflow-hidden">
+      <div class="px-4 py-2 bg-zinc-900 text-white flex items-center justify-between"><span class="text-[11px] font-black tracking-widest">FAQ — 5-6 Q&A</span><button data-copy="m2Faq" class="copyBtn text-[11px] font-black px-3 py-1 rounded-full bg-white text-zinc-900">⎘ Copy</button></div>
+      <div id="m2FaqOut" class="p-4 text-[13px] leading-relaxed bg-white max-h-[340px] overflow-auto"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- M3 -->
+ <div id="mod-m3" class="modPanel hidden space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-gradient-to-r from-emerald-50 to-teal-50">
+    <h3 class="font-black text-[13px] tracking-widest text-emerald-800">MODULE 3 — SOCIAL CONTENT CALENDAR GENERATOR</h3>
+    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border">Unlimited mix — not reshuffled</span>
+   </div>
+   <div class="p-5 space-y-4">
+    <div class="grid lg:grid-cols-4 gap-3">
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Weeks to plan</label><select id="m3Weeks" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold"><option value="2">2 weeks</option><option value="4" selected>4 weeks</option><option value="8">8 weeks</option></select></div>
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Platform</label><select id="m3Platform" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold"><option value="both">Pinterest + Instagram</option><option value="pinterest">Pinterest only</option><option value="instagram">Instagram only</option></select></div>
+     <div><label class="text-[11px] font-black tracking-widest text-zinc-500">Frequency</label><select id="m3Freq" class="mt-1 w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] font-bold"><option value="3">3× / week</option><option value="5" selected>5× / week</option><option value="7">Daily</option></select></div>
+     <div class="flex items-end gap-2"><button id="m3Generate" class="flex-1 shine empire-gradient text-white font-black text-[13px] py-3 rounded-xl">✦ Generate Calendar</button><button id="m3Regen" class="bg-zinc-900 text-white font-black text-[13px] px-4 py-3 rounded-xl">↻</button></div>
+    </div>
+    <div class="overflow-auto rounded-xl border border-zinc-200">
+     <table class="w-full text-[12px] min-w-[860px]">
+      <thead class="bg-zinc-900 text-white text-[11px] tracking-widest"><tr><th class="text-left p-3">Week</th><th class="text-left p-3">Day</th><th class="text-left p-3">Platform</th><th class="text-left p-3">Post Type</th><th class="text-left p-3">Visual Prompt (GPT Image 2)</th><th class="text-left p-3">Caption + Hashtags</th><th class="p-3"></th></tr></thead>
+      <tbody id="m3Body"></tbody>
+     </table>
+    </div>
+    <div class="flex gap-2">
+     <button id="m3CopyAll" class="bg-zinc-900 text-white font-black text-[12px] px-5 py-2.5 rounded-xl">⎘ Copy All Captions</button>
+     <button id="m3Export" class="bg-white border border-zinc-200 font-black text-[12px] px-5 py-2.5 rounded-xl">⬇ Export .txt</button>
+     <span class="text-[11px] text-zinc-500 self-center">Every Regenerate = new mix of post types + fresh visual concepts + captions — not a reshuffle</span>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- M4 -->
+ <div id="mod-m4" class="modPanel hidden space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 bg-gradient-to-r from-orange-50 to-amber-50">
+    <h3 class="font-black text-[13px] tracking-widest text-orange-800">MODULE 4 — SEASONAL REFRESH PLANNER — YEAR VIEW</h3>
+    <p class="text-[12px] text-zinc-600 mt-1">8 retail moments • what to refresh (banner, featured listings, social theme) + lead time • Get fresh ideas per season from the unlimited engine (tied to Shop Project niche)</p>
+   </div>
+   <div class="p-5 overflow-auto">
+    <table class="w-full text-[12px] min-w-[900px]">
+     <thead class="bg-zinc-900 text-white text-[11px] tracking-widest"><tr><th class="text-left p-3">Season</th><th class="text-left p-3">Window</th><th class="text-left p-3">Lead Time</th><th class="text-left p-3">What to Refresh</th><th class="text-left p-3">Action Note</th><th class="p-3"></th></tr></thead>
+     <tbody id="m4Body"></tbody>
+    </table>
+   </div>
+   <div id="m4Ideas" class="hidden mx-5 mb-5 rounded-xl bg-amber-50 border border-amber-200 p-4">
+    <div class="font-black text-[12px] text-amber-800" id="m4IdeasTitle">Seasonal Idea</div>
+    <div id="m4IdeasBody" class="mt-2 text-[13px] leading-relaxed"></div>
+    <div class="mt-3 flex gap-2">
+     <button id="m4CopyIdea" class="bg-zinc-900 text-white font-black text-[11px] px-4 py-2 rounded-full">⎘ Copy Idea</button>
+     <button id="m4CloseIdea" class="bg-white border border-zinc-200 font-bold text-[11px] px-4 py-2 rounded-full">Close</button>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- M5 -->
+ <div id="mod-m5" class="modPanel hidden space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-gradient-to-r from-zinc-50 to-zinc-100">
+    <h3 class="font-black text-[13px] tracking-widest">MODULE 5 — BRAND CONSISTENCY AUDIT</h3>
+    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border" id="auditProgress">0 / 12 • 0%</span>
+   </div>
+   <div class="p-5 space-y-6">
+    <div class="w-full bg-zinc-100 rounded-full h-3 overflow-hidden"><div id="auditBar" class="h-3 empire-gradient transition-all duration-500" style="width:0%"></div></div>
+    <div id="auditGroups" class="space-y-6"></div>
+   </div>
+  </div>
+ </div>
+
+ <!-- M6 -->
+ <div id="mod-m6" class="modPanel hidden space-y-6">
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+   <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-gradient-to-r from-emerald-50 via-amber-50 to-orange-50">
+    <h3 class="font-black text-[13px] tracking-widest">MODULE 6 — COMPLETE SHOP IDENTITY KIT — YOUR PAYOFF</h3>
+    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full empire-gradient text-white" id="kitMeter">0 / 4 modules • 0%</span>
+   </div>
+   <div class="p-5 space-y-4">
+    <button id="kitGenerate" class="w-full shine empire-gradient text-white font-black text-[15px] py-4 rounded-xl">✦ Generate My Complete Shop Identity Kit</button>
+    <div id="kitView" class="hidden space-y-4"></div>
+    <div id="kitActions" class="hidden flex gap-2">
+     <button id="kitCopy" class="flex-1 bg-zinc-900 text-white font-black text-[13px] py-3 rounded-xl">⎘ Copy Complete Kit</button>
+     <button id="kitDownload" class="flex-1 bg-white border border-zinc-200 font-black text-[13px] py-3 rounded-xl">⬇ Download as .txt</button>
+    </div>
+   </div>
+  </div>
+ </div>
+
+</div>
+
+<div class="max-w-[1280px] mx-auto px-4 md:px-6 text-center text-[11px] text-zinc-500 font-mono pb-10">
+ Etsy Visual Empire — Complete Shop Identity System • 6 modules • Unlimited engines • No data leaves browser
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white px-5 py-3 rounded-full font-black text-[13px] shadow-2xl translate-y-[160%] transition duration-300 flex items-center gap-2 z-50">
+ <span class="w-6 h-6 rounded-full bg-white text-[#0F172A] flex items-center justify-center text-xs">✓</span> <span id="toastMsg">Copied!</span>
+</div>
+
+<script>
+// ---------- helpers ----------
+function toast(msg){ const t=document.getElementById('toast'); document.getElementById('toastMsg').textContent=msg; t.style.transform='translate(-50%,0)'; setTimeout(()=> t.style.transform='translate(-50%,160%)', 2200); }
+async function copyText(txt,msg){ try{ await navigator.clipboard.writeText(txt); toast(msg);}catch{ toast('Copy failed — select manually'); } }
+function seededRandom(seed){ let x = Math.sin(seed) * 10000; return x - Math.floor(x); }
+function pickSeeded(arr, seed, count=1){
+ const out=[]; let s=seed;
+ const copy=[...arr];
+ for(let i=0;i<count;i++){
+  if(!copy.length) break;
+  s = (s * 9301 + 49297) % 233280;
+  const idx = Math.floor(seededRandom(s) * copy.length);
+  out.push(copy.splice(idx,1)[0]);
+ }
+ return out;
+}
+function getShop(){
+ return {
+  name: document.getElementById('shopName').value.trim() || 'Your Shop',
+  niche: document.getElementById('shopNiche').value.trim() || 'printable products',
+  audience: document.getElementById('shopAudience').value.trim() || 'Etsy shoppers',
+  personality: document.getElementById('shopPersonality').value.trim() || 'cozy, warm, friendly',
+  lockedPalette: document.getElementById('lockedPalette').value.trim(),
+  lockedMood: document.getElementById('lockedMood').value.trim(),
+ };
+}
+let m1Seed = Math.floor(Math.random()*90000)+10000;
+let m2Seed = Math.floor(Math.random()*90000)+10000;
+let m3Seed = Math.floor(Math.random()*90000)+10000;
+let m4Seed = Math.floor(Math.random()*90000)+10000;
+let lastM1 = null, lastM2 = null, lastM3 = null;
+
+// ---------- Module 1 — Banner & Logo — unlimited seed engine ----------
+const BANNER_MOTIFS = {
+  minimal: ["negative space with tiny scattered icons","single thin line illustration repeating","soft gradient wash with one focal icon","single centered hairline rule with tiny corner mark","one small botanical sprig, off-center, lots of white","grid of 3 faint dots trailing off frame","thin horizontal rule, 1px, with centered shop name","large soft circle wash behind text, 30% opacity","single geometric shape, bottom-right, 20% opacity","micro-typography texture, 5% opacity, scattered"],
+  bold: ["oversized typography as texture filling background","diagonal color blocks with hard edge, 60/40 split","repeating geometric pattern, high contrast, 8px grid","huge pilled number or letter as watermark, 15% opacity","thick top and bottom bars, 12px, brand color","halftone dot pattern, 20% opacity, pop art","angled ribbon banner with shop name, drop shadow","color-blocked thirds, middle third is image, sides are solid","pill-shaped badge cluster, 3 badges, overlapping","bold outline icons scattered, 40% opacity, large"],
+  elegant: ["thin serif border frame, 1px, inset 12px","soft watercolor wash behind text, 20% opacity","delicate line florals at corners, 0.5pt","thin double rule, top and bottom, 8px gap","soft drop shadow under text, 4px blur","gold foil rule, 1px, centered, 60% width","blind deboss texture, subtle, centered","monogram watermark, 8% opacity, centered","fine dot grid, 12px spacing, 10% opacity","deckled edge frame, 1.2mm feather, inset, soft"],
+  playful: ["hand-drawn doodle scatter, 12 icons, 30% opacity","confetti dots and stars, random, 8px","wavy banner ribbon with shop name, hand-drawn","scrapbook tape strips at corners, washi texture","hand-drawn star burst behind text, 30% opacity","doodle arrows pointing to text, 3 arrows, hand-drawn","sticker peel curl at one corner, 2mm, shadow","speech bubble with shop tagline, hand-drawn, tail","rainbow arc, thin, behind text, 25% opacity","sprinkle scatter, tiny, 6px, random, pastel"],
+  vintage: ["ornate corner flourishes, 0.5pt, baroque, symmetrical","aged paper texture overlay, 15% opacity, multiply, warm","distressed stamp border, rough edge, 8px, uneven","sepia wash, 10% opacity, warm, vignette","letterpress deboss texture, subtle, 0.4mm","ornate oval frame, thin, centered, vintage","vintage ribbon banner, folded, aged, shadow","old book endpaper pattern, 12% opacity, small repeat","wax seal cluster, 2 seals, overlapping, 3D","fleur-de-lis repeat, 20% opacity, small, damask"]
+};
+const BANNER_COMPOSITIONS = ["left-aligned text, motif on right, central safe-zone clear, 60/40 text/motif","centered text with symmetrical motif clusters mirrored left and right, safe-zone centered, balanced negative space","asymmetrical — text 35% from left, motif cluster right, safe-zone 800×300 centered","top-aligned text, motif band below, safe-zone centered, generous top padding","diagonal split — text top-left triangle, motif bottom-right, safe-zone diagonal","framed — thin border inset 12px, text centered inside frame, motifs at frame corners","full-bleed motif, text on semi-transparent banner (85% opacity) centered, safe-zone banner","grid — 3 equal columns, text in middle column, motifs in outer columns, safe-zone middle"];
+const LOGO_ICONS = ["monogram lettermark in circle, 1.2mm border","simple line icon (e.g., leaf, star, pen, heart), 1.5pt stroke","abstract geometric mark (two overlapping shapes, 30% overlap)","hand-drawn doodle icon, slightly imperfect, warm","minimalist badge with border, circular, double rule","lettermark in hexagon, beveled edge","icon in square with rounded corners, 6mm radius","negative space icon (figure/ground)","botanical line icon, single continuous line","geometric animal icon, low-poly, 6 facets","vintage crest icon, ornate, symmetrical","modern wordmark icon, dot above letter as accent"];
+const LOGO_TYPOGRAPHY = ["clean geometric sans, tight tracking, -25","elegant serif, high contrast, Didone","rounded friendly sans, 600 weight, warm","hand-lettered script + sans pairing, script 40% size","mono technical, precise, 10% tracking","humanist sans, open apertures, friendly","slab serif, sturdy, 700 weight","condensed sans, tall, tight, impactful","script + serif pairing, script for first letter only","custom lettering, slightly condensed, 5% letter-spacing"];
+const PALETTE_SNIPPETS = {
+ warm: "warm neutrals, cream #FFF8E7, terracotta #D2B48C, muted brown, timeless",
+ pastel: "soft pastel, blush #FFE4E6, powder blue #E0E7FF, butter yellow #FEF3C7, mint #D1FAE5",
+ earth: "earthy boho, terracotta #A16207, clay, sand #F5E6CC, olive",
+ mono: "monochrome, white, light grey #E5E7EB, charcoal #111827, high key",
+ bold: "bold contrast, Etsy orange #F1641E pop, charcoal, white",
+ sage: "sage & clay, muted green #A7B8A0, warm clay #D9C5B4, linen",
+ ocean: "ocean breeze, aqua #0EA5E9, cerulean, seafoam, coastal",
+ forest: "forest moss, deep green #1A4D2E, sage, woodland",
+ sunset: "sunset glow, coral #FF6B6B, amber #FFD93D, tangerine",
+ lavender: "lavender dream, lilac #8B5CF6, wisteria, soft purple",
+ tropical: "tropical punch, emerald #10B981, mango #F59E0B, fuchsia",
+ midnight: "midnight luxe, charcoal #111827, slate, gold accent #F59E0B"
+};
+let lastMotif = null, lastComp = null, lastIcon = null, lastTypo = null;
+function pickNoRepeat(arr, seed, lastVal){
+  let pick = pickSeeded(arr, seed, 1)[0];
+  if(pick === lastVal && arr.length > 1){
+    // re-roll once with shifted seed
+    pick = pickSeeded(arr, seed+999, 1)[0];
+    if(pick === lastVal) pick = arr[(arr.indexOf(pick)+1)%arr.length];
+  }
+  return pick;
+}
+function jitterBanner(base, seed){
+ const extras = ["subtle paper grain 3%","soft vignette 0.12","crisp micro-contrast, 8k","ray-traced GI, 1 bounce","gold foil glint on accent where present"];
+ if(seededRandom(seed+1)>0.55) return base + ", " + pickSeeded(extras, seed+2, 1)[0];
+ return base;
+}
+function buildBanner(shop, opts, seed){
+ const motifs = pickNoRepeat(BANNER_MOTIFS[opts.style]||BANNER_MOTIFS.minimal, seed, lastMotif); lastMotif = motifs;
+ const comp = pickNoRepeat(BANNER_COMPOSITIONS, seed+10, lastComp); lastComp = comp;
+ const palette = shop.lockedPalette || pickSeeded(Object.values(PALETTE_SNIPPETS), seed+20, 1)[0];
+ const mood = shop.lockedMood || shop.personality;
+ const textLine = opts.text ? `Typography — render EXACTLY "${opts.text}" centered in safe-zone, highly legible, ` : `No text — leave central safe-zone clean for Etsy overlay text, `;
+ // niche and personality inject
+ const nicheDetail = shop.niche ? `niche: ${shop.niche} — ` : "";
+ const personalityDetail = shop.personality ? `brand personality: ${shop.personality} — ` : "";
+ let prompt = `Etsy shop banner, 1200×300px, ${nicheDetail}${personalityDetail}style: ${opts.style}, composition: ${comp}, motif: ${motifs}, palette: ${palette}, mood: ${mood}, ${textLine}`;
+ prompt += `CRITICAL SAFE-ZONE: keep all critical art and text inside the central ~800×300px (1200×300 total, leave ~200px padding left/right where Etsy's circular shop icon (left) and shop name text overlay sit, so nothing gets obscured), no important detail near edges. `;
+ prompt += `Background: subtle texture, not flat, soft depth. Lighting: soft studio HDRI, even, no harsh specular, color accurate. Style: photorealistic or crisp vector, ultra-detailed, 8k, true color, subtle grain, commercial. Seed ${seed}.`;
+ prompt = jitterBanner(prompt, seed);
+ return prompt;
+}
+function buildLogo(shop, opts, seed){
+ const icon = pickNoRepeat(LOGO_ICONS, seed, lastIcon); lastIcon = icon;
+ const typo = pickNoRepeat(LOGO_TYPOGRAPHY, seed+5, lastTypo); lastTypo = typo;
+ const palette = shop.lockedPalette || pickSeeded(Object.values(PALETTE_SNIPPETS), seed+15, 1)[0];
+ const conceptMap = {
+  'icon': `Icon-only mark — ${icon}, works at 25×25px, simple, bold, no fine detail, transparent-background-friendly (pure shape on white, no background), centered`,
+  'wordmark': `Wordmark — shop name "${shop.name}" in ${typo}, letter-spacing tight, no icon, works at small size, high legibility, transparent-background-friendly`,
+  'combination': `Combination mark — icon (${icon}) above or left of wordmark "${shop.name}" in ${typo}, balanced lockup, works at 25px icon + legible wordmark, transparent-background-friendly`
+ };
+ let prompt = `Etsy shop icon / logo, ${conceptMap[opts.concept] || conceptMap.combination}, palette: ${palette}, mood: ${shop.lockedMood||shop.personality}, `;
+ prompt += `niche: ${shop.niche}, audience: ${shop.audience}, style: ${opts.style}, minimal, vector, ultra-clean, 8k, true color, centered, square 1:1, transparent-background-friendly (isolated on pure white #FFFFFF with soft shadow only, no busy background, no mockup scene), legible at 25px, no watermark, no trademark. Seed ${seed}.`;
+ if(seededRandom(seed)>0.5) prompt += ` ` + pickSeeded(["soft gold foil accent on icon where appropriate","subtle deboss on icon for depth","thin circular border option"], seed+20, 1)[0] + ".";
+ return prompt;
+}
+
+// ---------- Module 2 — About & FAQ — combinatorial text engine ----------
+const M2_OPENERS = [
+ "Hi, I'm the human behind {shop} —",
+ "Welcome to {shop} — I'm so glad you're here.",
+ "Hey there! I'm the maker behind {shop},",
+ "Hello and welcome to {shop} —",
+ "Thanks for stopping by {shop} — I'm {founder},"
+];
+const M2_ORIGIN_TEMPLATES = [
+ "I started making these {niche} after {hook}. What began as one {product} for my kitchen table turned into a little shop that now helps {audience} every day.",
+ "This shop began when {hook} — I needed {niche} that actually fit my life, couldn't find it, and made my own. Friends asked for copies, then friends of friends, and {shop} was born.",
+ "The first {niche} I ever made was for {hook}. It was messy, a little crooked, and absolutely loved. That's still the spirit of everything here.",
+ "After {hook}, I realized I wasn't the only one searching for {niche} that felt {personality}. So I started designing them — one at a time, tested at my own desk."
+];
+const M2_MISSION_POOL = [
+ "Every piece here is designed to feel {personality} — not corporate, not fussy, just genuinely useful and a little joyful.",
+ "What makes {shop} different is simple: I actually use everything I sell. If it doesn't save me time or make me smile at my desk, it doesn't go in the shop.",
+ "My promise is {personality} and practical — {niche} that look good, print clean at 300 DPI, and are tested on real paper before they ever reach you.",
+ "I design for {audience} who want {niche} that are both beautiful and actually usable — no fluff, no filler, just the good stuff."
+];
+const M2_DIFF_POOL = [
+ "Unlike mass-produced templates, each {niche} is hand-tweaked for readability at small size, with generous margins and thoughtful typography.",
+ "You'll notice the difference in the details: consistent icon weights, print-tested contrast, and file names that actually make sense.",
+ "I keep the shop small on purpose — so I can answer messages, fix a file same-day, and keep quality high."
+];
+const M2_CLOSINGS = [
+ "Thanks for supporting a small shop — it means the world. I'm cheering you on, and I'm here if you need anything.",
+ "Grateful you're here. If you try something you love, I'd be honored if you left a review — it helps this little shop grow.",
+ "Welcome to the {shop} family. Make something beautiful, and tag me if you share — I love seeing what you make.",
+ "With gratitude and a very full ideas notebook, — The human behind {shop} (and chief paper tester)"
+];
+const M2_ANN_TEMPLATES = [
+ "✨ New in shop: {niche} for {audience} — {personality}, instant download, print-tested. Tap a listing to peek inside!",
+ "Heads up: shop announcement — all {niche} are instant download, 300 DPI, and tested on real paper. Message me for custom tweaks!",
+ "Welcome to {shop} — {personality} {niche} for {audience}. New drops weekly — favorite the shop so you don't miss them.",
+ "Quick note: processing is {shipping} — your files are ready the moment payment clears. Need help? I reply within hours, not days."
+];
+const M2_FAQ_Q = [
+ "What's included after purchase?",
+ "How do I download and print?",
+ "Can I customize the colors or text?",
+ "Are these for personal or commercial use?",
+ "What if my print looks different than the photo?",
+ "How do I get help if I'm stuck?"
+];
+function buildAbout(shop, originHook, diffText, seed){
+ const founder = pickSeeded(["Alex","Jamie","Sam","Taylor","Jordan","Casey"], seed, 1)[0];
+ const product = shop.niche.split(' ')[0] || "printable";
+ const opener = pickSeeded(M2_OPENERS, seed, 1)[0].replace("{shop}", shop.name).replace("{founder}", founder);
+ const hook = originHook || pickSeeded(["my daughter asked for custom stickers","I was drowning in messy planners","my classroom needed better worksheets","I wanted art that actually matched my apartment"], seed+1, 1)[0];
+ const originTpl = pickSeeded(M2_ORIGIN_TEMPLATES, seed+2, 1)[0];
+ const origin = originTpl.replace("{niche}", shop.niche).replace("{hook}", hook).replace("{shop}", shop.name).replace("{audience}", shop.audience).replace("{personality}", shop.personality).replace("{product}", product);
+ const mission = pickSeeded(M2_MISSION_POOL, seed+3, 1)[0].replace("{shop}", shop.name).replace("{personality}", shop.personality).replace("{niche}", shop.niche).replace("{audience}", shop.audience);
+ const diff = diffText || pickSeeded(M2_DIFF_POOL, seed+4, 1)[0].replace("{niche}", shop.niche);
+ const closing = pickSeeded(M2_CLOSINGS, seed+5, 1)[0].replace("{shop}", shop.name);
+ // Add a unique extra sentence 50% of time for combinatorial depth
+ let extra = "";
+ if(seededRandom(seed+10)>0.5){
+  extra = " " + pickSeeded([
+   "I keep a little Swatch Bible on my desk so every new listing matches the last — same palette, same photographer, no surprises.",
+   "Everything is designed on the same grid system, so your gallery wall or planner stack will always feel cohesive.",
+   "I test every file on both laser and inkjet before listing, so what you see is what you get.",
+   "New to printables? Start with one — the rest will feel familiar because the whole shop shares one visual language."
+  ], seed+11, 1)[0];
+ }
+ const p1 = `${opener} ${origin}`;
+ const p2 = `${mission} ${diff}${extra}`;
+ const p3 = closing;
+ // Tone modifier from personality
+ let toneNote = "";
+ if(shop.personality.toLowerCase().includes("playful")) toneNote = " (voice: warm, a little witty, exclamation-friendly)";
+ else if(shop.personality.toLowerCase().includes("minimal")) toneNote = " (voice: calm, concise, Scandinavian)";
+ else if(shop.personality.toLowerCase().includes("elegant")) toneNote = " (voice: refined, editorial)";
+ return {about: `${p1}\n\n${p2}\n\n${p3}`, toneNote};
+}
+function buildAnnouncement(shop, shipping, seed){
+ const tpl = pickSeeded(M2_ANN_TEMPLATES, seed, 1)[0];
+ return tpl.replace("{shop}", shop.name).replace("{niche}", shop.niche).replace("{audience}", shop.audience).replace("{personality}", shop.personality).replace("{shipping}", shipping);
+}
+function buildFAQ(shop, shipping, returns, seed){
+ const answers = [
+  `You'll get an instant download (PDF or ZIP, depending on listing) with 300 DPI files, ready to print at home or at a print shop. No physical item ships — your files are available the moment payment clears (${shipping}).`,
+  `After purchase, go to Etsy → Your Account → Purchases → Download Files. Print at 100% scale (no scaling), 300 DPI, on the paper weight noted in the listing (e.g., 65lb cardstock for cards, 24lb for planners). Need help? Message me with your listing name.`,
+  `For personal use, tweak away. For color/text edits, check the listing — many are editable in Canva/Acrobat. Need a custom tweak (name, date, color)? Message me before purchase — I do small customizations case-by-case and often same-day.`,
+  (returns==='noret' ? `This is a digital file — no physical shipping — so I can't accept returns once downloaded (Etsy policy). That said, if your file is damaged or missing, message me and I'll fix it or re-send within hours.` : returns==='case' ? `Digital = no automatic returns, but I'm human. Message me with your order and issue — I review case-by-case and always make it right if something is off.` : `You have 14 days for standard returns on digital if files are unopened/unused — message me to start. Most issues I can fix faster by re-sending a corrected file.`),
+  `I photograph 3D mockups with controlled lighting (PBR, HDRI, 300 DPI) so what you see is very close to print. That said, screens and printers vary — a "warm terracotta" on your phone may print slightly softer. I include a print-tested palette swatch in the photos so you can eyedrop exact hex codes in Canva.`,
+  `Message me via Etsy Conversations with your order number and listing name — I reply within hours, not days. For shop-level questions, check this FAQ and the About section; for listing-specific questions, the listing description has file specs.`
+ ];
+ let out="";
+ for(let i=0;i<M2_FAQ_Q.length;i++){
+  const q = M2_FAQ_Q[i];
+  // Add seed-based variation: 20% chance to swap in an alternate phrasing for the answer's first sentence
+  let ans = answers[i];
+  if(seededRandom(seed+i*13) > 0.78){
+   ans = pickSeeded([
+    ans,
+    ans.replace("You'll get", "Inside your download you'll find"),
+    ans.replace("After purchase,", "Once payment clears,")
+   ], seed+i*17, 1)[0];
+  }
+  out += `Q: ${q}\nA: ${ans}\n\n`;
+ }
+ return out.trim();
+}
+
+// ---------- Module 3 — Social Calendar — unlimited mix ----------
+const POST_TYPES = ["new listing highlight","behind-the-scenes","seasonal tie-in","customer feature","educational tip","best-seller spotlight","sneak peek / coming soon","tip / tutorial"];
+const VISUAL_CONCEPTS = {
+  "new listing highlight": ["flat lay of the new listing's hero product, same shop palette, clean background, hero centered","close-up detail of the new listing's paper texture and typography, macro, shallow DOF","styled shelf with new listing among 2 related listings, same photographer","hands holding the new listing toward camera, warm, inviting","flat lay with new listing + small props (pen, plant, coffee), lifestyle","isolated hero on white with soft shadow, 75% frame, crop-safe","carousel: slide 1 is new listing hero, slides 2-3 are details","lifestyle in use — journal open on desk, coffee, morning light"],
+  "behind-the-scenes": ["desk scene with hands sketching the next design, warm, lived-in, top-down","screen recording still of the design file with layers visible, cursor, UI chrome","time-lapse still: pencil shavings, eraser dust, work in progress","overhead of desk with color swatches, Pantone chips, palette","close-up of hands cutting paper with craft knife, precise","flat lay of tools: pens, ruler, tablet, coffee, all neatly arranged","before/after: sketch vs final print, side by side","studio shelf with current work pinned, soft window light"],
+  "seasonal tie-in": ["product styled with seasonal props (e.g., pumpkins for fall, hearts for Valentine), same shop palette","flat lay with seasonal color pop, same shop palette, seasonal accent ribbon","product on seasonal textile (plaid for fall, gingham for spring), styled","lifestyle with product + seasonal background (e.g., pine for Christmas, eggs for Easter)","close-up with seasonal confetti scattered, shallow DOF","product next to seasonal object (pumpkin, heart, egg) for scale, playful","flat lay with seasonal palette wash, 20% opacity, subtle","product in seasonal setting (e.g., on fall leaves, on Valentine's desk)"],
+  "customer feature": ["customer review screenshot styled as a card, soft shadow, brand palette, 5 stars","photo of product in use (plant, journal, or wall) with a thank-you note, warm","flat lay of product + handwritten thank-you card from customer, styled","carousel: review card + product in use + close-up detail, same palette","customer's desk with product styled, UGC feel, authentic","review quote as bold typography card, brand palette, star rating","before/after: customer's before (messy) vs after (organized with product)","flat lay with product + small gift tag 'Made for you'"],
+  "educational tip": ["tip card with bold typography, brand palette, icon illustration, 1080×1080","carousel slide 1 of 3: step-by-step how to use the product, numbered","how-to infographic: 3 steps with icons, brand palette, clean","checklist card: 5 tips with checkboxes, brand palette","comparison: common mistake vs pro tip, side by side","quick tutorial: 30-second tip as text overlay on product photo","myth-busting card: 'Myth: ... Truth: ...' format, brand palette","template walkthrough: screen still with numbered callouts"],
+  "best-seller spotlight": ["best-seller hero, large, with small 'Bestseller' ribbon, clean, centered","comparison: best-seller next to 2 related listings, same photographer, trio","flat lay with best-seller + small 'Bestseller' badge, lifestyle props","close-up of best-seller's most-loved detail, macro, shallow DOF","customer favorite — review stars + best-seller hero, combined","best-seller styled on desk with coffee, lived-in, warm","carousel: best-seller hero + 2 detail shots + review, same palette","isolated best-seller on white, soft shadow, 75% frame, 'Bestseller' tag top-right"],
+  "sneak peek / coming soon": ["teaser — product blurred or covered with 'Coming Soon' banner, brand palette, curiosity","flat lay with one corner peeking, curiosity gap, 20% visible","close-up of texture peeking from envelope, mysterious","hands holding covered product, 'Psst... coming soon' speech bubble","calendar card: 'Mark your calendar — [date]' with product silhouette","flat lay with product under linen cloth, one corner lifted","blurred background with sharp 'Coming Soon' typography card in front","sneak peek carousel: 3 blurred details, 4th slide is reveal date"],
+  "tip / tutorial": ["how-to card: 3 steps with icons, brand palette, 1080×1080, clean","before/after: plain vs styled with this printable, side by side, same palette","step-by-step: 1) Download 2) Print 3) Enjoy, with icons","quick hack: 30-second video still with play button overlay, tutorial","template tip: screen still with arrow callouts, numbered","print tip: paper weight + printer settings card, brand palette","organization tip: styled desk before/after with product","sizing guide: product on different paper sizes, visual comparison"]
+};
+const CAPTION_OPENERS = ["New in shop:","Behind the scenes:","Seasonal favorite:","Customer love:","Quick tip:","Bestseller spotlight:","Sneak peek:","How to:","Fresh drop:","Studio diary:","Made for you:","This week's favorite:","Just landed:","From my desk:","You asked, I made:","Today's pick:"];
+const CAPTION_BODIES = [
+  "This {niche} was designed to feel {personality} — not corporate, just genuinely useful.",
+  "Made for {audience} who want {niche} that look good and actually work — no fluff.",
+  "Tested on real paper, 300 DPI, instant download — what you see is what you get.",
+  "I keep the whole shop on one palette so your gallery wall always feels cohesive.",
+  "Small shop, real human — I reply within hours and fix files same-day if needed.",
+  "Every {niche} is print-tested on both laser and inkjet — no surprises when you print.",
+  "Designed for {audience} who love {personality} details but need it to actually be usable.",
+  "No filler, no fluff — just the {niche} you searched for, done right and ready in minutes.",
+  "I design on the same grid system, so your {niche} stack will always feel like one collection.",
+  "From my desk to yours — {personality}, practical, and made to be used, not just saved.",
+  "This {niche} started as a fix for my own {audience} life — now it helps hundreds of {audience}.",
+  "Clean typography, generous margins, thoughtful icons — the details that make {niche} actually work.",
+  "Instant download, 300 DPI, and file names that make sense — no 'final_final_v2.pdf' here.",
+  "Made to be printed, gifted, or kept for yourself — {personality} {niche} that fit real life.",
+  "I kept the palette tight so your {niche} wall or planner stack always looks intentional.",
+  "Each {niche} is hand-tweaked for readability at small size — even on your phone.",
+  "No mass-produced templates — every {niche} is tweaked for {audience} and tested at my desk.",
+  "Your time matters — this {niche} saves you hours, not just looks cute on a screen.",
+  "Designed with {personality} in mind, but practical enough for {audience} to use daily.",
+  "Small batch, high care — I keep the shop small so quality stays high and messages get answered."
+];
+const CAPTION_CLOSINGS = ["Tap to peek inside →","Favorite the shop so you don't miss the next drop →","Message me for a custom tweak →","Link in bio / tap the listing →","Save this for later →","Tell me what you think →","Share with a friend who needs this →","Tap to see the full set →","Comment with your favorite →","Save for your next print run →","Message me with your niche idea →","Tap to see details + sizes →","Add to cart before the weekend →","More in shop — tap to browse →","DM me for bundle info →"];
+const HASHTAG_POOLS = {
+ pinterest: ["#EtsyFinds","#PrintableArt","#EtsyShop","#DigitalDownload","#EtsySeller","#HomeDecor","#PlannerLove","#StickerShop","#WallArt","#Printables"],
+ instagram: ["#EtsyShop","#SmallBusiness","#HandmadeWithLove","#ShopSmall","#EtsyLove","#Printables","#DigitalProduct","#EtsyFinds","#SupportSmallBusiness","#MadeWithLove"]
+};
+function buildSocialCalendar(shop, weeks, platform, freq, seed){
+  const totalPosts = weeks * freq;
+  const days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const out=[];
+  let s = seed;
+  const usedVisualsByType = {};
+  const usedBodies = new Set();
+  for(let i=0;i<totalPosts;i++){
+    s = (s * 9301 + 49297) % 233280;
+    const week = Math.floor(i / freq) + 1;
+    const day = days[i % 7];
+    const plat = platform==='both' ? (seededRandom(s)>0.5 ? 'Pinterest' : 'Instagram') : (platform==='pinterest'?'Pinterest':'Instagram');
+    const postType = pickSeeded(POST_TYPES, s, 1)[0];
+    const pool = VISUAL_CONCEPTS[postType]||VISUAL_CONCEPTS["new listing highlight"];
+    if(!usedVisualsByType[postType]) usedVisualsByType[postType]=new Set();
+    let visualBase;
+    const unusedVisuals = pool.filter(v=> !usedVisualsByType[postType].has(v));
+    if(unusedVisuals.length>0){
+      visualBase = pickSeeded(unusedVisuals, s+1, 1)[0];
+    } else {
+      visualBase = pickSeeded(pool, s+1, 1)[0];
+    }
+    usedVisualsByType[postType].add(visualBase);
+    const palette = shop.lockedPalette ? `palette ${shop.lockedPalette} (locked)` : `palette ${shop.personality} / ${shop.niche}`;
+    const visualPrompt = `Social post visual for ${shop.niche} — ${postType}: ${visualBase}, ${palette}, mood ${shop.lockedMood||shop.personality}, 1080×1080, bright, phone-optimized, true color, 8k, no watermarks, brand palette ${shop.lockedPalette||'shop palette'}, style ${postType.includes('tip')?'clean infographic, icons':'lifestyle, shallow DOF'}. Seed ${s}.`;
+    const opener = pickSeeded(CAPTION_OPENERS, s+2, 1)[0];
+    let bodyPool = CAPTION_BODIES.filter(b=> !usedBodies.has(b));
+    if(bodyPool.length===0){ usedBodies.clear(); bodyPool = [...CAPTION_BODIES]; }
+    const bodyRaw = pickSeeded(bodyPool, s+3, 1)[0];
+    usedBodies.add(bodyRaw);
+    const body = bodyRaw.replace("{niche}", shop.niche).replace("{audience}", shop.audience).replace("{personality}", shop.personality);
+    const closing = pickSeeded(CAPTION_CLOSINGS, s+4, 1)[0];
+    const caption = `${opener} ${body} ${closing}`;
+    const hashtags = pickSeeded(HASHTAG_POOLS[plat.toLowerCase()]||HASHTAG_POOLS.pinterest, s+5, 5).join(" ");
+    out.push({week, day, platform: plat, postType, visualPrompt, caption, hashtags});
+  }
+  return out;
+}
+
+
+// ---------- Module 4 — Seasonal Refresh Planner ----------
+const SEASONS = [
+ {key:"valentine", label:"Valentine's Day", window:"Jan 20 – Feb 14", lead:"Start banner refresh 3 weeks before (late Jan)", refresh:"Banner → soft blush/rose, heart motif, featured listing: most romantic printable; Social theme: love letters, self-care", month:"February"},
+ {key:"easter", label:"Spring / Easter", window:"Mar 10 – Apr 15", lead:"3 weeks before", refresh:"Banner → pastels, eggs, bunnies; Featured: spring planners, floral wall art; Social: spring cleaning, fresh start", month:"March-April"},
+ {key:"summer", label:"Summer", window:"Jun 1 – Aug 15", lead:"2 weeks before", refresh:"Banner → bright, airy, tropical accents; Featured: summer activity packs, beach wall art; Social: vacation, outdoor", month:"June"},
+ {key:"backtoschool", label:"Back to School", window:"Jul 20 – Sep 5", lead:"3 weeks before", refresh:"Banner → notebooks, pencils, chalk, primary colors; Featured: planners, worksheets; Social: organization tips", month:"July-August"},
+ {key:"fall", label:"Fall / Halloween", window:"Sep 15 – Oct 31", lead:"3–4 weeks before", refresh:"Banner → pumpkins, plaid, harvest; Featured: fall wall art, Halloween printables; Social: cozy, harvest", month:"September-October"},
+ {key:"thanksgiving", label:"Thanksgiving", window:"Nov 1 – Nov 28", lead:"2 weeks before", refresh:"Banner → warm harvest, gratitude, plaid; Featured: thanksgiving cards, fall planners; Social: gratitude, family", month:"November"},
+ {key:"christmas", label:"Christmas / Holiday", window:"Nov 10 – Dec 25", lead:"4 weeks before (early Nov)", refresh:"Banner → plaid, pine, snow, hygge; Featured: holiday wall art, gift tags; Social: gift guides, holiday prep", month:"November-December"},
+ {key:"newyear", label:"New Year", window:"Dec 26 – Jan 15", lead:"1 week after Christmas", refresh:"Banner → gold confetti, champagne, midnight luxe; Featured: planners, goals, trackers; Social: fresh start, resolutions", month:"December-January"},
+];
+let lastSeasonBanner = null, lastSeasonSocial = null;
+function buildSeasonalIdea(seasonKey, shop, seed){
+  const season = SEASONS.find(s=>s.key===seasonKey) || SEASONS[0];
+  const bannerConcepts = [
+  `Banner concept for ${season.label} — ${shop.niche} styled with ${season.label.toLowerCase()} props, palette ${shop.lockedPalette||'seasonal accent + shop palette'}, mood ${shop.lockedMood||shop.personality}, 1200×300 safe-zone, motif: scattered seasonal icons, central safe-zone clear`,
+  `Fresh take: ${shop.niche} for ${season.label} — negative space with tiny seasonal icons, brand personality ${shop.personality}, palette ${shop.lockedPalette||'shop palette'}, minimal, airy`,
+  `Banner concept for ${season.label} — ${shop.niche} with diagonal color blocks in seasonal palette, bold, high contrast, 60/40 split, safe-zone centered`,
+  `Elegant ${season.label} banner — ${shop.niche} with thin serif border frame and soft watercolor wash (20% opacity), editorial, safe-zone inset 12px`,
+  `Playful ${season.label} banner — ${shop.niche} with hand-drawn doodle scatter (12 icons, 30% opacity) and confetti, cheerful`,
+  `Vintage ${season.label} banner — ${shop.niche} with ornate corner flourishes and aged paper texture (15% opacity), warm`,
+  `Minimal ${season.label} banner — ${shop.niche} with large soft circle wash behind text (30% opacity) and single botanical sprig, off-center`,
+  `Bold ${season.label} banner — ${shop.niche} with oversized typography as texture filling background, 15% opacity, central safe-zone`
+];
+  let bannerRaw = pickSeeded(bannerConcepts, seed, 1)[0];
+  if(bannerRaw === lastSeasonBanner && bannerConcepts.length > 1){
+    bannerRaw = pickSeeded(bannerConcepts, seed+999, 1)[0];
+    if(bannerRaw === lastSeasonBanner) bannerRaw = bannerConcepts[(bannerConcepts.indexOf(bannerRaw)+1)%bannerConcepts.length];
+  }
+  lastSeasonBanner = bannerRaw;
+  const banner = bannerRaw + ` Seed ${seed}.`;
+  const socialPool = ["behind-the-scenes making the seasonal listing, hands crafting, warm","customer feature with seasonal product in use, styled flat lay, thank-you note","seasonal tip card with bold typography, brand palette, icon","sneak peek of seasonal listing with 'Coming Soon' banner, curiosity","seasonal best-seller spotlight with ribbon, clean","how-to: 3 steps to style the seasonal product, icons","behind-the-scenes: screen recording of design file with seasonal colors","customer love: review screenshot styled as card with seasonal accent"];
+  let socialRaw = pickSeeded(socialPool, seed+2, 1)[0];
+  if(socialRaw === lastSeasonSocial && socialPool.length > 1){
+    socialRaw = pickSeeded(socialPool, seed+1999, 1)[0];
+    if(socialRaw === lastSeasonSocial) socialRaw = socialPool[(socialPool.indexOf(socialRaw)+1)%socialPool.length];
+  }
+  lastSeasonSocial = socialRaw;
+  const social = `Social post for ${season.label} — ${socialRaw} for ${shop.niche}, audience ${shop.audience}, caption opener "${pickSeeded(CAPTION_OPENERS, seed+3, 1)[0]}" + body about ${season.label.toLowerCase()} relevance. Seed ${seed+5}.`;
+  return {banner, social, season};
+}
+
+// ---------- Module 5 — Audit ----------
+const AUDIT_GROUPS = [
+ {title:"Visual Consistency", items:[
+  {label:"Banner matches listing photo style (same palette/mood, not a different photographer)", why:"Shoppers decide in 3 seconds if your shop feels pro or pieced together."},
+  {label:"Logo is present and legible at 25×25px (Etsy shop icon)", why:"Your icon appears tiny in search and messages — if it’s illegible, you’re invisible."},
+  {label:"Consistent color story across last 10 listings (same 5 swatches, eyedropped)", why:"A cohesive grid = higher favorite rate; a rainbow grid = lower trust."},
+  {label:"Shop icon set (not the default Etsy placeholder)", why:"Default icon screams unfinished shop — buyers bounce."}
+ ]},
+ {title:"Copy Consistency", items:[
+  {label:"About section reflects current offerings (not 2023 products you no longer sell)", why:"Stale About erodes trust — buyers wonder if you’re still active."},
+  {label:"Shop policies are current (processing time, returns on digital)", why:"Wrong processing time = angry messages and bad reviews."},
+  {label:"Listing titles follow a consistent pattern (same keyword order, not random)", why:"Consistent titles = better Etsy search and a pro look."},
+  {label:"Announcement is not stale (no 'Merry Christmas' in March)", why:"Stale announcement signals an abandoned shop."}
+ ]},
+ {title:"Shop Health", items:[
+  {label:"Shop icon and banner are both set (neither missing)", why:"Missing banner/icon = 30% less click-through from search."},
+  {label:"FAQ answers the 5-6 common buyer questions (download, print, customize, commercial use, help)", why:"Good FAQ cuts messages in half and lifts conversion."},
+  {label:"Seasonal content is current, not stale (no Halloween banner in February)", why:"Seasonal stale = looks automated, not cared for."},
+  {label:"At least one featured listing is a current best-seller or seasonal focus", why:"Featured listings drive 20% of shop views — don’t waste the slot."}
+ ]}
+];
+
+// ---------- Tabs ----------
+document.querySelectorAll('.modTab').forEach(btn=>{
+ btn.addEventListener('click', ()=>{
+  document.querySelectorAll('.modTab').forEach(b=>{ b.classList.remove('tab-active'); b.classList.add('bg-white','border','border-zinc-200','text-zinc-600'); });
+  btn.classList.add('tab-active'); btn.classList.remove('bg-white','border','border-zinc-200','text-zinc-600');
+  const tab = btn.dataset.tab;
+  document.querySelectorAll('.modPanel').forEach(p=> p.classList.toggle('hidden', p.id!==`mod-${tab}`));
+ });
+});
+document.querySelectorAll('.modTab')[0].classList.add('tab-active');
+
+// ---------- Module 1 wiring ----------
+function renderM1(){
+ const shop = getShop();
+ const opts = {style: document.getElementById('m1BannerStyle').value, text: document.getElementById('m1BannerText').value.trim(), concept: document.getElementById('m1LogoConcept').value};
+ const banner = buildBanner(shop, opts, m1Seed);
+ const logo = buildLogo(shop, opts, m1Seed+100);
+ document.getElementById('m1BannerOut').textContent = banner;
+ document.getElementById('m1LogoOut').textContent = logo;
+ lastM1 = {banner, logo, opts, shop: {...shop}, seed: m1Seed};
+}
+document.getElementById('m1Generate').addEventListener('click', ()=>{ m1Seed = Math.floor(Math.random()*90000)+10000; renderM1(); toast('Banner + Logo generated ✦'); });
+document.getElementById('m1Regen').addEventListener('click', ()=>{ m1Seed = Math.floor(Math.random()*90000)+10000; renderM1(); toast('New variation ✦'); });
+
+// ---------- Module 2 wiring ----------
+function renderM2(){
+ const shop = getShop();
+ const origin = document.getElementById('m2Origin').value.trim();
+ const diff = document.getElementById('m2Diff').value.trim();
+ let shipping = document.getElementById('m2Shipping').value;
+ if(shipping==='custom') shipping = document.getElementById('m2ShippingCustom').value.trim() || 'custom — message me';
+ else if(shipping==='instant') shipping = 'instant download — no shipping';
+ else if(shipping==='1-3') shipping = '1–3 business days';
+ else if(shipping==='3-5') shipping = '3–5 business days';
+ const returns = document.getElementById('m2Returns').value;
+ const aboutData = buildAbout(shop, origin, diff, m2Seed);
+ const ann = buildAnnouncement(shop, shipping, m2Seed+50);
+ const faq = buildFAQ(shop, shipping, returns, m2Seed+100);
+ document.getElementById('m2AboutOut').textContent = aboutData.about;
+ document.getElementById('m2AnnOut').textContent = ann;
+ document.getElementById('m2FaqOut').textContent = faq;
+ lastM2 = {about: aboutData.about, ann, faq, shop: {...shop}, shipping, returns, seed: m2Seed};
+}
+document.getElementById('m2Shipping').addEventListener('change', (e)=>{ document.getElementById('m2ShippingCustom').classList.toggle('hidden', e.target.value!=='custom'); });
+document.getElementById('m2Generate').addEventListener('click', ()=>{ m2Seed = Math.floor(Math.random()*90000)+10000; renderM2(); toast('About + FAQ generated ✦'); });
+document.getElementById('m2Regen').addEventListener('click', ()=>{ m2Seed = Math.floor(Math.random()*90000)+10000; renderM2(); toast('New voice ✦'); });
+
+// ---------- Module 3 wiring ----------
+function renderM3(){
+ const shop = getShop();
+ const weeks = parseInt(document.getElementById('m3Weeks').value);
+ const platform = document.getElementById('m3Platform').value;
+ const freq = parseInt(document.getElementById('m3Freq').value);
+ const rows = buildSocialCalendar(shop, weeks, platform, freq, m3Seed);
+ const tbody = document.getElementById('m3Body');
+ tbody.innerHTML = rows.map((r,i)=>`
+  <tr class="border-t border-zinc-100 ${i%2?'bg-zinc-50/50':''}">
+   <td class="p-3 font-bold">W${r.week}</td><td class="p-3">${r.day}</td><td class="p-3"><span class="px-2 py-1 rounded-full text-[11px] font-bold ${r.platform==='Pinterest'?'bg-red-50 border border-red-200 text-red-700':'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 text-purple-700'}">${r.platform}</span></td>
+   <td class="p-3"><span class="px-2 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-bold">${r.postType}</span></td>
+   <td class="p-3 max-w-[280px]"><div class="text-[11px] leading-relaxed line-clamp-3" title="${r.visualPrompt.replace(/"/g,'&quot;')}">${r.visualPrompt.slice(0,180)}…</div><button data-copy-visual="${i}" class="mt-1 text-[11px] font-bold text-emerald-700 hover:underline">⎘ Copy visual prompt</button></td>
+   <td class="p-3 max-w-[280px]"><div class="font-medium">${r.caption}</div><div class="text-[11px] text-zinc-500 mt-1">${r.hashtags}</div><button data-copy-cap="${i}" class="mt-1 text-[11px] font-bold text-indigo-700 hover:underline">⎘ Copy caption</button></td>
+   <td class="p-3"><button data-copy-row="${i}" class="text-[11px] font-bold px-2 py-1 rounded-full bg-white border hover:bg-zinc-50">Copy row</button></td>
+  </tr>
+ `).join('');
+ tbody.querySelectorAll('[data-copy-visual]').forEach(b=> b.addEventListener('click', ()=> copyText(rows[parseInt(b.dataset.copyVisual)].visualPrompt,'Visual prompt copied ✓')));
+ tbody.querySelectorAll('[data-copy-cap]').forEach(b=> {
+  const r = rows[parseInt(b.dataset.copyCap)];
+  b.addEventListener('click', ()=> copyText(r.caption + " " + r.hashtags,'Caption + hashtags copied ✓'));
+ });
+ tbody.querySelectorAll('[data-copy-row]').forEach(b=>{
+  const r = rows[parseInt(b.dataset.copyRow)];
+  b.addEventListener('click', ()=> copyText(`Week ${r.week} ${r.day} — ${r.platform} — ${r.postType}\nVisual: ${r.visualPrompt}\nCaption: ${r.caption}\n${r.hashtags}`,'Row copied ✓'));
+ });
+ lastM3 = {rows, weeks, platform, freq, shop: {...shop}, seed: m3Seed};
+ // Update kit meter
+ updateKitMeter();
+}
+document.getElementById('m3Generate').addEventListener('click', ()=>{ m3Seed = Math.floor(Math.random()*90000)+10000; renderM3(); toast('Calendar generated ✦'); });
+document.getElementById('m3Regen').addEventListener('click', ()=>{ m3Seed = Math.floor(Math.random()*90000)+10000; renderM3(); toast('New calendar mix ✦'); });
+document.getElementById('m3CopyAll').addEventListener('click', ()=>{
+ if(!lastM3){ toast('Generate a calendar first'); return; }
+ const all = lastM3.rows.map(r=> `${r.week} ${r.day} — ${r.platform} — ${r.postType}\n${r.caption} ${r.hashtags}`).join('\n\n');
+ copyText(all,'All captions copied ✓');
+});
+document.getElementById('m3Export').addEventListener('click', ()=>{
+ if(!lastM3){ toast('Generate a calendar first'); return; }
+ let txt = `SOCIAL CALENDAR — ${lastM3.shop.name} — ${lastM3.weeks} weeks • ${lastM3.platform} • ${lastM3.freq}x/week — Seed ${lastM3.seed}\n\n`;
+ lastM3.rows.forEach(r=> txt+= `Week ${r.week} ${r.day} — ${r.platform} — ${r.postType}\nVisual: ${r.visualPrompt}\nCaption: ${r.caption}\n${r.hashtags}\n\n`);
+ const blob=new Blob([txt],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`social-calendar-${Date.now()}.txt`; a.click();
+});
+
+// ---------- Module 4 ----------
+function renderM4(){
+ const tbody=document.getElementById('m4Body');
+ tbody.innerHTML = SEASONS.map(s=>`
+  <tr class="border-t border-zinc-100">
+   <td class="p-3 font-bold">${s.label}</td><td class="p-3 text-zinc-600">${s.window}</td><td class="p-3"><span class="px-2 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-[11px] font-bold">${s.lead}</span></td>
+   <td class="p-3">${s.refresh}</td><td class="p-3 text-zinc-600">${s.label.includes('Christmas')?'Start early — holiday shopper peaks early Nov': s.label.includes('Halloween')?'Tease in Sep, launch early Oct':'Keep social theme aligned'}</td>
+   <td class="p-3"><button data-season="${s.key}" class="seasonBtn text-[11px] font-black px-3 py-1.5 rounded-full empire-gradient text-white">Get Ideas →</button></td>
+  </tr>
+ `).join('');
+ tbody.querySelectorAll('.seasonBtn').forEach(b=> b.addEventListener('click', ()=>{
+  const key=b.dataset.season;
+  m4Seed = Math.floor(Math.random()*90000)+10000;
+  const shop=getShop();
+  const idea=buildSeasonalIdea(key, shop, m4Seed);
+  document.getElementById('m4Ideas').classList.remove('hidden');
+  document.getElementById('m4IdeasTitle').textContent = `${idea.season.label} — Fresh Ideas (Seed ${m4Seed})`;
+  document.getElementById('m4IdeasBody').innerHTML = `<div class="rounded-xl bg-white border border-amber-200 p-3"><div class="font-black text-[11px] tracking-widest text-amber-700">BANNER CONCEPT</div><div class="mt-1">${idea.banner}</div><button data-copy="banner" class="mt-2 text-[11px] font-bold text-amber-700 underline">⎘ Copy banner prompt</button></div><div class="rounded-xl bg-white border border-zinc-200 p-3 mt-3"><div class="font-black text-[11px] tracking-widest">SOCIAL POST IDEA</div><div class="mt-1">${idea.social}</div><button data-copy="social" class="mt-2 text-[11px] font-bold text-indigo-700 underline">⎘ Copy social idea</button></div>`;
+  document.getElementById('m4Ideas').querySelector('[data-copy="banner"]').addEventListener('click', ()=> copyText(idea.banner,'Banner idea copied ✓'));
+  document.getElementById('m4Ideas').querySelector('[data-copy="social"]').addEventListener('click', ()=> copyText(idea.social,'Social idea copied ✓'));
+  document.getElementById('m4Ideas').scrollIntoView({behavior:'smooth', block:'nearest'});
+ }));
+}
+document.getElementById('m4CloseIdea').addEventListener('click', ()=> document.getElementById('m4Ideas').classList.add('hidden'));
+document.getElementById('m4CopyIdea').addEventListener('click', ()=>{
+ const body=document.getElementById('m4IdeasBody').innerText;
+ copyText(body,'Seasonal ideas copied ✓');
+});
+
+// ---------- Module 5 ----------
+function renderAudit(){
+ const container=document.getElementById('auditGroups');
+ container.innerHTML = AUDIT_GROUPS.map((g,gi)=>`
+  <div>
+   <h4 class="font-black text-[12px] tracking-widest">${g.title.toUpperCase()}</h4>
+   <div class="mt-3 space-y-2">
+    ${g.items.map((it,ii)=>`
+     <label class="flex gap-3 p-3 rounded-xl border border-zinc-200 hover:border-zinc-300 bg-white cursor-pointer">
+      <input type="checkbox" data-group="${gi}" data-item="${ii}" class="auditCheck mt-1">
+      <div class="flex-1">
+       <div class="font-bold text-[13px]">${it.label}</div>
+       <div class="text-[11px] text-zinc-500 leading-relaxed">Why: ${it.why}</div>
+      </div>
+     </label>
+    `).join('')}
+   </div>
+  </div>
+ `).join('');
+ container.querySelectorAll('.auditCheck').forEach(cb=> cb.addEventListener('change', updateAuditProgress));
+ // Restore from storage if any
+ const saved = JSON.parse(localStorage.getItem('etsy-visual-empire-audit')||'[]');
+ saved.forEach(([gi,ii])=>{
+  const el = container.querySelector(`[data-group="${gi}"][data-item="${ii}"]`);
+  if(el) el.checked=true;
+ });
+ updateAuditProgress();
+}
+function updateAuditProgress(){
+ const checks=document.querySelectorAll('.auditCheck');
+ const total=checks.length;
+ const done=[...checks].filter(c=>c.checked).length;
+ const pct=Math.round(done/total*100);
+ document.getElementById('auditBar').style.width=pct+'%';
+ document.getElementById('auditProgress').textContent=`${done} / ${total} • ${pct}%`;
+ // Save
+ const state=[...checks].filter(c=>c.checked).map(c=>[c.dataset.group,c.dataset.item]);
+ localStorage.setItem('etsy-visual-empire-audit', JSON.stringify(state));
+ updateKitMeter();
+}
+
+// ---------- Module 6 ----------
+function updateKitMeter(){
+ let done=0;
+ if(lastM1) done++;
+ if(lastM2) done++;
+ if(lastM3) done++;
+ const auditDone = document.querySelectorAll('.auditCheck:checked').length >0 ? 1 : 0;
+ if(auditDone) done++;
+ const pct=Math.round(done/4*100);
+ const el=document.getElementById('kitMeter');
+ if(el) el.textContent=`${done} / 4 modules • ${pct}%`;
+}
+function renderKit(){
+ const shop=getShop();
+ if(!lastM1) { const s=getShop(); const o={style: document.getElementById('m1BannerStyle').value, text: document.getElementById('m1BannerText').value.trim(), concept: document.getElementById('m1LogoConcept').value}; lastM1={banner: buildBanner(s,o,m1Seed), logo: buildLogo(s,o,m1Seed+100), opts:o, shop:s, seed:m1Seed}; }
+ if(!lastM2){
+  const s=getShop(); const origin=document.getElementById('m2Origin').value.trim(); const diff=document.getElementById('m2Diff').value.trim();
+  let shipping=document.getElementById('m2Shipping').value; if(shipping==='custom') shipping=document.getElementById('m2ShippingCustom').value.trim()||'custom';
+  const ret=document.getElementById('m2Returns').value;
+  const aboutData=buildAbout(s,origin,diff,m2Seed); const ann=buildAnnouncement(s,shipping,m2Seed+50); const faq=buildFAQ(s,shipping,ret,m2Seed+100);
+  lastM2={about:aboutData.about, ann, faq, shop:s, shipping, returns:ret, seed:m2Seed};
+ }
+ if(!lastM3){
+  const s=getShop(); const weeks=parseInt(document.getElementById('m3Weeks').value); const plat=document.getElementById('m3Platform').value; const freq=parseInt(document.getElementById('m3Freq').value);
+  const rows=buildSocialCalendar(s,weeks,plat,freq,m3Seed); lastM3={rows, weeks, platform:plat, freq, shop:s, seed:m3Seed};
+ }
+ const auditChecks=document.querySelectorAll('.auditCheck');
+ const total=auditChecks.length, done=[...auditChecks].filter(c=>c.checked).length;
+ const unchecked=[...auditChecks].filter(c=>!c.checked).map(c=> c.closest('label').querySelector('.font-bold').textContent);
+ const view=document.getElementById('kitView');
+ view.classList.remove('hidden');
+ view.innerHTML=`
+  <div class="rounded-xl bg-zinc-50 border border-zinc-200 p-4">
+   <div class="text-[11px] font-black tracking-widest text-zinc-500">SHOP PROJECT</div>
+   <div class="mt-2 text-[13px] leading-relaxed"><b>${shop.name}</b> — ${shop.niche} for ${shop.audience} — personality: ${shop.personality}${shop.lockedPalette?`<br>Locked palette: ${shop.lockedPalette} • Locked mood: ${shop.lockedMood}`:''}</div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">BANNER PROMPT</div>
+   <div class="p-4 text-[12px] leading-relaxed whitespace-pre-wrap bg-white">${lastM1.banner}</div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">LOGO PROMPT</div>
+   <div class="p-4 text-[12px] leading-relaxed whitespace-pre-wrap bg-white">${lastM1.logo}</div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">ABOUT SECTION</div>
+   <div class="p-4 text-[13px] leading-relaxed whitespace-pre-wrap bg-white">${lastM2.about}</div>
+  </div>
+  <div class="rounded-xl border border-amber-200 overflow-hidden">
+   <div class="px-4 py-2 bg-amber-500 text-white font-black text-[11px] tracking-widest">SHOP ANNOUNCEMENT</div>
+   <div class="p-4 text-[13px] leading-relaxed bg-amber-50">${lastM2.ann}</div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">FAQ</div>
+   <div class="p-4 text-[13px] leading-relaxed whitespace-pre-wrap bg-white max-h-[260px] overflow-auto">${lastM2.faq}</div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">SOCIAL CALENDAR — FIRST WEEK PREVIEW (of ${lastM3.weeks} weeks)</div>
+   <div class="p-4 bg-white">
+    <table class="w-full text-[11px]"><thead class="bg-zinc-100 text-[10px] tracking-widest"><tr><th class="p-2 text-left">Day</th><th class="p-2 text-left">Platform</th><th class="p-2 text-left">Type</th><th class="p-2 text-left">Caption</th></tr></thead><tbody>${lastM3.rows.slice(0, Math.min(5,lastM3.rows.length)).map(r=>`<tr class="border-t"><td class="p-2">${r.day}</td><td class="p-2">${r.platform}</td><td class="p-2">${r.postType}</td><td class="p-2">${r.caption.slice(0,80)}…</td></tr>`).join('')}</tbody></table>
+    <div class="text-[11px] text-zinc-500 mt-2">Full calendar has ${lastM3.rows.length} posts — see Module 3 for complete table.</div>
+   </div>
+  </div>
+  <div class="rounded-xl border border-zinc-200 overflow-hidden">
+   <div class="px-4 py-2 bg-zinc-900 text-white font-black text-[11px] tracking-widest">SEASONAL REFRESH CALENDAR — FULL YEAR</div>
+   <div class="p-4 bg-white text-[12px] leading-relaxed">
+    <table class="w-full text-[11px]"><thead class="bg-zinc-100"><tr><th class="p-2 text-left">Season</th><th class="p-2 text-left">Window</th><th class="p-2 text-left">What to Refresh</th></tr></thead><tbody>${SEASONS.map(s=>`<tr class="border-t"><td class="p-2 font-bold">${s.label}</td><td class="p-2">${s.window}</td><td class="p-2">${s.refresh}</td></tr>`).join('')}</tbody></table>
+   </div>
+  </div>
+  <div class="rounded-xl border ${done===total?'border-emerald-200 bg-emerald-50':'border-amber-200 bg-amber-50'} p-4">
+   <div class="font-black text-[11px] tracking-widest ${done===total?'text-emerald-700':'text-amber-700'}">AUDIT — ${done} / ${total} complete • ${Math.round(done/total*100)}%</div>
+   <div class="mt-2 text-[12px] leading-relaxed">
+    ${done===total? 'All checked — your shop is brand-consistent!' : `Unchecked (${unchecked.length}):<br>• ${unchecked.slice(0,6).join('<br>• ')}${unchecked.length>6?'<br>• ...':''}`}
+   </div>
+  </div>
+ `;
+ document.getElementById('kitActions').classList.remove('hidden');
+ updateKitMeter();
+}
+document.getElementById('kitGenerate').addEventListener('click', renderKit);
+document.getElementById('kitCopy').addEventListener('click', ()=>{
+ const view=document.getElementById('kitView');
+ if(view.classList.contains('hidden')){ toast('Generate the kit first'); return; }
+ const txt=view.innerText;
+ copyText(txt,'Complete kit copied ✓');
+});
+document.getElementById('kitDownload').addEventListener('click', ()=>{
+ const view=document.getElementById('kitView');
+ if(view.classList.contains('hidden')){ toast('Generate the kit first'); return; }
+ const txt=view.innerText;
+ const blob=new Blob([`ETSY VISUAL EMPIRE — COMPLETE SHOP IDENTITY KIT\nGenerated: ${new Date().toLocaleString()}\n\n` + txt],{type:'text/plain'});
+ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`etsy-visual-empire-kit-${Date.now()}.txt`; a.click();
+});
+
+// init
+renderM1(); renderM2(); renderM3(); renderM4(); renderAudit();
+document.querySelectorAll('.copyBtn').forEach(btn=>{
+ btn.addEventListener('click', ()=>{
+  const key=btn.dataset.copy;
+  if(key==='m1Banner') copyText(document.getElementById('m1BannerOut').textContent,'Banner prompt copied ✓');
+  else if(key==='m1Logo') copyText(document.getElementById('m1LogoOut').textContent,'Logo prompt copied ✓');
+  else if(key==='m2About') copyText(document.getElementById('m2AboutOut').textContent,'About copied ✓');
+  else if(key==='m2Ann') copyText(document.getElementById('m2AnnOut').textContent,'Announcement copied ✓');
+  else if(key==='m2Faq') copyText(document.getElementById('m2FaqOut').textContent,'FAQ copied ✓');
+ });
+});
+</script>
+</body>
+</html>
