@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etsy Photo Machine Pro — Seasonal & Niche Expansion Pack</title>
+<meta name="description" content="Pro Expansion: Shop Consistency Lock, Batch Mode (5 photos, one style), 8 vertical niches + 8 seasonal niches, Series Checker. 27 niches total. GPT Image 2 3D.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{ -webkit-font-smoothing:antialiased }
+.oto-gradient{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 50%,#0EA5E9 100%)}
+.code-block{background:#0a0a14; border:1px solid #1e1b4b; color:#e5e5ff}
+.swatch{width:16px;height:16px;border-radius:999px;border:1px solid rgba(0,0,0,.12);display:inline-block}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);transform:translateX(-100%);animation:shine 3.5s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.locked-glow{box-shadow:0 0 0 2px #4F46E5, 0 12px 32px rgba(79,70,229,.25)}
+</style>
+</head>
+<body class="bg-[#F8F7FF] text-zinc-900 font-[Inter]">
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-indigo-100">
+  <div class="max-w-[1360px] mx-auto px-4 md:px-6 h-[64px] flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl oto-gradient text-white flex items-center justify-center font-black text-[11px] shadow">3D</div>
+      <div>
+        <div class="font-black text-[13px] tracking-tight leading-none">ETSY PHOTO MACHINE <span class="font-bold text-indigo-600">PRO</span> <span class="font-medium text-zinc-500">— GPT IMAGE 2</span></div>
+        <div class="text-[11px] font-bold tracking-widest text-indigo-600">SEASONAL & NICHE EXPANSION PACK • 27 NICHES • SHOP LOCK</div>
+      </div>
+    </div>
+    <div class="hidden lg:flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-full oto-gradient text-white text-[11px] font-black">• 16 NEW NICHES</span>
+      <span class="px-2.5 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black">27 TOTAL • BATCH MODE</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="historyBtn" class="hidden md:inline-flex border border-zinc-200 rounded-full px-4 py-2 text-[12px] font-bold hover:bg-zinc-50">🕘 History</button>
+      <button id="exportBtn" class="hidden md:inline-flex bg-zinc-900 text-white font-black text-[12px] px-4 py-2 rounded-full hover:bg-black">⬇ Export</button>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-[1360px] mx-auto px-4 md:px-6 pt-6">
+  <div class="rounded-[24px] oto-gradient text-white p-6 md:p-7 grid lg:grid-cols-[1.2fr_380px] gap-6 items-center relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-white/10 rounded-full blur-[70px]"></div>
+    <div class="absolute -bottom-20 -left-20 w-[340px] h-[340px] bg-cyan-300/15 rounded-full blur-[60px]"></div>
+    <div class="relative">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-indigo-700 text-[11px] font-black tracking-widest">UPGRADE — SHOP CONSISTENCY LOCK + BATCH MODE</div>
+      <h1 class="mt-3 font-black tracking-tight leading-[0.92] text-[30px] md:text-[42px]" style="font-family:Space Grotesk">One shop.<br><span class="text-indigo-100">One look.</span> 5 photos<br>that actually match.</h1>
+      <p class="mt-3 text-[13px] leading-relaxed text-indigo-100 max-w-[640px]">The FE gives you <b class="text-white">one-off photos</b> — new seed, new palette, new props every click. fixes the #1 shop killer: <b class="text-white">Shop Consistency Lock</b> freezes your lighting, palette, mood & prop style — then <b class="text-white">Batch Mode</b> generates all 5 listing photos in one style that looks like the same photographer shot them.</p>
+      <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-bold">
+        <span class="px-3 py-1.5 rounded-full bg-white text-indigo-700">🔒 Lock once → reuse forever</span>
+        <span class="px-3 py-1.5 rounded-full bg-white/15 border border-white/20">⚡ Batch 5 photos, 1 style</span>
+        <span class="px-3 py-1.5 rounded-full bg-white/15 border border-white/20">🎨 12 palettes • 3D • PBR</span>
+      </div>
+    </div>
+    <div class="relative bg-white rounded-[18px] p-5 text-zinc-900 shadow-xl">
+      <div class="flex items-center justify-between"><span class="text-[11px] font-black tracking-widest text-indigo-600">INSIDE</span><span class="text-[10px] font-black px-2 py-1 rounded-full oto-gradient text-white">16 NEW NICHES</span></div>
+      <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] font-bold">
+        <div class="rounded-xl bg-indigo-50 border border-indigo-200 p-3 text-indigo-700">8 Vertical<span class="block text-[10px] font-normal text-zinc-500">KDP • SVG • Notion • Recipe • Wedding • Homeschool • iPad Planner • Embroidery</span></div>
+        <div class="rounded-xl bg-fuchsia-50 border border-fuchsia-200 p-3 text-fuchsia-700">8 Seasonal<span class="block text-[10px] font-normal text-zinc-500">Halloween • Christmas • Valentine • Easter • Back to School • Thanksgiving • New Year • Mother/Father</span></div>
+      </div>
+      <div class="mt-3 rounded-xl bg-zinc-900 text-white p-3 flex gap-3">
+        <span class="w-8 h-8 rounded-full oto-gradient flex items-center justify-center text-sm shrink-0">🔒</span>
+        <div class="text-[11px] leading-tight"><b>Shop Consistency Lock</b> — lock lighting, palette, mood & prop family once, reuse across 50+ listings. <span class="text-zinc-400">Batch Mode depends on it.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEW LAYOUT — Totally different from FE: single column, top lock bar + horizontal controls -->
+<div class="max-w-[1360px] mx-auto px-4 md:px-6 mt-6 pb-10 space-y-6">
+  <!-- Top Lock Bar — full width, not left panel -->
+  <div id="lockPanel" class="bg-white border-2 border-zinc-200 rounded-[20px] overflow-hidden shadow-sm">
+      <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-zinc-50">
+        <h2 class="font-black text-[12px] tracking-widest flex items-center gap-2"><span class="w-6 h-6 rounded-lg oto-gradient text-white flex items-center justify-center text-[11px]">🔒</span> SHOP CONSISTENCY LOCK</h2>
+        <span id="lockStatus" class="text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-800">🔓 Unlocked — each Generate is independent</span>
+      </div>
+      <div class="p-5 space-y-4">
+        <div id="lockSummary" class="hidden rounded-xl bg-indigo-50 border-2 border-indigo-300 p-4">
+          <div class="text-[11px] font-black tracking-widest text-indigo-600">🔒 STYLE LOCKED</div>
+          <div id="lockSummaryText" class="mt-2 text-[12px] leading-relaxed"></div>
+          <div id="lockSwatches" class="mt-2 flex gap-1.5"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button id="lockCurrentBtn" class="oto-gradient text-white font-black text-[12px] py-2.5 rounded-xl">🔒 Lock Current Settings</button>
+          <button id="lockThisStyleBtn" class="bg-zinc-900 text-white font-black text-[12px] py-2.5 rounded-xl hover:bg-black">✦ Lock This Style (last generation)</button>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button id="unlockBtn" class="bg-white border border-zinc-200 font-bold text-[12px] py-2 rounded-xl hover:bg-zinc-50 disabled:opacity-40" disabled>🔓 Unlock</button>
+          <button id="changeStyleBtn" class="bg-white border border-zinc-200 font-bold text-[12px] py-2 rounded-xl hover:bg-zinc-50 disabled:opacity-40" disabled>Change Style</button>
+        </div>
+        <div class="border-t border-zinc-200 pt-4">
+          <label class="text-[11px] font-black tracking-widest text-zinc-600">SAVED PROFILES</label>
+          <div class="mt-2 flex gap-2">
+            <input id="profileName" placeholder='Name: "Cozy Autumn Shop"' class="flex-1 bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-[12px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-white outline-none">
+            <button id="saveProfileBtn" class="bg-white border border-indigo-200 text-indigo-700 font-black text-[11px] px-4 py-2 rounded-xl hover:bg-indigo-50">Save</button>
+          </div>
+          <div id="profilesList" class="mt-3 space-y-1.5 max-h-[140px] overflow-auto"></div>
+          <p class="mt-2 text-[11px] text-zinc-500">Profiles are saved locally (like history/favorites in FE). Switch to reuse across batches. Lock once, reuse for 50+ listings.</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Top Horizontal Controls — 3 columns, not left sticky -->
+  <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+    <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between bg-zinc-50">
+      <h2 class="font-black text-[12px] tracking-widest">STUDIO CONTROLS — TOP BAR</h2>
+      <span class="text-[11px] font-bold px-2 py-1 rounded-full bg-zinc-900 text-white" id="variationLabel">Seed # —</span>
+    </div>
+    <div class="p-5">
+      <div class="grid lg:grid-cols-3 gap-5">
+        <div>
+          <label class="text-[11px] font-black tracking-widest text-zinc-500 mb-2 block">PRODUCT TYPE (PBR)</label>
+          <select id="productType" class="w-full bg-[#F8F7FF] border border-indigo-100 rounded-xl px-3 py-2.5 text-[13px] font-bold focus:border-indigo-400 focus:bg-white outline-none">
+            <option value="coloring">🎨 Coloring Page — 120gsm uncoated, toothy paper</option>
+            <option value="journal">📓 Journal — 100gsm linen, debossed, lay-flat</option>
+            <option value="planner">📅 Planner — 120gsm matte, tabs</option>
+            <option value="wallart">🖼️ Wall Art — 300gsm fine art matte, 2cm bevel</option>
+            <option value="sticker">⭐ Sticker Sheet — kiss-cut, 18 pcs</option>
+            <option value="cards">🃏 Printable Cards — 350gsm, soft-touch</option>
+            <option value="poster">🖼️ Art Print Bundle — 3 prints, 1.5cm bevel</option>
+            <option value="invite">💌 Invitation Suite — 350gsm cotton, deckled</option>
+            <option value="worksheet">📝 Worksheet Pack — 100gsm, activity grids</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[11px] font-black tracking-widest text-zinc-500 mb-2 block">NICHE / THEME — 27 TOTAL (16 NEW)</label>
+          <select id="nichePreset" class="w-full bg-[#F8F7FF] border border-indigo-100 rounded-xl px-3 py-2.5 text-[13px] font-bold focus:border-indigo-400 focus:bg-white outline-none">
+            <optgroup label="— FE Niches (11) —">
+              <option value="custom">✏️ Custom — type below</option>
+              <option value="kawaii">🐱 Kawaii — cute cats, pastel</option>
+              <option value="boho">🌿 Boho — desert, terracotta</option>
+              <option value="cottage">🍄 Cottagecore — mushrooms, frogs</option>
+              <option value="minimal">⬜ Minimal — Scandinavian, quiet</option>
+              <option value="vintage">📜 Vintage — florals, ornate, aged</option>
+              <option value="floral">🌸 Floral — watercolor blooms</option>
+              <option value="animal">🦊 Animal — woodland</option>
+              <option value="food">🍓 Food & Drink — bakery, coffee</option>
+              <option value="space">🚀 Space — planets, neon</option>
+              <option value="anime">⭐ Anime — chibi, manga</option>
+            </optgroup>
+            <optgroup label="— Vertical (8) — NEW">
+              <option value="kdp">📚 KDP Low-Content — interior spreads, spine, shelf styling</option>
+              <option value="svg">✂️ SVG Cut Files — vinyl on mat, weeded, tumbler/shirt</option>
+              <option value="notion">💻 Notion Templates — laptop UI, cursor, desk</option>
+              <option value="recipe">🍳 Recipe Cards — ingredients, index box, kitchen</option>
+              <option value="wedding">💍 Wedding Printables — florals, ribbon, romantic</option>
+              <option value="homeschool">🎒 Homeschool — workbook, crayons, kid desk</option>
+              <option value="digitalplanner">📱 Digital Planner — iPad + Apple Pencil, Goodnotes</option>
+              <option value="embroidery">🧵 Embroidery — hoop, thread spools, fabric</option>
+            </optgroup>
+            <optgroup label="— Seasonal (8) — NEW">
+              <option value="halloween">🎃 Halloween — cute spooky</option>
+              <option value="christmas">🎄 Christmas — plaid, pine, snow</option>
+              <option value="valentine">💘 Valentine's Day — hearts, blush, ribbon</option>
+              <option value="easter">🐰 Easter — pastels, eggs, bunnies</option>
+              <option value="backtoschool">🎒 Back to School — notebooks, pencils, chalk</option>
+              <option value="thanksgiving">🍂 Thanksgiving / Fall Harvest — pumpkins, plaid, harvest</option>
+              <option value="newyear">🎆 New Year — gold, confetti, champagne</option>
+              <option value="mothersday">💐 Mother's / Father's Day — florals, heartfelt</option>
+            </optgroup>
+          </select>
+          <input id="nicheInput" placeholder='Be specific: "kawaii cats with strawberry hats" or "KDP tracker interior, 6x9"' class="mt-2 w-full bg-white border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-[#F8F7FF] outline-none">
+        </div>
+        <div>
+          <label class="text-[11px] font-black tracking-widest text-zinc-500 mb-2 block">3D SHOT TYPE</label>
+          <select id="photoType" class="w-full bg-[#F8F7FF] border border-indigo-100 rounded-xl px-3 py-2.5 text-[13px] font-bold focus:border-indigo-400 focus:bg-white outline-none">
+            <option value="lifestyle">🏡 3D Lifestyle — depth, props, HDRI, 4:3</option>
+            <option value="detail">🔍 3D Macro Detail — paper weave, bevel, 4:3</option>
+            <option value="thumb">🟧 3D Thumbnail — bold, beveled, 1:1</option>
+            <option value="hero">🤍 3D White Hero — floating, soft shadow, 4:3</option>
+            <option value="social">📱 3D Social — handheld, depth, 1:1</option>
+          </select>
+          <div class="mt-2 flex gap-1.5 flex-wrap" id="ratioHint"></div>
+        </div>
+        <details open class="rounded-xl bg-[#F8F7FF] border border-indigo-100 p-4">
+          <summary class="font-black text-[11px] tracking-widest cursor-pointer">3D LIGHTING & CAMERA RIG</summary>
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            <div><label class="text-[11px] font-bold text-zinc-600">HDRI Lighting</label><select id="lightingSel" class="w-full mt-1 bg-white border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="auto">Auto (per shot)</option><option value="window">Window HDRI</option><option value="studio">Studio Softbox 3-point</option><option value="golden">Golden Hour</option><option value="highkey">High-Key</option></select></div>
+            <div><label class="text-[11px] font-bold text-zinc-600">3D Camera</label><select id="angleSel" class="w-full mt-1 bg-white border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="auto">Auto</option><option value="topdown">Top-down 90°</option><option value="45deg">45° Hero</option><option value="front">Front 3D</option><option value="macro">Macro 100mm</option></select></div>
+            <div class="col-span-2"><label class="text-[11px] font-bold text-zinc-600">Render Mood</label><select id="moodSel" class="w-full mt-1 bg-white border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="cozy">Cozy Studio</option><option value="minimal">Minimal Gallery</option><option value="boho">Boho Atelier</option><option value="vibrant">Vibrant Pop</option><option value="elegant">Elegant Editorial</option></select></div>
+          </div>
+        </details>
+        <details class="rounded-xl bg-white border border-zinc-200 p-4">
+          <summary class="font-black text-[11px] tracking-widest cursor-pointer">MATERIALS, SURFACE & 3D PROPS</summary>
+          <div class="mt-3 space-y-3">
+            <div class="grid grid-cols-2 gap-3">
+              <div><label class="text-[11px] font-bold text-zinc-600">Surface (PBR)</label><select id="surfaceSel" class="w-full mt-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="auto">Auto</option><option value="oak">Light Oak</option><option value="linen">Warm Linen</option><option value="marble">White Marble</option><option value="walnut">Dark Walnut</option><option value="white">Pure White</option><option value="concrete">Light Concrete</option></select></div>
+              <div><label class="text-[11px] font-bold text-zinc-600">Palette</label><select id="paletteSel" data-auto="1" class="w-full mt-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="warm">Warm Neutrals</option><option value="pastel">Soft Pastel</option><option value="earth">Earthy Boho</option><option value="mono">Mono Minimal</option><option value="bold">Bold Contrast</option><option value="sage">Sage & Clay</option><option value="ocean">Ocean Breeze</option><option value="forest">Forest Moss</option><option value="sunset">Sunset Glow</option><option value="lavender">Lavender Dream</option><option value="tropical">Tropical Punch</option><option value="midnight">Midnight Luxe</option></select></div>
+            </div>
+            <div><label class="text-[11px] font-bold text-zinc-600 flex justify-between">3D Prop Density <span id="propVal" class="font-mono text-indigo-600">Balanced</span></label><input id="propDensity" type="range" min="0" max="2" value="1" step="1" class="w-full"><div class="flex justify-between text-[10px] text-zinc-500"><span>Minimal</span><span>Balanced</span><span>Rich</span></div></div>
+            <div class="flex gap-1.5 flex-wrap" id="paletteSwatches"></div>
+          </div>
+        </details>
+        <details class="rounded-xl bg-white border border-zinc-200 p-4">
+          <summary class="font-black text-[11px] tracking-widest cursor-pointer">TYPOGRAPHY — 3D TEXT</summary>
+          <div class="mt-3 space-y-3">
+            <input id="customText" placeholder='Text inside 3D mockup: "Sunflower Coloring Book — 40 Pages"' class="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-white outline-none">
+            <div class="grid grid-cols-2 gap-3"><select id="textPos" class="bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="top">Top Center</option><option value="center">Centered</option><option value="bottom">Bottom</option><option value="none">No Text</option></select><select id="fontSel" class="bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="sans">Bold Sans — extruded</option><option value="serif">Serif Elegant — beveled</option><option value="hand">Hand Script — debossed</option><option value="mono">Mono Technical</option></select></div>
+            <div class="flex items-center justify-between"><span class="text-[11px] text-zinc-500" id="charCount">Keep ≤6 words — 3D text loves short</span><button id="clearText" class="text-[11px] font-bold text-zinc-500 hover:text-zinc-900">Clear</button></div>
+          </div>
+        </details>
+        <div><label class="text-[11px] font-black tracking-widest text-zinc-500 mb-2 block">CUSTOM PRODUCT NAME</label><input id="productName" placeholder='E.g., "Cozy Autumn Journal — 3D Linen"' class="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-white outline-none"></div>
+        <div class="rounded-xl bg-zinc-900 text-white p-4">
+          <label class="text-[11px] font-black tracking-widest text-zinc-400 flex justify-between">3D VARIATION ENGINE <span id="varLabel" class="text-white">Balanced</span></label><input id="varSlider" type="range" min="0" max="100" value="52" class="w-full mt-2"><div class="flex justify-between text-[10px] text-zinc-400"><span>Subtle</span><span>Balanced</span><span>Wild</span></div>
+          <p class="text-[11px] leading-relaxed text-zinc-400 mt-2">When unlocked, each Generate is a new 3D mockup. When locked, variation only affects composition — identity (lighting/palette/mood/props) stays frozen.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button id="generateBtn" class="shine oto-gradient text-white font-black text-[13px] py-3 rounded-xl">✦ Generate 3D Prompt</button>
+          <button id="regenBtn" class="bg-zinc-900 text-white font-black text-[13px] py-3 rounded-xl hover:bg-black">↻ Regenerate 3D</button>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <button id="randomBtn" class="bg-white border border-zinc-200 rounded-xl py-2 text-[12px] font-bold hover:bg-zinc-50">🎲 Surprise 3D</button>
+          <button id="copyBtn2" class="bg-white border border-zinc-200 rounded-xl py-2 text-[12px] font-bold hover:bg-zinc-50">⎘ Copy</button>
+          <button id="resetBtn" class="bg-zinc-100 border border-zinc-200 rounded-xl py-2 text-[12px] font-bold">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <!-- Cleaner Tab Navigation — Single vs Batch vs Shop -->
+    <div class="bg-white border border-indigo-100 rounded-[16px] p-1.5 flex gap-1.5">
+      <button data-main-tab="single" class="mainTab active flex-1 py-2.5 rounded-xl bg-zinc-900 text-white font-black text-[12px]">◈ Single Photo</button>
+      <button data-main-tab="batch" class="mainTab flex-1 py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">⚡ Batch Studio <span class="hidden sm:inline">(5 Photos)</span></button>
+      <button data-main-tab="shop" class="mainTab flex-1 py-2.5 rounded-xl bg-white border border-zinc-200 font-bold text-[12px] text-zinc-600">≡ Shop System</button>
+    </div>
+
+    <div id="tab-single" class="space-y-6">
+    <div class="bg-white border border-indigo-100 rounded-[20px] overflow-hidden">
+      <div class="px-5 py-4 border-b border-indigo-100 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-indigo-50 to-violet-50">
+        <h3 class="font-black text-[12px] tracking-widest text-indigo-700">LIVE 3D STUDIO PROMPT</h3>
+        <div class="flex items-center gap-2">
+          <span class="hidden md:inline-flex text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> unlimited 3D</span>
+          <span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-zinc-900 text-white" id="aspectBadge">—</span>
+          <span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700" id="seedBadge">seed —</span>
+        </div>
+      </div>
+      <div class="p-5 space-y-4">
+        <div class="grid md:grid-cols-[1fr_220px] gap-3">
+          <div class="rounded-xl bg-[#F8F7FF] border border-indigo-200 p-4">
+            <div class="text-[10px] font-black tracking-widest text-indigo-600">3D PROMPT NAME</div>
+            <div id="pName" class="font-bold text-[14px] mt-1"></div>
+            <div id="pMeta" class="text-[11px] text-zinc-500 mt-1"></div>
+            <div id="paletteRow" class="mt-2 flex gap-1.5 flex-wrap"></div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <button id="copyBtn" class="bg-zinc-900 text-white font-black text-[13px] py-3 rounded-xl hover:bg-black">⎘ Copy 3D Prompt</button>
+            <button id="copyTagsBtn" class="bg-white border border-zinc-200 font-bold text-[12px] py-2.5 rounded-xl hover:bg-zinc-50">🏷 Copy Etsy Tags</button>
+            <button id="favBtn" class="bg-white border border-zinc-200 font-bold text-[12px] py-2 rounded-xl hover:bg-amber-50">☆ Favorite</button>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-zinc-900">
+          <div class="px-4 py-3 bg-zinc-900 flex items-center justify-between">
+            <span class="text-[11px] font-black tracking-widest text-white">GPT IMAGE 2 — ULTRA-DETAILED 3D MOCKUP PROMPT (250+ WORDS)</span>
+            <button id="copyPromptBtn" class="text-[11px] font-black px-3 py-1.5 rounded-full bg-white text-zinc-900 hover:bg-zinc-100">⎘ Copy</button>
+          </div>
+          <pre id="promptOut" class="code-block p-5 text-[12px] leading-relaxed whitespace-pre-wrap max-h-[560px] overflow-auto"></pre>
+        </div>
+        <details class="rounded-xl bg-zinc-50 border border-zinc-200 p-4">
+          <summary class="font-black text-[12px] cursor-pointer">▶ Breakdown — 3D Subject / Camera Rig / HDRI / Materials / Shadows / Palette / 3D Text / Render</summary>
+          <div id="breakdown" class="mt-3 grid sm:grid-cols-2 gap-3 text-[12px]"></div>
+        </details>
+        <div class="flex gap-2 text-[11px]">
+          <button data-tab="full" class="tabBtn active flex-1 py-2 rounded-full bg-zinc-900 text-white font-black">Full 3D</button>
+          <button data-tab="short" class="tabBtn flex-1 py-2 rounded-full bg-white border border-zinc-200 font-bold text-zinc-600">Short</button>
+          <button data-tab="neg" class="tabBtn flex-1 py-2 rounded-full bg-white border border-zinc-200 font-bold text-zinc-600">Negative</button>
+          <button data-tab="tags" class="tabBtn flex-1 py-2 rounded-full bg-white border border-zinc-200 font-bold text-zinc-600">Etsy Tags</button>
+        </div>
+        <pre id="altOut" class="hidden code-block p-4 rounded-xl text-[12px] whitespace-pre-wrap max-h-[320px] overflow-auto"></pre>
+        <div id="historyPanel" class="hidden rounded-xl bg-white border border-zinc-200 p-4">
+          <div class="flex items-center justify-between"><span class="font-black text-[11px] tracking-widest">HISTORY — LAST 5 3D</span><button id="clearHist" class="text-[11px] font-bold text-zinc-500">Clear</button></div>
+          <div id="historyList" class="mt-3 space-y-1.5"></div>
+        </div>
+      </div>
+    </div>
+    </div> <!-- end tab-single -->
+
+    <!-- Batch Mode — now in its own tab -->
+    <div id="tab-batch" class="hidden space-y-6">
+    <div class="bg-white border-2 border-indigo-200 rounded-[20px] overflow-hidden">
+      <div class="px-5 py-4 border-b border-indigo-100 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
+        <h3 class="font-black text-[12px] tracking-widest">⚡ BATCH MODE — GENERATE ALL 5 PHOTO TYPES</h3>
+        <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-indigo-700" id="batchHint">Uses locked style if 🔒 locked</span>
+      </div>
+      <div class="p-5 space-y-4">
+        <button id="batchBtn" class="w-full oto-gradient text-white font-black text-[14px] py-3.5 rounded-xl hover:brightness-[0.98]">⚡ Generate All 5 Photo Types — One Style</button>
+        <div id="batchResults" class="hidden space-y-3 max-h-[620px] overflow-auto"></div>
+        <div id="batchActions" class="hidden grid grid-cols-2 gap-2">
+          <button id="copyAllBtn" class="bg-zinc-900 text-white font-black text-[12px] py-2.5 rounded-xl">⎘ Copy All 5</button>
+          <button id="exportBatchBtn" class="bg-white border border-zinc-200 font-black text-[12px] py-2.5 rounded-xl">⬇ Export All 5 as .txt</button>
+        </div>
+        <p class="text-[11px] text-zinc-500">Batch reuses the <b>exact locked profile</b> (lighting, palette exact swatches, mood, prop family) for all 5. Only composition/crop varies per shot type — that's what makes the 5 photos look like the same photographer shot them. Without a lock, Batch is just 5 independent random generations.</p>
+      </div>
+    </div>
+    </div> <!-- end tab-batch -->
+
+    <!-- Shop System tab — Series Checker + Gallery + How To -->
+    <div id="tab-shop" class="hidden space-y-6">
+    <div class="rounded-[20px] bg-zinc-900 text-white p-6 md:p-7">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl oto-gradient flex items-center justify-center font-black">≡</div>
+        <div>
+          <div class="font-black text-[13px] tracking-widest">SERIES CONSISTENCY CHECKER — KEEP YOUR SHOP ON-BRAND ACROSS 50+ LISTINGS</div>
+          <div class="text-[11px] text-zinc-400">Informational panel — how to stay consistent across sessions, not a generator.</div>
+        </div>
+      </div>
+      <div class="mt-5 grid md:grid-cols-3 gap-3 text-[12px] leading-relaxed">
+        <div class="rounded-xl bg-white text-zinc-900 p-4"><div class="font-black text-indigo-700">1 — Note Your Recipe</div><div class="text-zinc-600 mt-1">After you lock a style you love, click <b>Copy Reference Block</b> below. Save that block in a Google Doc called "My Shop Bible" — it contains your exact lighting rig, palette swatches, surface, mood, and prop family. Paste it verbatim into future GPT Image 2 prompts months later and you'll get the same photographer look.</div></div>
+        <div class="rounded-xl bg-indigo-50 border border-indigo-200 p-4 text-zinc-900"><div class="font-black text-indigo-700">2 — Re-paste Verbatim</div><div class="text-zinc-600 mt-1">Don't retype. Copy the <b>Materials & Palette block</b> from your Reference Block and paste it <b>word-for-word</b> into every new prompt: <span class="font-mono bg-white border px-1 rounded text-[11px]">Surface: light oak — PBR wood, 0.7 roughness... + Palette: warm neutrals — swatches #FFF8E7...</span>. One changed word = different photographer.</div></div>
+        <div class="rounded-xl bg-white text-zinc-900 p-4"><div class="font-black text-indigo-700">3 — Swatch Screenshot</div><div class="text-zinc-600 mt-1">Take a screenshot of your locked palette swatches (the 5 dots). Keep it on your desk. When you print or edit, eyedrop those exact hex codes in Canva/Photoshop for titles and overlays. Your shop's 50 listings will feel like one brand, not 50 experiments.</div></div>
+      </div>
+      <div class="mt-5 rounded-xl bg-white/10 border border-white/15 p-4">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-black tracking-widest">YOUR CURRENT STYLE — REUSABLE REFERENCE BLOCK</span>
+          <button id="copyRefBtn" class="text-[11px] font-black px-3 py-1.5 rounded-full bg-white text-zinc-900 hover:bg-zinc-100">⎘ Copy Reference Block</button>
+        </div>
+        <pre id="refBlock" class="mt-3 bg-black/30 border border-white/10 rounded-xl p-4 text-[12px] leading-relaxed whitespace-pre-wrap font-mono max-h-[260px] overflow-auto">No style locked yet — generate one photo you love, then click "Lock This Style" above. Your reference block will appear here.</pre>
+        <p class="mt-2 text-[11px] text-zinc-400">This is your "recipe" — not a new prompt. Save it externally and re-paste its Materials & Palette lines verbatim in future sessions to keep the same photographer across your whole shop.</p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-zinc-200 rounded-[20px] overflow-hidden">
+      <div class="px-5 py-4 border-b border-zinc-200 flex items-center justify-between">
+        <h3 class="font-black text-[12px] tracking-widest">27 NICHES — BROWSE & LOAD</h3>
+        <span class="text-[11px] font-bold px-2 py-1 rounded-full bg-white border">11 FE + 16 new</span>
+      </div>
+      <div id="gallery" class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[420px] overflow-auto"></div>
+    </div>
+    </div> <!-- end tab-shop -->
+
+    <div class="rounded-[20px] bg-white border border-zinc-200 p-6 md:p-7">
+      <div class="inline-flex px-3 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-black tracking-widest">HOW TO GET TRUE 3D IN GPT IMAGE 2 (FREE TIER)</div>
+      <div class="mt-4 grid md:grid-cols-3 gap-4 text-[13px] leading-relaxed">
+        <div class="rounded-2xl bg-[#F8F7FF] border border-indigo-100 p-5"><div class="w-8 h-8 rounded-full oto-gradient text-white flex items-center justify-center font-black text-sm">1</div><div class="font-black mt-3">Paste Full 3D Prompt</div><div class="text-zinc-600 mt-1">Copy <b>Full 3D</b> (250+ words, bevel, PBR, HDRI, 50mm f/2.2). Paste into <b>ChatGPT → Images</b>. Keep ratio from badge.</div></div>
+        <div class="rounded-2xl bg-white border border-zinc-200 p-5"><div class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-sm">2</div><div class="font-black mt-3">Generate + Vary 3D</div><div class="text-zinc-600 mt-1">Hit <b>Regenerate 3D</b> for new seed. With lock, only composition varies — identity stays frozen.</div></div>
+        <div class="rounded-2xl bg-[#F8F7FF] border border-indigo-100 p-5"><div class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center font-black text-sm">3</div><div class="font-black mt-3">Commercial 3D</div><div class="text-zinc-600 mt-1">You own the 3D render (OpenAI Terms April 2026). No trademarks.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div> <!-- end main prompt grid -->
+  <div class="max-w-[1360px] mx-auto px-4 md:px-6 text-center text-[11px] text-zinc-500 font-mono pb-10">
+  Seasonal & Niche Expansion Pack • 27 niches • Shop Consistency Lock • Batch Mode • Series Checker • No data leaves browser
+</div>
+
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 text-white px-5 py-3 rounded-full font-black text-[13px] shadow-2xl translate-y-[160%] transition duration-300 flex items-center gap-2 z-50">
+  <span class="w-6 h-6 rounded-full bg-white text-zinc-900 flex items-center justify-center text-xs">✓</span> <span id="toastMsg">Copied!</span>
+</div>
+
+<script>
+const PRODUCTS = {
+  coloring:{label:"Coloring Page", subject:"printable coloring page, 120gsm uncoated premium paper with pronounced tooth and deckled micro-texture, bold clean line art with 2pt black outlines, 300 DPI, flat with subtle 0.8mm thickness and beveled paper edge", tags:["coloring page","printable coloring","adult coloring","kids coloring","instant download"]},
+  journal:{label:"Journal", subject:"hardcover journal, 100gsm natural linen cover with tight weave bump, debossed title (0.6mm depth), lay-flat 180° binding with visible mull, thick 100gsm cream interior, 1.8cm spine", tags:["journal","prompted journal","lined journal","self care journal","printable journal"]},
+  planner:{label:"Planner", subject:"weekly planner, 120gsm matte premium paper with smooth tooth, color-coded monthly tabs (0.8mm thickness, rounded), gold foil weekly headers (optional), clean grid 5mm, minimal typography", tags:["planner","weekly planner","2026 planner","productivity planner","printable planner"]},
+  wallart:{label:"Wall Art", subject:"framed printable wall art poster, 300gsm fine art matte paper with 2cm beveled mat border, gallery-quality, light oak frame (PBR wood, 0.6 roughness, beveled 2mm lip)", tags:["wall art","printable wall art","poster","gallery wall","boho wall art"]},
+  sticker:{label:"Sticker Sheet", subject:"kiss-cut sticker sheet, 18 illustrated stickers on white backing, glossy vinyl with 0.15mm raised kiss-cut edge, subtle highlight on cut line, 0.8mm sheet thickness", tags:["sticker sheet","printable stickers","kiss cut stickers","planner stickers","cute stickers"]},
+  cards:{label:"Printable Cards", subject:"set of 32 printable affirmation cards, 350gsm thick cardstock with soft-touch matte lamination, rounded 6mm corners, 1.2mm beveled edge, slightly fanned", tags:["printable cards","affirmation cards","flash cards","game cards","printable game"]},
+  poster:{label:"Art Print Bundle", subject:"bundle of 3 coordinating printable art prints, 300gsm gallery matte with 1.5cm beveled mat, modern minimalist design, light oak frames, 2mm glass reflection", tags:["art print bundle","printable wall art set","gallery wall set","poster bundle","modern wall art"]},
+  invite:{label:"Invitation Suite", subject:"printable invitation suite, 350gsm cotton rag with deckled edge (1.2mm feather), letterpress typography (0.4mm deboss), dusty rose + sage, wax seal (3D, 12mm, glossy)", tags:["invitation template","wedding invitation","party invitation","printable invitation","editable template"]},
+  worksheet:{label:"Worksheet Pack", subject:"printable educational worksheet pack, 100gsm matte, clean activity grids with 2pt icons, rounded activity boxes, kid-friendly sans, 0.9mm sheet thickness", tags:["worksheet","activity pack","printable worksheet","educational printable","kids activity"]},
+};
+const PHOTOS = {
+  lifestyle:{label:"Lifestyle Flat Lay", ratio:"4:3", size:"2700×2025", use:"Main listing photo"},
+  detail:{label:"Close-up Detail", ratio:"4:3", size:"2700×2025", use:"Photo 2–3 texture"},
+  thumb:{label:"Thumbnail", ratio:"1:1", size:"2700×2700", use:"Search thumbnail"},
+  hero:{label:"White Hero", ratio:"4:3", size:"2700×2025", use:"Pure white hero"},
+  social:{label:"Social Square", ratio:"1:1", size:"1080×1080", use:"Pinterest / Instagram"},
+};
+const LIGHTING_OPTS = {
+  window:{desc:"soft north window HDRI, diffused through sheer linen, true color, gentle falloff, global illumination, subtle AO in crevices", setup:"HDRI window left, large softbox right (0.6 intensity), rim light kicker 0.3, GI bounces 2"},
+  studio:{desc:"3-point studio softbox rig, 45° key (1.0) + fill (0.55) + rim (0.35), even, shows paper tooth and bevel without glare, color accurate 5500K", setup:"key 45° left, fill  -30° right, rim back 120°, softbox 120cm, no harsh specular"},
+  golden:{desc:"warm golden hour HDRI, amber tint 3200K, long soft shadows (24mm falloff), cozy, slight blooming on edges", setup:"golden HDRI dome, low sun 18° horizon, warm bounce card, long shadow catcher"},
+  highkey:{desc:"bright high-key, shadowless, pure and airy, 7000K, optimized for small Etsy crop, subtle ambient occlusion only", setup:"overhead softbox + 2 bounce cards, shadow catcher pure white, no cast shadow except 4px contact shadow"}
+};
+const SURFACE_OPTS = {
+  oak:{label:"Light Oak — PBR wood, grain bump 0.7 roughness, micro-bevel", prompt:"light oak desk, PBR wood with subtle grain bump, 0.7 roughness, matte clear coat, micro-bevel on edge, faint dust motes"},
+  linen:{label:"Warm Linen — weave bump, soft, slight wrinkle", prompt:"warm natural linen tablecloth, tight weave bump, slight wrinkle, 0.85 roughness, soft SSS"},
+  marble:{label:"White Carrara Marble — polished, faint veining, SSS 0.15", prompt:"white Carrara marble, polished, faint grey veining, 0.05 roughness, subtle subsurface scattering"},
+  walnut:{label:"Dark Walnut — rich, 0.4 roughness, premium", prompt:"dark walnut desk, rich PBR grain, 0.4 roughness, satin varnish, premium"},
+  white:{label:"Pure White — seamless, shadow catcher, 0 roughness", prompt:"seamless pure white infinity cove (#FFFFFF), shadow catcher only, 0 roughness, no texture"},
+  concrete:{label:"Light Concrete — micro-pitted, matte, 0.9 roughness", prompt:"light concrete, micro-pitted, 0.9 roughness, modern minimal, faint AO"},
+};
+const ANGLE_OPTS = {
+  topdown:{desc:"top-down 90° orthographic, 80mm, perfectly overhead, geometric, centered, true scale, no perspective distortion", cam:"80mm, orthographic, f/8, 100 ISO, tripod locked"},
+  "45deg":{desc:"45° hero 3D, 50mm, f/2.2, shallow DOF, subtle parallax, inviting depth, product beveled edge visible", cam:"50mm prime, f/2.2, 100 ISO, shallow depth, bokeh background, focus on product center"},
+  front:{desc:"front-on 3D, 35mm, straight, poster-like, gallery, slight thickness visible, edge bevel 1.2mm", cam:"35mm, f/5.6, 100 ISO, front-parallel, crisp, gallery"},
+  macro:{desc:"macro 100mm, extreme bevel & paper tooth, 1:1 magnification, shallow DOF f/2.8, focus peaking on edge, tactile", cam:"100mm macro, f/2.8, 100 ISO, 1:1, focus on bevel/texture, creamy bokeh"}
+};
+const MOOD_OPTS = {
+  cozy:{label:"Cozy Studio", prompt:"cozy, warm, inviting, soft, lived-in Etsy studio, morning light, homely"},
+  minimal:{label:"Minimal Gallery", prompt:"minimal, clean, airy, Scandinavian, negative space, premium, quiet"},
+  boho:{label:"Boho Atelier", prompt:"boho, earthy, organic, textured, natural fibers, warm, artisan"},
+  vibrant:{label:"Vibrant Pop", prompt:"vibrant, playful, energetic, saturated but balanced, fun, cheerful"},
+  elegant:{label:"Elegant Editorial", prompt:"elegant, premium, editorial, refined, quiet luxury, high-end"},
+};
+const PALETTES = {
+  warm:{label:"Warm Neutrals", swatches:["#FFF8E7","#F5E6CC","#D2B48C","#8B7355","#3C2F2F"], prompt:"warm neutrals, cream, beige, soft terracotta, muted brown, timeless, Pantone Warm Gray"},
+  pastel:{label:"Soft Pastel", swatches:["#FFE4E6","#E0E7FF","#FEF3C7","#D1FAE5","#FCE7F3"], prompt:"soft pastel, blush, powder blue, butter yellow, mint, dreamy, light, low saturation"},
+  earth:{label:"Earthy Boho", swatches:["#A16207","#92400E","#78716C","#44403C","#FACC15"], prompt:"earthy boho, terracotta, clay, sand, olive, warm, grounded, organic"},
+  mono:{label:"Mono Minimal", swatches:["#FFFFFF","#E5E7EB","#9CA3AF","#4B5563","#111827"], prompt:"monochrome minimal, white, light grey, charcoal, crisp, modern, high key"},
+  bold:{label:"Bold Contrast", swatches:["#F1641E","#111827","#FFFFFF","#FACC15","#0EA5E9"], prompt:"bold contrast, Etsy orange pop, charcoal, white, high contrast, eye-catching, color pop"},
+  sage:{label:"Sage & Clay", swatches:["#A7B8A0","#D9C5B4","#F2E8E0","#8A9A8E","#5C4A3A"], prompt:"sage and clay, muted green, warm clay, linen, calm, desaturated, Japandi"},
+  ocean:{label:"Ocean Breeze", swatches:["#0EA5E9","#0284C7","#E0F2FE","#F0F9FF","#0C4A6E"], prompt:"ocean breeze, aqua, cerulean, seafoam, coastal, fresh, airy, nautical"},
+  forest:{label:"Forest Moss", swatches:["#1A4D2E","#4F6F52","#739072","#ECE3CE","#3A4D39"], prompt:"forest moss, deep green, sage, moss, woodland, natural, grounding"},
+  sunset:{label:"Sunset Glow", swatches:["#FF6B6B","#FFD93D","#FF8C42","#6BCB77","#4D96FF"], prompt:"sunset glow, coral, amber, tangerine, golden, vibrant, warm, cheerful"},
+  lavender:{label:"Lavender Dream", swatches:["#8B5CF6","#DDD6FE","#F5F3FF","#C4B5FD","#4C1D95"], prompt:"lavender dream, lilac, wisteria, soft purple, dreamy, mystical, gentle"},
+  tropical:{label:"Tropical Punch", swatches:["#10B981","#F59E0B","#EC4899","#06B6D4","#F97316"], prompt:"tropical punch, emerald, mango, fuchsia, turquoise, vibrant, playful, summer"},
+  midnight:{label:"Midnight Luxe", swatches:["#111827","#1F2937","#D1D5DB","#F59E0B","#F9FAFB"], prompt:"midnight luxe, charcoal, slate, gold accent, premium, editorial, quiet luxury"},
+};
+function varySwatches(swatches, seed, variation){
+  if(variation < 28) return swatches;
+  const r = seed % swatches.length;
+  const rotated = [...swatches.slice(r), ...swatches.slice(0,r)];
+  if(variation > 62){
+    const allSw = Object.values(PALETTES).flatMap(p=>p.swatches);
+    const accent = allSw[seed % allSw.length];
+    rotated[2] = accent;
+  }
+  return rotated;
+}
+const FONT_OPTS = {
+  sans:{label:"Bold Sans — 3D extruded 0.8mm, beveled edge", prompt:"bold geometric sans, extruded 0.8mm, beveled 0.15mm, high legibility, tight tracking, cast micro-shadow"},
+  serif:{label:"Serif Elegant — beveled 0.4mm, debossed option", prompt:"elegant serif, beveled 0.4mm, refined, high contrast, editorial, subtle drop shadow"},
+  hand:{label:"Hand Script — debossed 0.3mm, warm", prompt:"handwritten script, debossed 0.3mm into paper, warm, casual, slightly imperfect, ink bleed 0.05mm"},
+  mono:{label:"Mono Technical — flat, foil-like", prompt:"mono technical, flat, foil-like, precise, modern, no extrusion"},
+};
+const TEXT_POS_OPTS = {
+  top:"top-center, safe margin 8% from edge, above product, not overlapping, clear space, embossed",
+  center:"centered over product, semi-transparent linen banner behind text (0.85 opacity) for legibility, 3D inset",
+  bottom:"bottom-center, just below product, on clean surface area, 6% margin, flat",
+  none:"no text inside image — leave pristine title area with breathing room for Etsy overlay text, negative space"
+};
+const PROP_POOLS = {
+  coloring:["fanned colored pencils (12, rainbow, hexagonal, sharp tips)","small eucalyptus sprig (3D, SSS leaves)","ceramic mug (matte white, 0.6 roughness, soft highlight)","half-colored page visible (wax texture, visible stroke)","brass sharpener with magnesium shavings (metallic)","washi tape roll (pastel, paper texture)","wooden ruler (PBR pine, beveled)","crayon box open (cardboard, soft shadow)"],
+  journal:["ceramic coffee cup with latte art (micro-foam, 3D)","black gel pen (PBR plastic, clip highlight)","small potted succulent (3D, SSS, pot terracotta)","folded throw blanket corner (knit bump)","reading glasses (acetate, reflection)","dried orange slice (translucent, SSS)","leather bookmark (1.2mm thickness, debossed)"],
+  planner:["gold pen (metallic, 0.15 roughness, highlight)","tabs visible (color-coded, 0.8mm thickness, rounded)","coffee cup (matte)","small calendar block (wood, PBR)","paper clips (gold, metallic, cast shadow)","sticky notes (pastel, paper stack 1mm)","highlighters (3, pastel, translucent caps)"],
+  wallart:["light oak frame (PBR wood, 2mm bevel, 0.6 roughness)","white vase with dried pampas (SSS)","stack of coffee table books (linen + matte, beveled edges)","linen curtain in background (bokeh, weave)","small brass lamp (metallic, warm bulb)","woven basket (rattan bump)","ceramic bowl (matte, soft highlight)"],
+  sticker:["journal with sticker mid-peel (3D peel curl 2mm, shadow under)","scissors (rose gold, metallic, reflection)","washi tape (paper, beveled edge)","pastel desk mat (PBR fabric, 0.8 roughness)","confetti stickers scattered (glossy vinyl, highlight)","small plant (SSS leaves)","clear tape dispenser (acrylic, refraction)"],
+  cards:["fanned cards showing variety (3D stack, 1.2mm bevel each)","small wooden card stand (oak, PBR)","linen cloth (weave bump)","hands holding one card (3D, soft skin SSS, shallow DOF)","small crystal (refraction, caustics)","dried flowers (SSS)","gift box open (cardboard, beveled)"],
+  poster:["three frames gallery wall (PBR wood, 2mm glass, reflection)","velvet bench below (fabric bump, 0.9 roughness)","trailing pothos plant (3D, SSS)","stack of design magazines (matte + gloss)","ceramic vase, curved (matte, AO)","linen curtains, soft bokeh, window light"],
+  invite:["wax seal (dusty rose, 3D, 12mm diameter, glossy, beveled edge, highlight)","silk ribbon (sage, PBR silk, weave, soft shadow)","envelope (deckled edge 1.2mm feather, cotton rag)","dried eucalyptus (SSS)","gold pen (metallic)","ring box, velvet (fabric SSS, 0.85 roughness)"],
+  worksheet:["wooden pencils (sharpened, PBR wood, graphite tip, 0.8mm bevel)","small eraser (rubber, 0.9 roughness)","ruler, transparent acrylic (refraction)","kids hands writing (soft skin SSS, shallow DOF)","alphabet blocks (wood, PBR, beveled)","crayons fanned (wax, SSS, paper wrapper)","apple, red (SSS, highlight)"],
+};
+// Product-specific prop pools for vertical niches
+const VERTICAL_PROP_POOLS = {
+  kdp:["stacked KDP interior spreads fanned (6×9, 0.9mm thickness each, bleed visible)","KDP cover + spine visible (1.8cm spine, barcode placeholder)","publishing shelf with 4 KDP books (PBR, beveled spines)","interior page with bleed marks (printer's marks)"],
+  svg:["vinyl on green cutting mat (Cricut, 1mm grid, beveled)","weeded vinyl design (negative space, transfer tape curl)","tumbler with vinyl applied (glossy, 3D wrap, highlight)","t-shirt flat lay with vinyl (fabric weave, heat press)"],
+  notion:["laptop screen showing Notion UI (chrome, cursor, database view, 3D screen glare)","tablet with Notion template (Apple Pencil nearby, shallow DOF)","desk setup with laptop + notebook + coffee (UI chrome visible)"],
+  recipe:["recipe card in use near ingredients (flour dust, eggs, whisk)","index card box (wood, PBR, beveled)","kitchen marble surface with flour, rolling pin","small bowls with ingredients (SSS, highlight)"],
+  wedding:["wedding invitation suite with florals (peony, eucalyptus, SSS)","silk ribbon (sage, PBR silk, soft shadow, bow)","elevated stationery on marble + gold tray (reflection)","soft romantic window light, bokeh, veil fabric"],
+  homeschool:["homeschool workbook open in use (kid's desk, crayons, pencils)","workbook with kid's hands writing (soft SSS, shallow DOF)","kid's desk with alphabet poster in background (bokeh)"],
+  digitalplanner:["iPad showing Goodnotes planner (screen UI, Apple Pencil 2 attached magnetically, 3D screen reflection)","tablet + Apple Pencil on linen, screen glare, UI chrome (tabs, digital stickers)"],
+  embroidery:["embroidery pattern next to wooden hoop (fabric weave, 3D thread texture, 0.6mm thread bevel)","thread spools (PBR, glossy, beveled, highlight)","fabric texture (linen, weave bump, needle)"],
+};
+const BASES = {
+  "coloring|lifestyle":"top-down 3D flat lay of a {S} lying on surface, one page slightly curled 12° to show 0.8mm thickness and beveled edge, half-colored page visible with wax texture",
+  "coloring|detail":"extreme 3D macro of the {S} — crisp bold line art, thick 2pt black outlines, 120gsm uncoated paper tooth, micro-bevel on paper edge, 100mm macro",
+  "coloring|thumb":"front 3D of {S} centered, fills 75% of frame, 1.8mm beveled paper stack, bold title area, instantly readable, crop-safe",
+  "coloring|hero":"{S} 3D centered on pure white infinity cove, soft 12px contact shadow + 24px falloff, pages slightly fanned 8° to show stack depth, floating 4mm",
+  "coloring|social":"3D styled square of {S} with 3D hands coloring with a hexagonal pencil, shallow DOF f/2.2, cozy, pencil tip 0.3mm from paper",
+  "journal|lifestyle":"{S} open 180° lay-flat on surface, 1.8cm spine with 3D bevel, prompted page with 0.4mm deboss, morning ritual props, shallow DOF",
+  "journal|detail":"3D close-up of the {S}'s natural linen cover (tight weave bump 0.85 roughness) and lay-flat binding with visible mull texture, debossed title 0.6mm depth, shallow DOF f/2.8",
+  "journal|thumb":"{S} closed, 3D front cover centered, 1.8cm spine beveled, title large and centered, crop-safe, studio HDRI reflection on linen",
+  "journal|hero":"{S} 3D standing upright on pure white, 12px contact shadow, spine visible with 0.6mm deboss, floating 3mm, no props",
+  "journal|social":"3D hands (soft skin SSS) holding the {S} open, writing with a gel pen, shallow DOF f/2.2, warm, aspirational",
+  "planner|lifestyle":"{S} open to a weekly 3D spread on surface, 0.8mm color-coded tabs with rounded edges, gold foil headers glint, lightly styled",
+  "planner|detail":"3D macro of the {S}'s weekly grid (5mm grid, 120gsm matte) and tab dividers (0.8mm thickness, beveled), crisp lines, no glare, 100mm macro",
+  "planner|thumb":"{S} cover centered, 3D tabs peeking 4mm, large centered title, bold and crop-safe, beveled cover edge 1mm",
+  "planner|hero":"{S} closed 3D on pure white, soft 16px shadow, tabs visible on side with 0.8mm thickness, floating 4mm, no props",
+  "planner|social":"{S} open 3D with a 3D hand planning with a gold pen, shallow DOF, lifestyle, phone-friendly crop",
+  "wallart|lifestyle":"{S} in 3D light oak frame (PBR, 0.6 roughness, 2mm bevel, 2mm glass with 4% reflection) on warm white wall, above light wood console, real living room with depth, HDRI window",
+  "wallart|detail":"3D close-up of the {S}'s 300gsm fine art matte paper texture (tooth visible) and frame lip (2mm bevel), soft studio HDRI, no reflection glare, 100mm macro",
+  "wallart|thumb":"{S} framed 3D, front-facing, centered, fills frame, 2mm beveled mat, high contrast, crop-safe, subtle drop shadow",
+  "wallart|hero":"{S} in thin 3D frame centered on pure white infinity cove, soft 20px shadow, floating 6mm, no wall, no props, gallery",
+  "wallart|social":"{S} 3D styled on a shelf among 3D books and plant, square crop, Pinterest-ready, shallow DOF f/2.8",
+  "sticker|lifestyle":"{S} 3D on a pastel desk with props, 0.15mm raised kiss-cut vinyl with highlight on cut line, playful, 45° hero angle",
+  "sticker|detail":"3D macro of the {S}'s kiss-cut edges (0.15mm raised, glossy vinyl, 0.05 roughness, highlight) and backing paper tooth, sharp, 100mm",
+  "sticker|thumb":"{S} centered 3D, fills frame, 18 stickers with 0.15mm bevel each, bold, no props, crop-safe, subtle shadow",
+  "sticker|hero":"{S} 3D flat on pure white, soft 14px shadow, perfectly aligned, 0.8mm sheet thickness visible, no props, floating 3mm",
+  "sticker|social":"3D hands peeling a vinyl sticker (2mm curl, shadow under curl) from the {S} onto a journal, fun and tactile, shallow DOF, square",
+  "cards|lifestyle":"{S} 3D fanned out on surface, 5 cards face-up with 1.2mm beveled edges and soft-touch matte, soft shadows 8px, variety visible",
+  "cards|detail":"3D macro of the {S}'s 350gsm cardstock edge (1.2mm bevel, rounded 6mm corners, soft-touch matte 0.8 roughness), shallow DOF f/2.8",
+  "cards|thumb":"{S} stacked 3D, top card centered, large title, 3 cards fanned 12° behind with beveled edges, bold and crop-safe",
+  "cards|hero":"{S} stacked 3D neatly on pure white, soft 16px shadow, rounded 6mm corners with bevel, floating 4mm, no props",
+  "cards|social":"3D hands (SSS) holding a card from the {S} set toward camera, shallow DOF f/2.2, warm, inviting, square",
+  "poster|lifestyle":"set of {S} arranged as 3D gallery wall, three frames with 2mm glass (4% reflection) and 1.5cm beveled mats, couch below, HDRI window, depth",
+  "poster|detail":"3D close-up of one {S} print texture (300gsm matte tooth) and frame lip (2mm bevel, PBR wood), soft studio HDRI, 100mm macro",
+  "poster|thumb":"{S} gallery set 3D, front-facing, bold, fills frame, beveled mats, high contrast, subtle drop shadows",
+  "poster|hero":"{S} trio 3D leaning against pure white wall, soft 20px shadows, floating 5mm, gallery, no props",
+  "poster|social":"{S} 3D styled on a mantel with 3D vases, square crop, lifestyle, shallow DOF",
+  "invite|lifestyle":"{S} 3D flat lay with envelope (deckled 1.2mm feather, cotton rag) and 12mm wax seal (glossy, beveled, highlight) on surface, styled",
+  "invite|detail":"3D macro of the {S}'s letterpress typography (0.4mm deboss) and deckled edge (1.2mm feather, cotton fibers), texture, 100mm",
+  "invite|thumb":"{S} centered 3D, invitation top, bold title with deboss, crop-safe, 1.2mm beveled edge visible",
+  "invite|hero":"{S} with 3D envelope (deckled, cotton) on pure white infinity cove, soft 16px shadow, floating 4mm",
+  "invite|social":"3D hands holding the {S} invitation, shallow DOF f/2.2, square, elegant, SSS skin",
+  "worksheet|lifestyle":"{S} 3D spread on a kids desk (light oak, PBR) with 3D pencils, playful but tidy, shallow DOF",
+  "worksheet|detail":"3D close-up of the {S} activity grid (2pt icons, rounded boxes, 0.9mm sheet) and icon emboss, crisp, kid-friendly, 100mm",
+  "worksheet|thumb":"{S} cover centered 3D, bold title, icons with 0.5mm bevel, crop-safe, beveled edge",
+  "worksheet|hero":"{S} stacked 3D on pure white, soft 14px shadow, clean, floating 3mm",
+  "worksheet|social":"3D child's hands (soft SSS) working on the {S} with a hexagonal pencil, shallow DOF f/2.2, warm, square",
+};
+const BASE_VARIANTS = {
+  "coloring|lifestyle": ["top-down 3D flat lay of a {S} lying on surface, one page slightly curled 12° to show 0.8mm thickness", "overhead 3D of {S} on surface, pages fanned 15°, half-colored page with vibrant wax, top-down 80mm", "3D flat lay of {S} on linen, one page folded at corner to show thickness, colored pencils scattered in rainbow arc"],
+  "journal|lifestyle": ["{S} open 180° lay-flat on surface, morning ritual props, shallow DOF", "{S} open to first prompt page, coffee steam rising nearby, 45° hero, linen texture visible", "{S} closed next to open page, showing both cover deboss and interior lined pages, top-down"],
+};
+const NICHE_DATA = {
+  // FE niches (11) — kept for continuity
+  kawaii:{label:"Kawaii", palette:"pastel", mood:"vibrant", subjectAdd:"kawaii style — cute, chubby cheeks, big glossy eyes, pastel bows, soft blush, ultra-cute, Japanese kawaii", propAdd:["pastel bow (satin, 3D)","tiny heart confetti (glossy)","strawberry charm (3D, SSS)"]},
+  boho:{label:"Boho", palette:"earth", mood:"boho", subjectAdd:"boho style — desert botanical, terracotta, rattan texture, muted sage, organic, earthy, sun-baked", propAdd:["rattan coaster (PBR, weave)","dried pampas (SSS)","terracotta pot (matte)"]},
+  cottage:{label:"Cottagecore", palette:"sage", mood:"cozy", subjectAdd:"cottagecore style — mushrooms, frogs, gingham, wildflowers, cozy, storybook, warm", propAdd:["gingham ribbon (fabric)","wooden mushroom figurine (PBR)","wildflower sprig (SSS)"]},
+  minimal:{label:"Minimal", palette:"mono", mood:"minimal", subjectAdd:"minimal Scandinavian — clean line art, quiet, negative space, monochrome, ultra-clean, premium", propAdd:["single black pen (matte)","white ceramic (matte)"]},
+  vintage:{label:"Vintage", palette:"warm", mood:"elegant", subjectAdd:"vintage style — aged paper texture, ornate florals, muted sepia, distressed edge, elegant serif", propAdd:["aged brass key (metallic)","wax seal (dusty rose)","old book stack (linen)"]},
+  floral:{label:"Floral", palette:"pastel", mood:"elegant", subjectAdd:"floral watercolor — soft blooms, romantic, loose watercolor, blush and sage, delicate", propAdd:["fresh peony (SSS)","silk ribbon (sage, PBR silk)","pearl pin"]},
+  animal:{label:"Animal Woodland", palette:"sage", mood:"cozy", subjectAdd:"woodland animal style — foxes, bears, deer, forest floor, cozy, storybook, warm", propAdd:["pine cone (PBR)","acorn (matte)","plaid fabric swatch"]},
+  food:{label:"Food & Drink", palette:"warm", mood:"cozy", subjectAdd:"food & drink — strawberries, coffee, bakery, yummy, appetizing, warm, inviting", propAdd:["fresh strawberry (SSS, highlight)","coffee beans scattered","croissant (PBR, flake texture)"]},
+  space:{label:"Space", palette:"midnight", mood:"vibrant", subjectAdd:"retro space — planets, stars, constellations, neon, vibrant, cosmic, 80s retro", propAdd:["tiny planet model (glossy)","star confetti (metallic)","neon light reflection"]},
+  anime:{label:"Anime", palette:"lavender", mood:"vibrant", subjectAdd:"anime chibi — big eyes, vibrant hair, manga, kawaii, high saturation, crisp line art", propAdd:["anime sticker (glossy)","pastel washi tape","chibi charm"]},
+  custom:{label:"Custom", palette:null, mood:null, subjectAdd:"", propAdd:[]},
+  // Vertical — 8 new, exclusive, not seasonal
+  kdp:{label:"KDP Low-Content Books", palette:"warm", mood:"minimal", subjectAdd:"KDP low-content book — 6×9 trim with bleed (0.125in), stacked interior spreads fanned to show 0.9mm thickness each, cover with 1.8cm spine and barcode placeholder on back, publishing shelf styling (4 books, beveled spines, PBR), interior pages with bleed marks visible, cream 55lb paper, soft-touch matte cover", propAdd:["stacked KDP interior spreads fanned (6×9, bleed marks)","KDP cover + spine visible (barcode placeholder, 1.8cm spine, beveled)","publishing shelf with 4 KDP books (PBR, beveled spines, soft shadow)","interior page with bleed marks (printer's marks, 0.125in)"]},
+  svg:{label:"SVG Cut Files", palette:"bold", mood:"vibrant", subjectAdd:"SVG cut file — clean vector silhouette (0.35mm cut line), vinyl on mat staging, weeded design with negative space, applied context", propAdd:["vinyl on green cutting mat (Cricut, 1mm grid, beveled)","weeded vinyl design (negative space, transfer tape curl 2mm)","tumbler with vinyl applied (glossy, 3D wrap, highlight, curved)","t-shirt flat lay with vinyl (fabric weave, heat press texture)"]},
+  notion:{label:"Notion Templates", palette:"mono", mood:"minimal", subjectAdd:"Notion template — digital-first, laptop/tablet screen mockup with Notion UI chrome (sidebar, database view, toggle, cursor), clean sans, 3D screen glare (4% reflection), desk setup", propAdd:["laptop screen showing Notion UI (chrome, cursor, database view, 3D glare, 0.6mm bevel)","tablet with Notion template (Apple Pencil nearby, shallow DOF, UI)","desk setup with laptop + notebook + coffee (UI chrome visible, 50mm f/2.2)"]},
+  recipe:{label:"Recipe Cards", palette:"sage", mood:"cozy", subjectAdd:"recipe card — 4×6 thick cardstock with rounded 6mm corners, kitchen staging, handwritten-style typography (0.3mm deboss), ingredients nearby, index box", propAdd:["recipe card in use near ingredients (flour dust, eggs, whisk, 3D)","index card box (wood, PBR, beveled, 1.2mm)","kitchen marble surface with flour, rolling pin (PBR, SSS)","small bowls with ingredients (SSS, highlight, 3D)"]},
+  wedding:{label:"Wedding Printables", palette:"pastel", mood:"elegant", subjectAdd:"wedding printable — elevated stationery, 350gsm cotton rag, deckled edge (1.2mm feather), florals (peony, eucalyptus SSS), silk ribbon (sage, PBR silk), soft romantic window light, bokeh, veil fabric, elegant serif (0.4mm deboss)", propAdd:["wedding invitation suite with florals (peony, eucalyptus, SSS, 3D)","silk ribbon (sage, PBR silk, soft shadow, bow, 0.8mm)","elevated stationery on marble + gold tray (reflection, beveled)","soft romantic window light, bokeh, veil fabric (SSS, sheer)"]},
+  homeschool:{label:"Homeschool Worksheets", palette:"pastel", mood:"cozy", subjectAdd:"homeschool worksheet — kid-friendly educational, 100gsm matte, activity grids with 2pt icons, rounded boxes, workbook in use on kid's desk, crayons/pencils, playful but tidy, inclusive", propAdd:["homeschool workbook open in use (kid's desk, crayons, pencils, 3D)","workbook with kid's hands writing (soft SSS, shallow DOF f/2.2)","kid's desk with alphabet poster in background (bokeh, 3D)","crayons fanned (wax, SSS, paper wrapper, beveled)"]},
+  digitalplanner:{label:"Digital Planner / Goodnotes", palette:"ocean", mood:"minimal", subjectAdd:"digital planner for iPad Goodnotes — tablet screen mockup (12.9in iPad, 3D, 2mm glass, 4% reflection), Apple Pencil 2 attached magnetically, Goodnotes UI chrome (tabs, digital stickers, handwriting), desk linen, screen glare", propAdd:["iPad showing Goodnotes planner (screen UI, Apple Pencil 2 magnetically attached, 3D reflection, 0.6mm bevel)","tablet + Apple Pencil on linen (screen glare, UI chrome, tabs)","desk linen with iPad + coffee (shallow DOF, UI visible)"]},
+  embroidery:{label:"Embroidery / Cross-Stitch", palette:"warm", mood:"cozy", subjectAdd:"embroidery / cross-stitch pattern — printed pattern sheet (120gsm matte, grid), next to wooden hoop (PBR wood, 0.7 roughness, fabric stretched, weave bump), thread spools (PBR, glossy, beveled), fabric texture (linen, weave bump, needle)", propAdd:["embroidery pattern next to wooden hoop (fabric weave, 3D thread texture, 0.6mm thread bevel)","thread spools (PBR, glossy, beveled, highlight, 3D)","fabric texture (linen, weave bump, needle, 0.85 roughness)","wooden hoop (PBR wood, beveled, 1.2mm)"]},
+  // Seasonal — 8 total, exclusive (Halloween/Christmas re-added here)
+  halloween:{label:"Halloween", palette:"bold", mood:"vibrant", subjectAdd:"cute spooky Halloween — pumpkins, ghosts, bats, kawaii spooky, not scary, playful, candy, orange and black with pastel twist", propAdd:["mini pumpkin (PBR, matte, beveled)","ghost charm (glossy, 3D, SSS)","bat confetti (matte, scattered)","candy corn (SSS)"]},
+  christmas:{label:"Christmas", palette:"warm", mood:"cozy", subjectAdd:"cozy Christmas — plaid, pine, snow, warm lights, hygge, red and sage, festive, knitted texture, snowflakes", propAdd:["pine sprig (SSS, beveled)","red plaid ribbon (fabric, PBR)","tiny fairy lights (bokeh, warm)","snowflake confetti (glossy)"]},
+  valentine:{label:"Valentine's Day", palette:"pastel", mood:"elegant", subjectAdd:"Valentine's Day — hearts, blush, dusty rose, ribbon, love letters, romantic, soft, elegant, pearl", propAdd:["heart confetti (glossy, beveled)","silk ribbon (blush, PBR silk)","wax seal heart (dusty rose, 3D)","pearl pin (SSS)"]},
+  easter:{label:"Easter", palette:"pastel", mood:"cozy", subjectAdd:"Easter — pastels, eggs, bunnies, chicks, soft, spring, watercolor, gentle, speckled eggs", propAdd:["speckled Easter eggs (matte, SSS)","bunny figurine (PBR, soft)","pastel ribbon (satin)","small nest with eggs (PBR)"]},
+  backtoschool:{label:"Back to School", palette:"bold", mood:"vibrant", subjectAdd:"Back to School — notebooks, pencils, chalk, apple, plaid, energetic, primary colors, school desk", propAdd:["stacked notebooks (PBR, beveled, 1mm)","sharpened pencils (wood, graphite tip)","mini chalkboard (slate, beveled)","red apple (SSS, highlight)"]},
+  thanksgiving:{label:"Thanksgiving / Fall Harvest", palette:"earth", mood:"cozy", subjectAdd:"Thanksgiving Fall Harvest — pumpkins, plaid, harvest, warm, earthy, corn, leaves, cozy, amber, burlap", propAdd:["pumpkin trio (PBR, matte, beveled)","plaid table runner (fabric, PBR)","dried leaves (SSS)","burlap ribbon (weave)"]},
+  newyear:{label:"New Year", palette:"midnight", mood:"elegant", subjectAdd:"New Year — gold, confetti, champagne, midnight, elegant, premium, fireworks, black and gold", propAdd:["gold confetti (metallic, beveled)","champagne flute (glass, refraction, bubbles)","firework bokeh (warm)","black and gold balloon (glossy)"]},
+  mothersday:{label:"Mother's / Father's Day", palette:"pastel", mood:"elegant", subjectAdd:"Mother's / Father's Day — florals, heartfelt, soft, ribbon, handwritten, love, peony and eucalyptus, warm", propAdd:["peony bouquet (SSS, beveled)","handwritten card (deckled, cotton)","silk ribbon (sage, PBR)","small gift box (linen, beveled)"]},
+};
+
+function pickRandom(arr, n=1){
+  const copy=[...arr]; const out=[];
+  for(let i=0;i<n;i++){ if(!copy.length) break; const idx=Math.floor(Math.random()*copy.length); out.push(copy.splice(idx,1)[0]); }
+  return out;
+}
+function jitter(str, intensity){
+  const tweaks=["ray-traced global illumination, 2 bounces, denoise crisp","subsurface scattering on paper/skin where visible, SSS 0.15","ambient occlusion in bevels and under props, 0.4 intensity, soft","crisp micro-contrast, 8k, ultra-detailed, path-traced","soft film grain 3%, subtle, not noisy","anisotropic highlight on foil/metallic where present, 0.15 roughness","chromatic aberration subtle 0.02, lens breathing","volumetric light haze 0.03 in window, dust motes visible"];
+  const creative = ["with a whisper of gold foil glint on edges","with a hint of handmade deckled texture on border","with a soft vignette 0.15 for focus","with a touch of linen weave bokeh in background","with a faint paper fiber displacement for tactility"];
+  let out = str;
+  if(intensity>62) out += ", " + pickRandom(tweaks,1)[0];
+  if(intensity>48) out += ", " + pickRandom(creative,1)[0];
+  else if(intensity>28) out += "";
+  return out;
+}
+function commercialText(product){
+  return `You own the image you generate with this prompt in GPT Image 2 (OpenAI Terms April 2026). You may use it as a 3D listing mockup for your own "${product}" product. Do not generate trademarked characters or replicate another shop's photo 1:1. Keep props generic, no branded objects.`;
+}
+function buildTags(productKey, photoKey, productName){
+  const base = PRODUCTS[productKey].tags.slice(0,5);
+  const photoTag = PHOTOS[photoKey].label.toLowerCase();
+  const nameWords = productName ? productName.toLowerCase().split(/\s+/).slice(0,3) : [];
+  const extra = ["3d mockup","etsy listing","mockup","printable","digital download","studio mockup"];
+  const all = [...base, photoTag, ...nameWords, ...extra];
+  return [...new Set(all)].slice(0,13).join(", ");
+}
+function getNicheData(preset, customText){
+  const base = NICHE_DATA[preset] || NICHE_DATA.custom;
+  const custom = customText.trim();
+  if(preset==='custom' && custom){
+    const lower = custom.toLowerCase();
+    let palette='warm', mood='cozy';
+    if(lower.match(/kawaii|cat|pastel|cute/)) {palette='pastel'; mood='vibrant';}
+    else if(lower.match(/boho|desert|rattan|terracotta|clay/)) {palette='earth'; mood='boho';}
+    else if(lower.match(/cottage|mushroom|frog|gingham/)) {palette='sage'; mood='cozy';}
+    else if(lower.match(/minimal|scandinavian|clean|mono/)) {palette='mono'; mood='minimal';}
+    else if(lower.match(/vintage|aged|sepia|ornate/)) {palette='warm'; mood='elegant';}
+    else if(lower.match(/floral|bloom|peony|watercolor/)) {palette='pastel'; mood='elegant';}
+    else if(lower.match(/halloween|pumpkin|ghost|spooky/)) {palette='bold'; mood='vibrant';}
+    else if(lower.match(/christmas|pine|snow|plaid|holiday/)) {palette='warm'; mood='cozy';}
+    else if(lower.match(/valentine|heart|blush|love/)) {palette='pastel'; mood='elegant';}
+    else if(lower.match(/easter|bunny|egg|spring/)) {palette='pastel'; mood='cozy';}
+    else if(lower.match(/back to school|school|pencil|chalk/)) {palette='bold'; mood='vibrant';}
+    else if(lower.match(/thanksgiving|fall|harvest|pumpkin|plaid/)) {palette='earth'; mood='cozy';}
+    else if(lower.match(/new year|gold|confetti|champagne/)) {palette='midnight'; mood='elegant';}
+    else if(lower.match(/mother|father|peony|floral/)) {palette='pastel'; mood='elegant';}
+    else if(lower.match(/kdp|low content|interior|spine/)) {palette='warm'; mood='minimal';}
+    else if(lower.match(/svg|vinyl|cut|mat/)) {palette='bold'; mood='vibrant';}
+    else if(lower.match(/notion|template|ui|screen/)) {palette='mono'; mood='minimal';}
+    else if(lower.match(/recipe|kitchen|food/)) {palette='sage'; mood='cozy';}
+    else if(lower.match(/wedding|floral|ribbon|romantic/)) {palette='pastel'; mood='elegant';}
+    else if(lower.match(/homeschool|workbook|kid|crayon/)) {palette='pastel'; mood='cozy';}
+    else if(lower.match(/planner|ipad|goodnotes|tablet/)) {palette='ocean'; mood='minimal';}
+    else if(lower.match(/embroidery|hoop|thread|stitch|fabric/)) {palette='warm'; mood='cozy';}
+    else if(lower.match(/space|planet|star|cosmic|galaxy/)) {palette='midnight'; mood='vibrant';}
+    else if(lower.match(/ocean|sea|coastal|nautical|beach/)) {palette='ocean'; mood='minimal';}
+    else if(lower.match(/forest|woodland|moss|pine|wood/)) {palette='forest'; mood='cozy';}
+    else if(lower.match(/sunset|coral|tropical|summer|sun/)) {palette='sunset'; mood='vibrant';}
+    else if(lower.match(/lavender|lilac|purple|dream/)) {palette='lavender'; mood='elegant';}
+    return {label: custom, palette, mood, subjectAdd: custom + " — detailed, specific, not generic", propAdd: []};
+  }
+  if(custom && preset!=='custom'){
+    return {...base, subjectAdd: custom + " — " + base.subjectAdd, label: custom};
+  }
+  return base;
+}
+let currentSeed = Math.floor(Math.random()*90000)+10000;
+let history = JSON.parse(localStorage.getItem('etsy-pro-history')||'[]');
+let lastGeneration = null;
+let lockedProfile = JSON.parse(localStorage.getItem('etsy-pro-lock')||'null');
+let savedProfiles = JSON.parse(localStorage.getItem('etsy-pro-profiles')||'[]');
+
+function buildPrompt(productKey, photoKey, opts, locked){
+  const prod = PRODUCTS[productKey];
+  const photo = PHOTOS[photoKey];
+  // Resolve locked vs current — ONLY lighting/palette/mood/propDensity are locked identity; angle/surface always resolve per photo type (or manual override)
+  const useLocked = locked && lockedProfile;
+  // Lighting: locked if present, else current
+  const lightingKey = useLocked
+    ? lockedProfile.lighting
+    : (opts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[photoKey]) : opts.lighting);
+  // Surface & Angle: NEVER from lock — always per-photo-type auto unless user manually overrode in current controls
+  const surfaceKey = (opts.surface==='auto' ? ({lifestyle:'oak',detail:'linen',thumb:'white',hero:'white',social:'oak'}[photoKey]) : opts.surface);
+  const angleKey = (opts.angle==='auto' ? ({lifestyle:'topdown',detail:'macro',thumb:'front',hero:'front',social:'45deg'}[photoKey]) : opts.angle);
+  // Palette: if locked, use locked exact swatches, not just name
+  let palette, mood, propDensity, seed;
+  if(useLocked){
+    palette = PALETTES[lockedProfile.paletteKey];
+    mood = MOOD_OPTS[lockedProfile.moodKey];
+    propDensity = lockedProfile.propDensity;
+    seed = lockedProfile.seed; // reuse locked seed for exact swatch variation
+  } else {
+    palette = PALETTES[opts.palette];
+    mood = MOOD_OPTS[opts.mood];
+    propDensity = parseInt(opts.propDensity);
+    seed = opts.seed ?? currentSeed;
+  }
+  // If locked, use locked swatches directly (exact variation locked)
+  let variedSwatches;
+  if(useLocked && lockedProfile.lockedSwatches){
+    variedSwatches = lockedProfile.lockedSwatches;
+    palette = {...palette, swatches: variedSwatches};
+  } else {
+    const basePalette = PALETTES[useLocked? lockedProfile.paletteKey : opts.palette];
+    variedSwatches = (typeof varySwatches === 'function') ? varySwatches(basePalette.swatches, seed, useLocked? 35 : opts.variation) : basePalette.swatches;
+    palette = {...(useLocked? PALETTES[lockedProfile.paletteKey] : PALETTES[opts.palette]), swatches: variedSwatches};
+  }
+  let niche = getNicheData(opts.nichePreset, opts.nicheText);
+  // Override niche palette/mood if locked? No, niche still drives subjectAdd, but palette/mood are locked
+  const densityMap={0:1,1:2,2:4};
+  const count = photoKey==='hero' ? 0 : photoKey==='thumb' ? 1 : densityMap[propDensity] ?? 2;
+  // Props: merge product pool + niche + vertical prop pools
+  let pool = [...(PROP_POOLS[productKey]||[])];
+  if(niche.propAdd) pool = [...pool, ...niche.propAdd];
+  // Add vertical prop pools for niche-specific product types
+  if(VERTICAL_PROP_POOLS[opts.nichePreset]) pool = [...pool, ...VERTICAL_PROP_POOLS[opts.nichePreset]];
+  const intensity = useLocked ? 35 : (opts.variation ?? 42);
+  // Unlimited prop creativity: shuffle pool with seed, pick count, and 30% chance to add one unexpected accent prop from another product for surprise
+  let shuffledPool = [...pool].sort(()=> (seed % 3) -1); // seed-based shuffle-ish
+  // Also inject one cross-category accent prop for high variation
+  if(intensity > 65 && Math.random() < 0.35){
+    const allProps = Object.values(PROP_POOLS).flat().concat(Object.values(VERTICAL_PROP_POOLS).flat());
+    const accent = allProps[seed % allProps.length];
+    if(!shuffledPool.includes(accent)) shuffledPool = [accent, ...shuffledPool];
+  }
+  const propsPicked = count===0 ? [] : pickRandom(shuffledPool, Math.min(count, shuffledPool.length));
+  const variationDesc = useLocked ? "locked style — same lighting/palette/mood/props as locked profile, only composition/crop varies per shot type" : (opts.variation>70 ? "slightly varied 3D composition, alternative camera micro-shift 2°, prop remix, bevel highlight shift" : opts.variation>35 ? "balanced 3D composition, natural prop placement, true scale" : "minimal, tightly controlled 3D composition, centered, precise");
+  let subject = prod.subject;
+  if(niche.subjectAdd){
+    subject = `${niche.label} — ${subject} — ${niche.subjectAdd}`;
+  }
+  if(opts.productName.trim()) subject = `${opts.productName.trim()} — ${subject}`;
+  // Infinite creativity: pick random base variant if available, plus niche and mood flavor
+  const variants = BASE_VARIANTS[`${productKey}|${photoKey}`];
+  const baseTpl = variants ? variants[seed % variants.length] : (BASES[`${productKey}|${photoKey}`] || "{S} — 3D studio mockup, PBR, beveled");
+  let base = baseTpl.replace("{S}", subject);
+  const moodAdj = {cozy:"cozy and warm", minimal:"minimal and airy", boho:"boho and textured", vibrant:"vibrant and playful", elegant:"elegant and premium"}[useLocked? lockedProfile.moodKey : opts.mood] || "";
+  const creativeComps = ["slightly overhead, inviting negative space","with a whisper of intentional asymmetry","with a hint of editorial cropping","with a touch of lifestyle context","with a soft leading line from props"];
+  if(moodAdj && (useLocked? 40 : opts.variation) >28) base += `, ${moodAdj}, ray-traced`;
+  if((useLocked? 35 : opts.variation) > 55){
+    base += `, ${creativeComps[seed % creativeComps.length]}`;
+  }
+  let prompt = `3D MOCKUP — ${base}.\n`;
+  prompt += `Scene & Composition: ${base}. Centered hero, rule of thirds, true 3D scale, beveled edges visible (0.8–1.5mm), thickness and curl where paper, floating 3–6mm above surface with soft contact shadow, negative space for Etsy title, crop-safe. ${useLocked? "[LOCKED STYLE — same photographer]" : ""}\n`;
+  prompt += `Camera Rig: ${ANGLE_OPTS[angleKey].cam} — ${ANGLE_OPTS[angleKey].desc}. Global illumination, ray-traced, 8k, tack-sharp focus on product center, creamy bokeh background where depth.\n`;
+  const lightingDesc = LIGHTING_OPTS[lightingKey].desc;
+  const lightingSetup = LIGHTING_OPTS[lightingKey].setup;
+  prompt += `Lighting Rig: ${useLocked? jitter(lightingDesc, 35) : jitter(lightingDesc, opts.variation)} — ${lightingSetup}. HDRI dome + area lights, GI bounces, soft shadows (12–24px falloff), subtle AO in bevels and under props, no harsh specular on paper. ${useLocked? "LOCKED — reuse verbatim for shop consistency." : ""}\n`;
+  prompt += `Materials — PBR: ${subject} — paper 0.85–0.9 roughness with visible tooth and subsurface scattering, ink 0.05 roughness; props PBR where applicable (wood 0.6, marble 0.05, linen 0.85, vinyl 0.05 gloss, cardstock 0.8 soft-touch). Micro-bevel on every edge (0.15–0.4mm), thickness 0.8–1.8mm visible in 3D.\n`;
+  prompt += `Surface & Background: ${SURFACE_OPTS[surfaceKey].prompt}. PBR surface with displacement where wood/linen, shadow catcher where pure white, true scale, no tiling, no stretching.\n`;
+  prompt += `3D Props & Styling: ${propsPicked.length? propsPicked.join(", ") + ` — ${variationDesc}, each prop 3D with bevel, thickness and cast soft shadow (8–16px falloff), hero product dominates 68–75% of frame, never cluttered, props support story` : "no props — product alone, perfectly aligned, centered, 75% frame, pristine negative space, studio hero"}.\n`;
+  prompt += `Color Palette & Grading: ${palette.prompt} — swatches ${variedSwatches.join(" ")}${useLocked? " — LOCKED swatches, reuse verbatim" : ` (seed ${seed} variation)`}, color-graded for Etsy (true color, not oversaturated), Pantone accurate, white balance 5500K.\n`;
+  prompt += `Shadows & Reflections: ray-traced soft shadows (12–24px falloff, 0.4 opacity), subtle ambient occlusion in crevices, faint 4–8% reflection on frame glass/vinyl where present, no double shadows, contact shadow under product for floating effect.\n`;
+  prompt += `Style & Render Engine: photorealistic 3D, Octane / Redshift style, path-traced, ultra-detailed, 8k, true color, subtle film grain 3%, crisp micro-contrast, commercial studio mockup, not illustration, not flat lay cutout, touchable depth.\n`;
+  prompt += `Aspect Ratio & Export: ${photo.ratio} (${photo.size}), high resolution, ${photo.use.toLowerCase()}, centered, print-ready, bleed-safe, 300 DPI, Etsy thumbnail survives at 150px.\n`;
+  if(opts.text.trim()){
+    const txt = opts.text.trim().replace(/"/g,"'");
+    const font = FONT_OPTS[opts.font];
+    const pos = TEXT_POS_OPTS[opts.textPos];
+    prompt += `3D Typography — Text inside mockup (render EXACTLY, 100% legible, perfect spelling, high contrast, ${font.prompt}, positioned ${pos}): "${txt}". Make text razor-sharp, vector-like, extruded/debossed 0.3–0.8mm with micro-bevel and soft shadow, no typos, no warp, high contrast, centered within safe margin.\n`;
+  } else {
+    prompt += `Typography: No text inside mockup — leave pristine title area with 8% breathing room for Etsy overlay text, negative space, no placeholder text.\n`;
+  }
+  prompt += `Commercial: Etsy 3D listing mockup for your own "${prod.label}" product — clean, professional, sellable, no watermark, no logo, no trademark, generic props only.\n`;
+  prompt += `Render Settings: 1024px base → upscale to ${photo.size}, 8k, 300 DPI, ray-traced GI, 2 bounces, denoised but crisp, seed ${seed}${useLocked? " — LOCKED (reuse for shop consistency)" : " — use this seed for reproducibility; change seed for infinite 3D variations."}`;
+
+  let short = `${base}. ${palette.label}. ${LIGHTING_OPTS[lightingKey].desc.split(',')[0]}. 3D, PBR, beveled, ${photo.ratio}.`;
+  if(opts.text.trim()) short += ` Text: "${opts.text.trim()}"`;
+  let neg = `flat, 2D cutout, paper-thin, no thickness, no bevel, no shadow, floating without contact shadow, blurry, low-res, distorted, warped text, misspelled, extra fingers, extra limbs, extra stickers, watermark, logo, trademarked character, cluttered props, harsh shadows, oversaturated, tilted horizon, off-center, cropped product, glare, moiré, plastic skin, deformed, illustration, cartoon, vector, low poly, fake, stock photo watermark`;
+  let tags = buildTags(productKey, photoKey, opts.productName);
+  // Include niche in tags
+  if(niche.label && niche.label!=='Custom'){
+    tags = niche.label.toLowerCase() + ", " + tags;
+  }
+  let breakdown = {
+    "3D Subject": subject,
+    "Camera Rig": `${ANGLE_OPTS[angleKey].cam} — ${ANGLE_OPTS[angleKey].desc}`,
+    "HDRI Lighting": `${LIGHTING_OPTS[lightingKey].desc} — ${LIGHTING_OPTS[lightingKey].setup}${useLocked?" — LOCKED":""}`,
+    "Materials PBR": "Paper 0.85–0.9 roughness + tooth + SSS; ink 0.05; props PBR (wood 0.6, marble 0.05, linen 0.85); micro-bevel 0.15–0.4mm; thickness 0.8–1.8mm",
+    "Surface": SURFACE_OPTS[surfaceKey].prompt,
+    "3D Props": propsPicked.length? propsPicked.join(" • ") : "None — pure 3D hero, floating",
+    Palette: `${palette.label} — ${variedSwatches.join(" ")} — ${palette.prompt}${useLocked?" — LOCKED swatches":""}`,
+    "3D Mood": mood.prompt + (useLocked?" — LOCKED":""),
+    Text: opts.text.trim() ? `"${opts.text.trim()}" — ${FONT_OPTS[opts.font].label} — ${TEXT_POS_OPTS[opts.textPos]}` : "None — clean title area, negative space",
+    "Style & Render": "Photorealistic 3D, Octane/Redshift path-traced, ray-traced GI, AO, 8k, grain 3%",
+    "Aspect Ratio": `${photo.ratio} — ${photo.size} (${photo.use})`,
+    Seed: `${seed} • Variation ${useLocked? "LOCKED" : opts.variation+"%"} • ${variationDesc}`,
+    Commercial: commercialText(prod.label),
+    "Etsy Tags": tags
+  };
+  const nicheLabel = niche.label && niche.label !== 'Custom' ? ` • ${niche.label}` : (opts.nicheText.trim() ? ` • ${opts.nicheText.trim().slice(0,22)}` : '');
+  const lockMark = useLocked ? " 🔒" : "";
+  const name = `${prod.label}${nicheLabel} — ${PHOTOS[photoKey].label} 3D • ${palette.label}${lockMark}`;
+  return {prompt, short, neg, tags, breakdown, name, productLabel: prod.label, photoLabel: PHOTOS[photoKey].label, ratio: photo.ratio, size: photo.size, seed, palette, locked: !!useLocked, nicheLabel: niche.label};
+}
+
+const els = {
+  product: document.getElementById('productType'),
+  photo: document.getElementById('photoType'),
+  lighting: document.getElementById('lightingSel'),
+  angle: document.getElementById('angleSel'),
+  mood: document.getElementById('moodSel'),
+  surface: document.getElementById('surfaceSel'),
+  palette: document.getElementById('paletteSel'),
+  propDensity: document.getElementById('propDensity'),
+  propVal: document.getElementById('propVal'),
+  text: document.getElementById('customText'),
+  textPos: document.getElementById('textPos'),
+  font: document.getElementById('fontSel'),
+  productName: document.getElementById('productName'),
+  nichePreset: document.getElementById('nichePreset'),
+  nicheInput: document.getElementById('nicheInput'),
+  varSlider: document.getElementById('varSlider'),
+  varLabel: document.getElementById('varLabel'),
+  variationLabel: document.getElementById('variationLabel'),
+};
+const pNameEl = document.getElementById('pName');
+const pMetaEl = document.getElementById('pMeta');
+const promptOut = document.getElementById('promptOut');
+const altOut = document.getElementById('altOut');
+const aspectBadge = document.getElementById('aspectBadge');
+const seedBadge = document.getElementById('seedBadge');
+const breakdownEl = document.getElementById('breakdown');
+const ratioHint = document.getElementById('ratioHint');
+const paletteRow = document.getElementById('paletteRow');
+const paletteSwatches = document.getElementById('paletteSwatches');
+let activeTab='full';
+let batchData = [];
+
+function getOpts(){
+  return {
+    lighting: els.lighting.value,
+    angle: els.angle.value,
+    mood: els.mood.value,
+    surface: els.surface.value,
+    palette: els.palette.value,
+    propDensity: parseInt(els.propDensity.value),
+    text: els.text.value,
+    textPos: els.textPos.value,
+    font: els.font.value,
+    productName: els.productName.value,
+    nichePreset: els.nichePreset.value,
+    nicheText: els.nicheInput.value,
+    variation: parseInt(els.varSlider.value),
+    seed: currentSeed
+  };
+}
+function render(){
+  const opts = getOpts();
+  const data = buildPrompt(els.product.value, els.photo.value, opts, !!lockedProfile);
+  if(!data) return;
+  lastGeneration = {product: els.product.value, photo: els.photo.value, opts: {...opts}, data};
+  pNameEl.textContent = data.name;
+  pMetaEl.textContent = `${data.productLabel}${data.nicheLabel? ' • ' + data.nicheLabel : ''} • ${data.photoLabel} • ${PHOTOS[els.photo.value].use} • ${data.palette.label}${data.locked? ' • 🔒 LOCKED' : ''}`;
+  aspectBadge.textContent = `${data.ratio} • ${data.size}`;
+  seedBadge.textContent = `seed ${data.seed}${data.locked?' 🔒':''}`;
+  els.variationLabel.textContent = data.locked ? `🔒 Locked • Seed #${data.seed}` : `Seed #${data.seed} • ${opts.variation}% varied`;
+  const sw = data.palette.swatches || PALETTES[opts.palette].swatches;
+  const varied = sw;
+  paletteSwatches.innerHTML = varied.map(c=>`<span class="swatch" style="background:${c}" title="${c}"></span>`).join('') + ` <span class="text-[11px] font-bold text-zinc-600 ml-1">${data.palette.label}${data.locked?' 🔒':''}</span>`;
+  paletteRow.innerHTML = varied.map(c=>`<span class="swatch" style="background:${c}"></span>`).join('') + `<span class="text-[11px] text-zinc-500 ml-2">${data.palette.label}${data.locked?' 🔒 LOCKED':''} • ${data.ratio} • ${opts.text.trim() ? 'with 3D text' : 'no text'}</span>`;
+  ratioHint.innerHTML = `<span class="text-[11px] font-bold px-2.5 py-1 rounded-full ${data.locked?'bg-indigo-600 text-white':'bg-zinc-900 text-white'}">${data.ratio} — ${data.size}</span><span class="text-[11px] px-2.5 py-1 rounded-full bg-white border border-zinc-200 text-zinc-600">${data.photoLabel}${data.locked?' 🔒':''}</span>`;
+  const labels=['Minimal','Balanced','Rich'];
+  els.propVal.textContent = labels[opts.propDensity] + (data.locked?' 🔒':'');
+  els.varLabel.textContent = data.locked ? 'Locked — composition only' : (opts.variation<20?'Subtle':opts.variation<65?'Balanced':'Wild — infinite');
+  if(activeTab==='full') promptOut.textContent = data.prompt;
+  else if(activeTab==='short') promptOut.textContent = data.short;
+  else if(activeTab==='neg') promptOut.textContent = data.neg;
+  else promptOut.textContent = data.tags;
+  breakdownEl.innerHTML = Object.entries(data.breakdown).map(([k,v])=>`
+    <div class="rounded-xl ${data.locked && ['HDRI Lighting','Palette','3D Mood','Seed'].includes(k) ? 'bg-indigo-50 border-indigo-200' : 'bg-zinc-50 border-zinc-200'} border p-3">
+      <div class="text-[10px] font-black tracking-widest ${data.locked && ['HDRI Lighting','Palette','3D Mood','Seed'].includes(k) ? 'text-indigo-600' : 'text-zinc-500'}">${k.toUpperCase()}${data.locked && ['HDRI Lighting','Palette','3D Mood','Seed'].includes(k) ? ' 🔒 LOCKED' : ''}</div>
+      <div class="text-[12px] leading-relaxed mt-1 break-words">${v}</div>
+    </div>
+  `).join('');
+  if(activeTab==='full'){ altOut.classList.add('hidden'); promptOut.parentElement.classList.remove('hidden'); }
+  else { altOut.textContent = activeTab==='short'? data.short : activeTab==='neg'? data.neg : data.tags; altOut.classList.remove('hidden'); promptOut.parentElement.classList.add('hidden'); }
+  updateLockUI();
+  updateRefBlock();
+}
+function toast(msg){
+  const t=document.getElementById('toast'); document.getElementById('toastMsg').textContent=msg;
+  t.style.transform='translate(-50%,0)'; setTimeout(()=> t.style.transform='translate(-50%,160%)',2200);
+}
+async function copyText(txt,msg){ try{ await navigator.clipboard.writeText(txt); toast(msg);}catch{ toast('Copy failed — select manually'); } }
+
+// Lock logic
+function getCurrentResolvedParams(){
+  if(lastGeneration) return lastGeneration;
+  // fallback: build from current opts
+  const opts = getOpts();
+  const data = buildPrompt(els.product.value, els.photo.value, opts, false);
+  return {product: els.product.value, photo: els.photo.value, opts, data};
+}
+function lockFromCurrent(){
+  const gen = getCurrentResolvedParams();
+  const opts = gen.opts;
+  // Resolve auto values to concrete
+  const photoKey = gen.photo;
+  const lightingKey = (opts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[photoKey]) : opts.lighting);
+  const paletteKey = opts.palette;
+  const moodKey = opts.mood;
+  const propDensity = parseInt(opts.propDensity);
+  // Capture exact swatches as rendered (varied) — angle/surface NOT locked (composition per shot type)
+  const baseSw = PALETTES[paletteKey].swatches;
+  const varied = varySwatches(baseSw, gen.data.seed, opts.variation);
+  lockedProfile = {
+    lighting: lightingKey,
+    paletteKey,
+    moodKey,
+    propDensity,
+    seed: gen.data.seed,
+    lockedSwatches: varied,
+    createdAt: new Date().toLocaleString(),
+    from: gen.data.name
+  };
+  localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile));
+  render();
+  toast('Style locked 🔒 — now all generates share this look');
+}
+function lockManual(){
+  const opts = getOpts();
+  const photoKey = els.photo.value;
+  const lightingKey = (opts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[photoKey]) : opts.lighting);
+  const varied = varySwatches(PALETTES[opts.palette].swatches, currentSeed, opts.variation);
+  lockedProfile = {
+    lighting: lightingKey,
+    paletteKey: opts.palette,
+    moodKey: opts.mood,
+    propDensity: parseInt(opts.propDensity),
+    seed: currentSeed,
+    lockedSwatches: varied,
+    createdAt: new Date().toLocaleString(),
+    from: 'Manual lock'
+  };
+  localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile));
+  render();
+  toast('Style locked from current settings 🔒');
+}
+function unlock(){
+  lockedProfile = null;
+  localStorage.removeItem('etsy-pro-lock');
+  render();
+  toast('Unlocked — each Generate is independent again');
+}
+function updateLockUI(){
+  const status = document.getElementById('lockStatus');
+  const summary = document.getElementById('lockSummary');
+  const summaryText = document.getElementById('lockSummaryText');
+  const swEl = document.getElementById('lockSwatches');
+  const unlockBtn = document.getElementById('unlockBtn');
+  const changeBtn = document.getElementById('changeStyleBtn');
+  const panel = document.getElementById('lockPanel');
+  if(lockedProfile){
+    status.textContent = '🔒 Style Locked — all generates share this look';
+    status.className = 'text-[11px] font-black px-2.5 py-1 rounded-full bg-indigo-600 text-white';
+    panel.classList.add('locked-glow');
+    panel.classList.remove('border-zinc-200');
+    panel.classList.add('border-indigo-300');
+    summary.classList.remove('hidden');
+    const lightLabel = LIGHTING_OPTS[lockedProfile.lighting]?.desc?.split(',')[0] || lockedProfile.lighting;
+    summaryText.innerHTML = `<b>Lighting:</b> ${lockedProfile.lighting} • <b>Palette:</b> ${lockedProfile.paletteKey} • <b>Mood:</b> ${lockedProfile.moodKey} • <b>Props:</b> ${['Minimal','Balanced','Rich'][lockedProfile.propDensity]}<br><span class="text-[11px] text-indigo-600">Seed ${lockedProfile.seed} • ${lockedProfile.from} • ${lockedProfile.createdAt}</span><br><span class="text-[10px] text-zinc-500">Angle & surface vary per shot type (not locked) — only lighting/palette/mood/props are frozen for shop consistency.</span>`;
+    swEl.innerHTML = lockedProfile.lockedSwatches.map(c=>`<span class="swatch" style="background:${c}"></span>`).join('') + ` <span class="text-[11px] font-bold text-indigo-700 ml-1">${lockedProfile.paletteKey}</span>`;
+    unlockBtn.disabled = false;
+    changeBtn.disabled = false;
+  } else {
+    status.textContent = '🔓 Unlocked — each Generate is independent';
+    status.className = 'text-[11px] font-black px-2.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-800';
+    panel.classList.remove('locked-glow','border-indigo-300');
+    panel.classList.add('border-zinc-200');
+    summary.classList.add('hidden');
+    unlockBtn.disabled = true;
+    changeBtn.disabled = true;
+  }
+  renderProfiles();
+  document.getElementById('batchHint').textContent = lockedProfile ? '🔒 Uses locked style — 5 photos will match' : '🔓 No lock — Batch will be 5 independent (not recommended for listings)';
+}
+function renderProfiles(){
+  const list = document.getElementById('profilesList');
+  if(!list) return;
+  if(savedProfiles.length===0){ list.innerHTML='<div class="text-[11px] text-zinc-500">No saved profiles yet — lock a style, then Save with a name.</div>'; return;}
+  list.innerHTML = savedProfiles.map((p,i)=>`
+    <div class="flex items-center justify-between gap-2 bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2">
+      <div class="text-[12px]"><b>${p.name}</b><br><span class="text-[10px] font-mono text-zinc-500">${p.data.paletteKey} • ${p.data.moodKey} • seed ${p.data.seed}</span></div>
+      <div class="flex gap-1">
+        <button data-load="${i}" class="loadProf text-[11px] font-black px-3 py-1.5 rounded-full bg-indigo-600 text-white">Load</button>
+        <button data-del="${i}" class="delProf text-[11px] font-bold px-2 py-1.5 rounded-full bg-white border border-zinc-200">×</button>
+      </div>
+    </div>
+  `).join('');
+  list.querySelectorAll('.loadProf').forEach(b=> b.addEventListener('click', ()=>{
+    const p = savedProfiles[parseInt(b.dataset.load)];
+    lockedProfile = p.data;
+    localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile));
+    render();
+    toast(`Loaded "${p.name}" 🔒`);
+  }));
+  list.querySelectorAll('.delProf').forEach(b=> b.addEventListener('click', ()=>{
+    savedProfiles.splice(parseInt(b.dataset.del),1);
+    localStorage.setItem('etsy-pro-profiles', JSON.stringify(savedProfiles));
+    renderProfiles();
+  }));
+}
+function updateRefBlock(){
+  const el = document.getElementById('refBlock');
+  if(!el) return;
+  if(!lockedProfile){
+    el.textContent = 'No style locked yet — generate one 3D photo you love, then click "Lock This Style" above. Your reference block will appear here.';
+    return;
+  }
+  const p = lockedProfile;
+  const palette = PALETTES[p.paletteKey];
+  const sw = p.lockedSwatches.join(" ");
+  el.textContent = `MY SHOP REFERENCE BLOCK — REUSE VERBATIM FOR SHOP CONSISTENCY
+Generated: ${p.createdAt} • From: ${p.from} • Seed: ${p.seed}
+------------------------------------------------------------
+Lighting Rig: ${LIGHTING_OPTS[p.lighting].desc} — ${LIGHTING_OPTS[p.lighting].setup}
+Palette: ${palette.prompt} — swatches ${sw} — LOCKED, reuse verbatim
+Mood: ${MOOD_OPTS[p.moodKey].prompt} — LOCKED
+Prop Style Family: ${['Minimal (1 prop)','Balanced (2–3 props)','Rich (4 props)'][p.propDensity]} — reuse same family, only prop count varies per shot type
+------------------------------------------------------------
+Note: Surface & camera angle vary appropriately per shot type (e.g., hero = pure white infinity cove, detail = linen macro) and are NOT part of the fixed reference — only Lighting/Palette/Mood/Prop-family are the reusable "recipe" lines. Keep those 4 lines verbatim.
+------------------------------------------------------------
+INSTRUCTIONS FOR FUTURE SESSIONS:
+1. Keep a screenshot of these swatches (${sw}) on your desk — eyedrop these exact hex codes in Canva for titles.
+2. For every new listing, paste the 4 lines above (Lighting + Surface + Palette + Mood) VERBATIM into your GPT Image 2 prompt — do not rephrase. One changed word = different photographer.
+3. Always note your locked seed/palette combo (${p.paletteKey} / seed ${p.seed}) in your Shop Bible Google Doc.
+4. Batch Mode in this app already does this automatically when 🔒 is active — but when you generate manually next month, re-paste this block.`;
+}
+
+// Batch Mode
+function runBatch(){
+  const product = els.product.value;
+  const optsBase = getOpts();
+  const types = ['lifestyle','detail','thumb','hero','social'];
+  batchData = types.map(pt => {
+    const data = buildPrompt(product, pt, optsBase, !!lockedProfile);
+    return {photoType: pt, ...data};
+  });
+  const container = document.getElementById('batchResults');
+  const actions = document.getElementById('batchActions');
+  container.classList.remove('hidden');
+  actions.classList.remove('hidden');
+  container.innerHTML = batchData.map((d,i)=>`
+    <div class="rounded-xl border ${d.locked?'border-indigo-300 bg-indigo-50/50':'border-zinc-200 bg-white'} p-4">
+      <div class="flex items-center justify-between gap-2">
+        <div class="font-black text-[12px]">${i+1}. ${PHOTOS[d.photoType].label} — ${d.ratio} • ${d.size} ${d.locked? '🔒 LOCKED STYLE' : ''}</div>
+        <button data-copy="${d.photoType}" class="copyOne text-[11px] font-black px-3 py-1.5 rounded-full ${d.locked?'bg-indigo-600 text-white':'bg-zinc-900 text-white'}">⎘ Copy</button>
+      </div>
+      <pre class="mt-2 code-block p-3 rounded-xl text-[11px] leading-relaxed whitespace-pre-wrap max-h-[220px] overflow-auto">${d.prompt}</pre>
+    </div>
+  `).join('');
+  container.querySelectorAll('.copyOne').forEach(b=> b.addEventListener('click', ()=>{
+    const d = batchData.find(x=> x.photoType===b.dataset.copy);
+    copyText(d.prompt, `${d.photoType} prompt copied ✓`);
+  }));
+  toast(`Batch generated — 5 prompts ${lockedProfile?'🔒 locked style (matching)':'🔓 independent (lock for matching)'}`);
+}
+function copyAllBatch(){
+  const all = batchData.map(d=> `===== ${d.photoType.toUpperCase()} — ${d.name} =====\n${d.prompt}`).join('\n\n');
+  copyText(all, 'All 5 prompts copied ✓');
+}
+function exportBatch(){
+  const all = batchData.map(d=> `===== ${d.photoType.toUpperCase()} — ${d.name} =====\n${d.prompt}`).join('\n\n');
+  const blob=new Blob([`ETSY PHOTO MACHINE — BATCH PACK — ${new Date().toLocaleString()}\nSeed: ${lockedProfile? lockedProfile.seed : currentSeed} ${lockedProfile?'— LOCKED STYLE':''}\nProduct: ${els.product.value} • Niche: ${els.nichePreset.value} — ${document.getElementById('nicheInput').value}\n\n` + all],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`etsy-batch-${els.product.value}-${lockedProfile?'locked':'free'}-${Date.now()}.txt`; a.click();
+}
+
+function pushHistory(data){
+  const entry = {time: new Date().toLocaleTimeString(), name: data.name, prompt: data.prompt, seed: data.seed};
+  history.unshift(entry); history = history.slice(0,5);
+  localStorage.setItem('etsy-pro-history', JSON.stringify(history));
+  renderHistory();
+}
+function renderHistory(){
+  const list=document.getElementById('historyList');
+  if(!list) return;
+  if(history.length===0){ list.innerHTML='<div class="text-[12px] text-zinc-500">No history yet — generate a 3D prompt.</div>'; return; }
+  list.innerHTML = history.map((h,i)=>`
+    <div class="flex items-center justify-between gap-2 bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2">
+      <div class="text-[12px]"><b>${h.name.slice(0,38)}</b><br><span class="text-[11px] text-zinc-500 font-mono">seed ${h.seed} • ${h.time}</span></div>
+      <button data-hist="${i}" class="histCopy text-[11px] font-bold px-3 py-1.5 rounded-full bg-zinc-900 text-white">Copy</button>
+    </div>
+  `).join('');
+  list.querySelectorAll('.histCopy').forEach(b=> b.addEventListener('click', ()=> copyText(history[parseInt(b.dataset.hist)].prompt,'History prompt copied ✓')));
+}
+[els.product, els.photo, els.lighting, els.angle, els.mood, els.surface, els.palette, els.textPos, els.font, els.nichePreset].forEach(el=> el.addEventListener('change', ()=>{
+  if(el===els.nichePreset){
+    const nd = NICHE_DATA[el.value];
+    if(nd && nd.palette && document.getElementById('paletteSel').value !== nd.palette){
+      const palSel = document.getElementById('paletteSel');
+      palSel.value = nd.palette;
+      palSel.dataset.auto='1';
+    }
+  } else if(el===els.palette){
+    el.dataset.auto='0';
+  }
+  currentSeed = Math.floor(Math.random()*90000)+10000; render();
+}));
+[els.propDensity, els.varSlider].forEach(el=> el.addEventListener('input', ()=>{ currentSeed = Math.floor(Math.random()*90000)+10000; render(); }));
+[els.text, els.productName, els.nicheInput].forEach(el=> el.addEventListener('input', ()=>{
+  document.getElementById('charCount').textContent = els.text.value ? `${els.text.value.length} chars — 3D extruded, beveled` : 'Keep ≤6 words — 3D text loves short';
+  currentSeed = Math.floor(Math.random()*90000)+10000; render();
+}));
+document.getElementById('clearText').addEventListener('click', ()=>{ els.text.value=''; document.getElementById('charCount').textContent='Keep ≤6 words — 3D text loves short'; currentSeed=Math.floor(Math.random()*90000)+10000; render(); });
+document.getElementById('generateBtn').addEventListener('click', ()=>{ currentSeed=Math.floor(Math.random()*90000)+10000; render(); const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); toast(dataLockedMsg()); });
+function dataLockedMsg(){ return lockedProfile ? 'Generated with 🔒 locked style — matching shop look' : 'New 3D variation generated ✦'; }
+document.getElementById('regenBtn').addEventListener('click', ()=>{ currentSeed=Math.floor(Math.random()*90000)+10000; render(); const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); toast(dataLockedMsg()); });
+document.getElementById('randomBtn').addEventListener('click', ()=>{
+  const pKeys=Object.keys(PRODUCTS), phKeys=Object.keys(PHOTOS);
+  els.product.value=pKeys[Math.floor(Math.random()*pKeys.length)];
+  els.photo.value=phKeys[Math.floor(Math.random()*phKeys.length)];
+  els.palette.value=Object.keys(PALETTES)[Math.floor(Math.random()*Object.keys(PALETTES).length)];
+  els.propDensity.value=Math.floor(Math.random()*3);
+  els.lighting.value=['window','studio','golden','highkey'][Math.floor(Math.random()*4)];
+  els.mood.value=Object.keys(MOOD_OPTS)[Math.floor(Math.random()*5)];
+  // Random niche including new ones
+  const nicheKeys = Object.keys(NICHE_DATA);
+  els.nichePreset.value=nicheKeys[Math.floor(Math.random()*nicheKeys.length)];
+  currentSeed=Math.floor(Math.random()*90000)+10000; render(); toast('Surprise 3D studio loaded 🎲');
+});
+document.getElementById('resetBtn').addEventListener('click', ()=>{ els.product.selectedIndex=0; els.photo.selectedIndex=0; els.nichePreset.value='custom'; els.nicheInput.value=''; els.lighting.value='auto'; els.angle.value='auto'; els.mood.value='cozy'; els.surface.value='auto'; els.palette.value='warm'; els.propDensity.value=1; els.text.value=''; els.textPos.value='top'; els.font.value='sans'; els.productName.value=''; els.varSlider.value=52; currentSeed=Math.floor(Math.random()*90000)+10000; render(); });
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); copyText(d.prompt,'Full 3D prompt copied ✓ — paste into ChatGPT → Images');
+});
+document.getElementById('copyBtn2').addEventListener('click', ()=>{
+  const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); copyText(d.prompt,'Copied ✓');
+});
+document.getElementById('copyTagsBtn').addEventListener('click', ()=>{
+  const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); copyText(d.tags,'Etsy tags copied ✓ — 13 tags');
+});
+document.getElementById('copyPromptBtn').addEventListener('click', ()=> copyText(promptOut.textContent,'3D prompt copied ✓'));
+document.getElementById('favBtn').addEventListener('click', ()=>{
+  const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile);
+  let favs=JSON.parse(localStorage.getItem('etsy-pro-fav')||'[]');
+  favs.unshift({name:d.name, prompt:d.prompt, seed:d.seed}); favs=favs.slice(0,20);
+  localStorage.setItem('etsy-pro-fav', JSON.stringify(favs)); toast('Favorited ☆');
+});
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  let pack = `ETSY PHOTO MACHINE PRO — PROMPT PACK\nGenerated: ${new Date().toLocaleString()}\nSeed: ${currentSeed}${lockedProfile?' — LOCKED STYLE':''}\n\n`;
+  const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile);
+  pack += `FULL 3D PROMPT (250+ words):\n${d.prompt}\n\nSHORT:\n${d.short}\n\nNEGATIVE:\n${d.neg}\n\nTAGS:\n${d.tags}\n`;
+  const blob=new Blob([pack],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`etsy-3d-prompt-${els.product.value}-${els.photo.value}-${currentSeed}${lockedProfile?'locked':''}.txt`; a.click();
+});
+document.getElementById('historyBtn').addEventListener('click', ()=>{
+  document.getElementById('historyPanel').classList.toggle('hidden');
+  renderHistory();
+});
+document.getElementById('clearHist').addEventListener('click', ()=>{ history=[]; localStorage.removeItem('etsy-pro-history'); renderHistory(); });
+document.getElementById('lockCurrentBtn').addEventListener('click', lockManual);
+document.getElementById('lockThisStyleBtn').addEventListener('click', lockFromCurrent);
+document.getElementById('unlockBtn').addEventListener('click', unlock);
+document.getElementById('changeStyleBtn').addEventListener('click', ()=>{ unlock(); toast('Unlocked — set new style, then lock again'); });
+document.getElementById('saveProfileBtn').addEventListener('click', ()=>{
+  if(!lockedProfile){ toast('Lock a style first'); return; }
+  const name = document.getElementById('profileName').value.trim() || `Shop ${savedProfiles.length+1}`;
+  savedProfiles.unshift({name, data: {...lockedProfile}});
+  localStorage.setItem('etsy-pro-profiles', JSON.stringify(savedProfiles));
+  document.getElementById('profileName').value='';
+  renderProfiles();
+  toast(`Saved profile "${name}" ✓`);
+});
+document.getElementById('batchBtn').addEventListener('click', runBatch);
+document.getElementById('copyAllBtn').addEventListener('click', copyAllBatch);
+document.getElementById('exportBatchBtn').addEventListener('click', exportBatch);
+document.getElementById('copyRefBtn').addEventListener('click', ()=>{
+  const txt = document.getElementById('refBlock').textContent;
+  if(txt.includes('No style locked')){ toast('Lock a style first'); return; }
+  copyText(txt, 'Reference block copied ✓ — save in your Shop Bible');
+});
+document.querySelectorAll('.tabBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabBtn').forEach(b=>{ b.classList.remove('bg-zinc-900','text-white'); b.classList.add('bg-white','border','border-zinc-200','text-zinc-600'); });
+    btn.classList.add('bg-zinc-900','text-white'); btn.classList.remove('bg-white','border','border-zinc-200','text-zinc-600');
+    activeTab=btn.dataset.tab;
+    const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile);
+    if(activeTab==='full'){ promptOut.textContent=d.prompt; altOut.classList.add('hidden'); promptOut.parentElement.classList.remove('hidden'); }
+    else if(activeTab==='short'){ altOut.textContent=d.short; altOut.classList.remove('hidden'); promptOut.parentElement.classList.add('hidden'); }
+    else if(activeTab==='neg'){ altOut.textContent=d.neg; altOut.classList.remove('hidden'); promptOut.parentElement.classList.add('hidden'); }
+    else { altOut.textContent=d.tags; altOut.classList.remove('hidden'); promptOut.parentElement.classList.add('hidden'); }
+  });
+});
+// Main tabs — Single / Batch / Shop — cleaner layout
+document.querySelectorAll('.mainTab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.mainTab').forEach(b=>{
+      b.classList.remove('bg-zinc-900','text-white');
+      b.classList.add('bg-white','border','border-zinc-200','text-zinc-600');
+    });
+    btn.classList.add('bg-zinc-900','text-white');
+    btn.classList.remove('bg-white','border','border-zinc-200','text-zinc-600');
+    const tab = btn.dataset.mainTab;
+    document.getElementById('tab-single').classList.toggle('hidden', tab!=='single');
+    document.getElementById('tab-batch').classList.toggle('hidden', tab!=='batch');
+    document.getElementById('tab-shop').classList.toggle('hidden', tab!=='shop');
+  });
+});
+const picks=[
+  ["coloring","lifestyle","🎨 Coloring — 3D Lifestyle"],
+  ["journal","hero","📓 Journal — 3D White Hero"],
+  ["wallart","detail","🖼️ Wall Art — 3D Macro"],
+  ["sticker","thumb","⭐ Sticker — 3D Thumbnail"],
+  ["poster","lifestyle","🖼️ Bundle — 3D Gallery"],
+  ["invite","detail","💌 Invite — 3D Letterpress"],
+];
+const qp=document.getElementById('quickPicks');
+picks.forEach(([p,ph,label])=>{
+  const b=document.createElement('button');
+  b.className="w-full text-left px-3 py-2.5 rounded-xl bg-[#F8F7FF] border border-indigo-100 hover:border-indigo-400 flex items-center justify-between group";
+  b.innerHTML=`<span class="text-[13px] font-bold">${label}</span><span class="text-[11px] font-bold px-2 py-1 rounded-full bg-white border group-hover:bg-zinc-900 group-hover:text-white">Load →</span>`;
+  b.onclick=()=>{ els.product.value=p; els.photo.value=ph; currentSeed=Math.floor(Math.random()*90000)+10000; render(); window.scrollTo({top:0,behavior:'smooth'}); toast(label+' loaded ✓'); };
+  qp.appendChild(b);
+});
+const gallery=document.getElementById('gallery');
+Object.entries({
+  "coloring|lifestyle":"Cozy 3D Flat Lay — Coloring Page",
+  "coloring|detail":"Paper & Line Art 3D Macro",
+  "coloring|thumb":"Bold 3D Thumbnail — Coloring",
+  "coloring|hero":"White 3D Hero — Coloring",
+  "coloring|social":"Social 3D — Hands Coloring",
+  "journal|lifestyle":"Morning Ritual 3D — Journal",
+  "journal|detail":"Linen & Binding 3D Detail",
+  "journal|thumb":"Bold 3D Thumbnail — Journal",
+  "journal|hero":"White 3D Hero — Journal",
+  "journal|social":"Social 3D — Hands Writing",
+  "planner|lifestyle":"Weekly Spread 3D — Planner",
+  "planner|detail":"Grid & Tabs 3D Macro",
+  "planner|thumb":"Bold 3D Thumbnail — Planner",
+  "planner|hero":"White 3D Hero — Planner",
+  "planner|social":"Social 3D — Hand Planning",
+  "wallart|lifestyle":"Gallery Wall 3D Lifestyle",
+  "wallart|detail":"Matte Paper 3D Macro",
+  "wallart|thumb":"Bold 3D Thumbnail — Wall Art",
+  "wallart|hero":"White 3D Hero — Wall Art",
+  "wallart|social":"Social 3D — Shelf Styling",
+  "sticker|lifestyle":"Desk Play 3D — Sticker Sheet",
+  "sticker|detail":"Kiss-Cut 3D Macro",
+  "sticker|thumb":"Bold 3D Thumbnail — Sticker",
+  "sticker|hero":"White 3D Hero — Sticker",
+  "sticker|social":"Social 3D — Peel Action",
+  "cards|lifestyle":"Tabletop 3D Spread — Cards",
+  "cards|detail":"Cardstock 3D Macro",
+  "cards|thumb":"Bold 3D Thumbnail — Cards",
+  "cards|hero":"White 3D Hero — Cards",
+  "cards|social":"Social 3D — Hand Holding Card",
+  "poster|lifestyle":"Gallery Wall 3D — Art Bundle",
+  "poster|thumb":"Bold 3D Thumbnail — Bundle",
+  "poster|social":"Social 3D — Mantel Bundle",
+  "invite|lifestyle":"Flat Lay 3D — Invitation Suite",
+  "invite|detail":"Typography 3D Macro — Letterpress",
+  "invite|hero":"White 3D Hero — Invitation",
+  "worksheet|lifestyle":"Kids Desk 3D — Worksheet",
+  "worksheet|detail":"Grid 3D Macro — Worksheet",
+  "worksheet|thumb":"Bold 3D Thumbnail — Worksheet",
+  "kdp|lifestyle":"KDP Stack — Interior Spreads 3D",
+  "svg|lifestyle":"SVG — Vinyl on Mat 3D",
+  "notion|lifestyle":"Notion — Laptop UI 3D",
+  "recipe|lifestyle":"Recipe — Kitchen Card 3D",
+  "wedding|lifestyle":"Wedding — Florals & Ribbon 3D",
+  "homeschool|lifestyle":"Homeschool — Workbook 3D",
+  "digitalplanner|lifestyle":"iPad Planner — Goodnotes 3D",
+  "embroidery|lifestyle":"Embroidery — Hoop & Threads 3D",
+  "halloween|thumb":"Halloween — Cute Spooky 3D",
+  "christmas|hero":"Christmas — Cozy Plaid 3D",
+  "valentine|lifestyle":"Valentine — Hearts 3D",
+  "easter|lifestyle":"Easter — Pastels 3D",
+  "backtoschool|lifestyle":"Back to School — Chalk 3D",
+  "thanksgiving|lifestyle":"Thanksgiving — Harvest 3D",
+  "newyear|thumb":"New Year — Gold Confetti 3D",
+  "mothersday|lifestyle":"Mother's Day — Florals 3D",
+}).forEach(([key,name])=>{
+  const [prod,ph]=key.split('|');
+  const btn=document.createElement('button');
+  const isNew = ['kdp','svg','notion','recipe','wedding','homeschool','digitalplanner','embroidery','halloween','christmas','valentine','easter','backtoschool','thanksgiving','newyear','mothersday'].includes(prod);
+  btn.className=`text-left ${isNew?'bg-gradient-to-br from-indigo-50 to-violet-50 border-indigo-200':'bg-[#F8F7FF] border-indigo-100'} border rounded-2xl p-4 hover:border-indigo-400 hover:bg-white transition group`;
+  btn.innerHTML=`
+    <div class="flex items-center justify-between mb-2">
+      <span class="text-[10px] font-black tracking-widest px-2 py-1 rounded-full ${isNew?'bg-indigo-600 text-white':'bg-white border text-zinc-700'}">${prod.toUpperCase()}${isNew?' • NEW':''}</span>
+      <span class="text-[10px] font-bold px-1.5 py-1 rounded bg-zinc-900 text-white">${(PHOTOS[ph]||{ratio:'4:3'}).ratio}</span>
+    </div>
+    <div class="font-bold text-[13px] leading-tight">${name}</div>
+    <div class="text-[11px] text-zinc-500 mt-1 line-clamp-2">${(PRODUCTS[prod]?.subject||NICHE_DATA[prod]?.subjectAdd||'').slice(0,74)}…</div>
+  `;
+  btn.onclick=()=>{
+    if(PRODUCTS[prod]){
+      els.product.value=prod; els.photo.value=ph;
+    } else {
+      // Vertical/seasonal niches: keep product as is, switch niche
+      els.nichePreset.value=prod; els.photo.value=ph;
+      // Trigger niche palette auto-switch
+      const nd = NICHE_DATA[prod];
+      if(nd && nd.palette) { els.palette.value=nd.palette; els.palette.dataset.auto='1'; }
+    }
+    currentSeed=Math.floor(Math.random()*90000)+10000; render(); window.scrollTo({top:420,behavior:'smooth'});
+  };
+  gallery.appendChild(btn);
+});
+render(); renderHistory(); updateLockUI();
+</script>
+</body>
+</html>
