@@ -187,10 +187,33 @@
           <div class="mt-3 space-y-3">
             <div class="grid grid-cols-2 gap-3">
               <div><label class="text-[11px] font-bold text-zinc-600">Surface (PBR)</label><select id="surfaceSel" class="w-full mt-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="auto">Auto</option><option value="oak">Light Oak</option><option value="linen">Warm Linen</option><option value="marble">White Marble</option><option value="walnut">Dark Walnut</option><option value="white">Pure White</option><option value="concrete">Light Concrete</option></select></div>
-              <div><label class="text-[11px] font-bold text-zinc-600">Palette</label><select id="paletteSel" data-auto="1" class="w-full mt-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="warm">Warm Neutrals</option><option value="pastel">Soft Pastel</option><option value="earth">Earthy Boho</option><option value="mono">Mono Minimal</option><option value="bold">Bold Contrast</option><option value="sage">Sage & Clay</option><option value="ocean">Ocean Breeze</option><option value="forest">Forest Moss</option><option value="sunset">Sunset Glow</option><option value="lavender">Lavender Dream</option><option value="tropical">Tropical Punch</option><option value="midnight">Midnight Luxe</option></select></div>
+              <div><label class="text-[11px] font-bold text-zinc-600 flex justify-between">Palette <button id="shufflePaletteBtn" class="text-[10px] font-black px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200" title="Pick a random palette now">🎲 Shuffle</button></label><select id="paletteSel" data-auto="1" class="w-full mt-1 bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="shuffle" selected>🎲 Shuffle — new palette each Generate (recommended)</option><option value="warm">Warm Neutrals</option><option value="pastel">Soft Pastel</option><option value="earth">Earthy Boho</option><option value="mono">Mono Minimal</option><option value="bold">Bold Contrast</option><option value="sage">Sage & Clay</option><option value="ocean">Ocean Breeze</option><option value="forest">Forest Moss</option><option value="sunset">Sunset Glow</option><option value="lavender">Lavender Dream</option><option value="tropical">Tropical Punch</option><option value="midnight">Midnight Luxe</option><option value="custom">🎨 Custom — my colors below</option></select></div>
             </div>
             <div><label class="text-[11px] font-bold text-zinc-600 flex justify-between">3D Prop Density <span id="propVal" class="font-mono text-indigo-600">Balanced</span></label><input id="propDensity" type="range" min="0" max="2" value="1" step="1" class="w-full"><div class="flex justify-between text-[10px] text-zinc-500"><span>Minimal</span><span>Balanced</span><span>Rich</span></div></div>
             <div class="flex gap-1.5 flex-wrap" id="paletteSwatches"></div>
+            <div class="mt-1 rounded-xl bg-indigo-50/60 border border-indigo-100 p-3">
+              <div class="text-[10px] font-black tracking-widest text-indigo-700">ONE-CLICK STYLE PRESETS — sets palette + mood + lighting + surface</div>
+              <div class="mt-2 flex flex-wrap gap-1.5" id="stylePresets">
+                <button data-preset="cozy-warm" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">🏡 Cozy Warm</button>
+                <button data-preset="minimal-gallery" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">⬜ Minimal Gallery</button>
+                <button data-preset="boho-earth" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">🌿 Boho Earth</button>
+                <button data-preset="vibrant-pop" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">🎨 Vibrant Pop</button>
+                <button data-preset="elegant-luxe" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">💍 Elegant Luxe</button>
+                <button data-preset="dark-moody" class="presetBtn text-[11px] font-bold px-2.5 py-1.5 rounded-full bg-white border border-zinc-200 hover:border-indigo-400">🌙 Dark Moody</button>
+              </div>
+              <div class="mt-2 text-[10px] text-zinc-500">Tip: presets unlock the palette automatically (switches Shuffle → fixed). Pick Shuffle again for infinite variety.</div>
+            </div>
+            <div class="mt-1 rounded-xl bg-white border border-dashed border-zinc-300 p-3">
+              <div class="text-[10px] font-black tracking-widest text-zinc-600">🎨 MY CUSTOM COLORS — used when Palette = Custom</div>
+              <div class="mt-2 flex gap-2 items-center flex-wrap" id="customColors">
+                <input type="color" id="customC1" value="#FFF8E7" class="w-8 h-8 rounded-full cursor-pointer" title="Color 1">
+                <input type="color" id="customC2" value="#F1641E" class="w-8 h-8 rounded-full cursor-pointer" title="Color 2">
+                <input type="color" id="customC3" value="#3C2F2F" class="w-8 h-8 rounded-full cursor-pointer" title="Color 3">
+                <input type="color" id="customC4" value="#D2B48C" class="w-8 h-8 rounded-full cursor-pointer" title="Color 4">
+                <input type="color" id="customC5" value="#8B7355" class="w-8 h-8 rounded-full cursor-pointer" title="Color 5">
+                <span class="text-[10px] text-zinc-500">Pick 5 → select Palette = Custom</span>
+              </div>
+            </div>
           </div>
         </details>
         <details class="rounded-xl bg-white border border-zinc-200 p-4">
@@ -198,7 +221,8 @@
           <div class="mt-3 space-y-3">
             <input id="customText" placeholder='Text inside 3D mockup: "Sunflower Coloring Book — 40 Pages"' class="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-white outline-none">
             <div class="grid grid-cols-2 gap-3"><select id="textPos" class="bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="top">Top Center</option><option value="center">Centered</option><option value="bottom">Bottom</option><option value="none">No Text</option></select><select id="fontSel" class="bg-zinc-50 border border-zinc-200 rounded-lg px-2 py-2 text-[12px] font-semibold"><option value="sans">Bold Sans — extruded</option><option value="serif">Serif Elegant — beveled</option><option value="hand">Hand Script — debossed</option><option value="mono">Mono Technical</option></select></div>
-            <div class="flex items-center justify-between"><span class="text-[11px] text-zinc-500" id="charCount">Keep ≤6 words — 3D text loves short</span><button id="clearText" class="text-[11px] font-bold text-zinc-500 hover:text-zinc-900">Clear</button></div>
+            <div class="flex items-center justify-between gap-2"><span class="text-[11px] text-zinc-500" id="charCount">Keep ≤6 words — 3D text loves short</span><div class="flex gap-1.5"><button id="suggestHeadlineBtn" class="text-[11px] font-black px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200" title="Generate a fresh headline idea into the text field">✦ Suggest Headline</button><button id="clearText" class="text-[11px] font-bold text-zinc-500 hover:text-zinc-900">Clear</button></div></div>
+            <label class="mt-1 flex items-start gap-2 text-[11px] text-zinc-600"><input type="checkbox" id="autoHeadline" class="mt-0.5" checked> <span><b>Auto-headline:</b> when text field is empty (and position ≠ No Text), invent a fresh headline each Generate instead of “No text…”. Uncheck for a truly empty title area.</span></label>
           </div>
         </details>
         <div><label class="text-[11px] font-black tracking-widest text-zinc-500 mb-2 block">CUSTOM PRODUCT NAME</label><input id="productName" placeholder='E.g., "Cozy Autumn Journal — 3D Linen"' class="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2.5 text-[13px] placeholder:text-zinc-400 focus:border-indigo-400 focus:bg-white outline-none"></div>
@@ -411,15 +435,74 @@ const PALETTES = {
   midnight:{label:"Midnight Luxe", swatches:["#111827","#1F2937","#D1D5DB","#F59E0B","#F9FAFB"], prompt:"midnight luxe, charcoal, slate, gold accent, premium, editorial, quiet luxury"},
 };
 function varySwatches(swatches, seed, variation){
-  if(variation < 28) return swatches;
+  if(variation < 15) return swatches;
   const r = seed % swatches.length;
   const rotated = [...swatches.slice(r), ...swatches.slice(0,r)];
-  if(variation > 62){
+  // Dynamic accents: 1 accent from Balanced upwards, 2 accents on Wild — so palette never looks identical
+  if(variation > 35){
     const allSw = Object.values(PALETTES).flatMap(p=>p.swatches);
     const accent = allSw[seed % allSw.length];
     rotated[2] = accent;
   }
+  if(variation > 65){
+    const allSw2 = Object.values(PALETTES).flatMap(p=>p.swatches);
+    const accent2 = allSw2[(seed * 7 + 13) % allSw2.length];
+    if(accent2 !== rotated[2]) rotated[4] = accent2;
+  }
   return rotated;
+}
+const PALETTE_KEYS = ["warm","pastel","earth","mono","bold","sage","ocean","forest","sunset","lavender","tropical","midnight"];
+function resolvePaletteKey(opts, seed){
+  if(opts.palette === "shuffle"){
+    // True shuffle: new palette family each generation, driven by seed
+    return PALETTE_KEYS[Math.abs(seed) % PALETTE_KEYS.length];
+  }
+  return opts.palette;
+}
+function getCustomSwatches(){
+  const ids = ["customC1","customC2","customC3","customC4","customC5"];
+  const out = [];
+  for(const id of ids){
+    const el = document.getElementById(id);
+    if(el && el.value) out.push(el.value.toUpperCase());
+  }
+  return out.length === 5 ? out : null;
+}
+const STYLE_PRESETS = {
+  "cozy-warm": {palette:"warm", mood:"cozy", lighting:"window", surface:"oak"},
+  "minimal-gallery": {palette:"mono", mood:"minimal", lighting:"highkey", surface:"white"},
+  "boho-earth": {palette:"earth", mood:"boho", lighting:"golden", surface:"linen"},
+  "vibrant-pop": {palette:"bold", mood:"vibrant", lighting:"studio", surface:"white"},
+  "elegant-luxe": {palette:"midnight", mood:"elegant", lighting:"studio", surface:"marble"},
+  "dark-moody": {palette:"midnight", mood:"minimal", lighting:"golden", surface:"walnut"}
+};
+const HEADLINE_TEMPLATES = [
+  "{Product} — {Benefit}",
+  "{Niche} {Product} — {Count}",
+  "{Product}: {Benefit} in Minutes",
+  "{Count} {Product} for {Audience}",
+  "{Niche} {Product} • {Benefit}",
+  "{Product} — {StyleWord} Edition",
+  "{Benefit}: {Product} for {Audience}",
+  "{Product} ({Count}) — {StyleWord}"
+];
+const HEADLINE_BENEFITS = ["Instant Download", "Print-Tested 300 DPI", "Made to Match Your Shop", "Ready in Minutes", "No Fuss, Just Beautiful", "Tested on Real Paper", "New for This Season", "Bestseller Style", "Easy Print at Home", "Designed to Sell"];
+const HEADLINE_COUNTS = ["40 Pages", "32 Cards", "Set of 18", "Bundle of 3", "2026 Edition", "12 Designs", "20 Stickers", "Weekly + Monthly"];
+const HEADLINE_STYLES = ["Cozy", "Minimal", "Boho", "Elegant", "Playful", "Premium", "Modern", "Handmade"];
+function getAutoHeadline(productKey, nicheLabel, productName, seed){
+  const prodLabel = (productName && productName.trim()) ? productName.trim().split("—")[0].trim().slice(0,28) : (PRODUCTS[productKey] ? PRODUCTS[productKey].label : "Printable");
+  const tpl = HEADLINE_TEMPLATES[Math.abs(seed) % HEADLINE_TEMPLATES.length];
+  const benefit = HEADLINE_BENEFITS[(Math.abs(seed) >> 3) % HEADLINE_BENEFITS.length];
+  const count = HEADLINE_COUNTS[(Math.abs(seed) >> 5) % HEADLINE_COUNTS.length];
+  const styleW = HEADLINE_STYLES[(Math.abs(seed) >> 7) % HEADLINE_STYLES.length];
+  const nicheShort = (nicheLabel && nicheLabel !== "Custom") ? nicheLabel.split(" ")[0].slice(0,16) : "";
+  const audienceShort = "Etsy";
+  let out = tpl.replace("{Product}", prodLabel).replace("{Benefit}", benefit).replace("{Count}", count).replace("{Niche}", nicheShort || prodLabel).replace("{Audience}", audienceShort).replace("{StyleWord}", styleW);
+  // Keep short for 3D text rendering
+  if(out.length > 42){
+    out = prodLabel.slice(0,20) + " — " + benefit.slice(0,16);
+  }
+  return out;
 }
 const FONT_OPTS = {
   sans:{label:"Bold Sans — 3D extruded 0.8mm, beveled edge", prompt:"bold geometric sans, extruded 0.8mm, beveled 0.15mm, high legibility, tight tracking, cast micro-shadow"},
@@ -622,15 +705,32 @@ function buildPrompt(productKey, photoKey, opts, locked){
   // Surface & Angle: NEVER from lock — always per-photo-type auto unless user manually overrode in current controls
   const surfaceKey = (opts.surface==='auto' ? ({lifestyle:'oak',detail:'linen',thumb:'white',hero:'white',social:'oak'}[photoKey]) : opts.surface);
   const angleKey = (opts.angle==='auto' ? ({lifestyle:'topdown',detail:'macro',thumb:'front',hero:'front',social:'45deg'}[photoKey]) : opts.angle);
-  // Palette: if locked, use locked exact swatches, not just name
-  let palette, mood, propDensity, seed;
+  // Palette: locked exact swatches if locked; shuffle/custom/dynamic otherwise
+  let palette, mood, propDensity, seed, effectivePaletteKey;
   if(useLocked){
-    palette = PALETTES[lockedProfile.paletteKey];
-    mood = MOOD_OPTS[lockedProfile.moodKey];
+    effectivePaletteKey = lockedProfile.paletteKey;
+    if(effectivePaletteKey === "custom"){
+      const lockedSw = lockedProfile.lockedSwatches || getCustomSwatches() || ["#FFF8E7","#F1641E","#3C2F2F","#D2B48C","#8B7355"];
+      palette = {label:"Custom Palette", swatches: lockedSw, prompt:`custom palette, ${lockedSw.join(", ")}, personal brand colors, balanced, true color`};
+    } else {
+      palette = PALETTES[lockedProfile.paletteKey] || PALETTES.warm;
+    }
+    mood = MOOD_OPTS[lockedProfile.moodKey] || MOOD_OPTS.cozy;
     propDensity = lockedProfile.propDensity;
     seed = lockedProfile.seed; // reuse locked seed for exact swatch variation
   } else {
-    palette = PALETTES[opts.palette];
+    effectivePaletteKey = resolvePaletteKey(opts, (opts.seed ?? currentSeed));
+    if(effectivePaletteKey === "custom"){
+      const customSw = getCustomSwatches();
+      if(customSw){
+        palette = {label:"Custom Palette", swatches: customSw, prompt:`custom palette, ${customSw.join(", ")}, personal brand colors, balanced, true color`};
+      } else {
+        effectivePaletteKey = "warm";
+        palette = PALETTES.warm;
+      }
+    } else {
+      palette = PALETTES[effectivePaletteKey] || PALETTES.warm;
+    }
     mood = MOOD_OPTS[opts.mood];
     propDensity = parseInt(opts.propDensity);
     seed = opts.seed ?? currentSeed;
@@ -641,9 +741,9 @@ function buildPrompt(productKey, photoKey, opts, locked){
     variedSwatches = lockedProfile.lockedSwatches;
     palette = {...palette, swatches: variedSwatches};
   } else {
-    const basePalette = PALETTES[useLocked? lockedProfile.paletteKey : opts.palette];
-    variedSwatches = (typeof varySwatches === 'function') ? varySwatches(basePalette.swatches, seed, useLocked? 35 : opts.variation) : basePalette.swatches;
-    palette = {...(useLocked? PALETTES[lockedProfile.paletteKey] : PALETTES[opts.palette]), swatches: variedSwatches};
+    const baseSwatches = palette.swatches;
+    variedSwatches = (typeof varySwatches === 'function') ? varySwatches(baseSwatches, seed, opts.variation) : baseSwatches;
+    palette = {...palette, swatches: variedSwatches};
   }
   let niche = getNicheData(opts.nichePreset, opts.nicheText);
   // Override niche palette/mood if locked? No, niche still drives subjectAdd, but palette/mood are locked
@@ -693,11 +793,26 @@ function buildPrompt(productKey, photoKey, opts, locked){
   prompt += `Shadows & Reflections: ray-traced soft shadows (12–24px falloff, 0.4 opacity), subtle ambient occlusion in crevices, faint 4–8% reflection on frame glass/vinyl where present, no double shadows, contact shadow under product for floating effect.\n`;
   prompt += `Style & Render Engine: photorealistic 3D, Octane / Redshift style, path-traced, ultra-detailed, 8k, true color, subtle film grain 3%, crisp micro-contrast, commercial studio mockup, not illustration, not flat lay cutout, touchable depth.\n`;
   prompt += `Aspect Ratio & Export: ${photo.ratio} (${photo.size}), high resolution, ${photo.use.toLowerCase()}, centered, print-ready, bleed-safe, 300 DPI, Etsy thumbnail survives at 150px.\n`;
-  if(opts.text.trim()){
-    const txt = opts.text.trim().replace(/"/g,"'");
+  const autoHeadlineOn = (typeof document !== 'undefined' && document.getElementById('autoHeadline')) ? document.getElementById('autoHeadline').checked : true;
+  let effectiveText = opts.text.trim();
+  let headlineAuto = false;
+  if(!effectiveText && autoHeadlineOn && opts.textPos !== "none"){
+    try {
+      const nicheForHeadline = (typeof niche !== 'undefined' && niche.label) ? niche.label : "";
+      effectiveText = getAutoHeadline(productKey, nicheForHeadline, opts.productName, seed);
+      headlineAuto = true;
+    } catch(e){ effectiveText = ""; }
+  }
+  if(effectiveText){
+    const txt = effectiveText.replace(/"/g,"'");
     const font = FONT_OPTS[opts.font];
     const pos = TEXT_POS_OPTS[opts.textPos];
-    prompt += `3D Typography — Text inside mockup (render EXACTLY, 100% legible, perfect spelling, high contrast, ${font.prompt}, positioned ${pos}): "${txt}". Make text razor-sharp, vector-like, extruded/debossed 0.3–0.8mm with micro-bevel and soft shadow, no typos, no warp, high contrast, centered within safe margin.\n`;
+    // Vary typography rendering depth with seed so headline never looks identical
+    const depths = ["0.3mm","0.5mm","0.8mm"];
+    const depth = depths[Math.abs(seed) % depths.length];
+    const shadows = ["soft shadow 4px","soft shadow 8px","micro-shadow 2px"];
+    const shadow = shadows[(Math.abs(seed) >> 2) % shadows.length];
+    prompt += `3D Typography — Text inside mockup (render EXACTLY, 100% legible, perfect spelling, high contrast, ${font.prompt}, positioned ${pos}): "${txt}". Make text razor-sharp, vector-like, extruded/debossed ${depth} with micro-bevel and ${shadow}, no typos, no warp, high contrast, centered within safe margin.${headlineAuto ? " [auto-headline — edit text field to pin your own]" : ""}\n`;
   } else {
     prompt += `Typography: No text inside mockup — leave pristine title area with 8% breathing room for Etsy overlay text, negative space, no placeholder text.\n`;
   }
@@ -705,7 +820,7 @@ function buildPrompt(productKey, photoKey, opts, locked){
   prompt += `Render Settings: 1024px base → upscale to ${photo.size}, 8k, 300 DPI, ray-traced GI, 2 bounces, denoised but crisp, seed ${seed}${useLocked? " — LOCKED (reuse for shop consistency)" : " — use this seed for reproducibility; change seed for infinite 3D variations."}`;
 
   let short = `${base}. ${palette.label}. ${LIGHTING_OPTS[lightingKey].desc.split(',')[0]}. 3D, PBR, beveled, ${photo.ratio}.`;
-  if(opts.text.trim()) short += ` Text: "${opts.text.trim()}"`;
+  if(typeof effectiveText !== 'undefined' && effectiveText) short += ` Text: "${effectiveText}"${(typeof headlineAuto !== 'undefined' && headlineAuto) ? " [auto]" : ""}`;
   let neg = `flat, 2D cutout, paper-thin, no thickness, no bevel, no shadow, floating without contact shadow, blurry, low-res, distorted, warped text, misspelled, extra fingers, extra limbs, extra stickers, watermark, logo, trademarked character, cluttered props, harsh shadows, oversaturated, tilted horizon, off-center, cropped product, glare, moiré, plastic skin, deformed, illustration, cartoon, vector, low poly, fake, stock photo watermark`;
   let tags = buildTags(productKey, photoKey, opts.productName);
   // Include niche in tags
@@ -721,7 +836,7 @@ function buildPrompt(productKey, photoKey, opts, locked){
     "3D Props": propsPicked.length? propsPicked.join(" • ") : "None — pure 3D hero, floating",
     Palette: `${palette.label} — ${variedSwatches.join(" ")} — ${palette.prompt}${useLocked?" — LOCKED swatches":""}`,
     "3D Mood": mood.prompt + (useLocked?" — LOCKED":""),
-    Text: opts.text.trim() ? `"${opts.text.trim()}" — ${FONT_OPTS[opts.font].label} — ${TEXT_POS_OPTS[opts.textPos]}` : "None — clean title area, negative space",
+    Text: (typeof effectiveText !== 'undefined' && effectiveText) ? `"${effectiveText}" — ${FONT_OPTS[opts.font].label} — ${TEXT_POS_OPTS[opts.textPos]}${(typeof headlineAuto !== 'undefined' && headlineAuto) ? " [auto-headline]" : ""}` : "None — clean title area, negative space",
     "Style & Render": "Photorealistic 3D, Octane/Redshift path-traced, ray-traced GI, AO, 8k, grain 3%",
     "Aspect Ratio": `${photo.ratio} — ${photo.size} (${photo.use})`,
     Seed: `${seed} • Variation ${useLocked? "LOCKED" : opts.variation+"%"} • ${variationDesc}`,
@@ -838,11 +953,30 @@ function lockFromCurrent(){
   // Resolve auto values to concrete
   const photoKey = gen.photo;
   const lightingKey = (opts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[photoKey]) : opts.lighting);
-  const paletteKey = opts.palette;
+  let paletteKey = (typeof resolvePaletteKey === 'function') ? resolvePaletteKey(opts, gen.data.seed) : opts.palette;
+  if(paletteKey === "custom"){
+    // Keep custom swatches as rendered
+    const customSw = (gen.data && gen.data.palette && gen.data.palette.swatches) ? gen.data.palette.swatches : getCustomSwatches();
+    const variedCustom = customSw || ["#FFF8E7","#F1641E","#3C2F2F","#D2B48C","#8B7355"];
+    lockedProfile = {
+      lighting: lightingKey,
+      paletteKey: "custom",
+      moodKey: opts.mood,
+      propDensity: parseInt(opts.propDensity),
+      seed: gen.data.seed,
+      lockedSwatches: variedCustom,
+      createdAt: new Date().toLocaleString(),
+      from: gen.data.name
+    };
+    localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile));
+    render();
+    toast('Style locked 🔒 — now all generates share this look');
+    return;
+  }
   const moodKey = opts.mood;
   const propDensity = parseInt(opts.propDensity);
   // Capture exact swatches as rendered (varied) — angle/surface NOT locked (composition per shot type)
-  const baseSw = PALETTES[paletteKey].swatches;
+  const baseSw = (PALETTES[paletteKey] || PALETTES.warm).swatches;
   const varied = varySwatches(baseSw, gen.data.seed, opts.variation);
   lockedProfile = {
     lighting: lightingKey,
@@ -862,10 +996,16 @@ function lockManual(){
   const opts = getOpts();
   const photoKey = els.photo.value;
   const lightingKey = (opts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[photoKey]) : opts.lighting);
-  const varied = varySwatches(PALETTES[opts.palette].swatches, currentSeed, opts.variation);
+  let paletteKey = (typeof resolvePaletteKey === 'function') ? resolvePaletteKey(opts, currentSeed) : opts.palette;
+  let varied;
+  if(paletteKey === "custom"){
+    varied = getCustomSwatches() || ["#FFF8E7","#F1641E","#3C2F2F","#D2B48C","#8B7355"];
+  } else {
+    varied = varySwatches((PALETTES[paletteKey] || PALETTES.warm).swatches, currentSeed, opts.variation);
+  }
   lockedProfile = {
     lighting: lightingKey,
-    paletteKey: opts.palette,
+    paletteKey: paletteKey,
     moodKey: opts.mood,
     propDensity: parseInt(opts.propDensity),
     seed: currentSeed,
@@ -949,8 +1089,10 @@ function updateRefBlock(){
     return;
   }
   const p = lockedProfile;
-  const palette = PALETTES[p.paletteKey];
-  const sw = p.lockedSwatches.join(" ");
+  const palette = (p.paletteKey === "custom")
+    ? {label:"Custom Palette", prompt:`custom palette, ${(p.lockedSwatches||[]).join(", ")}, personal brand colors, balanced, true color`}
+    : (PALETTES[p.paletteKey] || PALETTES.warm);
+  const sw = (p.lockedSwatches||[]).join(" ");
   el.textContent = `MY SHOP REFERENCE BLOCK — REUSE VERBATIM FOR SHOP CONSISTENCY
 Generated: ${p.createdAt} • From: ${p.from} • Seed: ${p.seed}
 ------------------------------------------------------------
@@ -1027,13 +1169,33 @@ function renderHistory(){
 [els.product, els.photo, els.lighting, els.angle, els.mood, els.surface, els.palette, els.textPos, els.font, els.nichePreset].forEach(el=> el.addEventListener('change', ()=>{
   if(el===els.nichePreset){
     const nd = NICHE_DATA[el.value];
-    if(nd && nd.palette && document.getElementById('paletteSel').value !== nd.palette){
-      const palSel = document.getElementById('paletteSel');
+    const palSel = document.getElementById('paletteSel');
+    // Do NOT overwrite Shuffle or Custom — keep infinite variety; only auto-suggest when a fixed palette is selected
+    if(nd && nd.palette && palSel.value !== "shuffle" && palSel.value !== "custom" && palSel.value !== nd.palette){
       palSel.value = nd.palette;
       palSel.dataset.auto='1';
     }
   } else if(el===els.palette){
-    el.dataset.auto='0';
+    el.dataset.auto = (el.value === "shuffle") ? '1' : '0';
+    // If locked and user picks a fixed palette, update the lock so it doesn't feel stuck
+    if(lockedProfile && el.value !== "shuffle"){
+      let newKey = el.value;
+      let newSwatches;
+      if(newKey === "custom"){
+        newSwatches = getCustomSwatches() || lockedProfile.lockedSwatches;
+      } else {
+        newSwatches = varySwatches((PALETTES[newKey] || PALETTES.warm).swatches, currentSeed, parseInt(els.varSlider.value));
+      }
+      lockedProfile.paletteKey = newKey;
+      lockedProfile.lockedSwatches = newSwatches;
+      try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
+      toast('🔒 Lock updated to new palette — Batch will match');
+    }
+  } else if(lockedProfile && (el===els.lighting || el===els.mood || el===els.surface)){
+    // Keep lock in sync when user tweaks identity controls while locked — otherwise palette/mood changes appear ignored
+    if(el===els.lighting && els.lighting.value !== "auto") lockedProfile.lighting = els.lighting.value;
+    if(el===els.mood) lockedProfile.moodKey = els.mood.value;
+    try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
   }
   currentSeed = Math.floor(Math.random()*90000)+10000; render();
 }));
@@ -1043,6 +1205,75 @@ function renderHistory(){
   currentSeed = Math.floor(Math.random()*90000)+10000; render();
 }));
 document.getElementById('clearText').addEventListener('click', ()=>{ els.text.value=''; document.getElementById('charCount').textContent='Keep ≤6 words — 3D text loves short'; currentSeed=Math.floor(Math.random()*90000)+10000; render(); });
+// --- New dynamic controls: shuffle, presets, custom colors, auto-headline ---
+document.getElementById('shufflePaletteBtn').addEventListener('click', ()=>{
+  const keys = Object.keys(PALETTES);
+  const pick = keys[Math.floor(Math.random()*keys.length)];
+  els.palette.value = pick;
+  els.palette.dataset.auto = '0';
+  if(lockedProfile){
+    lockedProfile.paletteKey = pick;
+    lockedProfile.lockedSwatches = varySwatches(PALETTES[pick].swatches, currentSeed, parseInt(els.varSlider.value));
+    try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
+    toast(`🔒 Lock updated → ${PALETTES[pick].label} — Batch will match`);
+  } else {
+    toast(`Palette → ${PALETTES[pick].label} 🎲`);
+  }
+  currentSeed = Math.floor(Math.random()*90000)+10000; render();
+});
+document.querySelectorAll('.presetBtn').forEach(btn=> btn.addEventListener('click', ()=>{
+  const preset = STYLE_PRESETS[btn.dataset.preset];
+  if(!preset) return;
+  els.palette.value = preset.palette;
+  els.palette.dataset.auto = '0';
+  els.mood.value = preset.mood;
+  els.lighting.value = preset.lighting;
+  els.surface.value = preset.surface;
+  if(lockedProfile){
+    lockedProfile.paletteKey = preset.palette;
+    lockedProfile.moodKey = preset.mood;
+    lockedProfile.lighting = preset.lighting;
+    lockedProfile.lockedSwatches = varySwatches(PALETTES[preset.palette].swatches, currentSeed, parseInt(els.varSlider.value));
+    try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
+    toast(`Style preset applied + 🔒 lock updated — ${btn.textContent.trim()}`);
+  } else {
+    toast(`Style preset applied — ${btn.textContent.trim()}`);
+  }
+  currentSeed = Math.floor(Math.random()*90000)+10000; render();
+}));
+["customC1","customC2","customC3","customC4","customC5"].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', ()=>{
+    if(els.palette.value === "custom"){
+      currentSeed = Math.floor(Math.random()*90000)+10000; render();
+      if(lockedProfile && lockedProfile.paletteKey === "custom"){
+        lockedProfile.lockedSwatches = getCustomSwatches() || lockedProfile.lockedSwatches;
+        try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
+      }
+    }
+  });
+});
+document.getElementById('suggestHeadlineBtn').addEventListener('click', ()=>{
+  const tmpOpts = getOpts();
+  let nicheLabel = "Custom";
+  try{
+    const nd = NICHE_DATA[tmpOpts.nichePreset];
+    nicheLabel = nd ? nd.label : (tmpOpts.nicheText.trim() || "Custom");
+    if(tmpOpts.nicheText.trim()) nicheLabel = tmpOpts.nicheText.trim().split(" ").slice(0,3).join(" ");
+  }catch(e){}
+  const fresh = getAutoHeadline(tmpOpts.product || els.product.value, nicheLabel, tmpOpts.productName, Math.floor(Math.random()*90000)+10000);
+  els.text.value = fresh;
+  document.getElementById('charCount').textContent = `${fresh.length} chars — fresh idea, edit freely`;
+  currentSeed = Math.floor(Math.random()*90000)+10000; render();
+  toast('✦ Fresh headline suggested — Regenerate for more');
+});
+document.getElementById('autoHeadline').addEventListener('change', ()=>{ render(); });
+document.getElementById('propDensity').addEventListener('change', ()=>{
+  if(lockedProfile){
+    lockedProfile.propDensity = parseInt(els.propDensity.value);
+    try{ localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile)); }catch(e){}
+  }
+});
 document.getElementById('generateBtn').addEventListener('click', ()=>{ currentSeed=Math.floor(Math.random()*90000)+10000; render(); const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); toast(dataLockedMsg()); });
 function dataLockedMsg(){ return lockedProfile ? 'Generated with 🔒 locked style — matching shop look' : 'New 3D variation generated ✦'; }
 document.getElementById('regenBtn').addEventListener('click', ()=>{ currentSeed=Math.floor(Math.random()*90000)+10000; render(); const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); toast(dataLockedMsg()); });
@@ -1050,16 +1281,49 @@ document.getElementById('randomBtn').addEventListener('click', ()=>{
   const pKeys=Object.keys(PRODUCTS), phKeys=Object.keys(PHOTOS);
   els.product.value=pKeys[Math.floor(Math.random()*pKeys.length)];
   els.photo.value=phKeys[Math.floor(Math.random()*phKeys.length)];
-  els.palette.value=Object.keys(PALETTES)[Math.floor(Math.random()*Object.keys(PALETTES).length)];
+  // 50% keep Shuffle for infinite variety, 50% pick a fixed random palette
+  if(Math.random() < 0.5){
+    els.palette.value = "shuffle";
+    els.palette.dataset.auto = '1';
+  } else {
+    els.palette.value=Object.keys(PALETTES)[Math.floor(Math.random()*Object.keys(PALETTES).length)];
+    els.palette.dataset.auto = '0';
+  }
   els.propDensity.value=Math.floor(Math.random()*3);
   els.lighting.value=['window','studio','golden','highkey'][Math.floor(Math.random()*4)];
   els.mood.value=Object.keys(MOOD_OPTS)[Math.floor(Math.random()*5)];
+  els.surface.value=['auto','oak','linen','marble','walnut','white','concrete'][Math.floor(Math.random()*7)];
+  els.angle.value=['auto','topdown','45deg','front','macro'][Math.floor(Math.random()*5)];
   // Random niche including new ones
   const nicheKeys = Object.keys(NICHE_DATA);
   els.nichePreset.value=nicheKeys[Math.floor(Math.random()*nicheKeys.length)];
-  currentSeed=Math.floor(Math.random()*90000)+10000; render(); toast('Surprise 3D studio loaded 🎲');
+  // Fresh headline when Auto-headline is on and text empty: clear to force regeneration
+  const autoOn = document.getElementById('autoHeadline') ? document.getElementById('autoHeadline').checked : true;
+  if(autoOn && !els.text.value.trim() && Math.random() < 0.5){
+    // keep empty so buildPrompt invents a new one from new seed
+  }
+  currentSeed=Math.floor(Math.random()*90000)+10000;
+  if(lockedProfile){
+    // Surprise while locked: update lock to the new surprise so user actually sees change, keep batch consistent
+    try{
+      const tmpOpts = getOpts();
+      let newPalKey = (tmpOpts.palette === "shuffle") ? resolvePaletteKey(tmpOpts, currentSeed) : tmpOpts.palette;
+      if(newPalKey === "custom") newPalKey = "warm";
+      lockedProfile.lighting = (tmpOpts.lighting==='auto' ? ({lifestyle:'window',detail:'studio',thumb:'highkey',hero:'highkey',social:'window'}[els.photo.value]) : tmpOpts.lighting);
+      lockedProfile.paletteKey = newPalKey;
+      lockedProfile.moodKey = tmpOpts.mood;
+      lockedProfile.propDensity = parseInt(tmpOpts.propDensity);
+      lockedProfile.seed = currentSeed;
+      lockedProfile.lockedSwatches = varySwatches((PALETTES[newPalKey]||PALETTES.warm).swatches, currentSeed, tmpOpts.variation);
+      lockedProfile.from = 'Surprise shuffle';
+      localStorage.setItem('etsy-pro-lock', JSON.stringify(lockedProfile));
+    }catch(e){}
+    render(); toast('🎲 Surprise applied + 🔒 lock updated — Batch will match');
+  } else {
+    render(); toast('Surprise 3D studio loaded 🎲 — new palette + headline');
+  }
 });
-document.getElementById('resetBtn').addEventListener('click', ()=>{ els.product.selectedIndex=0; els.photo.selectedIndex=0; els.nichePreset.value='custom'; els.nicheInput.value=''; els.lighting.value='auto'; els.angle.value='auto'; els.mood.value='cozy'; els.surface.value='auto'; els.palette.value='warm'; els.propDensity.value=1; els.text.value=''; els.textPos.value='top'; els.font.value='sans'; els.productName.value=''; els.varSlider.value=52; currentSeed=Math.floor(Math.random()*90000)+10000; render(); });
+document.getElementById('resetBtn').addEventListener('click', ()=>{ els.product.selectedIndex=0; els.photo.selectedIndex=0; els.nichePreset.value='custom'; els.nicheInput.value=''; els.lighting.value='auto'; els.angle.value='auto'; els.mood.value='cozy'; els.surface.value='auto'; els.palette.value='shuffle'; els.palette.dataset.auto='1'; els.propDensity.value=1; els.text.value=''; els.textPos.value='top'; els.font.value='sans'; els.productName.value=''; els.varSlider.value=52; const ah=document.getElementById('autoHeadline'); if(ah) ah.checked=true; currentSeed=Math.floor(Math.random()*90000)+10000; render(); });
 document.getElementById('copyBtn').addEventListener('click', ()=>{
   const d=buildPrompt(els.product.value, els.photo.value, getOpts(), !!lockedProfile); pushHistory(d); copyText(d.prompt,'Full 3D prompt copied ✓ — paste into ChatGPT → Images');
 });
