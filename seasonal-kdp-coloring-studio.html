@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seasonal KDP Coloring Studio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%23e28a3b'/%3E%3Cpath d='M10 15c4-1.5 9-1 14 2v18c-5-3-10-3.5-14-2z' fill='%23fff' fill-opacity='.95'/%3E%3Cpath d='M38 15c-4-1.5-9-1-14 2v18c5-3 10-3.5 14-2z' fill='%23fff' fill-opacity='.75'/%3E%3Cpath d='M26 10c4 0 8 2.5 8 6.5-4 0-8-2.500-8-6.500z' fill='%231b1106'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#13100d;--bg2:#1a1612;--panel:#1e1a16;--panel2:#26211c;--line:#372f27;--line2:#4a4036;
+  --text:#f4ede4;--muted:#b8ab9c;--dim:#8d8174;
+  --accent:#e28a3b;--accent2:#c8643a;--accent-ink:#1b1106;--accent-soft:rgba(226,138,59,.14);--accent-line:rgba(226,138,59,.4);
+  --ok:#8fd19e;--r:14px;--r-sm:9px;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+body[data-season=winter]{--accent:#7ec4ee;--accent2:#5a9fd6;--accent-ink:#06121b;--accent-soft:rgba(126,196,238,.13);--accent-line:rgba(126,196,238,.4);--bg:#0f1318;--bg2:#141a20;--panel:#171d24;--panel2:#1e2630;--line:#2a3541;--line2:#3a4958}
+body[data-season=spring]{--accent:#7dd08a;--accent2:#4fb36a;--accent-ink:#07150b;--accent-soft:rgba(125,208,138,.13);--accent-line:rgba(125,208,138,.4);--bg:#10140f;--bg2:#161b14;--panel:#1a2018;--panel2:#212a1f;--line:#2d382a;--line2:#3e4d3a}
+body[data-season=summer]{--accent:#ff7d65;--accent2:#e55a4a;--accent-ink:#1d0a07;--accent-soft:rgba(255,125,101,.13);--accent-line:rgba(255,125,101,.4);--bg:#150f0e;--bg2:#1c1412;--panel:#211816;--panel2:#2a1f1c;--line:#3a2b27;--line2:#503b35}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1100px 500px at 85% -10%,var(--accent-soft),transparent 60%),var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.55;transition:background .5s;min-height:100vh}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.top{display:flex;align-items:center;gap:14px;padding:16px 28px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--bg2),transparent)}
+.logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--accent-ink);font-weight:800;font-family:var(--serif);font-size:20px;flex:none;transition:background .5s}
+.top h1{font-family:var(--serif);font-weight:600;font-size:22px;margin:0;letter-spacing:.2px}
+.badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;padding:24px 28px 40px;max-width:1500px;margin:0 auto;align-items:start}
+.side{position:sticky;top:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;max-height:calc(100vh - 32px);overflow:auto}
+.side h2{font-family:var(--serif);font-size:16px;margin:0 0 14px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-size:12px;font-family:var(--sans);font-weight:700}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:.03em}
+select,input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:var(--r-sm);padding:10px 12px;appearance:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23b8ab9c' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+select:hover,input[type=text]:hover{border-color:var(--accent-line)}
+select:focus,input[type=text]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+select option{background:#26211c;color:#f4ede4}
+input::placeholder{color:var(--dim)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line2);background:var(--panel2);color:var(--text);padding:9px 15px;border-radius:var(--r-sm);cursor:pointer;font-weight:600;font-size:13.5px;transition:transform .15s,border-color .2s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{border-color:var(--accent-line);background:var(--accent-soft);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--accent-ink);border-color:transparent;font-size:15px;padding:13px 16px;box-shadow:0 6px 22px -8px var(--accent)}
+.btn.primary:hover{filter:brightness(1.08);background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.btn.block{width:100%}
+.btn.sm{padding:6px 11px;font-size:12.5px}
+.btn.ghost{background:transparent}
+.stack{display:grid;gap:10px;margin-top:6px}
+.hint{font-size:12px;color:var(--accent);margin:8px 0 0;min-height:1.2em}
+.sidenote{font-size:12px;color:var(--dim);margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.out{min-width:0}
+.empty{border:1px dashed var(--line2);border-radius:var(--r);padding:40px 28px;text-align:center;background:var(--panel)}
+.empty h2{font-family:var(--serif);font-size:26px;margin:0 0 8px;font-weight:600}
+.empty p{color:var(--muted);max-width:560px;margin:6px auto}
+.empty ul{list-style:none;padding:0;margin:20px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;max-width:760px;text-align:left}
+.empty li{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:13.5px;color:var(--muted)}
+.empty li b{color:var(--text);display:block;margin-bottom:2px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;margin-bottom:14px}
+.bar h2{font-family:var(--serif);margin:0;font-size:22px;font-weight:600}
+.bar .meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+.seed{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--line2);border-radius:6px;padding:2px 8px;color:var(--accent);cursor:pointer}
+.bar .actions{display:flex;flex-wrap:wrap;gap:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.chips a{font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--panel);transition:all .2s}
+.chips a:hover{color:var(--accent);border-color:var(--accent-line)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.lock{border-color:var(--accent-line);background:linear-gradient(180deg,var(--accent-soft),var(--panel) 60%);margin-bottom:26px}
+.lock .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lock h3{font-family:var(--serif);font-size:24px;margin:2px 0 4px;font-weight:600}
+.lock p.lead{margin:0 0 14px;color:var(--muted);font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:14px}
+.fact{background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;font-size:13px}
+.fact b{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+.sec{margin:34px 0 14px;scroll-margin-top:16px}
+.sec h2{font-family:var(--serif);font-size:24px;margin:0;font-weight:600}
+.sec p{margin:3px 0 0;color:var(--muted);font-size:14px}
+.zone{margin:26px 0 10px;display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.zone::after{content:"";flex:1;height:1px;background:var(--line)}
+.pages{display:grid;gap:12px}
+.page{padding:0;overflow:hidden}
+.page .hd{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.num{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.page h4{margin:0;font-size:16px;font-family:var(--serif);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px}
+.tag-s{font-size:11px;padding:1px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.tag-s.z{color:var(--accent);border-color:var(--accent-line)}
+.page .bd{padding:12px 16px 4px}
+.prompt{font-family:var(--mono);font-size:12px;line-height:1.55;white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;color:#d6cbbd;max-height:150px;overflow:hidden;position:relative;transition:max-height .3s}
+.prompt.open{max-height:1400px}
+.prompt:not(.open)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(transparent,var(--bg))}
+.page .ft{display:flex;gap:8px;padding:10px 16px 14px;flex-wrap:wrap}
+.pair{display:grid;gap:12px}
+.card h4{margin:0 0 4px;font-family:var(--serif);font-size:17px;font-weight:600}
+.card .sub{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.kw{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:6px;font-size:14px}
+.kw span{min-width:0;word-break:break-word}
+.listing .block{margin-bottom:16px}
+.block .lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.textbox{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-size:14.5px;white-space:pre-wrap}
+.acc{margin-top:36px;display:grid;gap:10px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+details[open]{border-color:var(--accent-line)}
+summary{list-style:none;cursor:pointer;padding:15px 18px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:20px;color:var(--accent);line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+summary:hover{background:var(--accent-soft)}
+details .inner{padding:2px 20px 18px;color:#dcd2c5;font-size:14.5px}
+details ol,details ul{padding-left:20px;margin:6px 0}
+details li{margin:6px 0}
+details .note{margin-top:12px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:13.5px}
+footer{text-align:center;color:var(--dim);font-size:12.5px;padding:10px 20px 34px}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:var(--accent);color:var(--accent-ink);font-weight:700;padding:10px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:all .25s;z-index:50;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);font-size:14px;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;padding:16px 16px 30px;gap:18px}
+  .side{position:static;max-height:none}
+  .top{padding:14px 16px}
+  .top h1{font-size:18px}
+  .bar{padding:14px}
+}
+@media (max-width:480px){.row2{grid-template-columns:1fr}.btn{white-space:normal}}
+
+/* ===== v2 polish ===== */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.logo{width:42px;height:42px;flex:none;filter:drop-shadow(0 6px 14px var(--accent-soft))}
+.wm{display:flex;flex-direction:column;line-height:1.05}
+.wm1{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.2px}
+.wm2{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-top:3px}
+.tagline{color:var(--dim);font-size:13px;margin-left:4px}
+.topnav{margin-left:auto}
+.topnav a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600;padding:6px 12px;border-radius:8px}
+.topnav a:hover{color:var(--accent);background:var(--accent-soft)}
+.sidehead{margin-bottom:6px}
+.sidetitle{font-family:var(--serif);font-size:20px;font-weight:600}
+.grp{display:flex;align-items:center;gap:9px;margin:16px 0 10px;padding-top:2px}
+.grp:first-of-type{margin-top:8px}
+.step{width:20px;height:20px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);font-size:11px;font-weight:700;display:grid;place-items:center}
+.gl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.adv{margin-top:14px;background:transparent;border-radius:var(--r-sm);border-style:dashed}
+.adv summary{padding:9px 12px;font-size:12.5px;color:var(--muted);font-weight:600}
+.advin{padding:0 12px 12px}
+.advin label{display:block;font-size:11.5px;color:var(--dim);margin-bottom:5px}
+.advin p{font-size:11.5px;color:var(--dim);margin:6px 0 0}
+.advin input{font-family:var(--mono);font-size:13px;text-transform:uppercase}
+.empty{padding:44px 28px 30px;background:radial-gradient(600px 240px at 50% 0%,var(--accent-soft),transparent 70%),var(--panel);border-style:solid}
+.hero-mark svg{width:96px;height:96px;margin-bottom:6px}
+.steps3{list-style:none;padding:0;margin:24px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:780px;text-align:left}
+.steps3 li{position:relative;background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px 52px;font-size:13.5px;color:var(--muted)}
+.steps3 li b{display:block;color:var(--text);font-size:15px;margin-bottom:2px}
+.steps3 .n{position:absolute;left:14px;top:15px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--accent-ink);font-weight:800;font-size:13px;display:grid;place-items:center}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:22px auto 0;max-width:780px}
+.statrow div{border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 8px;background:var(--bg2)}
+.statrow b{display:block;font-family:var(--serif);font-size:26px;color:var(--accent);font-weight:600;line-height:1.1}
+.statrow span{font-size:12px;color:var(--dim)}
+.bar{position:sticky;top:73px;z-index:10;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--panel) 90%,transparent)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 14px}
+.tile b{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.tile span{font-family:var(--serif);font-size:19px;font-weight:600}
+.tile small{display:block;color:var(--muted);font-size:12px}
+.mix{display:flex;height:6px;border-radius:99px;overflow:hidden;margin-top:7px;background:var(--bg)}
+.mix i{display:block;height:100%}
+.cicon{width:34px;height:34px;flex:none;border-radius:9px;background:var(--bg);border:1px solid var(--line2);display:grid;place-items:center;color:var(--accent)}
+.cicon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.page .hd{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+.page{transition:border-color .2s,transform .2s}
+.page:hover{border-color:var(--accent-line)}
+.guide{margin-top:44px}
+.guide .sec{margin-top:0}
+.acc{margin-top:14px}
+summary .ico{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);font-size:12.5px;font-weight:800;margin-right:12px;flex:none}
+summary{justify-content:flex-start}
+summary::after{margin-left:auto}
+.inner h5{font-family:var(--serif);font-size:16px;margin:16px 0 4px;font-weight:600;color:var(--text)}
+.inner h5:first-child{margin-top:6px}
+.muted{color:var(--muted);font-size:13px;margin:4px 0 10px}
+.snip{border:1px solid var(--line2);border-radius:var(--r-sm);background:var(--bg);margin:10px 0}
+.snip-h{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);font-size:12px;color:var(--dim);font-weight:700;letter-spacing:.04em;flex-wrap:wrap}
+.snip p{margin:0;padding:11px 14px;font-size:13.5px;color:var(--muted)}
+.fixes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin:8px 0}
+.fix{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 8px 8px 12px;font-size:13.5px}
+.tbl{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.tr{display:grid;grid-template-columns:minmax(150px,1fr) 2fr;gap:16px;padding:10px 14px;border-top:1px solid var(--line);font-size:13.5px}
+.tr:first-child{border-top:none}
+.tr.th{background:var(--bg);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.tr span:first-child{color:var(--text);font-weight:600}
+.chk{display:grid;gap:6px}
+.chk label{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:9px 12px;font-size:13.5px;cursor:pointer}
+.chk input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.chk label:has(input:checked){border-color:var(--accent-line);color:var(--muted);text-decoration:line-through;text-decoration-color:var(--accent-line)}
+dl{margin:0}dt{font-weight:700;margin-top:12px;color:var(--text)}dd{margin:2px 0 0;color:var(--muted)}
+@media (max-width:900px){.top{position:static}.bar{position:static}.tagline{display:none}.topnav{display:none}.tr{grid-template-columns:1fr;gap:4px}}
+.side{scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.side::-webkit-scrollbar{width:6px}.side::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
+
+</style>
+</head>
+<body data-season="autumn">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent2)"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="top">
+  <a class="brand" href="#" aria-label="Seasonal KDP Coloring Studio">
+    <svg class="logo" viewBox="0 0 48 48" role="img" aria-hidden="true">
+      <rect width="48" height="48" rx="13" fill="url(#lg)"/>
+      <path d="M10 16c4-1.6 9-1.100 14 2v18c-5-3-10-3.600-14-2.100z" fill="#fff" fill-opacity=".95"/>
+      <path d="M38 16c-4-1.600-9-1.100-14 2v18c5-3 10-3.600 14-2.100z" fill="#fff" fill-opacity=".72"/>
+      <path d="M24 18v18" stroke="var(--accent-ink)" stroke-opacity=".35" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M26.500 10.500c4.200 0 8.200 2.600 8.200 6.800-4.200 0-8.200-2.600-8.200-6.800z" fill="var(--accent-ink)"/>
+      <path d="M27.500 11.800c2.800 1.200 4.800 2.800 6 4.600" stroke="#fff" stroke-opacity=".7" stroke-width="1" stroke-linecap="round" fill="none"/>
+      <path d="M14 22.500c2.200-.6 4.300-.4 6.200.6M14 26.500c2.200-.6 4.300-.4 6.200.6M28 23.100c1.900-1 4-1.200 6.200-.6M28 27.100c1.900-1 4-1.200 6.200-.6" stroke="var(--accent2)" stroke-opacity=".55" stroke-width="1.200" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="wm"><span class="wm1">Seasonal KDP</span><span class="wm2">Coloring Studio</span></span>
+  </a>
+  <h1 class="sr">Seasonal KDP Coloring Studio</h1>
+  <span class="badge">Front-End Edition</span>
+  <span class="tagline">Coloring book plans, prompts &amp; listing kits for Amazon KDP</span>
+  <nav class="topnav" aria-label="Sections"><a href="#guides">Guide</a></nav>
+</header>
+
+<div class="layout">
+  <aside class="side" aria-label="Book settings">
+    <div class="sidehead"><span class="sidetitle">Build your book</span></div>
+
+    <div class="grp"><span class="step">1</span><span class="gl">Season &amp; theme</span></div>
+    <div class="field"><label for="season">Season</label><select id="season"></select></div>
+    <div class="field"><label for="theme">Theme</label><select id="theme"></select></div>
+
+    <div class="grp"><span class="step">2</span><span class="gl">Audience &amp; format</span></div>
+    <div class="field"><label for="aud">Audience / detail level</label><select id="aud"></select></div>
+    <div class="row2">
+      <div class="field"><label for="pages">Page count</label><select id="pages"></select></div>
+      <div class="field"><label for="trim">Trim size</label><select id="trim"></select></div>
+    </div>
+
+    <div class="grp"><span class="step">3</span><span class="gl">Title</span></div>
+    <div class="field"><label for="btitle">Book title (optional)</label><input type="text" id="btitle" maxlength="80" placeholder="Leave empty to auto-generate" autocomplete="off"></div>
+
+    <div class="stack">
+      <button class="btn primary block" id="gen" type="button">Generate My Book</button>
+      <button class="btn block" id="newbook" type="button">New Book (new seed)</button>
+    </div>
+    <p class="hint" id="hint" aria-live="polite"></p>
+
+    <details class="adv">
+      <summary>Advanced: load a seed</summary>
+      <div class="advin">
+        <label for="seedin">Seed (e.g. K7F2QX-M3N4P5)</label>
+        <input type="text" id="seedin" maxlength="13" placeholder="XXXXXX-YYYYYY" autocomplete="off" spellcheck="false">
+        <p>Use the same settings and the same seed to rebuild an identical book.</p>
+      </div>
+    </details>
+
+    <p class="sidenote">This studio writes the plan and the prompts. You paste them into ChatGPT (GPT Image) to create the pages. Nothing is saved: copy or export before closing the tab.</p>
+  </aside>
+
+  <main class="out">
+    <section class="empty" id="empty">
+      <div class="hero-mark">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent-line)" stroke-width="1.5" stroke-dasharray="3 6"/>
+          <circle cx="60" cy="60" r="40" fill="var(--accent-soft)" stroke="var(--accent-line)"/>
+          <path d="M30 48c10-4 22-2.500 30 4v34c-8-6-20-7.500-30-4z" fill="url(#lg)" opacity=".95"/>
+          <path d="M90 48c-10-4-22-2.500-30 4v34c8-6 20-7.500 30-4z" fill="url(#lg)" opacity=".6"/>
+          <path d="M63 28c9 0 17 5.500 17 14-9 0-17-5.500-17-14z" fill="var(--accent)"/>
+        </svg>
+      </div>
+      <h2>A complete seasonal coloring book in one click</h2>
+      <p>Pick a season, theme and audience, then press <b>Generate My Book</b>. You get 20-30 different scenes in a story-like sequence, one locked line style for every page, KDP-ready specs, matching cover prompts and a listing kit.</p>
+      <ul class="steps3">
+        <li><span class="n">1</span><b>Plan</b>Opening, core, showcase and closing pages with no repeated subjects.</li>
+        <li><span class="n">2</span><b>Prompts</b>One copy-ready prompt per page, all sharing the same Style Lock.</li>
+        <li><span class="n">3</span><b>Publish kit</b>Cover prompts, title, description and 7 keywords for KDP.</li>
+      </ul>
+      <div class="statrow">
+        <div><b>12</b><span>season &amp; theme combos</span></div>
+        <div><b>440+</b><span>handwritten scenes</span></div>
+        <div><b>8</b><span>line style families</span></div>
+        <div><b>3</b><span>cover variants per book</span></div>
+      </div>
+    </section>
+    <div id="result"></div>
+
+    <section class="guide" id="guides" aria-label="Guide">
+      <div class="sec"><h2>Complete guide</h2><p>From first click to a published paperback. Every panel is collapsed: open what you need.</p></div>
+      <div class="acc">
+
+        <details>
+          <summary><span class="ico">1</span>Quick start (the whole process in 10 steps)</summary>
+          <div class="inner">
+            <ol>
+              <li>Choose season, theme, audience, page count and trim size in the left panel. Type a title or leave it empty.</li>
+              <li>Press <b>Generate My Book</b>. Read the <b>Style Lock</b> card: that is the look every page will share.</li>
+              <li>Skim the page list. Use <b>Swap this page</b> on any scene you do not like. Use <b>New Scenes</b> or <b>Re-roll Style</b> if you want a bigger change.</li>
+              <li>Click <b>Export All as .txt</b> to keep a backup of the whole prompt pack (the app saves nothing).</li>
+              <li>Open a <b>new ChatGPT chat</b> and send the opening message (button in the next panel).</li>
+              <li>Paste page 1, check the image, regenerate if needed, download the PNG. Repeat for every page.</li>
+              <li>Generate the three cover options and the title page. Pick the best cover.</li>
+              <li>Build the interior in Canva at your exact trim size, with a blank page behind each coloring page.</li>
+              <li>Export the interior as PDF at 300 DPI and make the cover using KDP's cover calculator dimensions.</li>
+              <li>Paste the listing kit into KDP, answer the AI-content question honestly, preview, and publish.</li>
+            </ol>
+            <div class="note">Plan roughly an hour for a first book (most of it is generating and checking images). Generation limits depend on your ChatGPT plan.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">2</span>Generating your pages in ChatGPT (detailed)</summary>
+          <div class="inner">
+            <h5>Set up the chat</h5>
+            <ol>
+              <li>Start <b>one new chat per book</b>. Keep the entire book in that chat so the style stays consistent.</li>
+              <li>Send the opening message below. It contains your Style Lock and asks ChatGPT to wait for page prompts.</li>
+              <li>Paste prompts <b>one at a time</b>, in page order. Each prompt already includes the lock, so it still works if you ever have to open a fresh chat.</li>
+            </ol>
+            <div class="snip"><div class="snip-h"><span>Opening message (uses your current book's Style Lock)</span><button class="btn sm" type="button" data-action="opening">Copy opening message</button></div><p>I am making a coloring book and will send one page prompt at a time. Use the STYLE LOCK below for every image in this chat and never change it from page to page. Reply only "Ready" and wait for my first page prompt. [your Style Lock block is added here]</p></div>
+            <h5>Check every image</h5>
+            <ul>
+              <li>Pure black lines on a pure white background. No gray, no shading, no solid black areas.</li>
+              <li>Every shape closed, so it can be coloured in. No broken or open lines.</li>
+              <li>Nothing touches or is cut off at the edges (0.5 in clean margin).</li>
+              <li>No text, letters, numbers or signatures (except the title page, which allows "This book belongs to").</li>
+              <li>Line weight and detail level look the same as the previous pages.</li>
+              <li>Look for odd anatomy, extra limbs, strange objects or unreadable details. Regenerate if anything looks wrong.</li>
+            </ul>
+            <h5>Fix messages (click to copy, paste in the same chat)</h5>
+            <div class="fixes">
+              <div class="fix"><span>Gray or shaded lines</span><button class="btn sm" type="button" data-copy="Regenerate this page. Pure black (#000000) outlines on a pure white (#FFFFFF) background only. No gray, no shading, no filled black areas, no gradients. Keep the same scene and the same line style.">Copy</button></div>
+              <div class="fix"><span>Solid black areas</span><button class="btn sm" type="button" data-copy="Regenerate this page. Remove every solid black fill and every dark area. Draw those areas as outlines only so they can be coloured in. Keep the same scene.">Copy</button></div>
+              <div class="fix"><span>Text or watermark in image</span><button class="btn sm" type="button" data-copy="Regenerate the same scene with no text, letters, numbers, signature or watermark anywhere in the image.">Copy</button></div>
+              <div class="fix"><span>Open lines / gaps</span><button class="btn sm" type="button" data-copy="Regenerate this page. Close every open line so each shape is a fully closed outline with no gaps, so every area can be coloured in.">Copy</button></div>
+              <div class="fix"><span>Style drifted from the lock</span><button class="btn sm" type="button" data-copy="The line weight, line quality or detail level drifted from the Style Lock in my first message. Regenerate this page using exactly the locked line weight, line quality and detail density.">Copy</button></div>
+              <div class="fix"><span>Artwork too close to the edge</span><button class="btn sm" type="button" data-copy="Regenerate with a wider blank white margin: keep all artwork at least 0.5 inch inside every edge, with nothing touching or cut off at the border.">Copy</button></div>
+              <div class="fix"><span>Too busy</span><button class="btn sm" type="button" data-copy="Regenerate this page with fewer, larger shapes and more open white space. Same scene, same locked line style.">Copy</button></div>
+              <div class="fix"><span>Too plain</span><button class="btn sm" type="button" data-copy="Regenerate this page with more detail and a few more small elements. Same scene, same locked line style and line weight.">Copy</button></div>
+            </div>
+            <div class="note">Image sizes available depend on your ChatGPT plan and tool. If the ratio is not exactly your trim size, scale or crop it in Canva. Download images at the largest size offered and name files by page number (01, 02, 03...).</div>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">3</span>Choosing your settings</summary>
+          <div class="inner">
+            <ul>
+              <li><b>Audience:</b> Kids gets thick lines and big simple shapes. Adults gets fine intricate detail. Seniors gets large clear shapes with generous spacing. This changes the density wording in the lock.</li>
+              <li><b>Trim size:</b> 8.5 × 11 in is the most common coloring-book size. 8.5 × 8.5 in is a good square format for kids. 6 × 9 in is compact and travels well, but pages feel smaller.</li>
+              <li><b>Page count:</b> 20, 25 or 30 designs. Because each design gets a blank page behind it, your PDF will have about double that many pages. Check KDP's price calculator, since printing cost rises with page count.</li>
+              <li><b>Themes with "Mandalas" or "Patterns"</b> are repetitive-pattern books: great for adults and seniors, and usually the fastest to generate cleanly.</li>
+              <li><b>Seed:</b> the same seed with the same settings always rebuilds the same book. Copy the seed if you want to come back to a book.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">4</span>Troubleshooting</summary>
+          <div class="inner">
+            <div class="tbl">
+              <div class="tr th"><span>Problem</span><span>What to try</span></div>
+              <div class="tr"><span>Pages come out gray or with shading</span><span>Use the "Gray or shaded lines" fix message. If it keeps happening, start a new chat and paste the Style Lock first.</span></div>
+              <div class="tr"><span>Style changes after 10+ pages</span><span>Long chats drift. Send the "Style drifted" fix, or open a new chat, paste the opening message and continue from that page.</span></div>
+              <div class="tr"><span>Subjects look different from the prompt</span><span>Regenerate once. If it still misses, use Swap this page for a simpler scene.</span></div>
+              <div class="tr"><span>Title on the cover is misspelled</span><span>Regenerate, or generate the cover with a blank title area and add the text in Canva.</span></div>
+              <div class="tr"><span>Image is not the right shape</span><span>Place it in Canva at your trim size and scale or crop. Keep important parts away from the edges.</span></div>
+              <div class="tr"><span>Copy button does nothing</span><span>Use the Export .txt button, or select the text and copy it manually.</span></div>
+              <div class="tr"><span>Only a few scenes fit when swapping</span><span>Swap follows the no-adjacent-composition rule. Use New Scenes (keep style) for a fresh list.</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">5</span>Assemble your interior in Canva</summary>
+          <div class="inner">
+            <ol>
+              <li>Create a custom design using your exact trim size in <b>inches</b> (for example 8.5 × 11).</li>
+              <li>Add the title page first ("This book belongs to"), then one coloring page per page.</li>
+              <li>Scale each image so its artwork stays inside the margins. Use Canva's rulers or guides to keep about 0.5 in clear on every side.</li>
+              <li>Add a <b>blank page after every coloring page</b>, so marker ink cannot bleed through to the next picture. Pages then print on one side only.</li>
+              <li>Optional: add a copyright page and a short "Thank you" page at the end. Use only text you wrote or are allowed to use.</li>
+              <li>Download as <b>PDF Print</b> at 300 DPI. Open the PDF and flip through every page.</li>
+              <li>KDP paperbacks need <b>at least 24 pages in total</b>. Blank pages count toward the total.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">6</span>Publishing on KDP (interactive checklist)</summary>
+          <div class="inner">
+            <p class="muted">Tick items as you go. Nothing is saved when you close the page.</p>
+            <div class="chk">
+              <label><input type="checkbox"> Interior PDF is exactly the trim size you will pick in KDP</label>
+              <label><input type="checkbox"> Interior type: black &amp; white; choose white or cream paper</label>
+              <label><input type="checkbox"> Margins checked (artwork inside 0.5 in; KDP asks for a larger inside margin as page count grows, so check its current margin table)</label>
+              <label><input type="checkbox"> Bleed: choose "no bleed" if no artwork touches the page edge</label>
+              <label><input type="checkbox"> Cover size taken from KDP's cover calculator for your page count and paper</label>
+              <label><input type="checkbox"> Title, subtitle and description pasted from the Listing kit and proofread</label>
+              <label><input type="checkbox"> 7 keyword boxes filled, categories chosen</label>
+              <label><input type="checkbox"> No trademarked names, characters or brands anywhere in the book or listing</label>
+              <label><input type="checkbox"> AI-generated content question answered honestly in KDP</label>
+              <label><input type="checkbox"> Every page reviewed for quality, errors and content rights</label>
+              <label><input type="checkbox"> KDP online previewer shows no errors</label>
+              <label><input type="checkbox"> Price set after checking KDP's printing cost</label>
+            </div>
+            <div class="note"><b>AI disclosure and responsibility:</b> KDP requires you to disclose AI-generated images when you upload the book. You are responsible for the quality of every page, for avoiding copyrighted or trademarked material, and for having the rights to what you publish. KDP's rules change, so read its current content guidelines. This tool makes no promise about sales or income.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">7</span>Using the listing kit</summary>
+          <div class="inner">
+            <ul>
+              <li><b>Title and subtitle:</b> the main keyword comes first because shoppers search with it. Keep them readable, accurate and free of other brands' names.</li>
+              <li><b>Description:</b> short paragraphs, benefit-focused. Edit it so it matches what your finished book really contains.</li>
+              <li><b>Keywords:</b> seven phrases for KDP's seven keyword boxes. Each box can hold a phrase; do not repeat words that already appear in your title.</li>
+              <li><b>Generate again:</b> press New Book for a different set of phrases and compare. Pick what reads best.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">8</span>FAQ</summary>
+          <div class="inner">
+            <dl>
+              <dt>Does this app create the images?</dt><dd>No. It writes the plan and prompts. You create the images yourself in ChatGPT (GPT Image).</dd>
+              <dt>Does it need internet?</dt><dd>The studio itself works offline. ChatGPT, Canva and KDP need internet.</dd>
+              <dt>Is anything saved?</dt><dd>No. Close the tab and the book is gone. Use Export All as .txt to keep it.</dd>
+              <dt>Why one chat per book?</dt><dd>The same chat helps the model keep the same line style from page to page.</dd>
+              <dt>Can I use another image tool?</dt><dd>You can try, but the prompts are written and tested around ChatGPT image generation, and results vary by tool.</dd>
+              <dt>Will my books sell?</dt><dd>No one can promise that. Quality, niche choice, pricing and marketing all matter, and results vary.</dd>
+            </dl>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>Seasonal KDP Coloring Studio · Front-End Edition · Prompt generator: you create the artwork in ChatGPT</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const SCENES = {};
+SCENES.autumn = {
+woodland: [
+"red fox|a red fox curled asleep on a bed of fallen leaves, bushy tail wrapped over its nose, acorns and a few mushrooms scattered around it|c",
+"hedgehog|a hedgehog rolling through a leaf pile with a fallen apple spiked on its back, curled leaves and tiny toadstools around|c",
+"barn owl|a large owl perched on a mossy branch with wings half-folded, hollow in the trunk behind it and drifting leaves in front|c",
+"black bear|a bear standing on hind legs beside a hollow log scooping honeycomb, bees circling and fern fronds at its feet|w",
+"red squirrel|a squirrel on a tree stump holding an acorn in both paws, stacked acorn caps and oak leaves around the stump|c",
+"white-tailed deer|a doe and fawn standing at the edge of a birch grove, falling leaves between slim trunks and a small stream behind|w",
+"raccoon|a raccoon washing a pear in a shallow brook, ripples around its paws and cattails along the bank|c",
+"badger|a badger peeking out of its burrow under a big tree root, roots forming an arch and acorns piled at the entrance|c",
+"wild turkey|a turkey fanning its tail feathers in a clearing, each feather ending in a rounded pattern, pumpkins and corn stalks beside|c",
+"mama moose|a moose wading in a misty pond with antlers full of hanging leaves, reeds and floating leaves around|w",
+"owlet trio|three owlets lined on a branch each facing a different way, big round eyes, a crescent moon and drifting leaves above|g",
+"chipmunk|a chipmunk with stuffed cheeks sitting on a pinecone, sunflower seeds scattered below and a fern behind|c",
+"wolf cub|a young wolf howling on a mossy rock under bare branches and falling leaves, a small mushroom ring at the base|c",
+"woodpecker|a woodpecker clinging to a trunk with a spiral of bark texture, wood chips flying and a small nest hole above|c",
+"otter|an otter floating on its back in a leaf-covered stream hugging a chestnut, leaves like little boats around it|c",
+"rabbit family|a mother rabbit and three kits under a giant mushroom canopy, clover leaves and fallen acorns around them|g",
+"lynx|a lynx sitting on a fallen log with tufted ears and long whiskers, ferns, mushrooms and pine needles around|c",
+"mushroom village|a cluster of tiny mushroom houses with round doors and chimneys, little leaf-shaped lanterns and stepping stones between them|g",
+"autumn forest path|a winding dirt path through tall trees with falling leaves, a fox and a hedgehog small in the distance, layered tree trunks|p",
+"fawn in ferns|a spotted fawn lying in tall ferns and fallen leaves with an ear flicked up, a butterfly resting on its back|c",
+"hibernation den|a cutaway view of a bear den under a hill, cozy bedding of leaves, stored acorns and roots, a small mouse sleeping in a corner|w",
+"leaf-circle animals|a ring of woodland animals (fox, owl, rabbit, deer, squirrel) sitting nose-to-tail around a central oak leaf|m",
+"falling-leaf frame|a rectangular frame of oak, maple and beech leaves with a tiny hedgehog peeking from the lower corner, empty centre|b",
+"acorn collection|twelve different acorns and oak caps arranged in neat rows, each with its own cap pattern and a leaf beneath|g",
+"mouse picnic|two field mice sharing a blackberry on a mushroom table, a teacup made from an acorn cap and leaf napkins|c",
+"stag at dawn|a majestic stag with wide antlers standing in a clearing as sun rays break through pine trunks, ground ferns in front|w",
+"toad on a log|a toad sitting on a rotted log wearing a toadstool hat, snails and moss tufts nearby, a dragonfly overhead|c",
+"bat in the hollow|a small bat hanging upside down from a branch, wings wrapped around itself, crescent moon and a few leaves around|c",
+"wild boar family|boar piglets rooting for acorns under an old oak with their mother, big roots, fallen leaves and a mushroom cluster|g",
+"autumn fireflies|a meadow edge with ferns and tall grass dotted with glowing fireflies, a sleeping rabbit and a silhouetted tree line|p",
+"tree-trunk apartments|a giant hollow tree trunk with several tiny windows and balconies, each showing a different small animal in its home|w",
+"snail trail|a snail climbing a toadstool stem leaving a spiral trail, tiny fallen leaves like umbrellas around|c",
+"geese overhead|a V of geese flying across the sky above a rolling forested valley with a small pond reflecting them|p",
+"heron by the pond|a tall heron standing in shallow water with one leg raised, lily pads, reeds and falling maple leaves|c",
+"bear cub with basket|a bear cub carrying a woven basket of berries and apples through a ring of tall mushrooms|c",
+"winter-prep squirrels|a row of squirrels along a branch each carrying something different (nut, pinecone, berry, mushroom), with a leaf canopy above|g"
+],
+cottage: [
+"cottage porch|a cottage front porch with a rocking chair, a pumpkin stack, a wreath of leaves and a knitted blanket over the arm, climbing ivy on the posts|w",
+"apple harvest basket|a large wicker basket overflowing with apples, a few rolling out, a pair of garden gloves and a ladder behind|c",
+"pie cooling on sill|a lattice-top pie on a window sill with steam curls, gingham curtains and a cat watching from inside|c",
+"scarecrow|a friendly scarecrow with a patched hat and stuffed straw hands in a cornfield, crows perched on its arms|c",
+"hayride wagon|a horse-drawn wagon piled with hay bales and pumpkins on a country lane, wheels with spoked detail and fence posts|w",
+"kitchen shelf|a rustic kitchen shelf with jars of preserves, dried herbs, a copper kettle, bundled cinnamon and little pumpkins|g",
+"farm stand|a wooden roadside stand with crates of apples, pumpkins and squash, a blank chalkboard sign and a bunting banner|w",
+"pumpkin patch|a wide pumpkin patch with vines winding between pumpkins of different shapes, a wheelbarrow and a distant barn|p",
+"stone well|an old stone well with a bucket and rope, ivy on the stones, a watering can and fallen leaves around its base|c",
+"cider press|a barrel cider press with apples in a basket, cups on a plank table and a small dog waiting for scraps|w",
+"quilt clothesline|a clothesline with patchwork quilts blowing in the wind, wooden pegs, a basket of laundry and a hen below|w",
+"cozy reading nook|an armchair by a window with a stack of books, a mug, a knit blanket and a cat curled up, fallen leaves visible outside|w",
+"corn husk dolls|a trio of corn husk dolls with aprons and bonnets sitting on a shelf beside dried corn cobs and a small pumpkin|g",
+"hen house|a small chicken coop with a round window, hens pecking in front, bales of straw and a rooster atop the roof|w",
+"woodpile and axe|a neat stack of firewood against a cottage wall with an axe in a stump, a pair of boots and leaves on the ground|c",
+"harvest table|a long table laid with a bowl of squash, loaves of bread, a roast, candles and gourds, with leaf garlands trailing|w",
+"jam jars|a row of canning jars of different sizes with fabric lids tied with string, fruit slices beside each and a wooden spoon|g",
+"windmill farm|a windmill on a hill above stacked hay bales and a winding lane, fields in patchwork, tall poplar trees along the lane|p",
+"birdhouse tree|a big maple tree with several different birdhouses hanging from its branches, birds visiting each, falling leaves|w",
+"gardener's boots|a pair of muddy garden boots by a door with a trowel, small pots of mums and a hanging lantern|c",
+"covered bridge|a wooden covered bridge over a stream with leaf-covered banks and a lone cyclist crossing it with a basket on the handlebars|w",
+"bread oven|an open brick oven with loaves of bread on a peel, flour sack, rolling pin and a window with falling leaves outside|w",
+"pumpkin carving table|a table with three pumpkins in the middle of being carved, tools, candle stubs and scraps, a cat watching|g",
+"mum garden bed|a raised garden bed full of chrysanthemums in many petal shapes, a watering can and a small gate at the end|b",
+"barn dance|the inside of a barn with hay bales, string lights, hanging lanterns and a fiddle on a stool, a pitchfork on the wall|w",
+"orchard ladder|a tall ladder leaning against an apple tree full of fruit, a basket hanging on a rung and a boy's cap on the grass|c",
+"honey stand|a table with jars of honey, honeycomb on a plate, a bee skep and bees hovering over late flowers|g",
+"scarecrow family|three scarecrows of different sizes standing in a row in a field with a crow on each, stitched patches on their clothes|g",
+"lantern porch evening|a porch at dusk with hanging paper lanterns, a swing seat with pillows, pumpkins on steps and moths around the light|w",
+"cottage in the valley|a small thatched cottage on a hillside surrounded by autumn trees with a smoke curl from its chimney, stone wall in front|p",
+"tea and tarts|a tea tray with a teapot, cups, apple tarts on a stand, sugar tongs and a vase with a single branch of leaves|c",
+"quilting basket|a basket of folded fabric scraps, thread spools, scissors and a half-finished leaf-pattern quilt square on top|c",
+"split-rail fence|a long split-rail fence stretching over a hill with crows perched along it, tall grass and drifting leaves|p",
+"market flower buckets|several buckets of cut autumn flowers (sunflowers, asters, dahlias) in a market stall with paper cones tied with ribbon|g",
+"mill pond|a water wheel beside a stone mill with a duck pond in front, leaf-covered banks and a lone willow|w",
+"squash still life|an arrangement of five different squash and gourds on a wooden stool with a draped cloth and vines trailing to the floor|g"
+],
+mandalas: [
+"maple leaf mandala|a radial mandala built from rings of maple leaves, each ring with different vein patterns and a small acorn at the centre|m",
+"oak leaf rosette|a rosette of overlapping oak leaves with scalloped edges around a ring of acorns, outer border of tiny leaf shapes|m",
+"ginkgo fan mandala|fan-shaped ginkgo leaves arranged in a circle, each with line detail and a small dot ring between them|m",
+"leaf border band|a rectangular border frame filled with alternating birch, oak and maple leaves with a swirling vine, empty centre|b",
+"repeating leaf tile|a grid of square tiles each holding one different leaf type, thin frames between the squares and tiny acorns in the corners|g",
+"spiral of falling leaves|a single large spiral formed by leaves of decreasing size, drifting from the outer edge to the centre|m",
+"nested rings of acorns|four concentric rings: acorn caps, acorns, oak leaves and a scalloped outer edge, with a small star at the centre|m",
+"asymmetrical leaf cluster|an organic swirl of overlapping maple, aspen and elm leaves tumbling diagonally across the page with little berries between them|g",
+"sunflower mandala|a large sunflower head in the centre with petals, ringed by layers of leaf shapes and seed spirals|m",
+"pinecone mandala|a pinecone drawn from above as a spiral of scales, surrounded by rings of pine needles and tiny cones|m",
+"woven leaf wreath|a round wreath of woven twigs and leaves with berries and a ribbon bow at the bottom, empty centre|b",
+"corner leaf flourishes|four decorated corners with vines, leaves and acorns, plenty of empty space across the middle|b",
+"leaf stripes|horizontal bands of different leaves, each band a different pattern of repeated leaf shapes, alternating with wave lines|g",
+"mushroom ring mandala|a circle of toadstools of varying sizes with leaves tucked between them and a ring of tiny spores like dots|m",
+"owl-eye mandala|a mandala whose centre is a stylised owl face, with feather-like leaf petals radiating outwards in layers|m",
+"leaf and berry vine|a long meandering vine of leaves and berries running from corner to corner, with small birds sitting on it|b",
+"harvest wheel mandala|a wheel with eight sections each holding a harvest item: apple, wheat, pumpkin, corn, grapes, pear, squash and acorn|m",
+"maple seed whirl|a whirl of winged maple seeds spinning outwards from the centre like a pinwheel, with veined leaves at the tips|m",
+"autumn quilt block|a patchwork quilt square built of triangles and diamonds with leaf motifs in each section|g",
+"fern fiddlehead spiral|spiralling fiddleheads and fern fronds arranged in a flowing circle with small mushrooms at the base|m",
+"hanging leaf garlands|three parallel garlands strung across the page, each with a different leaf and acorn pattern and tiny tassels|b",
+"leaf blanket|a dense layer of overlapping leaves of ten different species filling the page edge to edge with no empty space|g",
+"squirrel in a leaf circle|a squirrel sitting inside a hand-drawn circle made of leaves and acorns, with patterns radiating beyond the circle|c",
+"cornucopia swirl|a curved horn of plenty spilling leaves, berries and gourds into a swirling pattern that fills the page|c",
+"pumpkin top-view mandala|a pumpkin seen from the top with ridged segments, each segment filled with a different pattern, vines curling out|m",
+"leaf tessellation|interlocking leaves of two shapes fitted together like a repeating tile pattern across the whole page|g",
+"bramble frame|a thick frame of bramble stems, berries and leaves with a small butterfly in one corner|b",
+"star of leaves|an eight-pointed star where each point is a leaf, with smaller leaves and dots filling the spaces between|m",
+"mushroom cap patterns|a row of five large mushroom caps each decorated with a different pattern of spots, stripes and scallops, stems with ruffles|g",
+"giant leaf close-up|one huge leaf filling the page, with its veins branching into a pattern of decorated cells|c",
+"wheat sheaf circle|wheat stalks arranged in a circle with their heads pointing outwards, ribbon ties and tiny field flowers between|m",
+"swirling wind leaves|leaves caught in curving wind lines, flowing in a diagonal river across the page with gentle spirals|g",
+"acorn cap lace|a lace-like pattern of repeating acorn cap shapes joined by little arches, ending in a scalloped border|b",
+"honeycomb leaves|a honeycomb grid of hexagons, each filled with a different small leaf, acorn or seed|g",
+"harvest moon mandala|a big moon at the centre with detailed craters, surrounded by rings of bats, leaves and stars|m",
+"leaf peacock mandala|a peacock tail fan built of leaf shapes, with rows of eye-like patterns in each feather|m"
+]
+};
+
+SCENES.winter = {
+snowy: [
+"arctic fox|an arctic fox pouncing into deep snow with only its back legs and tail showing, snow spraying up and tiny paw prints trailing behind|c",
+"polar bear cub|a polar bear cub sliding down a snowbank on its belly, mother bear watching from the top, ice blocks and snowflakes around|w",
+"snowy owl|a snowy owl on a snow-capped fence post with wings slightly open, heavy flakes falling and bare branches behind|c",
+"penguin family|an emperor penguin parent with a chick tucked on its feet, a few other penguins huddled behind, swirling snow|g",
+"snow hare|a snow hare sitting upright by a frozen stream with ice patterns on the water, reeds poking out of the snow|c",
+"reindeer in the forest|a reindeer with wide antlers standing among snow-covered spruce trees, breath clouds and a distant moon|w",
+"red cardinal|a cardinal on a holly branch with berries and snow clumps, crest raised, icicles dangling beneath|c",
+"snow leopard|a snow leopard stretched along a rocky ledge with a long curled tail, snow-dusted pines below and mountains behind|w",
+"otter on ice|an otter sliding on a frozen pond with its paws out, scattered skating tracks and snow-covered reeds|c",
+"moose in a snowstorm|a moose standing in falling snow with frost on its antlers, pine trees fading into the background|w",
+"snow-day squirrels|two squirrels building a tiny snowman on a stump, acorn eyes, a twig scarf and snowflakes|c",
+"deer trio at dusk|three deer walking single file through fresh snow between birch trunks, long shadows and a pale moon|g",
+"seal pups|three seal pups lying on an ice floe with whiskered faces, frost on their fur, a little igloo of ice blocks nearby|g",
+"chickadee feeder|a wooden bird feeder hanging from a branch with chickadees, a nuthatch and a finch, seeds and snow cap on the roof|g",
+"walrus|a walrus resting on the ice with long tusks and whiskers, small icebergs and a gull on its back|c",
+"husky sled team|four husky dogs pulling a sled across a snowy field, harnesses with bells, pine forest and aurora lines in the sky|p",
+"snow fox den|a fox peeking from a snow burrow with a rounded tunnel entrance, icicles above and a tiny mouse looking at it|c",
+"wolf pack howl|three wolves standing on a ridge with raised muzzles, a large moon behind, snow-laden branches framing the top|w",
+"mountain goats|two goats on a steep snowy cliff with curved horns, icicles on rocks and a hawk circling above|w",
+"ermine|a tiny white ermine popping up from a hole in the snow, wide eyes, with frost-covered grass stalks around|c",
+"lynx in the pines|a lynx walking along a snowy branch with paws wide, tufted ears and snow falling through the needles|c",
+"beaver lodge|a beaver lodge covered in snow beside a frozen pond, a beaver on the ice dragging a branch|w",
+"snow bunting flock|a flock of small birds on a snowy fence rail, each in a different pose, tall dried grasses poking from snow|g",
+"orca and ice|an orca breaching beside an iceberg with ripples and ice shards, a distant mountain|w",
+"bear hibernating|a bear curled asleep in a snow-covered cave, icicles at the entrance and tiny snow crystals in the air|c",
+"skating animals|a fox, a rabbit and a bear skating on a pond in scarves, with snow-covered trees around the edge|w",
+"arctic hare family|a mother hare with leverets in a snow hollow, wind swept snow ridges around|g",
+"great grey owl|a large owl with a facial disk and layered feathers on a snowy branch, snow clumps falling from the branch above|c",
+"snowman friends|a snowman with a carrot nose beside a small fox and a rabbit wearing his hat and scarf, snowflakes drifting|g",
+"frozen lake sunrise|an open frozen lake with ice cracks, a lone deer on the shore, tall pines and a low sun with rays|p",
+"mitten mouse|a mouse peeking out of a lost mitten on the snow, bits of yarn spilling out, snowflakes and a tiny trail|c",
+"elk herd|a herd of elk walking across a snow field, antlers dusted with snow, mountains and pines in the distance|p",
+"ptarmigan|a ptarmigan in white winter feathers sheltering under a snow-laden shrub, feathered feet and a few red berries|c",
+"snow globe animals|a round snow globe holding a tiny fox, an owl on a branch and a pine tree, with a decorated base|c",
+"whale tail|a whale tail rising from icy water with dripping droplets, snow-capped cliffs and gliding gulls|w",
+"sled puppies|three puppies riding a small wooden sled downhill with scarves flying, snow spraying from the runners|g",
+"icicle forest|a forest of snow-covered trees with long icicles hanging from branches and a small deer between trunks|p"
+],
+christmas: [
+"decorated fireplace|a stone fireplace with stockings hung on the mantel, a garland, burning logs and a sleeping cat on the rug|w",
+"christmas tree|a tall tree with ornaments, a star on top, a train set circling its base and gift boxes beneath|c",
+"gingerbread house|a gingerbread house with candy trim, a frosted roof, a candy-cane fence and gumdrops along the path|c",
+"santa's sleigh|a sleigh full of gifts in mid-air above rooftops, with reindeer in harness and a crescent moon|w",
+"stocking lineup|five stockings in different patterns hung on a rail, each overflowing with small toys and candy canes|g",
+"cookie baking table|a kitchen table with cookie cutters, rolling pin, dough, a tray of cookies and a mixing bowl with a whisk|g",
+"snowy village street|a small village street with shops, lit windows, wreaths on doors and a lamp post with a bow|p",
+"nativity stable|a simple wooden stable with a manger, a star above, a donkey and an ox and shepherds in the distance|w",
+"elf workshop|an elf at a workbench painting a wooden train, shelves of toys, tools on hooks and a ladder|w",
+"present pile|a tall pile of presents in different shapes with bows, ribbon swirls, a teddy bear peeking from behind|c",
+"candlelit window|a window with a candle on the sill, frosted panes, holly in the corners and snowflakes outside|c",
+"wreath on the door|a round door with a big wreath made of holly, berries, pinecones and ribbon, a lantern beside|c",
+"hot cocoa corner|a mug of cocoa with whipped cream and marshmallows, a candy cane stirrer, a knitted blanket and a plate of cookies|c",
+"carolers|a group of carolers in scarves holding song sheets under a street lamp, snow falling, a dog beside them|g",
+"nutcracker|a tall nutcracker soldier in uniform with a crown and sword, standing beside a stack of presents|c",
+"christmas market|a market with wooden stalls, string lights, mugs, gingerbread hearts and a carousel in the background|p",
+"santa's mailbox|a large mailbox stuffed with letters, a bundle of letters tied with string, a pen and ink and a snowy lane|c",
+"mistletoe door|a door frame with mistletoe and a bow above, two small shoes on the mat, a candle in the window|c",
+"sleepy cat by the tree|a cat curled up beside a decorated tree, one paw batting an ornament on the lowest branch|c",
+"toy shelf|a shelf of toys: a rocking horse, a drum, a doll, blocks, a music box and a small train|g",
+"snowman family|a snowman family of three wearing scarves and hats, with button eyes, a carrot nose, evergreen trees behind|g",
+"ice-skating pond|a pond full of skaters of all ages, a bench at the edge with skates, a snowy hill and village roofs behind|p",
+"holly and ivy wreath|an oval wreath of holly leaves, berries and ivy tied with ribbon, with a bird in the corner|b",
+"christmas sweater scene|a family in matching knit sweaters on a sofa, a tree behind and a dog wearing antlers|w",
+"advent calendar|a house-shaped advent calendar with twenty-four numbered doors, some open with small treats|c",
+"reindeer stable|a row of reindeer standing in wooden stalls with blankets, hay bales, lanterns and an elf feeding one|w",
+"stocking mice|mice in a fireplace-side stocking with a tiny tree, popcorn garland and a bit of cheese for Santa|c",
+"cozy cabin|a log cabin in snowy woods with smoke from the chimney, lit windows and a wreath on the door, pine trees around|p",
+"lantern path|a path lined with lanterns leading to a house with a decorated tree in the window, snow falling|p",
+"candy cane forest|a forest of candy-cane trees with lollipop flowers, gingerbread cottages and a river of syrup|w",
+"present wrapping station|a table with wrapping paper rolls, scissors, tape, ribbons and a half-wrapped box|g",
+"angel|an angel with large wings and a flowing gown holding a candle, stars and a crescent moon in the sky|c",
+"christmas feast|a long table laid with a turkey, pudding, cranberry sauce, crackers, candles and a centre-piece of holly|w",
+"bell cluster|a cluster of bells of different sizes tied with ribbon and holly, with snowflakes around|c",
+"toy train around the tree|a toy train running in a loop around the base of a tree, with tiny station and tunnels, gifts beside|w",
+"snowy rooftops night|rooftops covered in snow with smoking chimneys and a figure carrying sacks on one roof, moon and stars|p",
+"music box|an open music box with a ballerina, a mirror in the lid, and swirling notes|c"
+],
+patterns: [
+"snowflake mandala|a large symmetrical snowflake with six arms, each arm with branching crystals, surrounded by a ring of smaller flakes|m",
+"ornament sampler|a tree of nine baubles each with a different pattern: stripes, stars, snowflakes, swirls, diamonds, dots, leaves, hearts and zigzags|g",
+"bauble close-up|one huge ornament filling the page with intricate bands of pattern and a decorated cap|c",
+"twelve-point snowflake star|a twelve-pointed star where each point is a mini snowflake, with a ring of dots between|m",
+"holly border|a rectangular border of holly leaves, berries and pinecones, with a ribbon bow in the corner and an empty centre|b",
+"candy cane stripes|a pattern of curling candy canes arranged in spirals, hearts and swirls with peppermint discs between|g",
+"nested snowflake rings|concentric rings of different snowflakes decreasing in size, ending at a tiny central star|m",
+"icicle fringe|a banner of icicles hanging from a decorated beam, each icicle with its own pattern, snow on the beam|b",
+"star mandala|a layered star mandala with 12 points and lacy edges, with small stars between the points|m",
+"pine branch spiral|pine branches arranged in a spiral with cones and berries on each branch, decorated with small ribbons|m",
+"gift-wrap pattern|a repeating pattern of bows, boxes, ribbons and stars like wrapping paper|g",
+"snow crystal macro|an extremely detailed close-up of a single snow crystal with lacy branches and fractal patterns|c",
+"christmas bell mandala|eight bells arranged in a ring with holly between them and a star in the centre|m",
+"mittens and scarves|a row of knitted mittens, hats and scarves each with a different Nordic knit pattern|g",
+"ornament garland|three swags of garlands with beads, baubles, stars and pine, hanging across the page|b",
+"wreath of stars|a circular wreath made of stars of different sizes interlocked with swirling ribbon|m",
+"scandinavian folk pattern|a folk-art panel with stylised reindeer, hearts, trees and birds in repeating bands|g",
+"snowflake corners|four corner designs of snowflakes with delicate lacework, and an open space in the middle|b",
+"poinsettia mandala|a large poinsettia with layered bracts at the centre, surrounded by rings of leaves and berries|m",
+"tessellated snowflakes|snowflakes of two shapes fitted together like a tile pattern across the whole page|g",
+"gingerbread pattern|a repeating pattern of gingerbread men, hearts and stars with icing swirls and dots|g",
+"christmas tree stripes|a tall tree made of layered bands of different patterns, topped with a decorated star|c",
+"snow globe mandala|a snow globe seen from the front with a mandala inside, flakes falling, decorated base|c",
+"dove and olive branch|a dove carrying an olive branch within a circle of stars and swirling clouds|c",
+"frost on glass|frost patterns spreading from the corners of a window frame, ferns and flowers of ice crystals in the middle|b",
+"star lantern|a Moravian-style star lantern with many points and cut-out patterns, hanging from a ribbon|c",
+"nutcracker pattern|a vertical border of nutcrackers, drums and trumpets in a repeating line, with swirls|b",
+"angel wing mandala|a pair of ornate wings forming a circular mandala with feathers and halos in layers|m",
+"icy lace doily|a round lace doily made of snowflake motifs and scallops, as if cut from paper|m",
+"snow-capped pine row|a row of five stylised pine trees each with different decoration patterns, bordered by stars|g",
+"bell and ribbon border|a vertical strip of bells and holly connected by a flowing ribbon, plus a corner flourish|b",
+"winter wreath asymmetrical|a crescent-shaped branch arrangement of pine, berries and snowflakes open on one side|g",
+"cinnamon and spice mandala|a mandala of star anise, cinnamon sticks, cloves and orange slices arranged in layers|m",
+"northern lights swirl|flowing curves of aurora bands with stars and mountains at the bottom, stylised patterns inside the bands|g",
+"mitten mandala|eight mittens in a circle, each with a different cuff and pattern, snowflakes between|m",
+"pinwheel snowflake|a spinning pinwheel formed of six curved snowflake arms with decorative dots|m"
+]
+};
+
+SCENES.spring = {
+babies: [
+"lamb in the meadow|a lamb standing in tall grass with daisies at its feet, one ear flopped and a butterfly landing on its nose|c",
+"duckling parade|a mother duck leading five ducklings across a puddle with lily pads and reeds, ripples around each|g",
+"bunny among tulips|a baby bunny sitting between tulips of different shapes, one tulip nearly taller than it, with a watering can nearby|c",
+"fawn and crocuses|a spotted fawn sniffing a patch of crocuses poking through melting snow, a bluebird on a branch above|c",
+"chick hatching|a chick breaking out of a cracked egg inside a nest, with eggshell pieces and a straw bed, flower buds around|c",
+"kitten in a basket|a kitten in a flower-filled basket pawing at a dangling ribbon, with petals scattered on the floor|c",
+"piglet in mud puddle|a piglet splashing in a puddle with raindrops and a rainbow in the corner, boots standing beside|c",
+"foal at the fence|a foal with long legs peeking over a wooden fence covered in climbing roses, a hen strolling below|w",
+"nest of robins|a nest in a blossoming branch with three baby robins gaping upward, mother arriving with a worm|c",
+"calf in the clover|a calf lying in a field of clover with a bell on a ribbon and bees on the flowers|c",
+"baby ducks in rain boots|three ducklings in oversized rain boots under a big leaf umbrella, puddles and raindrops|g",
+"puppy with butterfly|a puppy tilting its head at a butterfly on its paw, grass blades and daisies around|c",
+"baby elephant|a young elephant spraying water over its back at a spring pond, with blossoms floating on the water|w",
+"baby squirrels in a tree hollow|two squirrel kits peeking from a hollow in a flowering tree trunk, blossoms falling|c",
+"goslings in a line|a row of goslings following a goose across a meadow, a few buttercups and dandelion puffs|g",
+"bunny in eggshell hat|a bunny sitting in a nest of eggs wearing half an eggshell as a hat, with spring flowers circling it|c",
+"baby hedgehog in flowers|a tiny hedgehog nestled in a pot of pansies, only the nose and spines showing|c",
+"calves and kids on the farm|a farm yard scene with lambs, a kid goat, piglets and chicks around a trough, barn behind|w",
+"newborn fawn in daffodils|a fawn curled up in a field of daffodils with a butterfly on its back, petals around|c",
+"tadpole pond|a pond with tadpoles, a tiny frog on a lily pad, cattails and a dragonfly|w",
+"baby bear in blossoms|a bear cub sitting in a cherry tree with petals around it, a paw reaching for a blossom|c",
+"ladybug family|a group of ladybugs of different sizes walking up a stalk of tulip, with petals and dewdrops|g",
+"baby owl in the rain|an owlet beneath a large leaf with raindrops dripping from the edge, wide eyes, branch with buds|c",
+"bee and bunny picnic|a bunny and a bee sharing a picnic blanket with strawberries, a thermos and flower garlands|g",
+"swan family|a swan and cygnets gliding on water with lily pads and tall irises on the bank|w",
+"baby fox in a flower field|a fox kit leaping in a field of poppies, ears up and tail out, flowers bending around|c",
+"bluebird fledglings|three fledglings on a branch of cherry blossom each at a different angle, a parent bringing a berry|g",
+"snail and slug friends|a snail with a patterned shell and a slug sharing a large leaf after the rain, with droplets and clover|c",
+"baby panda in bamboo|a baby panda climbing a stalk of bamboo with leaf shadows, flowering bamboo in front|c",
+"joey in a meadow|a kangaroo with a joey peeking from her pouch among wildflowers, a distant gum tree|c",
+"spring thaw stream|a stream with small animals along the banks: duck, frog, otter and heron, with budding willows|p",
+"duckling in the teacup|a duckling sitting inside a teacup on a saucer in a garden, blossoms floating in the cup|c",
+"mother hen and chicks|a hen with chicks tucked under her wing and others scattering, an old wheelbarrow of flowers beside|g",
+"baby giraffe|a young giraffe nibbling blossoms from a tree, spots in different sizes and small birds on its neck|c",
+"bunny burrow|a cutaway view of a burrow under a hill with a mother and baby rabbits in a nest, roots and carrots|w",
+"rainy-day animals|animals sheltering beneath a giant mushroom: bunny, hedgehog, mouse, duckling, with raindrops and puddles|g",
+"baby koala|a baby koala clinging to a eucalyptus branch with new leaves and blossoms, a bee nearby|c",
+"meadow nursery|a wide meadow with lambs, calves, foals and ducklings dotted among wildflowers, a fence and blossoming trees on a hill|p",
+"barn nursery|inside a barn stall with a cow and calf, hens with chicks in a basket, kittens in the hay and swallows nesting in the beams|w",
+"pond-edge nursery|a pond bank with a muskrat family, a heron chick in a reed nest, froglets on lily pads and a swan lifting a wing|w",
+"burrow neighbours|a hillside with several entrances: a rabbit warren, a fox den, a badger sett and a mole hill, each with babies peeking out|g",
+"orchard nests|an apple orchard in bloom with different birds' nests in the branches, each with eggs or chicks, bees on the blossoms|p",
+"sleepy pile|a heap of sleeping baby animals piled on a blanket: puppy, kitten, bunny, lamb and duckling, with a quilt and flowers|g"
+],
+garden: [
+"watering can and tulips|a watering can pouring on a row of tulips, droplets and a ladybug on the handle, a small trowel nearby|c",
+"garden gate|an arched garden gate covered in climbing roses and wisteria, a path of stepping stones leading through|w",
+"greenhouse|a glass greenhouse with shelves of seedlings, hanging baskets, a watering can and a door open to the garden|w",
+"bird bath|a stone bird bath with a robin splashing and a finch waiting, foxgloves and ferns around its base|c",
+"vegetable beds|raised beds of lettuce, carrots, peas and radishes with plant markers, a scarecrow and a wheelbarrow|w",
+"beehive and flowers|a row of beehives beside a bed of lavender and poppies, bees on the flowers, a straw hat on a post|w",
+"trellis with sweet peas|a wooden trellis covered in sweet pea vines and blossoms, tendrils curling, a pair of gloves on the ground|c",
+"potting bench|a potting bench with terracotta pots, seed packets, a trowel, a small watering can and a seedling tray|g",
+"cherry blossom tree|a cherry tree in full bloom with petals falling, a bench underneath and a cat sitting beside it|w",
+"garden fairy door|a small door at the base of a tree with a tiny mailbox, mushrooms, ferns and a lantern|c",
+"butterfly garden|a flowerbed with milkweed, coneflowers and phlox with several different butterflies, a stone path|g",
+"wheelbarrow of blooms|a wheelbarrow overflowing with flowers: peonies, tulips and daffodils, a hat on the handle|c",
+"hanging baskets|a porch with several hanging baskets of petunias and trailing ivy, a swing and a window box|w",
+"herb garden spiral|a spiral herb bed with signs for each herb: mint, basil, thyme, sage, with a snail on the wall|c",
+"pond with lilies|a garden pond with water lilies, a frog, koi fish, a stone bridge and weeping willow branches|w",
+"rose arbor|an arbor of climbing roses with petals falling, two chairs and a small table with a teapot beneath|w",
+"seed packets|an arrangement of seed packets, each with a different flower illustration, a trowel and a ball of twine|g",
+"garden shed|a rustic shed with a wooden door, tools on the wall, a window box and sunflowers growing beside|c",
+"tea party in the garden|a small table with tea cups, a cake stand, flowers in a jug and a cat on the next chair|w",
+"spring bulbs in bloom|a bed of tulips, hyacinths and daffodils with different leaf shapes and a path winding through|p",
+"stone path and ferns|a mossy stone path edged by ferns, hostas and primroses, a birdhouse on a post|p",
+"window box|a window with a box of pansies and trailing ivy, open shutters and a cat peering out|c",
+"garden gnome|a garden gnome with a pointed hat fishing in a bird bath, mushrooms and clover around|c",
+"picnic under the blossoms|a blanket with a basket, sandwiches, strawberries and a flask beneath an apple tree in bloom|w",
+"seedling sprouts|a row of seedlings in egg cartons, each at a different stage, with a spray bottle and labels|g",
+"dragonfly pond|reeds and cattails at a pond's edge with dragonflies and damselflies, ripples and lily pads|c",
+"rain barrel and ducks|a rain barrel beside a downspout, ducks waddling around puddles, flowerpots and a bench|w",
+"sunny conservatory|a conservatory with tall plants, an armchair, a tea tray and sunlight pouring through windows|w",
+"scarecrow in spring|a scarecrow with a straw hat and a tulip in its pocket, young sprouts in neat rows and swallows overhead|c",
+"lilac bush|a big lilac bush in bloom with a bench, a butterfly and a small watering can in front|c",
+"tool rack|a wall rack of garden tools: trowels, rake, pruners, shears and a pair of gloves, hanging seed pots|g",
+"hill of wildflowers|a hillside covered in wildflowers: poppies, cornflowers, daisies and buttercups with a small cottage at the top|p",
+"bird nesting box|a wooden nesting box on a tree with blue tits entering and leaving, blossoms and bright buds|c",
+"topiary garden|clipped hedges and topiary in shapes of a bird, a cone and a spiral, with a gravel path and a fountain|w",
+"flower cart|a wooden flower cart with buckets of tulips, daffodils, irises and hyacinths, with a sign blank for lettering|w",
+"patchwork allotment|an aerial patchwork of allotment plots with paths, sheds and rows of different crops|p"
+],
+mandalas: [
+"tulip mandala|a mandala made of overlapping tulips in rings, each ring with a different tulip shape and a small bud at the centre|m",
+"cherry blossom circle|a circle of cherry blossom branches with petals falling inward, petals in layers of five, and a ring of tiny buds|m",
+"daisy chain border|a rectangular border made of linked daisies with leaves, ladybugs and a bee in the corner|b",
+"lotus mandala|a lotus flower with many layers of petals and a seed head, surrounded by rings of leaves and ripples|m",
+"butterfly mandala|four large butterflies forming a cross, wings with different patterns, and flowers filling spaces between|m",
+"floral stripe tile|horizontal bands each with a different flower: tulip, daisy, crocus, iris, with leaves in between|g",
+"nested rings of petals|four concentric rings of different petals: rounded, pointed, scalloped and fringed, with a seed head at the centre|m",
+"asymmetrical flower cluster|a diagonal bouquet of peonies, daffodils and ferns with trailing ribbon and a bee|g",
+"sunburst daisy mandala|a large daisy with long petals and a dotted centre, ringed by a halo of leaves and dots|m",
+"hummingbird wreath|a circular wreath of blossoms with a hummingbird hovering in the middle|b",
+"tulip border|a border of tulips of different heights with leaves, empty centre|b",
+"corner blossom flourishes|four corners decorated with branching blossoms and curling vines, open middle|b",
+"iris petal pattern|a grid of iris flowers, each in a different pose, with leaves forming a diamond lattice|g",
+"poppy mandala|poppies with seed pods and buds forming a radiating circle, with tiny dots and leaves between|m",
+"bee and blossom mandala|a bee at the centre surrounded by honeycomb cells, flowers and rings of buzzing trails|m",
+"fern frond spiral|fern fronds unfurling in a spiral, with small flowers dotted between the coils|m",
+"egg pattern tile|a grid of eggs, each decorated with a different pattern of flowers, stripes and dots|g",
+"wisteria drape|a cascade of wisteria racemes hanging from the top edge with leaves and a few butterflies|b",
+"floral quilt block|a quilt square of triangles and diamonds with flowers and leaves in each section|g",
+"sunflower seedling mandala|a sunflower-seedling mandala with leaves, tiny sprouts and a ring of seed shapes|m",
+"hydrangea ball|a large hydrangea head with tiny florets arranged in a pattern, ringed by leaves|c",
+"rose garden mandala|a rose seen from above with layered spiral petals, vines and thorns in outer rings|m",
+"spring wind swirls|petals blown across the page in curving wind trails, flowing diagonally with a few bees|g",
+"snowdrop and crocus tile|a repeating tile of snowdrops and crocuses, leaf blades between, and a scalloped edge|g",
+"dandelion puff mandala|a dandelion puff with seeds floating outward in rings, dots and tiny parachutes|m",
+"daffodil trumpet mandala|daffodils arranged in a sunburst, trumpets in the centre, leaves forming an outer ring|m",
+"bluebell woodland border|a forest-floor border of bluebells, ferns and mossy stones with a snail in a corner|b",
+"lily of the valley arch|a graceful arch of lily-of-the-valley stems hanging over the page, leaves forming a frame|b",
+"orchid mandala|an orchid with detailed petals and veins at the centre, with leaves and buds spiralling outward|m",
+"cherry blossom lattice|a lattice of crossing branches with blossoms at each intersection and petals drifting|g",
+"peony close-up|one huge peony filling the page with layers of ruffled petals and a few leaves|c",
+"clover and shamrock tile|a hexagonal tile pattern of clovers and ladybugs|g",
+"magnolia mandala|magnolia blooms in rings, with leaves and buds in layers, as if from an old botanical plate|m",
+"ladybug mandala|a ring of ladybugs with patterned shells, and leaves and flowers between them|m",
+"rain and raindrops|a pattern of raindrops falling on a cluster of leaves and flowers with ripples and puddles|g",
+"morning glory spiral|morning glory vines spiralling outward, flowers opening in different sizes with tendrils|m"
+]
+};
+
+SCENES.summer = {
+ocean: [
+"sea turtle|a sea turtle gliding over a coral reef with patterned shell scutes, small fish following and sunbeams from above|c",
+"clownfish anemone|two clownfish weaving through a swaying anemone with long tentacles, bubbles rising and a starfish below|c",
+"humpback whale|a whale breaching with water streaming off its fins, seagulls overhead and a small sailboat in the distance|w",
+"dolphin pod|three dolphins leaping through waves with splashes and a bright sun with long rays|g",
+"octopus garden|an octopus draped over rocks holding a shell and a teacup, kelp stalks and little fish around|c",
+"seahorse family|a father seahorse with babies drifting beside him, curled tails holding a strand of seagrass|g",
+"lighthouse coast|a striped lighthouse on a rocky headland with waves crashing, gulls circling and a path of stones|w",
+"crab on the sand|a crab waving its claws on the sand beside a sandcastle with a flag, tracks and shells around|c",
+"manta ray|a manta ray soaring over a reef with wide wings, remora fish riding below and coral fans|w",
+"pelican dive|a pelican diving with wings folded, spray of water below and a pier with pilings behind|c",
+"coral reef city|a busy coral reef with branching corals, a clam, angelfish, a moray eel peeking out and a sunken anchor|p",
+"hermit crab|a hermit crab in a spiralled shell decorated with barnacles, tide-pool rocks and anemones|c",
+"jellyfish bloom|a group of jellyfish of different sizes drifting up with long tendrils, bubbles and sparkling plankton|g",
+"sandcastle kingdom|an elaborate sandcastle with towers, a moat, a drawbridge and shells for windows, children's buckets beside|w",
+"pirate cove|a small cove with a wrecked ship, a treasure chest half buried, palm trees and a parrot|w",
+"surfing seal|a seal balancing on a surfboard in curling waves with a sunny sky and a floating beach ball|c",
+"puffer fish|a puffed-up pufferfish with spines, tiny fish hiding behind a rock, coral and kelp|c",
+"starfish collection|five different starfish arranged on wet sand with shells, sand dollars and a bit of driftwood|g",
+"narwhal and iceberg|a narwhal with a spiralled tusk rising beside a small iceberg, with splashes and waves|c",
+"lobster trap|a wooden lobster trap with a rope, buoys, a lobster inside and a starfish on top, beside a dock|c",
+"boat harbour|a harbour with fishing boats, ropes, crates, barrels and gulls on the posts, with a lighthouse beyond|p",
+"mermaid cove|a mermaid sitting on a rock combing her hair, with seashells, waves splashing and a small fish by her tail|c",
+"shipwreck reef|an old shipwreck covered with coral, with fish swimming through windows and a diver's bubble trail|w",
+"whale shark|a whale shark gliding past with a spotted pattern on its back, small fish following|c",
+"tide-pool life|a rocky tide pool with anemones, crabs, snails, a starfish and tiny fish, with receding waves beyond|g",
+"sea otter|an otter floating on kelp holding a clam on its belly, with small waves and a gull above|c",
+"flying fish|several flying fish leaping from the waves with outstretched fins and a sailboat behind them|g",
+"sunset sailboats|sailboats of different sizes on gentle waves with a large sun on the horizon and seabirds|p",
+"swordfish|a swordfish leaping from the water at a diagonal with a long pointed bill and sparkling droplets|c",
+"seashell still life|a basket of seashells of varied shapes: conch, scallop, spiral, cone, with a starfish on top|g",
+"sea lion rock|a family of sea lions resting on rocks with waves lapping, seabirds perched around|g",
+"deep-sea diver|a diver exploring a reef with bubbles, a camera and a school of fish circling, kelp forest behind|w",
+"beach umbrella day|a beach scene with a striped umbrella, towels, a cooler, flip-flops and a beach ball|w",
+"seagull on a post|a seagull on a wooden post with a rope looped around it, a chip in its beak and waves behind|c",
+"coconut palm shore|a curved palm tree with coconuts, a hammock between two trunks and gentle waves|w",
+"aquarium window|a large aquarium window with various fish, a diver outside and children pressing their hands to the glass|w"
+],
+camping: [
+"tent under the stars|a tent with an open flap, string lights, a sleeping bag and a lantern, a crescent moon and a few pines|w",
+"campfire circle|a campfire with logs and stones, marshmallows on sticks, a kettle and a guitar on a log|c",
+"picnic basket|a wicker basket open on a checkered blanket, sandwiches, a thermos, fruit and a jug of lemonade|c",
+"canoe on the lake|a canoe on a calm lake with paddles, reflected pine trees and a loon swimming nearby|w",
+"hammock in the trees|a hammock strung between two trees with a book, a cat curled in it and a lantern on a branch|c",
+"s'mores station|a table with graham crackers, chocolate, marshmallow bag, a roasting stick and a small fire|g",
+"fishing dock|a wooden dock with a fishing rod, a tackle box, a bucket of fish and a dog sitting beside|w",
+"trailer camp|a vintage camper trailer with an awning, folding chairs, a string of flags and a barbecue|w",
+"hiking boots|a pair of hiking boots with laces, a backpack with a rolled mat, a map and a compass on a rock|c",
+"mountain trail|a trail winding up a mountain with signposts, wildflowers, a backpacker and a distant waterfall|p",
+"fireflies at dusk|a meadow with tall grass and glowing fireflies, a tent in the distance and a log with a lantern|p",
+"outdoor kitchen|a camp stove with a pot, frying pan, plates, utensils hung on a line and a basket of vegetables|g",
+"kite day|a kite with a long tail on a grassy hill, children running, a picnic blanket and a dog|w",
+"watermelon picnic|a watermelon cut into slices on a table with a pitcher of lemonade, straws, ants marching nearby|c",
+"campsite wildlife|a campsite with a raccoon sneaking into a cooler, a squirrel on a log and a curious deer at the edge|w",
+"bike trip|a bicycle with a basket of flowers parked beside a lake, a blanket and a straw hat on the grass|c",
+"treehouse|a treehouse with a rope ladder, flags, a lantern and a telescope on the deck, branches framing the view|w",
+"night sky telescope|a telescope on a tripod on a hilltop with constellations, a blanket and a thermos|c",
+"forest pond picnic|a blanket by a pond with ducks, a basket, a kite and dragonflies hovering over reeds|w",
+"fishing gear|a fishing vest, rod, net, lures in a box, a hat and a jar of worms arranged on a dock|g",
+"lemonade stand|a children's lemonade stand with a hand-painted sign space, cups, a pitcher and a dog in the shade|c",
+"wildflower picnic|a picnic blanket in a wildflower meadow with a basket, an open book and a butterfly landing on a cup|w",
+"lakeside cabin|a log cabin by a lake with a porch, a canoe tied to a dock and mountains behind|p",
+"backpack and map|an open backpack with a map, compass, binoculars, water bottle and a banana spilling out|c",
+"bonfire songs|friends sitting around a bonfire with guitars and mugs, sparks rising to the stars|g",
+"cooler and ice pops|a cooler with ice pops, juice boxes, apples and a sun hat on top, with a towel and sunglasses|c",
+"rope swing|a rope swing hanging from a big tree over a river, with a splash, a towel on a rock and a dog|w",
+"scenic overlook|two people at an overlook with binoculars looking at a valley with a river, deer and hawks|p",
+"outdoor movie night|a projector screen in a field with a blanket, popcorn, string lights and fireflies|w",
+"ant picnic|ants carrying crumbs across a picnic blanket past a plate of sandwiches and a half-eaten cherry pie|g",
+"camper's boots|muddy boots drying by a campfire with socks on a stick, a kettle and a tin cup|c",
+"bird watching|a bird watcher with binoculars on a log, a notebook, and several birds on branches around|w",
+"star jar|a glass jar of fireflies on a tree stump with a lantern, ferns and a book|c",
+"roadside ice cream|an ice cream truck with a striped awning, children in line, a dog and a few flower pots|w",
+"hot air balloons|several hot air balloons rising over a field of sunflowers with a picnic below|p",
+"sunflower field|a rolling field of sunflowers with a scarecrow, a dirt road and a distant barn|p"
+],
+patterns: [
+"sun mandala|a radiant sun with long and short rays, a concentric-ring centre and wave patterns at the edge|m",
+"seashell mandala|shells of many types arranged in rings: scallop, spiral, cone, conch, with a starfish at the centre|m",
+"wave pattern tile|repeating Japanese-style waves with curling tips and foam dots, as a full-page tile|g",
+"starfish border|a border of starfish, shells and seaweed with waves at the bottom, open centre|b",
+"nautilus spiral|a large nautilus shell with chambers, ringed by smaller shells and coral|c",
+"coral reef mandala|branching coral and sea fans arranged radially, with small fish between and bubbles|m",
+"sunflower mandala summer|a sunflower with spiral seeds, surrounded by bees, petals and leaves in rings|m",
+"palm leaf tile|overlapping palm fronds in a repeating tile, with coconuts and flowers|g",
+"anchor and rope border|a border formed by rope, anchors, ships' wheels and knots, with waves in the corners|b",
+"hibiscus mandala|hibiscus flowers arranged in a sunburst with long stamens, leaves and tiny dots between|m",
+"sand dollar pattern|a sand dollar with fine star patterns, surrounded by smaller sand dollars and shells|m",
+"wave mandala|concentric rings of waves, sea foam and fish, with a small sun at the centre|m",
+"fish scale pattern|overlapping scale patterns with swimming fish and bubbles, as a repeating tile|g",
+"citrus slices|slices of orange, lemon and lime with segments and seeds, arranged in a circular pattern with leaves|m",
+"beach ball swirl|a beach ball with patterned segments, ringed by swirling stripes, stars and dots|c",
+"shell garland|three swags of garlands made of shells, pearls, starfish and seaweed hanging across the page|b",
+"tropical leaves tile|monstera, banana and fern leaves overlapping in a dense repeating pattern|g",
+"sailboat quilt|a quilt square of triangles forming sails and waves, with a small sun in the corner|g",
+"jellyfish mandala|jellyfish arranged in a radial burst with trailing tentacles in swirling lines|m",
+"daisy chain summer|a horizontal chain of daisies with bees and butterflies, plus leaf swirls|b",
+"sun and moon pattern|a half-sun, half-moon design with radial rays, stars and cloud swirls|m",
+"pineapple pattern|a pineapple with a diamond grid in each segment, leaves forming the crown, as a close-up|c",
+"flip-flop and shell tile|a repeating pattern of sandals, shells, sunglasses and ice pops|g",
+"mermaid scale mandala|a mandala of overlapping scales with starfish, pearls and tiny seahorses|m",
+"swirling clouds|swirling summer clouds in curved stylised shapes with a sun peeking through and gulls|g",
+"seaweed frame|a frame of kelp, seaweed and bubbles around the edges with fish swimming in the corners|b",
+"dragonfly mandala|four dragonflies with patterned wings forming a cross, with flowers and reeds in between|m",
+"lighthouse beams|a lighthouse with beams radiating across the page into a pattern of waves and stars|c",
+"watermelon slice pattern|watermelon wedges and seeds in a repeating tile with swirling vines and flowers|g",
+"sun hat border|a border of sun hats, sunglasses, flip-flops and flowers, with a ribbon looped through|b",
+"ocean currents|flowing currents of water with fish, bubbles and swirls as an asymmetrical wave|g",
+"hexagon shell tile|a honeycomb-style tile where each hexagon holds a different shell or starfish|g",
+"butterfly sun mandala|a sun at the centre with butterfly wings forming the rays, with dotted rings|m",
+"lotus pond mandala|lotus flowers and lily pads in rings with dragonflies and ripples|m",
+"firework sparkle mandala|bursting fireworks forming a radial pattern with stars, ribbons and sparks|m",
+"crab and coral border|a border of crabs, coral branches and shells running along the bottom and sides|b"
+]
+};
+
+// ===== SEASONS & THEMES =====
+const SEASONS = {
+  autumn: {
+    label: 'Autumn', short: 'Autumn', alt: 'Fall',
+    palette: 'burnt orange, amber, deep red, golden yellow, forest green and warm brown',
+    mood: 'cozy and warm',
+    themes: [
+      { key: 'woodland', label: 'Woodland Animals', noun: 'woodland animals', place: 'autumn forest',
+        titles: ['Woodland Friends', 'Whispers of the Autumn Forest', 'Fox, Owl & Acorn', 'The Little Forest Harvest', 'Leaf-Fall Creatures', 'Autumn in the Deep Woods'],
+        kw: ['woodland animals', 'forest animals', 'fall animals', 'autumn forest', 'fox and owl', 'hedgehog and squirrel'],
+        hook: 'cozy forest creatures, falling leaves and quiet woodland moments',
+        cover: 'a misty autumn forest with a fox, an owl and a hedgehog among golden falling leaves' },
+      { key: 'cottage', label: 'Harvest Cottage', noun: 'harvest cottage scenes', place: 'country cottage',
+        titles: ['The Harvest Cottage', 'Pumpkins & Porches', 'A Cozy Fall at the Farm', 'Orchard Days', 'Home for the Harvest', 'Cider, Quilts & Corn'],
+        kw: ['harvest cottage', 'country cottage', 'farmhouse fall', 'pumpkin patch', 'cozy farm', 'apple orchard'],
+        hook: 'country cottages, pumpkin patches, apple baskets and warm kitchen corners',
+        cover: 'a cozy thatched cottage with a porch of pumpkins, an apple orchard and a winding country lane' },
+      { key: 'mandalas', label: 'Falling-Leaf Mandalas', noun: 'leaf mandalas and patterns', place: 'autumn leaves', pattern: true,
+        titles: ['Falling Leaf Mandalas', 'The Autumn Pattern Book', 'Leaves in Circles', 'Maple, Oak & Acorn Mandalas', 'Harvest Moon Patterns', 'A Whirl of Autumn Leaves'],
+        kw: ['leaf mandala', 'autumn mandala', 'fall leaves patterns', 'maple leaf designs', 'acorn and leaf', 'nature mandala'],
+        hook: 'swirling leaf mandalas, harvest patterns and intricate acorn designs',
+        cover: 'a glowing circular mandala made of maple, oak and ginkgo leaves with acorns and a harvest moon' }
+    ]
+  },
+  winter: {
+    label: 'Winter & Christmas', short: 'Winter', alt: 'Christmas',
+    palette: 'icy blue, deep evergreen, cranberry red, warm gold, snow white and soft silver',
+    mood: 'snug and festive',
+    themes: [
+      { key: 'snowy', label: 'Snowy Animals', noun: 'snowy animals', place: 'winter wonderland',
+        titles: ['Snowy Little Friends', 'Winter Wild Things', 'Frost & Fur', 'Snow Day Animals', 'The Quiet Snow Forest', 'Whiskers in the Snow'],
+        kw: ['winter animals', 'snow animals', 'arctic animals', 'snowy forest', 'polar bear and fox', 'winter wildlife'],
+        hook: 'arctic foxes, snowy owls, polar bear cubs and frosty forest friends',
+        cover: 'a snowy pine forest with an arctic fox, a snowy owl and a polar bear cub under a soft starry sky' },
+      { key: 'christmas', label: 'Cozy Christmas Home', noun: 'cozy Christmas scenes', place: 'Christmas home',
+        titles: ['A Cozy Christmas at Home', 'Fireside & Candlelight', 'The Twelve Cozy Days', 'Home for the Holidays', 'Gingerbread & Garlands', 'Christmas Morning Magic'],
+        kw: ['christmas', 'cozy christmas', 'holiday scenes', 'christmas tree', 'gingerbread house', 'santa and reindeer'],
+        hook: 'glowing fireplaces, decorated trees, gingerbread houses and snowy village streets',
+        cover: 'a cozy living room with a decorated Christmas tree, a glowing fireplace, stockings and wrapped gifts' },
+      { key: 'patterns', label: 'Snowflake & Ornament Patterns', noun: 'snowflake and ornament patterns', place: 'winter patterns', pattern: true,
+        titles: ['Snowflake Mandalas', 'Ornaments & Crystals', 'The Winter Pattern Book', 'Frosted Stars', 'A Christmas of Patterns', 'Sparkle & Snow Designs'],
+        kw: ['snowflake mandala', 'christmas ornaments', 'winter patterns', 'snowflake designs', 'holiday mandala', 'christmas patterns'],
+        hook: 'intricate snowflakes, ornament patterns, festive mandalas and winter lace',
+        cover: 'a glowing circular mandala of snowflakes, baubles, stars and holly on a deep winter-night background' }
+    ]
+  },
+  spring: {
+    label: 'Spring', short: 'Spring', alt: 'Spring',
+    palette: 'fresh green, soft pink, sunny yellow, sky blue, lavender and warm cream',
+    mood: 'fresh and cheerful',
+    themes: [
+      { key: 'babies', label: 'Baby Animals & Blooms', noun: 'baby animals and spring blooms', place: 'spring meadow',
+        titles: ['Spring Babies', 'Little Ones in the Meadow', 'Blossoms & Baby Animals', 'The Spring Nursery', 'Lambs, Ducklings & Daisies', 'First Days of Spring'],
+        kw: ['baby animals', 'spring animals', 'cute animals', 'lambs and ducklings', 'bunny and chick', 'spring meadow'],
+        hook: 'fluffy ducklings, lambs, bunnies and baby animals among spring flowers',
+        cover: 'a sunny meadow with a lamb, a bunny and ducklings among tulips, daisies and cherry blossoms' },
+      { key: 'garden', label: 'Garden Scenes', noun: 'spring garden scenes', place: 'spring garden',
+        titles: ['The Spring Garden', 'Gates, Greenhouses & Blooms', 'A Gardener’s Spring', 'Tea in the Garden', 'Blossom Lane', 'Secret Garden Days'],
+        kw: ['garden', 'flower garden', 'spring garden', 'gardening', 'cottage garden', 'butterfly garden'],
+        hook: 'rose arbors, greenhouses, potting benches, bird baths and flowering borders',
+        cover: 'a charming cottage garden with an arched gate covered in roses, tulips, a bird bath and butterflies' },
+      { key: 'mandalas', label: 'Floral Mandalas', noun: 'floral mandalas and patterns', place: 'spring flowers', pattern: true,
+        titles: ['Floral Mandalas', 'Blooming Circles', 'The Spring Pattern Book', 'Petals in Rings', 'Blossom Mandala Garden', 'Wildflower Wheels'],
+        kw: ['floral mandala', 'flower mandala', 'spring mandala', 'flower patterns', 'botanical designs', 'butterfly mandala'],
+        hook: 'blooming flower mandalas, petal patterns, butterflies and botanical designs',
+        cover: 'a glowing circular mandala of tulips, cherry blossoms, daisies and butterflies on a soft spring background' }
+    ]
+  },
+  summer: {
+    label: 'Summer', short: 'Summer', alt: 'Summer',
+    palette: 'warm coral, turquoise, sunny yellow, sandy beige, ocean blue and leaf green',
+    mood: 'sunny and relaxed',
+    themes: [
+      { key: 'ocean', label: 'Beach & Ocean Life', noun: 'beach and ocean scenes', place: 'seaside',
+        titles: ['Under the Summer Sea', 'Salt, Sand & Seashells', 'The Ocean Beach Book', 'Dolphins, Dunes & Dreams', 'Tides & Tide Pools', 'A Day at the Shore'],
+        kw: ['ocean', 'beach', 'sea creatures', 'sea life', 'seashells', 'sea turtle and dolphin'],
+        hook: 'sea turtles, dolphins, coral reefs, lighthouses and sandy shorelines',
+        cover: 'a sunny seaside with a sea turtle, dolphins, a lighthouse and a coral reef in turquoise water' },
+      { key: 'camping', label: 'Camping & Picnic Days', noun: 'camping and picnic scenes', place: 'summer campsite',
+        titles: ['Camp, Campfire & Picnic', 'Lazy Summer Days Outdoors', 'The Great Summer Getaway', 'Tents, Trails & Treats', 'Starry Nights by the Lake', 'Picnic in the Meadow'],
+        kw: ['camping', 'picnic', 'summer camp', 'outdoors', 'lake and canoe', 'campfire'],
+        hook: 'tents under the stars, campfires, canoes, picnic baskets and lazy lakeside days',
+        cover: 'a cheerful summer campsite with a tent, a campfire, a canoe on a lake and a picnic basket on a checkered blanket' },
+      { key: 'patterns', label: 'Sun, Shell & Wave Patterns', noun: 'sun, shell and wave patterns', place: 'summer patterns', pattern: true,
+        titles: ['Sun, Shell & Wave', 'The Summer Pattern Book', 'Seashell Mandalas', 'Waves of Sunshine', 'Sunburst & Seashore Designs', 'Coral, Shells & Sun Rays'],
+        kw: ['seashell mandala', 'summer mandala', 'sun and waves', 'ocean patterns', 'beach designs', 'coastal patterns'],
+        hook: 'sunburst mandalas, seashell rings, wave patterns and coral designs',
+        cover: 'a glowing circular mandala of seashells, waves, a bright sun and coral on a warm turquoise background' }
+    ]
+  }
+};
+
+const AUDIENCES = {
+  kids:    { label: 'Kids', who: 'kids ages 4-8', forTitle: 'Kids', kw: ['kids', 'children', 'kids ages 4-8', 'toddlers and kids'], dens: 'KIDS: few, large, simple shapes; bold outlines; no tiny details; every colourable area at least about 1 cm (0.4 in) wide; plenty of open white space; maximum 6 to 10 main shapes per page' },
+  adults:  { label: 'Adults', who: 'adults', forTitle: 'Adults', kw: ['adults', 'adult relaxation', 'stress relief', 'grown-ups'], dens: 'ADULTS: richly detailed and intricate; many small colourable areas; decorative patterns inside shapes; layered foreground and background; fine detail is welcome but every area must still be a fully closed outline' },
+  seniors: { label: 'Seniors', who: 'seniors', forTitle: 'Seniors', kw: ['seniors', 'seniors large print', 'elderly', 'older adults'], dens: 'SENIORS: large clear shapes; medium level of detail; generous spacing between lines; no tiny areas (nothing smaller than about 1.5 cm / 0.6 in); calm, uncluttered, easy to see and easy to colour' }
+};
+
+const TRIMS = {
+  '8.5x8.5': { label: '8.5 × 8.5 in', w: 8.5, h: 8.5, ratio: '1:1 (square)', orient: 'square', margin: '0.5 in (about 6% of the width) on every side' },
+  '8.5x11':  { label: '8.5 × 11 in', w: 8.5, h: 11, ratio: '17:22 (portrait)', orient: 'portrait', margin: '0.5 in (about 6% of the width and 4.5% of the height) on every side' },
+  '6x9':     { label: '6 × 9 in', w: 6, h: 9, ratio: '2:3 (portrait)', orient: 'portrait', margin: '0.5 in (about 8% of the width and 5.5% of the height) on every side' }
+};
+
+// ===== LINE STYLE FAMILIES (weight strings: [kids, adults, seniors]) =====
+const FAMILIES = [
+  { id: 'bold-rounded', name: 'Bold Rounded',
+    weight: ['extra-bold, thick uniform outlines (about 5 pt at 8.5 in page width)', 'bold-medium uniform outlines (about 2.5 pt at 8.5 in page width)', 'bold uniform outlines (about 4 pt at 8.5 in page width)'],
+    quality: 'perfectly smooth, rounded line ends and rounded corners; every line has the same even thickness; soft chunky cartoon shapes with no sharp points or sketchy strokes',
+    cover: 'chunky, friendly, rounded cartoon shapes with soft edges' },
+  { id: 'clean-vector', name: 'Clean Vector',
+    weight: ['thick crisp uniform outlines (about 4 pt at 8.5 in page width)', 'medium crisp uniform outlines (about 1.75 pt at 8.5 in page width)', 'medium-thick crisp uniform outlines (about 3 pt at 8.5 in page width)'],
+    quality: 'precise, geometric vector-style curves; perfectly even stroke width with no variation; no wobble, no sketchiness, no texture; tidy, digital, crisp edges',
+    cover: 'crisp, clean vector illustration with precise geometric curves' },
+  { id: 'hand-inked', name: 'Hand-Inked',
+    weight: ['thick brush-pen outlines (about 4.5 pt at 8.5 in page width)', 'medium pen outlines (about 2 pt at 8.5 in page width)', 'medium-bold pen outlines (about 3.5 pt at 8.5 in page width)'],
+    quality: 'confident hand-inked pen strokes with a very slight natural wobble and gentle line-width variation; clean continuous lines, no sketch marks, no overlapping stray strokes',
+    cover: 'warm hand-inked illustration with confident pen strokes and a handmade feel' },
+  { id: 'whimsical-doodle', name: 'Whimsical Doodle',
+    weight: ['thick playful outlines (about 4 pt at 8.5 in page width)', 'medium-thin playful outlines (about 1.5 pt at 8.5 in page width)', 'medium playful outlines (about 3 pt at 8.5 in page width)'],
+    quality: 'playful, loose-but-clean doodle lines; slightly irregular charming shapes; curly flourishes and little swirls; a friendly hand-drawn personality with all lines still fully closed',
+    cover: 'playful whimsical doodle illustration with curly flourishes and a friendly hand-drawn charm' },
+  { id: 'fine-etching', name: 'Fine Etching',
+    weight: ['medium-thick delicate outlines (about 3 pt at 8.5 in page width)', 'fine delicate outlines (about 1 pt at 8.5 in page width)', 'medium delicate outlines (about 2.5 pt at 8.5 in page width)'],
+    quality: 'elegant engraving-inspired contour lines, sharp and consistent; decorative patterns drawn as separate closed outlines inside shapes instead of hatching or cross-hatching; refined, vintage botanical-plate feel',
+    cover: 'elegant vintage engraving-inspired illustration with refined botanical-plate detail' },
+  { id: 'storybook', name: 'Soft Storybook Outline',
+    weight: ['thick soft outlines (about 4 pt at 8.5 in page width)', 'medium soft outlines (about 2 pt at 8.5 in page width)', 'medium-thick soft outlines (about 3.5 pt at 8.5 in page width)'],
+    quality: 'gentle, rounded children’s-storybook outlines; calm and soft; consistent line thickness with smooth curves and slightly rounded corners; warm and inviting',
+    cover: 'soft, warm children’s-storybook illustration with gentle rounded shapes' },
+  { id: 'linocut', name: 'Linocut Outline',
+    weight: ['very thick confident outlines (about 5 pt at 8.5 in page width)', 'medium-bold confident outlines (about 2.5 pt at 8.5 in page width)', 'bold confident outlines (about 4 pt at 8.5 in page width)'],
+    quality: 'bold folk-print outlines with slightly angular, carved-looking curves; decorative patterns drawn as closed outlines inside shapes; strong, graphic, handcrafted look but outlines only (no solid black printing areas)',
+    cover: 'bold folk-art linocut-inspired illustration with graphic shapes and decorative patterns' },
+  { id: 'monoline', name: 'Monoline Minimal',
+    weight: ['thick single-weight outlines (about 4 pt at 8.5 in page width)', 'thin single-weight outlines (about 1.25 pt at 8.5 in page width)', 'medium single-weight outlines (about 3 pt at 8.5 in page width)'],
+    quality: 'one single consistent stroke weight for the entire page; simplified, elegant shapes; smooth continuous curves; modern minimalist feel with generous breathing room',
+    cover: 'modern minimalist illustration with simplified, elegant shapes and smooth curves' }
+];
+
+// ===== MODIFIER POOLS =====
+const MODS = {
+  autumn: {
+    accent: ['a few falling leaves drifting down', 'a couple of acorns on the ground', 'a small butterfly resting nearby', 'a little cluster of mushrooms in one corner', 'a small bird perched close by', 'a twig of berries curling into the scene', 'a ladybug on a leaf', 'a couple of tiny pumpkins tucked in', 'a spider web between two stems', 'a snail on the ground', 'a few wheat stalks leaning in', 'a pinecone or two in the foreground', 'a curling vine with leaves', 'a bumblebee hovering over a late flower'],
+    back: ['rolling hills with layered trees behind', 'a simple fence line far behind', 'tall tree trunks with bark swirls', 'a big round harvest moon behind', 'soft clouds in simple outline', 'a row of distant haystacks', 'a low stone wall running across the back', 'scalloped hills layered in the distance', 'a sky with a few gliding birds', 'patches of tall grass and reeds', 'bare branches reaching in from the top', 'a distant barn on a hill'],
+    frame: ['a border of oak leaves around the edge', 'a rounded arch of branches framing the scene', 'a rope-and-bunting border along the top', 'a round porthole-style frame', 'a simple scalloped frame', 'leaf flourishes in each corner', 'a rustic wooden frame outline', 'a twisting vine border'],
+    pAccent: ['a ring of tiny acorns', 'little leaf shapes tucked into the gaps', 'small berry clusters between the main shapes', 'a thin scalloped ring of tiny leaves', 'small curls at the tips of the main shapes']
+  },
+  winter: {
+    accent: ['big soft snowflakes drifting down', 'a small cardinal perched nearby', 'a few holly leaves and berries in a corner', 'a little string of lights along an edge', 'a tiny pair of mittens on the ground', 'a pinecone dusted with snow', 'a cluster of icicles hanging from the top', 'a mug with curling steam', 'a small wrapped gift with a bow', 'a candy cane leaning on something', 'a few stars twinkling above', 'a jingle bell on a ribbon', 'a sprig of pine with a berry', 'little footprints trailing across the ground'],
+    back: ['snow-covered pine trees in layers', 'gentle snowy hills in the distance', 'a crescent moon and a few stars', 'distant cottages with glowing windows', 'a frozen pond with simple cracks', 'bare branches heavy with snow', 'a row of fence posts with snow caps', 'northern-lights ribbons across the sky', 'a lamp post with a soft glow', 'rolling drifts of snow', 'a church steeple far away', 'a garland swag along the top'],
+    frame: ['a border of holly and berries', 'a round wreath-style frame', 'a frame of icicles hanging from the top', 'a ribbon-and-bell border', 'a frame of snowy pine branches', 'snowflake flourishes in each corner', 'a rounded window frame with frosted edges', 'a string-of-lights border'],
+    pAccent: ['tiny stars in the gaps', 'little snow crystals between the main shapes', 'a ring of small dots', 'a thin scalloped ring of tiny hearts and stars', 'small curls at the tips of the main shapes']
+  },
+  spring: {
+    accent: ['a few falling blossom petals', 'a small butterfly landing nearby', 'a ladybug on a stem', 'a bumblebee over a flower', 'a tiny bird on a twig', 'a patch of clover with a four-leaf one', 'raindrops and a small puddle', 'a snail crossing a leaf', 'a couple of daisies at the front', 'a dragonfly hovering above', 'a bud just about to open', 'a small watering can on its side', 'a ribbon-tied bunch of tulips', 'a curling vine with tiny flowers'],
+    back: ['soft rolling hills with blossom trees', 'a simple picket fence behind', 'puffy clouds in simple outline', 'a distant farmhouse and tree', 'rows of tulips fading into the distance', 'a trellis with climbing flowers', 'a winding stream along the back', 'a hedge with small blossoms', 'a rainbow arching over the background', 'tall grass with dandelion puffs', 'a flowering tree branch reaching in from one side', 'a low stone wall with ivy'],
+    frame: ['a border of daisies and leaves', 'a round wreath frame of blossoms', 'an arch of climbing roses', 'a ribbon-and-flower border', 'a frame of tulips along the bottom and sides', 'blossom flourishes in each corner', 'a rounded garden-window frame', 'a twisting vine border with buds'],
+    pAccent: ['tiny buds in the gaps', 'little petal shapes between the main shapes', 'a ring of small dots', 'a thin scalloped ring of tiny leaves', 'small curls at the tips of the main shapes']
+  },
+  summer: {
+    accent: ['a couple of seashells in the foreground', 'a small starfish nearby', 'a seagull in the distance', 'a few bubbles floating up', 'a pair of sunglasses resting on something', 'a small butterfly drifting by', 'a tiny sailboat on the horizon', 'a bright beach ball', 'a dragonfly over the water', 'a straw hat in the corner', 'a couple of palm leaves entering from the top', 'a ring of ripples in the water', 'a small crab peeking out', 'sun sparkles in simple star shapes'],
+    back: ['gentle waves rolling in layers', 'a big round sun with simple rays', 'puffy clouds in simple outline', 'distant islands on the horizon', 'a row of palm trees along the back', 'sand dunes with beach grass', 'a wooden pier running into the water', 'a lighthouse far away', 'rolling green hills and a lake', 'a few kites in the sky', 'rocks and tide pools along the edge', 'a line of beach huts'],
+    frame: ['a rope border with knots', 'a round porthole frame', 'a border of shells and starfish', 'a frame of palm leaves', 'a wave border along the bottom', 'sun-ray flourishes in each corner', 'a rounded window frame with a wooden edge', 'a twisting vine border with flowers'],
+    pAccent: ['tiny shells in the gaps', 'little wave curls between the main shapes', 'a ring of small dots', 'a thin scalloped ring of tiny stars', 'small curls at the tips of the main shapes']
+  },
+  // shared pattern-page modifiers
+  pAccentShared: ['tiny dots filling the gaps between the motifs', 'small stars tucked into the empty spaces', 'a thin double outline around the outer shape', 'small teardrop shapes between the large shapes', 'a ring of tiny repeating arches around the edge', 'little spirals placed between the main elements'],
+  pBackShared: ['an outer ring of simple scallops', 'a plain open background with no extra elements', 'a faint ring of repeating dots at the outer edge', 'a simple square or circular boundary line', 'small matching motifs repeated in all four corners', 'a thin decorative line border inside the safe margin']
+};
+
+// audience clauses
+const AUD_CLAUSE = {
+  kids: ['Keep it simple: a few big, friendly shapes with wide open areas to colour.', 'Use large simple shapes and very little tiny detail so small hands can colour easily.', 'Make everything chunky and easy to colour, with lots of clean white space.'],
+  adults: ['Add rich, intricate detail with many small areas and decorative patterns inside the shapes.', 'Make it detailed and layered, with fine patterned areas that reward careful colouring.', 'Fill the scene with intricate detail and texture-like patterns drawn as closed outlines.'],
+  seniors: ['Keep shapes large and clear with comfortable spacing between lines and no tiny areas.', 'Use medium detail, generous spacing and a calm, uncluttered layout that is easy to see.', 'Make it relaxing and clear: large areas, medium detail and no cramped corners.']
+};
+
+const COMP = {
+  c: { label: 'Close-up single subject', lines: ['Composition: a close-up of one single main subject, centred and filling about two thirds of the frame, with only light supporting details.', 'Composition: a single hero subject shown large and centred, close-up, with a few small supporting elements around it.', 'Composition: tight, centred close-up of one main subject that dominates the page, with simple context details.'] },
+  w: { label: 'Wide scene', lines: ['Composition: a wide scene with a clear foreground, middle ground and background, the main subject slightly off-centre.', 'Composition: a full scene showing the whole setting, with layered depth and the main subject placed on a thirds line.', 'Composition: a wide establishing view with the main subject in the middle ground and details leading the eye through the page.'] },
+  m: { label: 'Centered pattern / mandala', lines: ['Composition: a perfectly centred mandala-style design built in rings radiating from the middle, balanced and symmetrical.', 'Composition: a centred circular pattern with repeating concentric layers and a clear focal point in the middle.', 'Composition: a symmetrical radial design, centred on the page, with each ring using a different motif.'] },
+  b: { label: 'Border-frame design', lines: ['Composition: a decorative border-frame design with a richly decorated edge and a calm, open centre area.', 'Composition: a framed layout where the motifs run around all four edges and the middle is left simple and open.', 'Composition: a border design hugging the safe margin, with matching corner details and an open central space.'] },
+  g: { label: 'Group of small items', lines: ['Composition: a group of small separate items arranged together with comfortable spacing between each item.', 'Composition: a tidy collection of individual objects spread evenly across the page, each one clearly separated.', 'Composition: a cluster of several small subjects arranged in a balanced layout with clear gaps between them.'] },
+  p: { label: 'Panoramic scene', lines: ['Composition: a panoramic scene stretching across the full width of the page with layered distance.', 'Composition: a sweeping horizontal landscape filling the page, with foreground details and a deep background.', 'Composition: a broad panoramic view where the scene flows from one side of the page to the other.'] }
+};
+
+// ===== ENGINE (pure logic, no DOM) =====
+const Studio = (function () {
+  const APP = 'Seasonal KDP Coloring Studio';
+
+  // ---------- seeded RNG ----------
+  function hashStr(s) {
+    let h = 2166136261 >>> 0;
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const rngFor = (seed, salt) => mulberry32(hashStr(seed + '|' + salt));
+  const ALPH = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  function newSeed() {
+    let s = '';
+    for (let i = 0; i < 6; i++) s += ALPH[Math.floor(Math.random() * ALPH.length)];
+    return s;
+  }
+  const pick = (r, a) => a[Math.floor(r() * a.length)];
+  function shuffle(r, a) {
+    const x = a.slice();
+    for (let i = x.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; }
+    return x;
+  }
+  function pickN(r, a, n) { return shuffle(r, a).slice(0, n); }
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  function titleCase(s) {
+    const small = new Set(['a', 'an', 'the', 'in', 'on', 'of', 'and', 'at', 'by', 'for', 'to', 'with']);
+    return s.split(' ').map((w, i) => (i > 0 && small.has(w)) ? w : w.split('-').map(cap).join('-')).join(' ');
+  }
+  const wc = s => s.trim().split(/\s+/).length;
+
+  // ---------- scene pools ----------
+  const poolCache = {};
+  function getPool(season, themeKey) {
+    const k = season + '/' + themeKey;
+    if (poolCache[k]) return poolCache[k];
+    const raw = SCENES[season][themeKey];
+    poolCache[k] = raw.map((line, i) => {
+      const p = line.split('|');
+      return { id: season + '.' + themeKey + '.' + i, subject: p[0], desc: p[1], comp: p[2] };
+    });
+    return poolCache[k];
+  }
+  const STOP = new Set(['family', 'scene', 'garden', 'house', 'with', 'and', 'the', 'trio', 'group', 'table', 'shelf', 'collection', 'winter', 'spring', 'summer', 'autumn', 'snowy', 'wild', 'baby', 'christmas', 'outdoor', 'door', 'tree', 'forest', 'life', 'pattern', 'tile', 'night', 'day', 'days', 'time', 'still', 'hill', 'row', 'box', 'big', 'little', 'open', 'sleepy', 'cozy', 'stand', 'pile', 'lineup', 'line', 'wide', 'path', 'close']);
+  const tokCache = {};
+  function tokens(sub) {
+    if (tokCache[sub]) return tokCache[sub];
+    const t = sub.toLowerCase().replace(/[^a-z\s-]/g, ' ').split(/[\s-]+/).filter(w => w.length > 2 && !STOP.has(w)).map(w => w.replace(/s$/, ''));
+    return (tokCache[sub] = t);
+  }
+  function clash(a, b, loose) {
+    if (a.subject === b.subject) return true;
+    if (loose) return false;
+    const ta = tokens(a.subject), tb = tokens(b.subject);
+    return ta.some(w => tb.includes(w));
+  }
+
+  // ---------- zones ----------
+  function zonePlan(N) {
+    const o = Math.ceil(N * 0.2), c = Math.ceil(N * 0.15), s = Math.ceil(N * 0.2);
+    const core = N - o - c - s, s1 = Math.ceil(s / 2), s2 = s - s1, c1 = Math.ceil(core / 2), c2 = core - c1;
+    const out = [];
+    [['Opening', o], ['Core', c1], ['Showcase', s1], ['Core', c2], ['Showcase', s2], ['Closing', c]].forEach(([z, n]) => { for (let i = 0; i < n; i++) out.push(z); });
+    return out;
+  }
+  const ZONE_LABEL = { Opening: 'Opening pages', Core: 'Core pages', Showcase: 'Showcase pages', Closing: 'Closing pages' };
+  const ZONE_PREF = {
+    Opening: { c: 3, g: 2, b: 1.5, m: 1.5, w: 1, p: 0.5 },
+    Core: { c: 1, g: 1, b: 1, m: 1, w: 1, p: 1 },
+    Showcase: { w: 3, p: 3, m: 3, g: 1.5, b: 1.5, c: 0.5 },
+    Closing: { c: 2, b: 2, g: 2, m: 2, w: 1, p: 1 }
+  };
+  function wpick(r, items, wf) {
+    let tot = 0; const ws = items.map(it => { const w = Math.max(0.0001, wf(it)); tot += w; return w; });
+    let x = r() * tot;
+    for (let i = 0; i < items.length; i++) { x -= ws[i]; if (x <= 0) return items[i]; }
+    return items[items.length - 1];
+  }
+
+  // ---------- scene planning ----------
+  function planScenes(cfg, seed, avoidSig, avoidIds) {
+    const pool = getPool(cfg.season, cfg.theme);
+    const isPat = !!themeMeta(cfg).pattern;
+    const N = cfg.pages, zones = zonePlan(N);
+    const softCap = Math.ceil(N * 0.4);
+    for (let attempt = 0; attempt < 900; attempt++) {
+      const loose = attempt >= 450 || isPat;
+      const r = rngFor(seed, 'plan' + attempt);
+      const chosen = []; const counts = {}; let ok = true;
+      for (let i = 0; i < N; i++) {
+        const prev = chosen[i - 1];
+        const cands = pool.filter(s => !chosen.includes(s) && (!prev || s.comp !== prev.comp) && !chosen.some(u => clash(u, s, loose)));
+        if (!cands.length) { ok = false; break; }
+        const pref = ZONE_PREF[zones[i]];
+        const s = wpick(r, cands, c => pref[c.comp] * ((counts[c.comp] || 0) >= softCap ? 0.15 : 1) * (avoidIds && avoidIds.has(c.id) ? 0.12 : 1));
+        chosen.push(s); counts[s.comp] = (counts[s.comp] || 0) + 1;
+      }
+      if (!ok) continue;
+      const sig = chosen.map(s => s.id).join(',');
+      if (sig === avoidSig && attempt < 899) continue;
+      return chosen.map((s, i) => ({ sceneId: s.id, zone: zones[i], modSalt: 0 }));
+    }
+    throw new Error('Could not plan scenes for ' + cfg.season + '/' + cfg.theme);
+  }
+  const sceneById = (cfg, id) => getPool(cfg.season, cfg.theme).find(s => s.id === id);
+  const sigOf = pages => pages.map(p => p.sceneId).join(',');
+  function themeMeta(cfg) { return SEASONS[cfg.season].themes.find(t => t.key === cfg.theme); }
+
+  // swap a single page; returns new page or null
+  function swapPage(book, idx) {
+    const cfg = book.cfg, pool = getPool(cfg.season, cfg.theme);
+    const isPat = !!themeMeta(cfg).pattern;
+    const cur = sceneById(cfg, book.pages[idx].sceneId);
+    const usedScenes = book.pages.map(p => sceneById(cfg, p.sceneId));
+    const prevC = idx > 0 ? usedScenes[idx - 1].comp : null;
+    const nextC = idx < book.pages.length - 1 ? usedScenes[idx + 1].comp : null;
+    const others = usedScenes.filter((_, i) => i !== idx);
+    book.swapCount = (book.swapCount || 0) + 1;
+    const r = rngFor(book.seeds.scene, 'swap' + book.swapCount + ':' + idx);
+    const retired = book.retired = book.retired || [];
+    for (const loose of [false, true]) {
+      let cands = pool.filter(s => s !== cur && !retired.includes(s.id) && !others.includes(s) && s.comp !== prevC && s.comp !== nextC && !others.some(u => clash(u, s, loose || isPat)));
+      if (!cands.length) continue;
+      const pref = ZONE_PREF[book.pages[idx].zone];
+      const s = wpick(r, cands, c => pref[c.comp]);
+      retired.push(cur.id);
+      return { sceneId: s.id, zone: book.pages[idx].zone, modSalt: book.swapCount };
+    }
+    if (retired.length) { book.retired = []; return swapPage(book, idx); }
+    return null;
+  }
+
+  // ---------- style ----------
+  function pickFamily(seed, avoidId) {
+    const r = rngFor(seed, 'family');
+    let f = pick(r, FAMILIES);
+    if (f.id === avoidId) f = FAMILIES[(FAMILIES.indexOf(f) + 1 + Math.floor(r() * (FAMILIES.length - 1))) % FAMILIES.length];
+    return f;
+  }
+  function buildLock(family, cfg) {
+    const ai = ['kids', 'adults', 'seniors'].indexOf(cfg.aud);
+    const trim = TRIMS[cfg.trim], aud = AUDIENCES[cfg.aud];
+    return [
+      '=== LOCKED STYLE BLOCK: "' + family.name + '" (identical on every page of this book) ===',
+      'Line weight: ' + family.weight[ai] + '.',
+      'Line quality: ' + family.quality + '.',
+      'Detail density (' + aud.dens + ').',
+      'Outline closure: every shape is a fully closed outline with no gaps, so every area can be coloured in; no open or broken lines; no tiny enclosed slivers.',
+      'Colour: pure black (#000000) outlines on a pure white (#FFFFFF) background only.',
+      'Banned: no grayscale, no shading, no hatching or stippling, no filled black areas, no gradients, no textures, no colour, no 3D rendering, no shadows, no sketch or construction lines.',
+      'Text: no text, letters, numbers, signature or watermark inside the image unless this page prompt explicitly asks for it.',
+      'Format: flat 2D line art, print-ready at 300 DPI, aspect ratio ' + trim.ratio + ' (' + trim.label + '), consistent margins with all artwork inside a 0.5 in safe area.',
+      '=== END LOCKED STYLE BLOCK ==='
+    ].join('\n');
+  }
+  function specLine(cfg) {
+    const trim = TRIMS[cfg.trim];
+    return 'KDP SPEC: ' + trim.label + ' ' + trim.orient + ' page, aspect ratio ' + trim.ratio + '. Keep a clean white margin of ' + trim.margin + '; nothing touches or runs off the edge. 300 DPI, black lines on pure white, no text or watermark in the image.';
+  }
+
+  // ---------- modifiers & page rendering ----------
+  function modsFor(cfg, scene, seed, salt, zone) {
+    const M = MODS[cfg.season], r = rngFor(seed, 'mod:' + scene.id + ':' + salt);
+    const pat = !!themeMeta(cfg).pattern;
+    const accPool = pat ? M.pAccent.concat(MODS.pAccentShared) : M.accent;
+    const backPool = pat ? MODS.pBackShared : M.back;
+    const nAcc = cfg.aud === 'adults' ? 2 : 1;
+    const accents = pickN(r, accPool, nAcc);
+    const pBack = cfg.aud === 'adults' ? 1 : cfg.aud === 'seniors' ? 0.55 : 0.4;
+    const back = (zone === 'Showcase' || r() < pBack) && scene.comp !== 'b' ? pick(r, backPool) : null;
+    const pFrame = cfg.aud === 'adults' ? 0.35 : cfg.aud === 'seniors' ? 0.15 : 0.2;
+    const frame = (!pat && scene.comp !== 'b' && scene.comp !== 'm' && scene.comp !== 'p' && r() < pFrame) ? pick(r, M.frame) : null;
+    const aud = pick(r, AUD_CLAUSE[cfg.aud]);
+    const compLine = pick(r, COMP[scene.comp].lines);
+    return { accents, back, frame, aud, compLine };
+  }
+  const SHOW = {
+    kids: 'This is a showcase page: make it the most special page of the book with a little more to colour, but keep the shapes big and simple.',
+    adults: 'This is a showcase page: make it one of the most elaborate and impressive pages of the book, with extra layers of detail while keeping the same locked line style.',
+    seniors: 'This is a showcase page: make it a standout scene with a bit more to enjoy, but keep shapes large, clear and well spaced.'
+  };
+  function sceneText(cfg, scene, m, zone) {
+    const bits = [cap(scene.desc) + '.', m.aud];
+    bits.push('Extra details: ' + m.accents.join('; ') + '.');
+    if (m.back) bits.push('Background: ' + m.back + '.');
+    if (m.frame) bits.push('Framing device: ' + m.frame + '.');
+    if (zone === 'Showcase') bits.push(SHOW[cfg.aud]);
+    return bits.join(' ');
+  }
+  function renderPage(book, i) {
+    const cfg = book.cfg, pg = book.pages[i], scene = sceneById(cfg, pg.sceneId);
+    const m = modsFor(cfg, scene, book.seeds.scene, pg.modSalt, pg.zone);
+    const aud = AUDIENCES[cfg.aud];
+    const head = 'PAGE ' + (i + 1) + ' OF ' + cfg.pages + ' (' + ZONE_LABEL[pg.zone] + '): ' + titleCase(scene.subject);
+    const intro = 'Create a black-and-white coloring page for the interior of a ' + SEASONS[cfg.season].short.toLowerCase() + ' coloring book for ' + aud.who + '.';
+    return {
+      n: i + 1, zone: pg.zone, zoneLabel: ZONE_LABEL[pg.zone], title: titleCase(scene.subject), subject: scene.subject,
+      comp: scene.comp, compLabel: COMP[scene.comp].label, sceneId: scene.id,
+      prompt: [head, intro, '', 'SCENE: ' + sceneText(cfg, scene, m, pg.zone), m.compLine, '', book.lock, '', specLine(cfg)].join('\n')
+    };
+  }
+  function renderAll(book) { return book.pages.map((_, i) => renderPage(book, i)); }
+
+  // ---------- title ----------
+  function autoTitle(cfg, seed) {
+    const th = themeMeta(cfg);
+    return pick(rngFor(seed, 'title'), th.titles);
+  }
+  const SUBS = [
+    (n, t) => n + ' Original ' + t + ' Pages to Color, Relax and Unwind',
+    (n, t) => n + ' One-of-a-Kind ' + t + ' Designs for Calm Coloring',
+    (n, t) => n + ' Single-Sided ' + t + ' Pages to Color and Enjoy',
+    (n, t) => n + ' Hand-Picked ' + t + ' Scenes for Quiet, Creative Moments'
+  ];
+  function coverSubtitle(cfg, seed) {
+    return pick(rngFor(seed, 'subtitle'), SUBS)(cfg.pages, titleCase(themeMeta(cfg).noun));
+  }
+
+  // ---------- cover ----------
+  const COVER_COMPS = [
+    'Centred hero layout: one large hero illustration ({heroes}) fills the middle of the page inside a decorative rounded frame; the title sits in an arched banner across the top and the subtitle in a ribbon below the illustration.',
+    'Top-title layout: the title is set large across the top third on a clean, calm area; a rich wide scene ({heroes}) fills the lower two thirds; the subtitle sits in a rounded label at the bottom.',
+    'Wreath layout: a big circular wreath of {place} motifs frames a central hero scene ({heroes}); the title curves above the wreath and the subtitle sits underneath on a quiet background area.',
+    'Collage layout: a neat grid of six to eight small framed vignettes ({heroes} and more) surrounds a central title badge; the subtitle runs along a banner at the bottom.',
+    'Arch layout: a tall arch or window frame shows a charming scene ({heroes}); the title is on a plaque above the arch and the subtitle on a small plaque at the base.',
+    'Full-bleed layout: one immersive full-bleed panoramic scene ({heroes}) with a soft, uncluttered area for the title near the top and the subtitle in a band near the bottom.'
+  ];
+  function coverPrompts(book) {
+    const cfg = book.cfg, th = themeMeta(cfg), sea = SEASONS[cfg.season], trim = TRIMS[cfg.trim], fam = book.family;
+    const r = rngFor(book.seeds.style + book.seeds.scene, 'cover');
+    const showSubjects = book.rendered.filter(p => p.zone === 'Showcase').map(p => p.subject);
+    const comps = pickN(r, COVER_COMPS, 3);
+    return comps.map((c, i) => {
+      const heroes = pickN(rngFor(book.seeds.scene, 'hero' + i), showSubjects.length ? showSubjects : [th.cover], 3).join(', ');
+      return {
+        name: 'Cover variant ' + 'ABC'[i],
+        text: [
+          'Design a FULL-COLOUR front cover for a coloring book (front panel only).',
+          'Format: ' + trim.label + ' ' + trim.orient + ', aspect ratio ' + trim.ratio + '. Keep important elements inside a 0.4 in safe margin; let the background run slightly off the edges.',
+          'Text on the cover (spell exactly as written, large, clear and highly readable): TITLE: "' + book.title + '". SUBTITLE: "' + book.subtitle + '". No other words, no author name, no price, no barcode, no watermark.',
+          cap(c.replace('{heroes}', heroes).replace('{place}', th.place)),
+          'Theme and mood: ' + sea.label.toLowerCase() + ' coloring book about ' + th.noun + ' (' + th.cover + '); ' + sea.mood + '.',
+          'Visual style: ' + fam.cover + ', matching the line style used inside the book (' + fam.name + ') but fully coloured with clean outlines and rich colour; same motif language as the interior pages.',
+          'Colour palette: ' + sea.palette + '.',
+          'Make it look like a polished, professionally published coloring-book cover that stands out as a small thumbnail.'
+        ].join('\n')
+      };
+    });
+  }
+  function backCoverNote(book) {
+    const th = themeMeta(book.cfg), aud = AUDIENCES[book.cfg.aud];
+    return [
+      'Back cover blurb (paste into Canva): "Escape into ' + th.hook + '. ' + book.cfg.pages + ' single-sided coloring pages designed for ' + aud.who + ' - grab your favourite pencils, markers or gel pens and enjoy a calm, creative break."',
+      'Design note: use a soft, quiet version of the front-cover background (no busy artwork behind the text), add the blurb in a readable size, and leave a clean white 2 × 1.2 in area in the lower right for the KDP barcode. Get exact cover dimensions (back, spine, front and bleed) from the KDP cover calculator for your page count and paper type.'
+    ].join('\n\n');
+  }
+  function titlePagePrompt(book) {
+    const cfg = book.cfg, th = themeMeta(cfg), fam = book.family;
+    const subs = pickN(rngFor(book.seeds.scene, 'tp'), book.rendered.map(p => p.subject), 3).join(', ');
+    return [
+      'TITLE PAGE: "This book belongs to"',
+      'Create a black-and-white interior title page for a coloring book.',
+      '',
+      'SCENE: a decorative frame of ' + th.place + ' motifs (' + subs + ') running around the edges of the page, with a large calm open area in the middle. In the middle, the hand-lettered words "This book belongs to" followed by one long empty horizontal writing line underneath for a name. The words "This book belongs to" are the ONLY text allowed in the image; lettering matches the locked line style and is drawn as outlined letters that can be coloured in. Keep the writing line clear of any decoration.',
+      'Composition: centred, symmetrical, border-frame design with an open centre.',
+      '',
+      book.lock,
+      '',
+      specLine(cfg)
+    ].join('\n');
+  }
+
+  // ---------- listing kit ----------
+  const L = {
+    open: [
+      'Ready to escape into {hook}? This {sea} coloring book is made for {who} who want a calm, creative break.',
+      'Looking for a coloring book that feels {mood}? Meet "{title}", a collection built around {hook}.',
+      'Pour a warm drink, pick up your favourite pens and step into {hook}. This {sea} book is designed for {who}.',
+      'Some days call for quiet, colourful time. "{title}" brings you {hook} in a book made for {who}.',
+      'Bring the season to your table with this {sea} coloring book, full of {hook}.',
+      'Meet your new favourite relaxing hobby: a {sea} coloring book packed with {hook}, made for {who}.'
+    ],
+    inside: [
+      'Inside you will find {n} original single-sided coloring pages, from {s1} and {s2} to {s3} and {s4}. The pages follow a gentle arc, moving from simple opening scenes to detailed showcase pages, so every turn of the page feels fresh.',
+      'You get {n} unique designs on single-sided pages, including {s1}, {s2}, {s3} and {s4}. Every page is a different scene, so you never colour the same idea twice.',
+      '{n} different pages are waiting for you, from {s1} and {s2} to {s3} and {s4}. Each design is single-sided and has its own subject, mood and composition.'
+    ],
+    audience: {
+      kids: ['Bold outlines and big, simple shapes make every page easy for small hands to colour.', 'Large friendly shapes and wide open spaces keep colouring fun, not frustrating.', 'Thick, clear lines and uncluttered pages are perfect for growing young artists.'],
+      adults: ['Intricate, layered detail rewards patient colouring with pencils, fine liners and gel pens.', 'Fine details and decorative patterns give you plenty to explore and colour slowly.', 'Richly detailed pages invite you to slow down, focus and enjoy the process.'],
+      seniors: ['Large, clear shapes and generous spacing make every page easy to see and comfortable to colour.', 'Medium detail and open layouts keep colouring relaxing, never crowded or tiring on the eyes.', 'Clear lines and calm, uncluttered pages are designed to be gentle and enjoyable.']
+    },
+    benefit: [
+      'Every page has a different subject, so the book never feels repetitive.',
+      'A consistent line style runs through the whole book for a polished, cohesive look.',
+      'Designs are printed on one side only, so you can colour freely and even frame your favourites.',
+      'A relaxing way to unwind after a long day without screens.',
+      'A thoughtful gift idea for birthdays, holidays or a just-because surprise.',
+      'No experience needed: just choose your colours and enjoy.',
+      'A good fit for quiet afternoons, travel, waiting rooms or cozy evenings at home.',
+      'Pages are easy to colour with colored pencils, markers, crayons or gel pens.'
+    ],
+    print: [
+      'Printed on a standard {trim} page with a clean white background, each design sits on its own page so you can pick your favourites in any order.',
+      'The book uses a {trim} trim size with crisp black lines on white pages, ready for your favourite colouring tools.',
+      'Each illustration is printed on its own {trim} page with clean, crisp lines that are easy to follow.'
+    ],
+    close: [
+      'Grab your copy today and give yourself something colourful to look forward to.',
+      'Add it to your cart and start your next colouring adventure today.',
+      'Pick up your copy and let the colouring begin.',
+      'Treat yourself, or someone who loves to colour, to a book full of calm.',
+      'Order your copy now and make room for a little creative time each day.',
+      'Scroll up and get your copy today.'
+    ]
+  };
+  function fill(t, v) { return t.replace(/\{(\w+)\}/g, (_, k) => v[k]); }
+  function listingKit(book) {
+    const cfg = book.cfg, th = themeMeta(cfg), sea = SEASONS[cfg.season], aud = AUDIENCES[cfg.aud], trim = TRIMS[cfg.trim];
+    const r = rngFor(book.seeds.scene + book.seeds.style, 'listing');
+    const subs = book.rendered.filter(p => p.zone !== 'Closing').map(p => p.subject);
+    const four = pickN(r, subs, 4).map(s => s.toLowerCase());
+    const vars = { hook: th.hook, sea: sea.short.toLowerCase() + (cfg.season === 'winter' ? ' and Christmas' : ''), who: aud.who, title: book.title, mood: sea.mood, n: cfg.pages, s1: four[0], s2: four[1], s3: four[2], s4: four[3], trim: trim.label };
+    const o1 = Math.floor(r() * L.open.length), o2 = Math.floor(r() * L.inside.length), o3 = Math.floor(r() * 3), o4 = Math.floor(r() * L.print.length), o5 = Math.floor(r() * L.close.length);
+    const ben = shuffle(r, L.benefit);
+    let nb = 4, description;
+    for (;;) {
+      description = [
+        fill(L.open[o1], vars),
+        fill(L.inside[o2], vars) + ' ' + L.audience[cfg.aud][o3],
+        ben.slice(0, nb).join(' '),
+        fill(L.print[o4], vars) + ' ' + L.close[o5]
+      ].join('\n\n');
+      const w = wc(description);
+      if (w < 160 && nb < ben.length) nb++; else if (w > 195 && nb > 2) nb--; else break;
+    }
+
+    const primary = (cfg.season === 'winter' ? 'Winter & Christmas' : sea.short) + ' Coloring Book for ' + aud.forTitle;
+    const kdpTitle = primary + ': ' + book.title;
+    const subA = [
+      cfg.pages + ' ' + titleCase(th.noun) + ' to Color, Relax and Unwind',
+      cfg.pages + ' Single-Sided ' + titleCase(th.noun) + ' Designs for Calm and Creative Moments',
+      'Relaxing ' + titleCase(th.noun) + ', ' + cfg.pages + ' Unique Pages to Color',
+      cfg.pages + ' Cozy ' + titleCase(th.noun) + ' Pages for Stress-Free Coloring'
+    ];
+    const kdpSubtitle = pick(r, subA);
+
+    const aw = pick(r, aud.kw), aw2 = pick(r, aud.kw);
+    const seasonWord = cfg.season === 'winter' ? 'christmas' : sea.short.toLowerCase();
+    const A = pickN(r, th.kw, 3).map((k, i) => [
+      k + ' coloring book for ' + aw,
+      seasonWord + ' ' + k + ' coloring pages',
+      k + ' coloring book ' + seasonWord,
+      k + ' ' + seasonWord + ' coloring for ' + aw2
+    ][(i + Math.floor(r() * 4)) % 4]);
+    const B = pickN(r, [
+      seasonWord + ' coloring book for ' + aw,
+      seasonWord + ' coloring pages ' + aw2,
+      'relaxing ' + seasonWord + ' coloring book',
+      seasonWord + ' coloring book single sided',
+      'cozy ' + seasonWord + ' coloring pages ' + aw
+    ], 2);
+    const C = pickN(r, [
+      'coloring book gift for ' + aw,
+      cfg.pages + ' page ' + seasonWord + ' coloring book',
+      'stress relief coloring ' + seasonWord + ' ' + aw2,
+      'calming creative hobby ' + aw,
+      seasonWord + ' coloring book gift idea',
+      'large trim ' + seasonWord + ' coloring ' + aw
+    ], 2);
+    const seen = new Set(), keywords = [];
+    A.concat(B, C).forEach(k => { k = k.replace(/\s+/g, ' ').trim(); if (k.length <= 50 && !seen.has(k)) { seen.add(k); keywords.push(k); } });
+    const extras = [seasonWord + ' coloring book', th.kw[0] + ' coloring pages', 'coloring book for ' + aw, 'one-sided coloring pages ' + seasonWord, 'creative relaxing hobby ' + seasonWord];
+    for (const e of extras) { if (keywords.length >= 7) break; if (!seen.has(e)) { seen.add(e); keywords.push(e); } }
+    return { kdpTitle, kdpSubtitle, description, keywords: keywords.slice(0, 7) };
+  }
+
+  // ---------- book assembly ----------
+  function buildBook(cfg, seeds, opts) {
+    opts = opts || {};
+    const family = opts.family || pickFamily(seeds.style, opts.avoidFamily);
+    const pages = opts.pages || planScenes(cfg, seeds.scene, opts.avoidSig, opts.avoidIds);
+    const book = { cfg: Object.assign({}, cfg), seeds: Object.assign({}, seeds), family, pages, swapCount: opts.swapCount || 0, retired: [] };
+    book.lock = buildLock(family, cfg);
+    book.userTitle = !!(cfg.title && cfg.title.trim());
+    book.title = book.userTitle ? cfg.title.trim() : autoTitle(cfg, seeds.scene);
+    book.subtitle = coverSubtitle(cfg, seeds.scene);
+    book.rendered = renderAll(book);
+    refresh(book);
+    return book;
+  }
+  function refresh(book) {
+    book.rendered = renderAll(book);
+    book.covers = coverPrompts(book);
+    book.backNote = backCoverNote(book);
+    book.titlePage = titlePagePrompt(book);
+    book.listing = listingKit(book);
+    return book;
+  }
+  function restyle(book, newStyleSeed) {
+    const cfg = book.cfg;
+    const nb = buildBook(cfg, { scene: book.seeds.scene, style: newStyleSeed }, { pages: book.pages.map(p => Object.assign({}, p)), avoidFamily: book.family.id });
+    nb.title = book.title; nb.userTitle = book.userTitle;
+    return refresh(nb);
+  }
+
+  // ---------- export ----------
+  function exportText(book) {
+    const cfg = book.cfg, th = themeMeta(cfg), L2 = '='.repeat(64);
+    const out = [];
+    out.push(APP.toUpperCase(), 'Prompt pack for: ' + book.title, L2);
+    out.push('Season: ' + SEASONS[cfg.season].label + ' | Theme: ' + th.label + ' | Audience: ' + AUDIENCES[cfg.aud].label + ' | Pages: ' + cfg.pages + ' | Trim: ' + TRIMS[cfg.trim].label);
+    out.push('Seed: ' + book.seeds.scene + '-' + book.seeds.style + ' | Line style family: ' + book.family.name, '');
+    out.push('HOW TO USE: start ONE new ChatGPT chat for this book, paste the Style Lock block below first, then paste the pages one at a time (each page prompt already contains the lock).', '');
+    out.push('STYLE LOCK', book.lock, '', L2);
+    book.rendered.forEach(p => { out.push('', L2, p.prompt); });
+    out.push('', L2, 'COVER PROMPTS (full colour)', L2);
+    book.covers.forEach(c => { out.push('', c.name.toUpperCase(), c.text); });
+    out.push('', L2, 'TITLE PAGE PROMPT', L2, book.titlePage);
+    out.push('', L2, 'BACK COVER NOTE', L2, book.backNote);
+    out.push('', L2, 'LISTING KIT', L2, 'TITLE: ' + book.listing.kdpTitle, 'SUBTITLE: ' + book.listing.kdpSubtitle, '', 'DESCRIPTION:', book.listing.description, '', 'KEYWORDS:');
+    book.listing.keywords.forEach((k, i) => out.push((i + 1) + '. ' + k));
+    out.push('', L2, APP + ' - Front-End Edition');
+    return out.join('\n');
+  }
+
+  return { APP, newSeed, buildBook, restyle, planScenes, swapPage, refresh, renderPage, renderAll, sigOf, themeMeta, getPool, sceneById, exportText, zonePlan, wc, rngFor, pickFamily, buildLock, listingKit, COMP_LABEL: Object.fromEntries(Object.entries(COMP).map(([k, v]) => [k, v.label])) };
+})();
+
+// ===== UI =====
+(function () {
+  const $ = id => document.getElementById(id);
+  function h(tag, attrs, ...kids) {
+    const e = document.createElement(tag);
+    for (const k in (attrs || {})) {
+      if (k === 'class') e.className = attrs[k];
+      else if (k === 'text') e.textContent = attrs[k];
+      else if (k.startsWith('on')) e.addEventListener(k.slice(2), attrs[k]);
+      else e.setAttribute(k, attrs[k]);
+    }
+    kids.flat().forEach(c => { if (c != null) e.append(c.nodeType ? c : document.createTextNode(c)); });
+    return e;
+  }
+
+  const ICONS = {
+    c: '<circle cx="12" cy="12" r="5"/><rect x="3" y="3" width="18" height="18" rx="3"/>',
+    w: '<path d="M3 17c4-5 6-5 9-1s6 2 9-3"/><circle cx="16" cy="8" r="2"/><rect x="3" y="3" width="18" height="18" rx="3"/>',
+    m: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.500"/><path d="M12 3v18M3 12h18M5.600 5.600l12.800 12.800M18.400 5.600L5.600 18.400"/>',
+    b: '<rect x="3" y="3" width="18" height="18" rx="3"/><rect x="8" y="8" width="8" height="8" rx="1.500"/>',
+    g: '<circle cx="7.500" cy="7.500" r="2.500"/><circle cx="16.500" cy="7.500" r="2.500"/><circle cx="7.500" cy="16.500" r="2.500"/><circle cx="16.500" cy="16.500" r="2.500"/>',
+    p: '<rect x="2" y="7" width="20" height="10" rx="2"/><path d="M2 14c3-3 5-3 8 0s5 2 8-1"/>'
+  };
+  const COMP_COL = { c: '#e0a05a', w: '#6fb0d8', m: '#b58be0', b: '#7fcf94', g: '#e57f9a', p: '#d9cf6f' };
+  function icon(c) { const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.innerHTML = ICONS[c]; return s; }
+
+  let book = null, lastCfg = null;
+  const els = { season: $('season'), theme: $('theme'), aud: $('aud'), pages: $('pages'), trim: $('trim'), title: $('btitle') };
+
+  // ---------- controls ----------
+  Object.keys(SEASONS).forEach(k => els.season.append(h('option', { value: k, text: SEASONS[k].label })));
+  Object.keys(AUDIENCES).forEach(k => els.aud.append(h('option', { value: k, text: AUDIENCES[k].label + (k === 'kids' ? ' (bold, simple, big shapes)' : k === 'adults' ? ' (detailed, intricate)' : ' (large, clear, relaxing)') })));
+  [20, 25, 30].forEach(n => els.pages.append(h('option', { value: n, text: n + ' pages' })));
+  Object.keys(TRIMS).forEach(k => els.trim.append(h('option', { value: k, text: TRIMS[k].label })));
+  els.pages.value = 25;
+  function fillThemes() {
+    els.theme.innerHTML = '';
+    SEASONS[els.season.value].themes.forEach(t => els.theme.append(h('option', { value: t.key, text: t.label })));
+    document.body.dataset.season = els.season.value;
+  }
+  fillThemes();
+  els.season.addEventListener('change', () => { fillThemes(); markDirty(); });
+  ['theme', 'aud', 'pages', 'trim'].forEach(k => els[k].addEventListener('change', markDirty));
+  els.title.addEventListener('input', markDirty);
+
+  const readCfg = () => ({ season: els.season.value, theme: els.theme.value, aud: els.aud.value, pages: +els.pages.value, trim: els.trim.value, title: els.title.value.trim() });
+  const sameCfg = (a, b) => ['season', 'theme', 'aud', 'pages', 'trim', 'title'].every(k => a[k] === b[k]);
+  function markDirty() {
+    $('hint').textContent = (book && !sameCfg(readCfg(), lastCfg)) ? 'Settings changed. Press Generate My Book to apply.' : '';
+  }
+
+  // ---------- toast & clipboard ----------
+  let tt;
+  function toast(msg) {
+    const t = $('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 1900);
+  }
+  function copy(text, msg) {
+    const done = () => toast(msg || 'Copied to clipboard');
+    const fallback = () => {
+      const ta = h('textarea', { style: 'position:fixed;left:-9999px;top:0' }); ta.value = text; document.body.append(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { toast('Copy failed: select the text manually'); }
+      ta.remove();
+    };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+  }
+
+  // ---------- generation ----------
+  function generate(mode) {
+    const cfg = readCfg();
+    document.body.dataset.season = cfg.season;
+    const prevSig = book ? Studio.sigOf(book.pages) : null;
+    const prevFam = book ? book.family.id : null;
+    let nb;
+    const sv = $('seedin').value.trim().toUpperCase();
+    let loaded = null;
+    if (sv) {
+      const m = sv.match(/^([A-Z0-9]{6})-([A-Z0-9]{6})$/);
+      if (!m) { toast('Seed format: XXXXXX-YYYYYY'); return; }
+      loaded = { scene: m[1], style: m[2] };
+    }
+    try {
+      if (loaded) {
+        nb = Studio.buildBook(cfg, loaded);
+        $('seedin').value = '';
+      } else if (mode === 'new' || !book || sameCfg(cfg, lastCfg)) {
+        nb = Studio.buildBook(cfg, { scene: Studio.newSeed(), style: Studio.newSeed() }, { avoidSig: prevSig, avoidFamily: prevFam, avoidIds: prevIds(cfg) });
+      } else if (book && ['season', 'theme', 'aud', 'pages', 'trim'].every(k => cfg[k] === lastCfg[k])) {
+        nb = Studio.buildBook(cfg, book.seeds, { pages: book.pages.map(p => Object.assign({}, p)), family: book.family });
+      } else {
+        nb = Studio.buildBook(cfg, book.seeds, { avoidSig: prevSig, avoidIds: prevIds(cfg), family: book.family });
+      }
+    } catch (e) { toast('Error: ' + e.message); return; }
+    book = nb; lastCfg = cfg; render(true);
+    toast(mode === 'new' ? 'New book generated (new seed)' : 'Book generated');
+  }
+  function prevIds(cfg) { return book && book.cfg.season === cfg.season && book.cfg.theme === cfg.theme ? new Set(book.pages.map(p => p.sceneId)) : null; }
+  function rerollStyle() {
+    book = Studio.restyle(book, Studio.newSeed()); render(false); toast('New line style: ' + book.family.name + ' (scenes kept)');
+  }
+  function newScenes() {
+    book = Studio.buildBook(book.cfg, { scene: Studio.newSeed(), style: book.seeds.style }, { avoidSig: Studio.sigOf(book.pages), avoidIds: new Set(book.pages.map(p => p.sceneId)), family: book.family });
+    render(false); toast('New scenes (style kept)');
+  }
+  function swap(i) {
+    const np = Studio.swapPage(book, i);
+    if (!np) { toast('No unused scene fits this slot'); return; }
+    book.pages[i] = np; Studio.refresh(book); render(false, i); toast('Page ' + (i + 1) + ' swapped');
+  }
+
+  // ---------- render ----------
+  function render(scrollTop, keepIdx) {
+    const out = $('result'); const prevY = window.scrollY;
+    out.innerHTML = '';
+    $('empty').hidden = true;
+    const cfg = book.cfg, th = Studio.themeMeta(cfg);
+    const seedStr = book.seeds.scene + '-' + book.seeds.style;
+
+    out.append(h('div', { class: 'bar', id: 'top' },
+      h('div', null,
+        h('h2', { text: book.title }),
+        h('div', { class: 'meta' }, SEASONS[cfg.season].label + ' · ' + th.label + ' · ' + AUDIENCES[cfg.aud].label + ' · ' + cfg.pages + ' pages · ' + TRIMS[cfg.trim].label + ' · Seed ',
+          h('button', { class: 'seed', title: 'Copy seed', onclick: () => copy(seedStr, 'Seed copied') , text: seedStr }))),
+      h('div', { class: 'actions' },
+        h('button', { class: 'btn', onclick: () => copy(book.rendered.map(p => p.prompt).join('\n\n----------------------------------------------------------------\n\n'), 'All ' + cfg.pages + ' prompts copied'), text: 'Copy All Prompts' }),
+        h('button', { class: 'btn', onclick: exportTxt, text: 'Export All as .txt' }))));
+
+    const mixCount = {}; book.rendered.forEach(p => mixCount[p.comp] = (mixCount[p.comp] || 0) + 1);
+    const zc = {}; book.rendered.forEach(p => zc[p.zone] = (zc[p.zone] || 0) + 1);
+    out.append(h('div', { class: 'tiles' },
+      h('div', { class: 'tile' }, h('b', { text: 'Pages' }), h('span', { text: cfg.pages }), h('small', { text: zc.Opening + ' opening · ' + zc.Core + ' core · ' + zc.Showcase + ' showcase · ' + zc.Closing + ' closing' })),
+      h('div', { class: 'tile' }, h('b', { text: 'Line style' }), h('span', { text: book.family.name }), h('small', { text: 'Locked on every page' })),
+      h('div', { class: 'tile' }, h('b', { text: 'Composition mix' }), h('span', { text: Object.keys(mixCount).length + ' types' }),
+        h('div', { class: 'mix' }, ...Object.keys(mixCount).map(k => h('i', { style: 'width:' + (mixCount[k] / cfg.pages * 100) + '%;background:' + COMP_COL[k], title: Studio.COMP_LABEL[k] + ': ' + mixCount[k] })))),
+      h('div', { class: 'tile' }, h('b', { text: 'Trim' }), h('span', { text: TRIMS[cfg.trim].label }), h('small', { text: TRIMS[cfg.trim].ratio }))));
+
+    out.append(h('nav', { class: 'chips' },
+      ...[['#lock', 'Style Lock'], ['#pages', 'Pages'], ['#cover', 'Cover & title page'], ['#listing', 'Listing kit'], ['#guides', 'How-to & KDP']].map(([a, t]) => h('a', { href: a, text: t }))));
+
+    // style lock
+    const ai = ['kids', 'adults', 'seniors'].indexOf(cfg.aud);
+    out.append(h('section', { class: 'card lock', id: 'lock' },
+      h('div', { class: 'tag', text: 'Style Lock' }),
+      h('h3', { text: book.family.name }),
+      h('p', { class: 'lead', text: 'Every page in this book shares this exact style block, injected word for word into each prompt. Never let a page pick its own style.' }),
+      h('div', { class: 'facts' },
+        fact('Line weight', book.family.weight[ai]),
+        fact('Line quality', book.family.quality),
+        fact('Detail density', AUDIENCES[cfg.aud].dens),
+        fact('Closure & colour', 'All shapes fully closed so they can be coloured. Pure black outlines on pure white. No grayscale, shading, filled black areas or gradients.'),
+        fact('Format', 'Flat 2D, 300 DPI, ' + TRIMS[cfg.trim].ratio + ' (' + TRIMS[cfg.trim].label + '), 0.5 in safe area, no text or watermark in the image.')),
+      h('div', { class: 'btnrow' },
+        h('button', { class: 'btn', onclick: () => copy(book.lock, 'Style Lock block copied'), text: 'Copy Style Lock' }),
+        h('button', { class: 'btn', onclick: rerollStyle, text: 'Re-roll Style (keep scenes)' }),
+        h('button', { class: 'btn', onclick: newScenes, text: 'New Scenes (keep style)' }))));
+
+    // pages
+    out.append(h('div', { class: 'sec', id: 'pages' }, h('h2', { text: 'Your ' + cfg.pages + ' pages' }), h('p', { text: 'A story arc from opening pages to showcase scenes. Paste each prompt into ChatGPT, one page at a time.' })));
+    const wrap = h('div', { class: 'pages' });
+    let lastZone = null, coreCount = 0;
+    book.rendered.forEach((p, i) => {
+      if (p.zone !== lastZone) {
+        if (p.zone === 'Core') coreCount++;
+        wrap.append(h('div', { class: 'zone', text: p.zoneLabel + (p.zone === 'Core' && coreCount > 1 ? ' (continued)' : '') }));
+        lastZone = p.zone;
+      }
+      const box = h('div', { class: 'prompt', text: p.prompt });
+      const exp = h('button', { class: 'btn sm ghost', text: 'Expand' });
+      exp.addEventListener('click', () => { box.classList.toggle('open'); exp.textContent = box.classList.contains('open') ? 'Collapse' : 'Expand'; });
+      wrap.append(h('article', { class: 'card page', id: 'page-' + p.n },
+        h('div', { class: 'hd' }, h('div', { class: 'num', text: p.n }), h('div', { class: 'cicon', title: p.compLabel }, icon(p.comp)),
+          h('div', null, h('h4', { text: p.title }), h('div', { class: 'tags' }, h('span', { class: 'tag-s z', text: p.zoneLabel }), h('span', { class: 'tag-s', text: p.compLabel })))),
+        h('div', { class: 'bd' }, box),
+        h('div', { class: 'ft' },
+          h('button', { class: 'btn sm', onclick: () => copy(p.prompt, 'Page ' + p.n + ' prompt copied'), text: 'Copy prompt' }),
+          h('button', { class: 'btn sm', onclick: () => swap(i), text: 'Swap this page' }), exp)));
+    });
+    out.append(wrap);
+
+    // cover
+    out.append(h('div', { class: 'sec', id: 'cover' }, h('h2', { text: 'Cover prompts (full colour)' }),
+      h('p', { text: 'Three cover compositions picked by this book’s seed. The title and subtitle are included as exact text. AI image tools can misspell lettering: if so, regenerate or add the text in Canva.' })));
+    const cv = h('div', { class: 'pair' });
+    book.covers.forEach(c => cv.append(promptCard(c.name, 'Front cover · ' + TRIMS[cfg.trim].label, c.text, 'Cover prompt copied')));
+    cv.append(promptCard('"This book belongs to" title page', 'Black-and-white interior page, same locked style', book.titlePage, 'Title page prompt copied'));
+    cv.append(h('div', { class: 'card' }, h('h4', { text: 'Back cover note' }), h('p', { class: 'sub', text: 'Short blurb and layout advice for the back panel' }),
+      h('div', { class: 'textbox', text: book.backNote }), h('div', { class: 'btnrow', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => copy(book.backNote, 'Back cover note copied'), text: 'Copy note' }))));
+    out.append(cv);
+
+    // listing
+    const Lk = book.listing;
+    out.append(h('div', { class: 'sec', id: 'listing' }, h('h2', { text: 'Listing kit' }), h('p', { text: 'Ready to paste into KDP. Check every field yourself before publishing.' })));
+    const dw = Studio.wc(Lk.description);
+    out.append(h('section', { class: 'card listing' },
+      blk('KDP title', Lk.kdpTitle, 'Title copied'),
+      blk('KDP subtitle', Lk.kdpSubtitle, 'Subtitle copied'),
+      blk('Description (' + dw + ' words)', Lk.description, 'Description copied'),
+      h('div', { class: 'block' }, h('div', { class: 'lab' }, h('span', { text: '7 keyword phrases' }), h('button', { class: 'btn sm', onclick: () => copy(Lk.keywords.join('\n'), 'All keywords copied'), text: 'Copy all' })),
+        ...Lk.keywords.map(k => h('div', { class: 'kw' }, h('span', { text: k }), h('button', { class: 'btn sm', onclick: () => copy(k, 'Keyword copied'), text: 'Copy' }))))));
+
+    if (scrollTop) $('top').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else if (keepIdx != null) { const el = $('page-' + (keepIdx + 1)); if (el) el.scrollIntoView({ block: 'center' }); }
+    else window.scrollTo(0, prevY);
+    markDirty();
+  }
+  function fact(k, v) { return h('div', { class: 'fact' }, h('b', { text: k }), v); }
+  function blk(label, text, msg) {
+    return h('div', { class: 'block' }, h('div', { class: 'lab' }, h('span', { text: label }), h('button', { class: 'btn sm', onclick: () => copy(text, msg), text: 'Copy' })), h('div', { class: 'textbox', text }));
+  }
+  function promptCard(title, sub, text, msg) {
+    const box = h('div', { class: 'prompt', text });
+    const exp = h('button', { class: 'btn sm ghost', text: 'Expand' });
+    exp.addEventListener('click', () => { box.classList.toggle('open'); exp.textContent = box.classList.contains('open') ? 'Collapse' : 'Expand'; });
+    return h('div', { class: 'card' }, h('h4', { text: title }), h('p', { class: 'sub', text: sub }), box,
+      h('div', { class: 'btnrow', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => copy(text, msg), text: 'Copy prompt' }), exp));
+  }
+  function exportTxt() {
+    const txt = Studio.exportText(book);
+    const name = 'seasonal-kdp-coloring-studio_' + book.cfg.season + '-' + book.cfg.theme + '_' + book.seeds.scene + '-' + book.seeds.style + '.txt';
+    const url = URL.createObjectURL(new Blob([txt], { type: 'text/plain;charset=utf-8' }));
+    const a = h('a', { href: url, download: name }); document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    toast('Exported ' + name);
+  }
+
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-copy],[data-action]'); if (!b) return;
+    if (b.dataset.copy) copy(b.dataset.copy, 'Fix message copied');
+    else if (b.dataset.action === 'opening') {
+      if (!book) { toast('Generate a book first'); return; }
+      copy('I am making a coloring book and will send one page prompt at a time. Use the STYLE LOCK below for every image in this chat and never change it from page to page. Reply only "Ready" and wait for my first page prompt.\n\n' + book.lock, 'Opening message copied');
+    }
+  });
+  $('gen').addEventListener('click', () => generate('gen'));
+  $('newbook').addEventListener('click', () => generate('new'));
+})();
+
+</script>
+</body>
+</html>
