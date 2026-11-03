@@ -202,6 +202,13 @@ dl{margin:0}dt{font-weight:700;margin-top:12px;color:var(--text)}dd{margin:2px 0
 .side{scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
 .side::-webkit-scrollbar{width:6px}.side::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
 
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:0 0 14px}
+.kititem{display:block;text-decoration:none;color:var(--text);background:linear-gradient(180deg,var(--accent-soft),transparent),var(--panel);border:1px solid var(--accent-line);border-radius:var(--r-sm);padding:12px 14px;transition:transform .15s}
+.kititem:hover{transform:translateY(-2px)}
+.kititem b{display:block;font-size:14px}
+.kititem b::before{content:"\2713  ";color:var(--accent)}
+.kititem small{color:var(--muted);font-size:12px}
+
 </style>
 </head>
 <body data-season="autumn">
@@ -307,7 +314,7 @@ dl{margin:0}dt{font-weight:700;margin-top:12px;color:var(--text)}dd{margin:2px 0
               <li>Click <b>Export All as .txt</b> to keep a backup of the whole prompt pack (the app saves nothing).</li>
               <li>Open a <b>new ChatGPT chat</b> and send the opening message (button in the next panel).</li>
               <li>Paste page 1, check the image, regenerate if needed, download the PNG. Repeat for every page.</li>
-              <li>Generate the three cover options and the title page. Pick the best cover.</li>
+              <li>Open a <b>NEW chat</b> for the covers (they are full colour, not coloring pages). Generate the three front covers, the back cover image and the title page, then pick the best.</li>
               <li>Build the interior in Canva at your exact trim size, with a blank page behind each coloring page.</li>
               <li>Export the interior as PDF at 300 DPI and make the cover using KDP's cover calculator dimensions.</li>
               <li>Paste the listing kit into KDP, answer the AI-content question honestly, preview, and publish.</li>
@@ -1116,6 +1123,51 @@ const COMP = {
   p: { label: 'Panoramic scene', lines: ['Composition: a panoramic scene stretching across the full width of the page with layered distance.', 'Composition: a sweeping horizontal landscape filling the page, with foreground details and a deep background.', 'Composition: a broad panoramic view where the scene flows from one side of the page to the other.'] }
 };
 
+// ===== RICHNESS LAYER =====
+const POSE = {
+  c: ['seen from a pleasing three-quarter angle', 'centred and front-facing', 'seen from slightly above', 'seen from slightly below for a heroic feel', 'in clean side view', 'tilted at a gentle diagonal', 'caught mid-motion in a natural pose'],
+  w: ['eye-level view with a clear path leading the eye in', 'a gentle bird’s-eye view looking down on the scene', 'a low viewpoint looking slightly upward', 'a view through a natural frame such as branches or an archway', 'a symmetrical view with the main subject in the centre', 'an off-centre view with the main subject on the left third', 'an off-centre view with the main subject on the right third'],
+  g: ['arranged in a loose diagonal', 'arranged in a gentle arc', 'arranged in a neat grid', 'arranged in a loose cluster with items overlapping slightly', 'arranged in a circle around an open centre', 'arranged in two staggered rows'],
+  b: ['the frame hugs the margin with the richest decoration in the four corners', 'the top and bottom edges are richly decorated and the sides are simpler', 'a repeating motif runs around the frame with one larger feature in each corner', 'rounded corners with a small feature breaking the middle of each side'],
+  m: ['8-fold radial symmetry with 5 to 7 distinct rings', '12-fold radial symmetry with 4 to 6 distinct rings', '6-fold radial symmetry with 5 to 7 distinct rings', '16-fold radial symmetry with 4 to 6 distinct rings', '4-fold rotating symmetry with 5 distinct rings'],
+  p: ['flowing left to right with three clear depth layers', 'with a high horizon and a detailed foreground', 'with a low horizon and a large open sky area', 'with a winding path or river leading across the page']
+};
+const INFILL = {
+  kids: ['Leave the insides of shapes plain and clean so they are quick and satisfying to colour.', 'Keep shape interiors empty, with at most one or two big simple patterns such as a stripe or a spot drawn as a large closed outline.'],
+  adults: ['Decorate several larger areas with simple closed patterns such as scallops, petals, scales or zigzags.', 'Draw fur, feathers, leaves or fabric as repeating rows of small closed shapes.', 'Add three to five areas of zentangle-style closed patterns inside the larger shapes.', 'Add decorative closed bands and small outlined circles inside the main shapes for extra colouring interest.'],
+  seniors: ['Decorate two or three large areas with a simple, widely spaced closed pattern.', 'Add a few large simple patterns such as big scallops or wide stripes, drawn as closed shapes.']
+};
+const COUNT = {
+  kids: ['about 5 to 8 distinct elements in total, each large and simple', 'about 6 to 9 distinct elements, all big and easy to colour'],
+  adults: ['about 20 to 35 distinct elements', 'about 25 to 40 distinct elements with varied sizes'],
+  seniors: ['about 8 to 14 distinct elements, comfortably spaced', 'about 9 to 15 distinct elements with clear gaps between them']
+};
+const COUNT_SHOW = {
+  kids: 'about 8 to 12 distinct elements, still large and simple',
+  adults: 'about 35 to 55 distinct elements with rich layering',
+  seniors: 'about 12 to 18 distinct elements, still well spaced'
+};
+const MOOD = {
+  autumn: ['a crisp golden-hour feeling shown with a low sun and long ray lines', 'a calm misty morning shown with soft layered cloud lines', 'a breezy afternoon shown with leaves tumbling along curved motion lines', 'a quiet dusk shown with a big moon and a few birds heading home'],
+  winter: ['a hushed snowfall shown with big drifting flakes', 'a clear starry night shown with a crescent moon and scattered stars', 'a warm, cozy glow shown with simple ray lines around lights and candles', 'a frosty morning shown with a low sun and sparkling crystal shapes'],
+  spring: ['a fresh after-rain feeling shown with droplets and a small rainbow', 'a breezy morning shown with petals blowing across the scene', 'a warm afternoon shown with a sun and simple ray lines', 'a bright dawn shown with a flock of small birds in the sky'],
+  summer: ['a bright noon shown with a big sun and long ray lines', 'a breezy seaside feeling shown with rolling wave lines and gulls', 'a golden evening shown with a low sun on the horizon', 'a warm starry night shown with a moon and twinkling stars']
+};
+const DETAIL = {
+  'autumn.woodland': ['fur and feathers built from rows of small closed tufts', 'bark drawn as flowing closed bands with knots', 'leaves with outlined vein cells', 'moss and grass as clusters of closed rounded shapes', 'mushroom caps decorated with outlined spots'],
+  'autumn.cottage': ['wood grain drawn as closed plank shapes', 'stone walls built from closed irregular blocks', 'fabric with outlined checks, stripes or patches', 'thatch or roof tiles as rows of closed shapes', 'fruit and vegetables with small closed leaf and stem details'],
+  'autumn.mandalas': ['leaf veins drawn as branching closed cells', 'acorn caps with a closed crosshatch-free scale pattern', 'petal-like leaf tips with scalloped closed edges', 'rings separated by thin double outlines', 'tiny outlined berries and seeds in the gaps'],
+  'winter.snowy': ['fur drawn as layered closed tufts', 'snow drifts as soft overlapping closed curves', 'icicles and ice crystals as closed angular shapes', 'pine needles as clusters of closed leaf shapes', 'feathers as rows of closed rounded shapes'],
+  'winter.christmas': ['knitted textures drawn as rows of closed V-shapes', 'wrapping paper with outlined stripes, stars and spots', 'tree ornaments with outlined patterns on each bauble', 'brick or stone as closed blocks', 'garlands with outlined berries and leaves'],
+  'winter.patterns': ['snowflake arms with branching closed crystals', 'bauble surfaces with banded closed patterns', 'lace-like scalloped edges', 'stars with closed inner facets', 'rings separated by thin double outlines'],
+  'spring.babies': ['soft fur drawn as small closed tufts', 'feathers as rows of closed rounded shapes', 'petals with outlined veins', 'grass as clusters of closed blade shapes', 'eggshell pieces and nest straw as closed shapes'],
+  'spring.garden': ['petals with outlined veins and layered shapes', 'brick paths and stones as closed shapes', 'trellis and fence slats as closed bars', 'leaves with outlined vein cells', 'watering cans and pots with outlined bands and patterns'],
+  'spring.mandalas': ['petals with outlined veins', 'butterfly wings with closed cell patterns', 'layers of overlapping closed petals', 'rings separated by thin double outlines', 'tiny outlined buds and seeds in the gaps'],
+  'summer.ocean': ['scales as rows of closed arcs', 'waves drawn as closed curling bands with foam shapes', 'coral as closed branching shapes with small outlined polyps', 'shell ridges as closed bands', 'sand ripples as closed wavy bands'],
+  'summer.camping': ['canvas and fabric with outlined stripes and patches', 'bark and logs as closed bands with knots', 'checkered blankets with closed squares', 'stones and pebbles as closed rounded shapes', 'leaves and grass as closed clusters'],
+  'summer.patterns': ['shell ridges drawn as closed bands', 'wave bands with closed curling tips', 'sun rays alternating long and short closed shapes', 'scale patterns as overlapping closed arcs', 'rings separated by thin double outlines']
+};
+
 // ===== ENGINE (pure logic, no DOM) =====
 const Studio = (function () {
   const APP = 'Seasonal KDP Coloring Studio';
@@ -1298,7 +1350,14 @@ const Studio = (function () {
     const frame = (!pat && scene.comp !== 'b' && scene.comp !== 'm' && scene.comp !== 'p' && r() < pFrame) ? pick(r, M.frame) : null;
     const aud = pick(r, AUD_CLAUSE[cfg.aud]);
     const compLine = pick(r, COMP[scene.comp].lines);
-    return { accents, back, frame, aud, compLine };
+    const pose = pick(r, POSE[scene.comp]);
+    const dPool = DETAIL[cfg.season + '.' + cfg.theme];
+    const detail = (cfg.aud === 'kids' || scene.comp === 'b' || scene.comp === 'm') ? null : pickN(r, dPool, cfg.aud === 'adults' ? 2 : 1);
+    const infill = pick(r, INFILL[cfg.aud]);
+    const count = zone === 'Showcase' ? COUNT_SHOW[cfg.aud] : pick(r, COUNT[cfg.aud]);
+    const mood = r() < 0.6 ? pick(r, MOOD[cfg.season]) : null;
+    const order = shuffle(r, ['pose', 'fore', 'back', 'detail', 'mood']);
+    return { accents, back, frame, aud, compLine, pose, detail, infill, count, mood, order };
   }
   const SHOW = {
     kids: 'This is a showcase page: make it the most special page of the book with a little more to colour, but keep the shapes big and simple.',
@@ -1306,9 +1365,17 @@ const Studio = (function () {
     seniors: 'This is a showcase page: make it a standout scene with a bit more to enjoy, but keep shapes large, clear and well spaced.'
   };
   function sceneText(cfg, scene, m, zone) {
-    const bits = [cap(scene.desc) + '.', m.aud];
-    bits.push('Extra details: ' + m.accents.join('; ') + '.');
-    if (m.back) bits.push('Background: ' + m.back + '.');
+    const parts = {
+      pose: 'Viewpoint and layout: ' + (scene.comp === 'm' || scene.comp === 'g' || scene.comp === 'b' ? m.pose : 'the scene is ' + m.pose) + '.',
+      fore: 'Foreground and small details: ' + m.accents.join('; ') + '.',
+      back: m.back ? 'Background: ' + m.back + '.' : null,
+      detail: m.detail ? 'Detail style: ' + m.detail.join('; ') + '.' : null,
+      mood: m.mood ? 'Mood: ' + m.mood + ' (use line shapes only, never shading).' : null
+    };
+    const bits = [cap(scene.desc) + '.'];
+    m.order.forEach(k => { if (parts[k]) bits.push(parts[k]); });
+    bits.push('Level of detail: ' + m.count + '. ' + m.infill);
+    bits.push(m.aud);
     if (m.frame) bits.push('Framing device: ' + m.frame + '.');
     if (zone === 'Showcase') bits.push(SHOW[cfg.aud]);
     return bits.join(' ');
@@ -1318,7 +1385,8 @@ const Studio = (function () {
     const m = modsFor(cfg, scene, book.seeds.scene, pg.modSalt, pg.zone);
     const aud = AUDIENCES[cfg.aud];
     const head = 'PAGE ' + (i + 1) + ' OF ' + cfg.pages + ' (' + ZONE_LABEL[pg.zone] + '): ' + titleCase(scene.subject);
-    const intro = 'Create a black-and-white coloring page for the interior of a ' + SEASONS[cfg.season].short.toLowerCase() + ' coloring book for ' + aud.who + '.';
+    const sw = SEASONS[cfg.season].short.toLowerCase();
+    const intro = 'Create a black-and-white coloring page for the interior of ' + (sw === 'autumn' ? 'an' : 'a') + ' ' + sw + ' coloring book for ' + aud.who + '.';
     return {
       n: i + 1, zone: pg.zone, zoneLabel: ZONE_LABEL[pg.zone], title: titleCase(scene.subject), subject: scene.subject,
       comp: scene.comp, compLabel: COMP[scene.comp].label, sceneId: scene.id,
@@ -1361,6 +1429,7 @@ const Studio = (function () {
       return {
         name: 'Cover variant ' + 'ABC'[i],
         text: [
+          'IMPORTANT: this is a full-colour book cover, NOT a coloring page. If this chat holds earlier black-and-white or line-art instructions, ignore them for this image and use rich full colour. (Best results: open a NEW chat for covers.)',
           'Design a FULL-COLOUR front cover for a coloring book (front panel only).',
           'Format: ' + trim.label + ' ' + trim.orient + ', aspect ratio ' + trim.ratio + '. Keep important elements inside a 0.4 in safe margin; let the background run slightly off the edges.',
           'Text on the cover (spell exactly as written, large, clear and highly readable): TITLE: "' + book.title + '". SUBTITLE: "' + book.subtitle + '". No other words, no author name, no price, no barcode, no watermark.',
@@ -1379,6 +1448,19 @@ const Studio = (function () {
       'Back cover blurb (paste into Canva): "Escape into ' + th.hook + '. ' + book.cfg.pages + ' single-sided coloring pages designed for ' + aud.who + ' - grab your favourite pencils, markers or gel pens and enjoy a calm, creative break."',
       'Design note: use a soft, quiet version of the front-cover background (no busy artwork behind the text), add the blurb in a readable size, and leave a clean white 2 × 1.2 in area in the lower right for the KDP barcode. Get exact cover dimensions (back, spine, front and bleed) from the KDP cover calculator for your page count and paper type.'
     ].join('\n\n');
+  }
+  function backCoverPrompt(book) {
+    const cfg = book.cfg, th = themeMeta(cfg), sea = SEASONS[cfg.season], trim = TRIMS[cfg.trim], fam = book.family;
+    const subs = pickN(rngFor(book.seeds.scene, 'bc'), book.rendered.map(p => p.subject), 3).join(', ');
+    return [
+      'IMPORTANT: this is a full-colour back-cover background, NOT a coloring page. Ignore any earlier black-and-white or line-art rules and use rich full colour. (Best results: open a NEW chat.)',
+      'Design a FULL-COLOUR back cover background for a coloring book (back panel only).',
+      'Format: ' + trim.label + ' ' + trim.orient + ', aspect ratio ' + trim.ratio + '.',
+      'Layout: a calm, softer, less busy version of the front cover world (' + th.cover + '). Place small scattered motifs (' + subs + ') around the outer edges and corners only. Keep a large, clean, quiet area in the middle for a text blurb to be added later, and keep the lower right corner clear for a barcode.',
+      'Absolutely no text, letters, numbers, barcode or watermark in the image.',
+      'Visual style: ' + fam.cover + ', same motif language as the interior pages but fully coloured.',
+      'Colour palette: ' + sea.palette + '.'
+    ].join('\n');
   }
   function titlePagePrompt(book) {
     const cfg = book.cfg, th = themeMeta(cfg), fam = book.family;
@@ -1520,6 +1602,7 @@ const Studio = (function () {
     book.covers = coverPrompts(book);
     book.backNote = backCoverNote(book);
     book.titlePage = titlePagePrompt(book);
+    book.backPrompt = backCoverPrompt(book);
     book.listing = listingKit(book);
     return book;
   }
@@ -1543,6 +1626,7 @@ const Studio = (function () {
     out.push('', L2, 'COVER PROMPTS (full colour)', L2);
     book.covers.forEach(c => { out.push('', c.name.toUpperCase(), c.text); });
     out.push('', L2, 'TITLE PAGE PROMPT', L2, book.titlePage);
+    out.push('', L2, 'BACK COVER IMAGE PROMPT (full colour, no text)', L2, book.backPrompt);
     out.push('', L2, 'BACK COVER NOTE', L2, book.backNote);
     out.push('', L2, 'LISTING KIT', L2, 'TITLE: ' + book.listing.kdpTitle, 'SUBTITLE: ' + book.listing.kdpSubtitle, '', 'DESCRIPTION:', book.listing.description, '', 'KEYWORDS:');
     book.listing.keywords.forEach((k, i) => out.push((i + 1) + '. ' + k));
@@ -1689,6 +1773,12 @@ const Studio = (function () {
         h('div', { class: 'mix' }, ...Object.keys(mixCount).map(k => h('i', { style: 'width:' + (mixCount[k] / cfg.pages * 100) + '%;background:' + COMP_COL[k], title: Studio.COMP_LABEL[k] + ': ' + mixCount[k] })))),
       h('div', { class: 'tile' }, h('b', { text: 'Trim' }), h('span', { text: TRIMS[cfg.trim].label }), h('small', { text: TRIMS[cfg.trim].ratio }))));
 
+    out.append(h('div', { class: 'kit' },
+      kitItem('#pages', cfg.pages + ' page prompts', 'One per page, Style Lock inside'),
+      kitItem('#cover', '3 front covers + back cover', 'Full colour, new chat'),
+      kitItem('#cover', 'Title page', '"This book belongs to"'),
+      kitItem('#listing', 'Listing kit', 'Title, description, 7 keywords')));
+
     out.append(h('nav', { class: 'chips' },
       ...[['#lock', 'Style Lock'], ['#pages', 'Pages'], ['#cover', 'Cover & title page'], ['#listing', 'Listing kit'], ['#guides', 'How-to & KDP']].map(([a, t]) => h('a', { href: a, text: t }))));
 
@@ -1734,9 +1824,10 @@ const Studio = (function () {
 
     // cover
     out.append(h('div', { class: 'sec', id: 'cover' }, h('h2', { text: 'Cover prompts (full colour)' }),
-      h('p', { text: 'Three cover compositions picked by this book’s seed. The title and subtitle are included as exact text. AI image tools can misspell lettering: if so, regenerate or add the text in Canva.' })));
+      h('p', { text: 'Covers are full colour and NOT coloring pages. Open a NEW ChatGPT chat for them (do not use the interior chat with the Style Lock). Three compositions picked by this book’s seed. The title and subtitle are exact text: if the lettering comes out wrong, regenerate or add the text in Canva.' })));
     const cv = h('div', { class: 'pair' });
-    book.covers.forEach(c => cv.append(promptCard(c.name, 'Front cover · ' + TRIMS[cfg.trim].label, c.text, 'Cover prompt copied')));
+    book.covers.forEach(c => cv.append(promptCard(c.name, 'Front cover · full colour · ' + TRIMS[cfg.trim].label, c.text, 'Cover prompt copied')));
+    cv.append(promptCard('Back cover image (full colour, no text)', 'Quiet background for your blurb and the KDP barcode', book.backPrompt, 'Back cover prompt copied'));
     cv.append(promptCard('"This book belongs to" title page', 'Black-and-white interior page, same locked style', book.titlePage, 'Title page prompt copied'));
     cv.append(h('div', { class: 'card' }, h('h4', { text: 'Back cover note' }), h('p', { class: 'sub', text: 'Short blurb and layout advice for the back panel' }),
       h('div', { class: 'textbox', text: book.backNote }), h('div', { class: 'btnrow', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => copy(book.backNote, 'Back cover note copied'), text: 'Copy note' }))));
@@ -1758,6 +1849,7 @@ const Studio = (function () {
     else window.scrollTo(0, prevY);
     markDirty();
   }
+  function kitItem(href, t, s) { return h('a', { class: 'kititem', href }, h('b', { text: t }), h('small', { text: s })); }
   function fact(k, v) { return h('div', { class: 'fact' }, h('b', { text: k }), v); }
   function blk(label, text, msg) {
     return h('div', { class: 'block' }, h('div', { class: 'lab' }, h('span', { text: label }), h('button', { class: 'btn sm', onclick: () => copy(text, msg), text: 'Copy' })), h('div', { class: 'textbox', text }));
