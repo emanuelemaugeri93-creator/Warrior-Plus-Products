@@ -255,6 +255,28 @@ textarea::placeholder{color:var(--dim)}
 .tile span{font-size:17px}
 @media (max-width:900px){.tabs{padding:0 16px}.tab{padding:8px 14px;font-size:13px}.vbtn{min-width:130px}}
 
+.sessioncard{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:0 0 14px;border-color:var(--gold-line);background:linear-gradient(135deg,var(--gold-soft),transparent 70%),var(--panel)}
+.sessioncard h4{margin:0}.sessioncard .sub{margin:2px 0 0;max-width:520px}
+.sess{position:fixed;inset:0;z-index:100;background:rgba(3,8,6,.82);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;animation:rise .25s ease both}
+.sess-in{width:min(1040px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--panel);border:1px solid var(--gold-line);border-radius:var(--r);padding:18px 20px;box-shadow:0 30px 80px -20px #000}
+.sess-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sess-hd .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.sess-hd h3{font-family:var(--serif);margin:2px 0 0;font-size:22px}
+.sess-bar{height:8px;border-radius:99px;background:var(--bg);margin:14px 0 6px;overflow:hidden}
+.sess-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .3s}
+.sess-meta{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.sess-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:start}
+.sess-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;max-height:420px;overflow:auto;padding-right:4px}
+.sch{background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:11.5px;padding:7px 2px;cursor:pointer;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sch:hover{border-color:var(--accent-line)}
+.sch.on{border-color:var(--gold);color:var(--text);background:var(--gold-soft)}
+.sch.ok{color:var(--accent);border-color:var(--accent-line)}
+.sch.ok.on{border-color:var(--gold)}
+.sess-main h4{font-size:19px}
+.sess-prompt{max-height:360px;overflow:auto}
+.sess-prompt::after{display:none}
+@media (max-width:760px){.sess-body{grid-template-columns:1fr}.sess-list{max-height:110px}.sess{padding:10px}}
+
 </style>
 </head>
 <body>
@@ -404,7 +426,20 @@ textarea::placeholder{color:var(--dim)}
       <div class="acc">
 
         <details>
-          <summary><span class="ico">1</span>How to generate your pages in ChatGPT</summary>
+          <summary><span class="ico">1</span>Generation Session: work through the prompts one at a time</summary>
+          <div class="inner">
+            <ol>
+              <li>Open a book or volume, then press <b>Start interior session</b>. Step 1 is the opening message with your Style Lock: paste it in a new ChatGPT chat.</li>
+              <li>Then the front-matter prompts (title page, belongs-to page, colour-test page) and every coloring page in order.</li>
+              <li>Press <b>Copy &amp; Next</b> after each image: the step is marked as copied and the next prompt opens. You can jump to any step from the numbered grid, skip a step, or mark it done by hand.</li>
+              <li>Press <b>Start covers session</b> for the three front covers and the back cover image. Use a <b>new chat</b> for these.</li>
+            </ol>
+            <div class="note">The session lives only in this tab. If you close or reload it, progress is lost, so use Export .txt if you need a backup.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">2</span>How to generate your pages in ChatGPT</summary>
           <div class="inner">
             <ol>
               <li>Start <b>one new ChatGPT chat per book</b> (per volume in a series). Keeping a whole book in one chat helps the style stay consistent.</li>
@@ -429,7 +464,7 @@ textarea::placeholder{color:var(--dim)}
         </details>
 
         <details>
-          <summary><span class="ico">2</span>Building a series (Series Builder workflow)</summary>
+          <summary><span class="ico">3</span>Building a series (Series Builder workflow)</summary>
           <div class="inner">
             <ol>
               <li>Pick a collection and the number of volumes. Press <b>Generate Series</b>.</li>
@@ -444,7 +479,7 @@ textarea::placeholder{color:var(--dim)}
         </details>
 
         <details>
-          <summary><span class="ico">3</span>Book Extras: the pages every coloring book needs</summary>
+          <summary><span class="ico">4</span>Book Extras: the pages every coloring book needs</summary>
           <div class="inner">
             <ul>
               <li><b>Title page</b> and <b>"This book belongs to"</b> pages are image prompts in your locked style. The only text allowed in them is the text the prompt names. AI tools often misspell lettering: if it happens, regenerate or add the text in Canva.</li>
@@ -457,7 +492,7 @@ textarea::placeholder{color:var(--dim)}
         </details>
 
         <details>
-          <summary><span class="ico">4</span>Assemble your interior</summary>
+          <summary><span class="ico">5</span>Assemble your interior</summary>
           <div class="inner">
             <ol>
               <li>In Canva (or similar), create a custom design at your <b>exact trim size</b> in inches.</li>
@@ -470,7 +505,7 @@ textarea::placeholder{color:var(--dim)}
         </details>
 
         <details>
-          <summary><span class="ico">5</span>KDP checklist</summary>
+          <summary><span class="ico">6</span>KDP checklist</summary>
           <div class="inner">
             <div class="chk">
               <label><input type="checkbox"> Interior PDF is exactly the trim size you pick in KDP</label>
@@ -491,7 +526,34 @@ textarea::placeholder{color:var(--dim)}
         </details>
 
         <details>
-          <summary><span class="ico">6</span>Troubleshooting &amp; FAQ</summary>
+          <summary><span class="ico">7</span>Choosing your settings</summary>
+          <div class="inner">
+            <ul>
+              <li><b>Audience:</b> Kids gets thick lines and big simple shapes, Adults gets fine intricate detail, Seniors gets large clear shapes with generous spacing.</li>
+              <li><b>Difficulty Ramp:</b> turn it on if you want the first pages to be easier and the Showcase pages the most detailed. The line style never changes.</li>
+              <li><b>Trim size:</b> 8.5 &times; 11 in is the most common. 8.5 &times; 8.5 in is a good square format for kids. 6 &times; 9 in is compact and travels well.</li>
+              <li><b>Pages and volumes:</b> each design gets a blank page behind it, so the PDF has about double the page count. Check KDP's price calculator, because printing cost rises with page count.</li>
+              <li><b>Pattern themes</b> (mandalas, borders, tiles) suit adults and seniors and are usually quick to generate cleanly.</li>
+              <li><b>Seed:</b> copy the seed to remember a book. The same seed with the same settings rebuilds the same book.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">8</span>Using the listing kit</summary>
+          <div class="inner">
+            <ul>
+              <li><b>Title and subtitle:</b> the main keyword comes first because shoppers search with it. Keep them readable, accurate and free of other brands' names.</li>
+              <li><b>Description:</b> short, benefit-focused paragraphs. Edit it so it matches what your finished book really contains.</li>
+              <li><b>Keywords:</b> seven phrases for KDP's seven keyword boxes. Avoid repeating words that already appear in your title.</li>
+              <li><b>Series:</b> use the shared keywords on every volume and the per-volume variations to stay distinct. Link the books in KDP with the steps in the series listing block.</li>
+              <li><b>No promises:</b> never claim sales, income or rankings in a listing.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="ico">9</span>Troubleshooting &amp; FAQ</summary>
           <div class="inner">
             <div class="tbl">
               <div class="tr th"><span>Problem</span><span>What to try</span></div>
@@ -3696,6 +3758,32 @@ const Vault = (function () {
     });
   }
 
+  function backCoverPrompt(S, vi) {
+    const col = S.col, cfg = S.cfg, vol = S.volumes[vi], trim = TRIMS[cfg.trim], series = cfg.volumes > 1;
+    const subs = pickN(rngFor(S.seeds.scene, 'bc' + vi), vol.rendered.map(p => p.subject), 3).join(', ');
+    const lines = [
+      'IMPORTANT: this is a full-colour back-cover background, NOT a coloring page. If this chat holds earlier black-and-white or line-art instructions, ignore them for this image and use rich full colour. (Best results: open a NEW chat.)',
+      'Design a FULL-COLOUR back cover background for a coloring book (back panel only).',
+      'Format: ' + trim.label + ' ' + trim.orient + ', aspect ratio ' + trim.ratio + '.', ''
+    ];
+    if (series) lines.push(S.dna, '');
+    lines.push(
+      (series ? 'VOLUME-SPECIFIC DETAILS:' : 'BACK COVER DETAILS:'),
+      'Layout: a calm, softer, less busy version of the front cover world (' + col.cover + '). Place small scattered motifs (' + subs + ') around the outer edges and corners only. Keep a large, clean, quiet area in the middle for a text blurb to be added later, and keep the lower right corner clear for the KDP barcode.' + (series ? ' Repeat the same framing and border device as the front cover; do not add a volume badge on the back.' : ''),
+      'Absolutely no text, letters, numbers, barcode or watermark in the image.',
+      'Accent colour family: ' + vol.accent + '; harmonious palette: ' + col.palette + '.',
+      'Visual style: ' + S.family.cover + ', same motif language as the interior pages but fully coloured.'
+    );
+    return lines.join('\n');
+  }
+  function backCoverNote(S, vi) {
+    const col = S.col, cfg = S.cfg, vol = S.volumes[vi], au = AUDIENCES[cfg.aud];
+    return [
+      'Back cover blurb (paste into Canva): "Escape into ' + col.hook + '. ' + cfg.pages + ' single-sided coloring pages designed for ' + au.who + (cfg.volumes > 1 ? ' - Volume ' + vol.n + ' of the ' + S.seriesName + ' series' : '') + '. Grab your favourite pencils, markers or gel pens and enjoy a calm, creative break."',
+      'Design note: use the quiet back-cover image behind the blurb, set the blurb in a readable size, and leave a clean white 2 x 1.2 in area in the lower right for the KDP barcode. Get the exact cover dimensions (back, spine, front and bleed) from the KDP cover calculator for your page count and paper type.'
+    ].join('\n\n');
+  }
+
   // ---------- book extras ----------
   function extras(S, vi) {
     const col = S.col, cfg = S.cfg, vol = S.volumes[vi], fam = S.family;
@@ -3725,6 +3813,7 @@ const Vault = (function () {
       'We hope you enjoyed every page of ' + fullTitle + '. If you have a moment, an honest review on Amazon helps other colourists find the book and helps us make better ones. We welcome your genuine opinion, whatever it may be.', '',
       cfg.volumes > 1 ? 'Looking for more? Browse the other volumes of the ' + S.seriesName + ' series on Amazon.' : 'Looking for more? Browse our other coloring books on Amazon.', '',
       'Happy colouring!', '[YOUR NAME OR IMPRINT]'].join('\n') });
+    out.push({ id: 'backnote', title: 'Back cover blurb & layout note', kind: 'text', text: backCoverNote(S, vi) });
     const order = ['1. Title page', '2. "This book belongs to" page', '3. Colour-test page', '4. Your coloring pages, in order, each with a blank page behind it (so ink cannot bleed through)', '5. Thank-you and honest-review page', '6. Copyright page (many publishers place it right after the title page instead; either works)'];
     out.push({ id: 'order', title: 'Recommended interior order', kind: 'text', text: order.join('\n') + '\n\nReminder: KDP paperbacks need at least 24 pages in total, and blank pages count toward that total.' });
     return out;
@@ -3800,6 +3889,7 @@ const Vault = (function () {
     const vol = S.volumes[vi];
     vol.rendered = vol.pages.map((_, i) => renderPage(S, vi, i));
     vol.covers = coverPrompts(S, vi);
+    vol.backCover = backCoverPrompt(S, vi);
     vol.extras = extras(S, vi);
     vol.listing = volListing(S, vi);
   }
@@ -4079,8 +4169,13 @@ const Vault = (function () {
     box.append(h('div', { class: 'tiles' },
       h('div', { class: 'tile' }, h('b', { text: 'Pages' }), h('span', { text: cfg.pages }), h('small', { text: zc.Opening + ' opening · ' + zc.Core + ' core · ' + zc.Showcase + ' showcase · ' + zc.Closing + ' closing' })),
       h('div', { class: 'tile' }, h('b', { text: 'Composition mix' }), h('span', { text: Object.keys(mix).length + ' types' }), h('div', { class: 'mix' }, ...Object.keys(mix).map(k => h('i', { style: 'width:' + (mix[k] / cfg.pages * 100) + '%;background:' + COMP_COL[k], title: Vault.COMP_LABEL[k] + ': ' + mix[k] })))),
-      h('div', { class: 'tile' }, h('b', { text: 'Extras' }), h('span', { text: '6 book extras' }), h('small', { text: 'title, belongs-to, test, copyright…' })),
-      h('div', { class: 'tile' }, h('b', { text: 'Covers' }), h('span', { text: '3 variants' }), h('small', { text: series ? 'matching Cover DNA' : 'full colour' }))));
+      h('div', { class: 'tile' }, h('b', { text: 'Extras' }), h('span', { text: vol.extras.length + ' book extras' }), h('small', { text: 'title, test page, copyright, back blurb…' })),
+      h('div', { class: 'tile' }, h('b', { text: 'Covers' }), h('span', { text: '3 front + back' }), h('small', { text: series ? 'matching Cover DNA' : 'full colour' }))));
+    box.append(h('section', { class: 'card sessioncard' },
+      h('div', null, h('h4', { text: 'Generation Session' }), h('p', { class: 'sub', text: 'Work through the prompts one at a time with a progress bar, a Copy & Next button and done-marks. Nothing is saved when you close the tab.' })),
+      h('div', { class: 'btnrow' },
+        h('button', { class: 'btn primary', type: 'button', onclick: () => openSession(t, vi, 'interior'), text: 'Start interior session' }),
+        h('button', { class: 'btn', type: 'button', onclick: () => openSession(t, vi, 'covers'), text: 'Start covers session' }))));
     box.append(h('nav', { class: 'chips' }, ...[['pages', 'Pages'], ['cover', 'Covers'], ['extras', 'Book extras'], ['listing', 'Listing kit'], series ? ['slist', 'Series listing'] : null].filter(Boolean).map(([a, n]) => h('a', { href: '#' + gid(t, a), text: n }))));
 
     // pages
@@ -4103,6 +4198,7 @@ const Vault = (function () {
       h('p', { text: 'Covers are full colour and NOT coloring pages: open a NEW ChatGPT chat for them. Three variants chosen by seed' + (series ? ', all built on the same Series Cover DNA' : '') + '. If the lettering comes out wrong, regenerate or add the text in Canva.' })));
     const cv = h('div', { class: 'extras' });
     vol.covers.forEach(c => cv.append(promptCard(c.name, 'Front cover · full colour · ' + TRIMS[cfg.trim].label, c.text, 'Cover prompt copied')));
+    cv.append(promptCard('Back cover image (full colour, no text)', 'Quiet background for the blurb and the KDP barcode' + (series ? ' · same Cover DNA' : ''), vol.backCover, 'Back cover prompt copied'));
     box.append(cv);
 
     // extras
@@ -4142,6 +4238,52 @@ const Vault = (function () {
     return h('div', { class: 'card' }, h('h4', { text: title }), h('p', { class: 'sub', text: sub }), b, h('div', { class: 'btnrow', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => copy(text, msg), text: 'Copy' }), exp));
   }
   function textCard(title, text) { return h('div', { class: 'card' }, h('h4', { text: title }), h('p', { class: 'sub', text: 'Plain text · paste into Canva' }), h('div', { class: 'textbox mono', text }), h('div', { class: 'btnrow', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => copy(text, title + ' copied'), text: 'Copy' }))); }
+
+  // ---------- Generation Session ----------
+  const openingMsg = lock => 'I am making a coloring book and will send one page prompt at a time. Use the STYLE LOCK below for every image in this chat and never change it from page to page. Reply only "Ready" and wait for my first page prompt.\n\n' + lock;
+  let sess = null;
+  function openSession(t, vi, kind) {
+    const S = state[t].S, vol = S.volumes[vi], items = [];
+    if (kind === 'interior') {
+      items.push({ key: 'Setup', title: 'Setup: opening message', sub: 'Open a NEW ChatGPT chat and paste this first. Wait for "Ready".', text: openingMsg(S.lock) });
+      vol.extras.filter(e => ['title', 'belongs', 'test'].includes(e.id)).forEach(e => items.push({ key: { title: 'Title', belongs: 'Own', test: 'Test' }[e.id], title: e.title, sub: 'Front-matter image prompt', text: e.text }));
+      vol.rendered.forEach(p => items.push({ key: 'Page ' + p.n, title: 'Page ' + p.n + ' of ' + vol.rendered.length + ': ' + p.title, sub: p.zoneLabel + ' · ' + p.compLabel, text: p.prompt }));
+    } else {
+      vol.covers.forEach(c => items.push({ key: c.name.replace('Cover variant ', 'Cover '), title: c.name, sub: 'Full-colour front cover. Use a NEW chat (not the interior chat).' + (S.cfg.volumes > 1 ? ' Keep the Cover DNA text unchanged.' : ''), text: c.text }));
+      items.push({ key: 'Back', title: 'Back cover image', sub: 'Full-colour back cover background, no text', text: vol.backCover });
+    }
+    sess = { t, vi, kind, items, idx: 0, done: new Set(), vol, S };
+    renderSession(); document.body.style.overflow = 'hidden';
+  }
+  function closeSession() { const o = $('sess'); if (o) o.remove(); sess = null; document.body.style.overflow = ''; }
+  function renderSession() {
+    let o = $('sess'); if (o) o.remove();
+    const { items, idx, done, S, vol, kind } = sess, it = items[idx], total = items.length, pct = Math.round(done.size / total * 100);
+    const go = n => { sess.idx = Math.max(0, Math.min(total - 1, n)); renderSession(); };
+    const copyDone = (adv) => { copy(it.text, it.title + ' copied'); done.add(idx); if (adv && idx < total - 1) go(idx + 1); else renderSession(); };
+    o = h('div', { class: 'sess', id: 'sess', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Generation Session' },
+      h('div', { class: 'sess-in' },
+        h('div', { class: 'sess-hd' },
+          h('div', null, h('div', { class: 'tag', text: (kind === 'interior' ? 'Interior session' : 'Covers session') + (S.volumes.length > 1 ? ' · Volume ' + vol.n : '') }), h('h3', { text: S.seriesName })),
+          h('button', { class: 'btn sm', type: 'button', onclick: closeSession, text: 'Close ✕' })),
+        h('div', { class: 'sess-bar', title: pct + '% done' }, h('i', { style: 'width:' + pct + '%' })),
+        h('div', { class: 'sess-meta', text: 'Step ' + (idx + 1) + ' of ' + total + ' · ' + done.size + ' copied' }),
+        h('div', { class: 'sess-body' },
+          h('div', { class: 'sess-list' }, ...items.map((x, i) => h('button', { class: 'sch' + (i === idx ? ' on' : '') + (done.has(i) ? ' ok' : ''), type: 'button', title: x.title, onclick: () => go(i), text: x.key.replace('Page ', '') }))),
+          h('div', { class: 'sess-main' },
+            h('h4', { text: it.title }), h('p', { class: 'sub', text: it.sub }),
+            h('div', { class: 'prompt open sess-prompt', text: it.text }),
+            h('div', { class: 'btnrow', style: 'margin-top:12px' },
+              h('button', { class: 'btn primary', type: 'button', onclick: () => copyDone(true), text: idx < total - 1 ? 'Copy & Next' : 'Copy (last step)' }),
+              h('button', { class: 'btn', type: 'button', onclick: () => copyDone(false), text: 'Copy' }),
+              h('button', { class: 'btn', type: 'button', onclick: () => go(idx - 1), text: '← Previous' }),
+              h('button', { class: 'btn', type: 'button', onclick: () => go(idx + 1), text: 'Skip →' }),
+              h('button', { class: 'btn', type: 'button', onclick: () => { if (done.has(idx)) done.delete(idx); else done.add(idx); renderSession(); }, text: done.has(idx) ? 'Unmark done' : 'Mark done' })),
+            h('p', { class: 'small', text: kind === 'interior' ? 'Paste into ChatGPT, check the image (black lines, closed shapes, no text), download it, then come back for the next page.' : 'Covers are full colour: paste each prompt in a new chat. If the lettering is wrong, regenerate or add the text in Canva.' })))));
+    document.body.append(o);
+    o.addEventListener('click', e => { if (e.target === o) closeSession(); });
+  }
+  document.addEventListener('keydown', e => { if (!sess) return; if (e.key === 'Escape') closeSession(); });
 
   // buttons
   $('st-gen').addEventListener('click', () => generate('studio', 'gen')); $('st-new').addEventListener('click', () => generate('studio', 'new'));
