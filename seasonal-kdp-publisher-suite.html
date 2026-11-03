@@ -1665,6 +1665,7 @@ function scoreTitle(o) { // transparent checklist
   const pass = checks.filter(c => c[1]).length;
   return { pass, total: checks.length, checks };
 }
+const dedupeWords = s => s.replace(/\b([A-Za-z0-9']+)(\s+\1\b)+/gi, (m, a) => a);
 function genTitles(o) { // o: {themeId, custom, aud, pages, mainKw, series:{name,vol}|null, seed, count, hasPuzzles}
   const info = themeInfo(o.themeId, o.custom), r = rngFor(o.seed, 'titles'), out = [], seen = new Set();
   const terms = info.terms.map(t => titleCase(t)); const auds = AUD_MOD[o.aud];
@@ -1672,7 +1673,7 @@ function genTitles(o) { // o: {themeId, custom, aud, pages, mainKw, series:{name
   while (out.length < (o.count || 24) && guard++ < 2000) {
     const pat = pick(r, TITLE_PATTERNS), sub = pick(r, SUBTITLE_FORMATS), b = pickN(r, BENEFITS.filter(x => o.hasPuzzles || true), 2);
     const v = { Tn: info.tn, Term: pick(r, terms), Aud: pick(r, auds), N: o.pages, n: o.pages, Ben: fillT(b[0], { n: o.pages }), Ben2: b[1].replace('{n}', o.pages) };
-    const baseTitle = squish(fillT(pat, v)), subtitle = titleCase(squish(fillT(sub, v)));
+    const baseTitle = dedupeWords(squish(fillT(pat, v))), subtitle = dedupeWords(titleCase(squish(fillT(sub, v))));
     const title = o.series && o.series.name ? o.series.name + ', Volume ' + (o.series.vol || 1) : baseTitle;
     const display = o.series && o.series.name ? title + ': ' + (subtitle ? subtitle : baseTitle) : baseTitle + ': ' + subtitle;
     const effTitle = o.series && o.series.name ? title : baseTitle, effSub = o.series && o.series.name ? squish(baseTitle + ' - ' + subtitle) : subtitle;
