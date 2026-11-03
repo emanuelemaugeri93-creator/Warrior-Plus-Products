@@ -357,6 +357,49 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .sec h2{font-size:22px}
 @media (max-width:900px){.ev{grid-template-columns:1fr}.privacy{display:none}.spread{flex-direction:column;align-items:center}}
 
+/* ===== v3: guide button, grouped steps, collapsible book panel ===== */
+.top{gap:12px}
+.guidebtn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;border:0;cursor:pointer;font-weight:700;font-size:14px;color:var(--accent-ink);background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 22px -8px var(--accent);transition:transform .15s,box-shadow .2s}
+.guidebtn:hover{transform:translateY(-1px);box-shadow:0 12px 26px -8px var(--accent)}
+.privacy{margin-left:auto}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,auto));justify-content:start;gap:10px;overflow:visible;padding:0;margin:0 0 20px}
+.tgroup{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px 12px;display:flex;flex-direction:column;gap:9px;min-width:0;transition:border-color .2s,box-shadow .2s}
+.tgroup.on{border-color:var(--accent-line);box-shadow:0 10px 30px -18px var(--accent)}
+.thead{display:flex;align-items:center;gap:8px;font-size:12.5px}
+.thead b{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
+.thead .tn{width:20px;height:20px;border-radius:50%;background:var(--panel2);border:1px solid var(--line2);display:grid;place-items:center;font-size:11px;font-weight:800;color:var(--muted)}
+.tgroup.on .thead .tn{background:var(--accent);border-color:transparent;color:var(--accent-ink)}
+.tsub{color:var(--dim);font-size:12px;margin-left:auto;white-space:nowrap}
+.tlist{display:flex;gap:6px;flex-wrap:wrap}
+.tab{padding:8px 14px;font-size:13.5px;border-radius:10px;background:var(--bg2)}
+.tgroup .tab[aria-selected=true]{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--accent-ink)}
+.sidetop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sidesum{margin:6px 0 10px;font-size:12.5px;color:var(--muted);line-height:1.4}
+.sidetoggle{display:none}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(6,4,18,.72);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}
+.modal[hidden]{display:none}
+.modalbox{width:min(760px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line2);border-radius:18px;box-shadow:0 30px 80px -20px #000}
+.modalhead{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--line)}
+.modalhead h2{margin:0;font-family:var(--serif);font-size:24px}
+.modalbody{overflow:auto;padding:8px 24px 24px}
+.modalbody h3{font-family:var(--serif);font-size:18px;margin:22px 0 10px;color:var(--accent)}
+.steps{margin:0;padding-left:22px}.steps li{margin:8px 0;color:var(--muted)}.steps b{color:var(--text)}
+.mods{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 16px;margin:0}
+.mods dt{font-weight:700;color:var(--text)}.mods dd{margin:0;color:var(--muted)}
+.tips{margin:0;padding-left:20px}.tips li{margin:8px 0;color:var(--muted)}.tips b{color:var(--text)}
+kbd{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:6px;border:1px solid var(--line2);background:var(--panel2)}
+body.noscroll{overflow:hidden}
+@media (max-width:1100px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tsub{display:none}}
+@media (max-width:900px){
+  .top{padding:12px 16px}.guidebtn{margin-left:auto}.privacy{display:none}
+  .tabs{grid-template-columns:1fr 1fr;gap:8px}.tgroup{padding:8px 10px 10px}.tab{padding:7px 10px;font-size:13px}
+  .sidetoggle{display:inline-flex}
+  .side{position:static;max-height:none}
+  .side:not(.open)>:not(.sidehead){display:none}
+  .mods{grid-template-columns:1fr;gap:2px}.mods dd{margin-bottom:10px}
+}
+@media (max-width:480px){.wm1{font-size:16px}.tabs{grid-template-columns:1fr}.modalbody{padding:8px 16px 20px}.modalhead{padding:14px 16px}}
+
 </style>
 </head>
 <body>
@@ -375,13 +418,14 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   </a>
   <h1 class="sr">Seasonal KDP Coloring Studio — Publisher Suite</h1>
   <span class="badge">Publisher Suite</span>
-  <span class="tagline">From finished images to an upload-ready book, plus puzzles, listing and promo tools</span>
+  <span class="tagline">From finished images to an upload-ready book</span>
   <span class="privacy" title="Your images never leave this browser tab">Your images stay in this browser</span>
+  <button class="guidebtn" id="guide-open" type="button" aria-haspopup="dialog" aria-controls="guide"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h7M9 12h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Guide</button>
 </header>
 
 <div class="layout">
   <aside class="side" aria-label="Active Book">
-    <div class="sidehead"><span class="sidetitle">Active Book</span></div>
+    <div class="sidehead"><div class="sidetop"><span class="sidetitle">Active Book</span><button class="btn sm sidetoggle" id="side-toggle" type="button" aria-expanded="false">Edit</button></div><p class="sidesum" id="ab-summary"></p></div>
     <div class="field"><label for="ab-theme">Theme</label><select id="ab-theme"></select></div>
     <div id="ab-customBox" hidden>
       <div class="field"><label for="ab-cname">Custom theme name</label><input type="text" id="ab-cname" maxlength="60" placeholder="e.g. Cozy Autumn Foxes" autocomplete="off"></div>
@@ -407,15 +451,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     </div>
     <div class="field"><label for="ab-kw">Main keyword</label><input type="text" id="ab-kw" maxlength="80" placeholder="e.g. autumn coloring book for adults" autocomplete="off"><div class="flag" id="ab-flag" aria-live="polite"></div></div>
     <div class="field"><label>Seed</label><div class="seedrow"><button class="seed" id="ab-seed" type="button" title="Copy seed"></button><button class="btn sm" id="ab-newseed" type="button">New seed</button></div></div>
-    <details class="how">
-      <summary>How this tool works</summary>
-      <div class="howin">
-        <p>Everything runs in your browser. Your images are never uploaded, and nothing is saved when you close the tab.</p>
-        <p>This tool has no access to Amazon search volume or sales data. It structures decisions, checks rules and generates options. It makes no income claims, no sales predictions and no ranking promises.</p>
-        <p>KDP specs and limits change. Every limit sits in one editable config at the top of the script. Wherever a limit appears you will see: verify in your KDP dashboard.</p>
-        <p>KDP can reject repetitive or low-value content, so make every book distinct. Remember to disclose AI-generated content when you upload.</p>
-      </div>
-    </details>
+    <p class="sidenote">Stuck? Open the <b>Guide</b> in the top bar. Every module is explained there.</p>
   </aside>
 
   <main class="out">
@@ -425,6 +461,44 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 </div>
 
 <footer>Seasonal KDP Coloring Studio — Publisher Suite · runs in your browser · verify all limits in your KDP dashboard</footer>
+<div id="guide" class="modal" role="dialog" aria-modal="true" aria-labelledby="guide-title" hidden>
+  <div class="modalbox">
+    <div class="modalhead"><h2 id="guide-title">Guide</h2><button class="btn sm" id="guide-close" type="button" aria-label="Close guide">Close</button></div>
+    <div class="modalbody">
+      <section><h3>Start here: 5 steps</h3>
+        <ol class="steps">
+          <li><b>Fill the Active Book</b> (left panel): theme, audience, trim size, pages, title and main keyword. Every module reads from it.</li>
+          <li><b>Plan</b>: the Planner shows when to start so the book is live before the season.</li>
+          <li><b>Build</b>: make puzzle pages in Activity Studio, then upload your coloring images in Interior Builder and export the interior PDF.</li>
+          <li><b>Launch</b>: Listing Lab writes title, keywords and description options. Thumbnail Bench shows how your cover reads at small size.</li>
+          <li><b>Promote</b>: Promo Pack writes posts and captions. Profit &amp; Ads does the royalty and ad-budget arithmetic.</li>
+        </ol>
+      </section>
+      <section><h3>What each module does</h3>
+        <dl class="mods">
+          <dt>Planner</dt><dd>Season dates, a back-planned calendar and the status of each deadline: on track, window closing, late.</dd>
+          <dt>Activity Studio</dt><dd>Word search, maze, sudoku, scramble and lettering pages generated by code. Mazes and sudoku are verified solvable, word searches contain every word. Add pages to the queue.</dd>
+          <dt>Interior Builder</dt><dd>Upload your images, choose where activity pages go, add title and copyright pages, then export a PDF at the exact trim size with safe margins and a mirrored gutter. Also has the cover wrap calculator.</dd>
+          <dt>Listing Lab</dt><dd>Title and subtitle options, a 7-slot keyword packer (50 characters each), description builder and a rules check.</dd>
+          <dt>Thumbnail Bench</dt><dd>Checks your cover at the small sizes shoppers see.</dd>
+          <dt>Promo Pack</dt><dd>Captions, hooks, video angles and hashtags for the book.</dd>
+          <dt>Profit &amp; Ads</dt><dd>Royalty calculator and an ads plan from numbers you enter.</dd>
+        </dl>
+      </section>
+      <section><h3>Good to know</h3>
+        <ul class="tips">
+          <li><b>Everything stays in your browser.</b> Images are never uploaded and nothing is saved when you close the tab. Export your PDF before you leave.</li>
+          <li><b>300 DPI export takes time.</b> A book with 60 images can take a couple of minutes. Keep the tab open and in front.</li>
+          <li><b>Keyword Packer works best with real suggestions.</b> Paste phrases you saw in Amazon search suggestions. Seeds alone give rougher slots.</li>
+          <li><b>No data, no promises.</b> The tool has no access to Amazon search volume or sales. It makes no income claims and no ranking promises.</li>
+          <li><b>KDP changes its rules.</b> Every limit sits in one config at the top of the script. Verify margins, minimum pages and spine factors in your KDP dashboard.</li>
+          <li><b>Make each book distinct.</b> KDP can reject repetitive or low-value content. Disclose AI-generated content when you upload.</li>
+        </ul>
+      </section>
+      <section><h3>Shortcuts</h3><p>Arrow keys move between modules. <kbd>Esc</kbd> closes this guide.</p></section>
+    </div>
+  </div>
+</div>
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1912,19 +1986,43 @@ function AB() {
 
 // ---------- tabs ----------
 const TABS = [['planner', 'Planner'], ['activity', 'Activity Studio'], ['interior', 'Interior Builder'], ['listing', 'Listing Lab'], ['thumb', 'Thumbnail Bench'], ['promo', 'Promo Pack'], ['profit', 'Profit & Ads']];
+const TAB_GROUPS = [['Plan', 'When to start', ['planner']], ['Build', 'Make the book', ['activity', 'interior']], ['Launch', 'List it', ['listing', 'thumb']], ['Promote', 'Sell it', ['promo', 'profit']]];
 const RENDERERS = {}, DIRTY = {};
 let CURTAB = 'planner';
 function initTabs() {
-  const bar = $('tabs'), panes = $('panes');
-  TABS.forEach(([id, label], i) => {
-    bar.append(h('button', { class: 'tab', role: 'tab', id: 'tab-' + id, 'aria-selected': i === 0, 'aria-controls': 'pane-' + id, tabindex: i === 0 ? '0' : '-1', type: 'button', onclick: () => selectTab(id) }, h('span', { class: 'tn', text: i + 1 }), label));
-    panes.append(h('section', { class: 'pane', id: 'pane-' + id, role: 'tabpanel', 'aria-labelledby': 'tab-' + id, hidden: i !== 0 }));
+  const bar = $('tabs'), panes = $('panes'), label = {};
+  TABS.forEach(([id, l], i) => { label[id] = l; panes.append(h('section', { class: 'pane', id: 'pane-' + id, role: 'tabpanel', 'aria-labelledby': 'tab-' + id, hidden: i !== 0 })); });
+  TAB_GROUPS.forEach(([name, sub, ids], gi) => {
+    const g = h('div', { class: 'tgroup', role: 'presentation', 'data-g': gi }, h('div', { class: 'thead' }, h('span', { class: 'tn', text: gi + 1 }), h('b', { text: name }), h('span', { class: 'tsub', text: sub })), h('div', { class: 'tlist' }));
+    ids.forEach(id => { const i = TABS.findIndex(t => t[0] === id); g.lastChild.append(h('button', { class: 'tab', role: 'tab', id: 'tab-' + id, 'aria-selected': i === 0, 'aria-controls': 'pane-' + id, tabindex: i === 0 ? '0' : '-1', type: 'button', onclick: () => selectTab(id) }, label[id])); });
+    bar.append(g);
   });
   bar.addEventListener('keydown', e => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; const i = TABS.findIndex(t => t[0] === CURTAB), n = (i + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length; selectTab(TABS[n][0]); $('tab-' + TABS[n][0]).focus(); });
+  initGuide(); initSideToggle(); document.querySelector('.tgroup').classList.add('on');
+}
+function initGuide() {
+  const g = $('guide'), open = $('guide-open'); let last = null;
+  const show = () => { last = document.activeElement; g.hidden = false; document.body.classList.add('noscroll'); $('guide-close').focus(); };
+  const hide = () => { g.hidden = true; document.body.classList.remove('noscroll'); if (last && last.focus) last.focus(); };
+  open.addEventListener('click', show); $('guide-close').addEventListener('click', hide);
+  g.addEventListener('click', e => { if (e.target === g) hide(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !g.hidden) hide(); });
+}
+function initSideToggle() {
+  const side = document.querySelector('.side'), t = $('side-toggle');
+  t.addEventListener('click', () => { const on = side.classList.toggle('open'); t.setAttribute('aria-expanded', on); t.textContent = on ? 'Done' : 'Edit'; });
+  ['ab-theme', 'ab-aud', 'ab-pages', 'ab-trim', 'ab-paper', 'ab-title', 'ab-series', 'ab-vol'].forEach(id => { const el = $(id); if (el) { el.addEventListener('input', updSideSummary); el.addEventListener('change', updSideSummary); } });
+  updSideSummary();
+}
+function updSideSummary() {
+  const sel = id => { const el = $(id); return el && el.selectedOptions && el.selectedOptions[0] ? el.selectedOptions[0].text : ''; };
+  const t = $('ab-title') ? $('ab-title').value.trim() : '', parts = [sel('ab-theme'), sel('ab-aud'), $('ab-pages') ? $('ab-pages').value + ' pages' : '', sel('ab-trim')].filter(Boolean);
+  $('ab-summary').textContent = (t ? t + ' · ' : '') + parts.join(' · ');
 }
 function selectTab(id) {
   CURTAB = id;
   TABS.forEach(([t]) => { const on = t === id; $('tab-' + t).setAttribute('aria-selected', on); $('tab-' + t).tabIndex = on ? 0 : -1; $('pane-' + t).hidden = !on; });
+  document.querySelectorAll('.tgroup').forEach(g => g.classList.toggle('on', !!g.querySelector('[aria-selected=true]')));
   if (DIRTY[id] !== false) { RENDERERS[id](); DIRTY[id] = false; }
 }
 let abTimer;
